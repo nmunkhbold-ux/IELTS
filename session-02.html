@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Session 2: Writing Task 1 | AUM IELTS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --navy:#1F3864; --ink:#1d2433; --muted:#5a6478; --paper:#ffffff; --wash:#eef3fa; --line:#c9d5e8;
+  --mark:#ffe58a; --mark-ink:#3a2f00; --red:#b8322a; --red-wash:#fbe9e7; --green:#2e7d4f; --green-wash:#e5f3ea;
+  --btn:#1F3864; --btn-ink:#ffffff; --bar1:#1F3864; --bar2:#6F94C2; --bar3:#B4C7E7;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --navy:#9fbbe6; --ink:#e6ebf4; --muted:#a5afc2; --paper:#141a26; --wash:#1d2638; --line:#33405a;
+    --mark:#6b5a12; --mark-ink:#fff4c2; --red:#ff8a80; --red-wash:#3a1f1d; --green:#7fd19e; --green-wash:#173022;
+    --btn:#9fbbe6; --btn-ink:#0f1522; --bar1:#9fbbe6; --bar2:#5f86bb; --bar3:#3d5a85;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --navy:#9fbbe6; --ink:#e6ebf4; --muted:#a5afc2; --paper:#141a26; --wash:#1d2638; --line:#33405a;
+  --mark:#6b5a12; --mark-ink:#fff4c2; --red:#ff8a80; --red-wash:#3a1f1d; --green:#7fd19e; --green-wash:#173022;
+  --btn:#9fbbe6; --btn-ink:#0f1522; --bar1:#9fbbe6; --bar2:#5f86bb; --bar3:#3d5a85;
+  color-scheme: dark;
+}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Instrument Sans",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;font-size:17px;line-height:1.55}
+main{max-width:780px;margin:0 auto;padding:40px 20px 80px}
+h1{font-size:clamp(30px,5vw,42px);line-height:1.1;color:var(--navy);margin:0 0 10px;letter-spacing:-0.01em}
+h2{font-size:24px;color:var(--navy);margin:0 0 6px;line-height:1.2}
+h3{font-size:18px;margin:22px 0 8px;color:var(--ink)}
+p{margin:0 0 12px}
+.lead{color:var(--muted);max-width:62ch}
+.serif{font-family:"Newsreader",Georgia,"Times New Roman",serif}
+section{padding:40px 0;border-top:1px solid var(--line)}
+.step{display:flex;gap:14px;align-items:baseline;margin-bottom:8px}
+.step b{font-size:15px;color:var(--paper);background:var(--navy);border-radius:50%;width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.hint{color:var(--muted);font-size:15px}
+mark,.hl{background:var(--mark);color:var(--mark-ink);padding:0 3px;border-radius:3px}
+button{font:inherit;cursor:pointer}
+button:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--navy);outline-offset:2px}
+.btn{background:var(--btn);color:var(--btn-ink);border:0;border-radius:8px;padding:10px 16px;font-weight:600}
+.btn.ghost{background:transparent;color:var(--navy);border:1.5px solid var(--navy)}
+.prompt{background:var(--wash);border-left:5px solid var(--navy);padding:16px 18px;border-radius:0 8px 8px 0;margin:14px 0}
+.prompt small{display:block;color:var(--muted);font-size:13px;margin-bottom:4px}
+
+/* paraphrase machine */
+.machine{margin-top:22px;border:2px solid var(--navy);border-radius:14px;padding:22px}
+.sentence{font-family:"Newsreader",Georgia,serif;font-size:clamp(22px,3.4vw,28px);line-height:1.6}
+.chunk{cursor:pointer;-webkit-box-decoration-break:clone;box-decoration-break:clone;background:none;border:0;border-bottom:3px dashed var(--line);color:var(--ink);padding:0 2px;font:inherit;transition:background .2s}
+.chunk:hover{border-bottom-color:var(--navy)}
+.chunk.changed{background:var(--mark);color:var(--mark-ink);border-bottom-color:var(--mark-ink)}
+.chunk.trap{background:var(--red-wash);color:var(--red);border-bottom:3px solid var(--red);text-decoration:line-through wavy}
+.meter{display:flex;gap:6px;margin:18px 0 8px}
+.meter span{flex:1;height:10px;border-radius:5px;background:var(--line)}
+.meter span.on{background:var(--green)}
+.feedback{min-height:48px;font-size:16px}
+.ok{color:var(--green)} .bad{color:var(--red)}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px}
+
+/* tabs */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.tab{border:1.5px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;padding:7px 14px;font-size:15px}
+.tab[aria-selected="true"]{background:var(--navy);color:var(--paper);border-color:var(--navy)}
+.panel{background:var(--wash);border-radius:10px;padding:18px}
+.pair{display:grid;grid-template-columns:90px 1fr;gap:6px 12px;margin-top:10px;font-size:16px}
+.pair .k{color:var(--muted);font-size:14px;padding-top:3px}
+
+/* quiz */
+.q{border:1.5px solid var(--line);border-radius:10px;padding:16px;margin:12px 0}
+.q .serif{font-size:19px}
+.q .row button{min-width:110px}
+.q.right{border-color:var(--green);background:var(--green-wash)}
+.q.wrong{border-color:var(--red);background:var(--red-wash)}
+.why{margin-top:10px;font-size:15px}
+
+/* chart */
+.chart{border:1.5px solid var(--line);border-radius:10px;padding:16px;margin:12px 0;overflow-x:auto}
+.chart svg{display:block;max-width:100%;height:auto}
+.chart svg text{fill:var(--ink);font-family:"Instrument Sans",Arial,sans-serif}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:14px;margin-top:8px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.pie-wrap{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.pie{width:180px;height:180px;border-radius:50%;flex:none}
+
+/* vocab cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:12px}
+.card{border:1.5px solid var(--line);background:var(--paper);color:var(--ink);border-radius:10px;padding:14px;text-align:left;min-height:120px}
+.card .front{font-weight:700;color:var(--navy);font-size:18px}
+.card .front small{display:block;font-weight:500;color:var(--muted);font-size:13px}
+.card .back{display:none;font-family:"Newsreader",Georgia,serif;font-size:17px;margin-top:8px}
+.card.open{background:var(--wash)}
+.card.open .back{display:block}
+
+/* match */
+.match{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.match button{border:1.5px solid var(--line);background:var(--paper);color:var(--ink);border-radius:8px;padding:10px 12px;text-align:left;font-size:15px}
+.match button.sel{border-color:var(--navy);box-shadow:inset 0 0 0 1px var(--navy)}
+.match button.done{border-color:var(--green);background:var(--green-wash);color:var(--ink);cursor:default}
+.match button.no{animation:shake .3s}
+@keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+@media (prefers-reduced-motion:reduce){.match button.no{animation:none}.chunk{transition:none}}
+
+/* red pen */
+.pen .serif{font-size:19px;line-height:1.8}
+.pen .bit{background:none;border:0;padding:0 2px;color:var(--ink);font:inherit;border-bottom:2px dotted var(--line)}
+.pen .bit:hover{border-bottom-color:var(--red)}
+.pen .bit.hit{color:var(--red);text-decoration:line-through;border-bottom-color:transparent}
+.pen .bit.miss{opacity:.45}
+
+/* writing */
+textarea{width:100%;min-height:120px;font-family:"Newsreader",Georgia,serif;font-size:19px;line-height:1.5;padding:14px;border:1.5px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink);resize:vertical}
+.checks{list-style:none;padding:0;margin:12px 0}
+.checks li{padding:5px 0 5px 30px;position:relative;font-size:15.5px}
+.checks li::before{content:"";position:absolute;left:0;top:8px;width:18px;height:18px;border-radius:50%;border:2px solid var(--line)}
+.checks li.pass::before{background:var(--green);border-color:var(--green)}
+.checks li.fail::before{border-color:var(--red)}
+select{font:inherit;font-size:16px;padding:4px 6px;border-radius:6px;border:1.5px solid var(--navy);background:var(--paper);color:var(--ink)}
+.fill{font-family:"Newsreader",Georgia,serif;font-size:19px;line-height:2.1}
+.models{display:none;margin-top:12px}
+.models.show{display:block}
+.models p{font-family:"Newsreader",Georgia,serif;font-size:18px;border-left:3px solid var(--navy);padding-left:12px}
+details{border:1.5px solid var(--line);border-radius:10px;padding:12px 16px;margin-top:16px}
+summary{cursor:pointer;font-weight:600;color:var(--navy)}
+table{border-collapse:collapse;width:100%;font-size:15px;margin-top:10px}
+td,th{border-bottom:1px solid var(--line);padding:8px 6px;text-align:left;vertical-align:top}
+th{color:var(--muted);font-weight:600}
+.tablewrap{overflow-x:auto}
+.score{font-weight:700;color:var(--navy)}
+
+/* site chrome */
+.topbar{position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--paper)}
+.topbar nav{max-width:780px;margin:0 auto;padding:12px 20px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.topbar .brand{font-weight:700;color:var(--navy);text-decoration:none;margin-right:auto}
+.topbar a{color:var(--ink);text-decoration:none;font-weight:500}
+.topbar a[aria-current="page"]{color:var(--navy);text-decoration:underline;text-underline-offset:5px}
+a{color:var(--navy)}
+.session-list{list-style:none;padding:0;margin:20px 0}
+.session-list li{border-top:1px solid var(--line)}
+.session-list a,.session-list .soon{display:grid;grid-template-columns:56px 1fr;gap:4px 14px;padding:18px 4px;text-decoration:none;color:var(--ink)}
+.session-list a:hover .t{text-decoration:underline}
+.session-list .n{font-size:28px;font-weight:700;color:var(--navy);grid-row:span 2;line-height:1}
+.session-list .t{font-weight:600;font-size:19px}
+.session-list .d{color:var(--muted);font-size:15px}
+.session-list .soon{opacity:.55}
+.pager{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:40px;padding-top:20px;border-top:1px solid var(--line)}
+.notes section{padding:32px 0}
+.toc{columns:2;column-gap:28px;padding-left:20px;font-size:16px}
+@media (max-width:560px){.toc{columns:1}.match{grid-template-columns:1fr}}
+.sort{display:grid;gap:10px;margin-top:12px}
+.fact{display:flex;gap:10px;align-items:center;flex-wrap:wrap;border:1.5px solid var(--line);border-radius:10px;padding:10px 12px}
+.fact span{flex:1 1 100%}
+.fact.right{border-color:var(--green);background:var(--green-wash)}
+.fact.wrong{border-color:var(--red);background:var(--red-wash)}
+.wc{font-size:14px;color:var(--muted);margin-top:4px}
+
+/* ---------- richer site pages ---------- */
+.hero{padding:8px 0 28px}
+.hero .lead{margin-bottom:22px}
+.demo{border:2px solid var(--navy);border-radius:14px;padding:20px 22px;margin-top:6px}
+.demo small{display:block;color:var(--muted);font-size:13px;margin-bottom:6px}
+.demo .sentence{font-size:clamp(20px,3vw,25px)}
+.demo .row{margin-top:14px}
+.badge{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:var(--navy);color:var(--paper);font-weight:700;font-size:19px;flex:none}
+.sgrid{display:grid;gap:14px;margin:18px 0}
+.scard{display:flex;gap:16px;align-items:flex-start;border:1.5px solid var(--line);border-radius:12px;padding:18px;text-decoration:none;color:var(--ink);background:var(--paper)}
+a.scard:hover{border-color:var(--navy);box-shadow:inset 0 0 0 1px var(--navy)}
+.scard .t{font-weight:700;font-size:19px;color:var(--navy);display:block}
+.scard .d{color:var(--muted);font-size:15px;display:block;margin-top:2px}
+.scard .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.tag{font-size:13px;border-radius:999px;padding:2px 10px;background:var(--wash);color:var(--ink)}
+.tag.new{background:var(--mark);color:var(--mark-ink)}
+.tag.done{background:var(--green-wash);color:var(--green)}
+.scard.soon{border-style:dashed;opacity:.6}
+.scard.soon .badge{background:var(--line);color:var(--muted)}
+.scard .body{flex:1}
+.mark-done{margin-left:auto;align-self:center;border:1.5px solid var(--line);background:var(--paper);color:var(--muted);border-radius:999px;padding:5px 12px;font-size:14px;white-space:nowrap}
+.mark-done[aria-pressed="true"]{border-color:var(--green);color:var(--green);background:var(--green-wash)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:10px}
+@media (max-width:620px){.split{grid-template-columns:1fr}.scard{flex-wrap:wrap}.mark-done{margin-left:60px}}
+.panel-link{display:block;background:var(--wash);border-radius:12px;padding:18px;text-decoration:none;color:var(--ink);border-left:5px solid var(--navy)}
+.panel-link strong{color:var(--navy);font-size:18px;display:block;margin-bottom:4px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 4px;padding:0;list-style:none}
+.chips a{display:inline-block;border:1.5px solid var(--line);border-radius:999px;padding:6px 13px;font-size:15px;text-decoration:none;color:var(--ink)}
+.chips a:hover{border-color:var(--navy);color:var(--navy)}
+.example{background:var(--wash);border-left:4px solid var(--navy);border-radius:0 8px 8px 0;padding:12px 16px;margin:12px 0;font-family:"Newsreader",Georgia,serif;font-size:18px}
+.example small{display:block;font-family:"Instrument Sans",system-ui,sans-serif;color:var(--muted);font-size:13px;margin-bottom:2px}
+.wr{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+.wr div{border-radius:8px;padding:10px 14px;font-family:"Newsreader",Georgia,serif;font-size:17px}
+.wr .w{background:var(--red-wash);color:var(--ink);border:1.5px solid var(--red)}
+.wr .w::before{content:"Not this";display:block;font-family:"Instrument Sans",system-ui,sans-serif;font-size:12.5px;color:var(--red);font-weight:600;margin-bottom:2px}
+.wr .r{background:var(--green-wash);color:var(--ink);border:1.5px solid var(--green)}
+.wr .r::before{content:"Write this";display:block;font-family:"Instrument Sans",system-ui,sans-serif;font-size:12.5px;color:var(--green);font-weight:600;margin-bottom:2px}
+@media (max-width:560px){.wr{grid-template-columns:1fr}}
+.structure{display:grid;gap:10px;margin-top:12px}
+.structure .p{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start;border:1.5px solid var(--line);border-radius:12px;padding:14px}
+.structure .p strong{color:var(--navy)}
+.structure .p .serif{display:block;margin-top:6px;font-size:17px}
+.remember{background:var(--mark);color:var(--mark-ink);border-radius:10px;padding:12px 16px;margin:14px 0}
+.cards.small .card{min-height:0}
+.notes .step h2{margin:0}
+
+.chunk:focus-visible{outline:3px solid var(--navy);outline-offset:2px}
+
+</style><style>
+.para{display:grid;grid-template-columns:28px 1fr;gap:10px;margin:0 0 14px;font-family:"Newsreader",Georgia,serif;font-size:18px;line-height:1.6}
+.para b{font-family:"Instrument Sans",system-ui,sans-serif;color:var(--navy)}
+.passage{border:1.5px solid var(--line);border-radius:12px;padding:20px;margin:14px 0}
+.passage h3{margin-top:0;font-family:"Newsreader",Georgia,serif;font-size:22px;color:var(--navy)}
+.sent{cursor:pointer;border-radius:3px;padding:1px 0;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.sent:hover{background:var(--wash)}
+.sent.yes{background:var(--green-wash);color:var(--green);font-weight:500}
+.sent.no{background:var(--red-wash);color:var(--red);text-decoration:line-through}
+.sent:focus-visible{outline:3px solid var(--navy);outline-offset:1px}
+.timer{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:12px 0}
+.clock{font-variant-numeric:tabular-nums;font-weight:700;font-size:28px;color:var(--navy);min-width:4ch}
+.blurred{filter:blur(6px);user-select:none;pointer-events:none}
+@media (prefers-reduced-motion:no-preference){.passage-body{transition:filter .3s}}
+.qrow{display:grid;grid-template-columns:28px 1fr;gap:6px 10px;align-items:start;margin:12px 0}
+.qrow .num{font-weight:700;color:var(--navy)}
+.ans{font:inherit;font-size:17px;padding:5px 8px;border:1.5px solid var(--line);border-radius:6px;background:var(--paper);color:var(--ink);width:min(260px,100%)}
+.ans.good{border-color:var(--green);background:var(--green-wash)}
+.ans.badans{border-color:var(--red);background:var(--red-wash)}
+.small-fb{font-size:14.5px;margin-top:3px}
+.inline-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+</style><style>
+.part{margin:48px 0 0;padding:14px 18px;background:var(--navy);color:var(--paper);border-radius:12px;font-size:22px;scroll-margin-top:70px}
+h2[id],section[id]{scroll-margin-top:70px}
+</style>
+</head>
+<body>
+<header class="topbar"><nav><a class="brand" href="index.html">AUM IELTS</a><a href="index.html">Sessions</a><a href="notes.html">Writing notes</a><a href="reading-notes.html">Reading notes</a></nav></header>
+<main>
+  <p class="hint">Session 2</p>
+  <h1>Writing Task 1: a full report, step by step</h1>
+  <p class="lead">A Task 1 report always has the same four paragraphs. Today you will build each one using the bar chart below, then write a full report on your own.</p>
+  <ul class="chips"><li><a href="#st1">The plan</a></li><li><a href="#st3">Introduction</a></li><li><a href="#st5">Overview</a></li><li><a href="#st6">Details</a></li><li><a href="#st7">Vocabulary</a></li><li><a href="#st9">Your turn</a></li></ul>
+
+  <section aria-labelledby="st1">
+    <div class="step"><b>1</b><h2 id="st1">The four-paragraph plan</h2></div>
+    <div class="structure">
+      <div class="p"><span class="badge">1</span><div><strong>Introduction</strong>: one sentence. Say what the chart shows, in your own words.</div></div>
+      <div class="p"><span class="badge">2</span><div><strong>Overview</strong>: one or two sentences. The big picture, <mark>with no numbers</mark>.</div></div>
+      <div class="p"><span class="badge">3</span><div><strong>Details 1</strong>: three or four sentences. One group of similar information, with numbers.</div></div>
+      <div class="p"><span class="badge">4</span><div><strong>Details 2</strong>: three or four sentences. The other group, with comparisons.</div></div>
+    </div>
+    <div class="remember">Aim for <strong>160–190 words</strong> in 20 minutes. Report facts only: no opinions, no reasons, and no “In conclusion”.</div>
+  </section>
+
+  <section aria-labelledby="st2">
+    <div class="step"><b>2</b><h2 id="st2">Look before you write</h2></div>
+    <div class="prompt"><small>Task</small><span class="serif">The bar chart shows a comparison of the daily routines of school pupils between three countries. Summarise the information by selecting and reporting the main features, and make comparisons where relevant. Write at least 150 words.</span></div>
+    <div class="chart" role="img" aria-label="Bar chart of hours per day. United States: sleeping 8.5, studying 8, relaxing 7.5. Australia: 7, 13, 4. Canada: 8, 8.5, 7.5.">
+      <svg viewBox="0 0 560 280" id="barSvg"></svg>
+      <div class="legend"><span><i style="background:var(--bar1)"></i>Sleeping</span><span><i style="background:var(--bar2)"></i>Studying</span><span><i style="background:var(--bar3)"></i>Relaxing</span></div>
+    </div>
+    <p>Answer three questions before writing. Say your answer, then click to check.</p>
+    <div class="cards" id="look"></div>
+  </section>
+
+  <section aria-labelledby="st3">
+    <div class="step"><b>3</b><h2 id="st3">The introduction: paraphrase the task</h2></div>
+    <p>Copied words from the task do not count. Click the underlined parts to change them. Some choices change the meaning: they turn red.</p>
+    <div class="machine">
+      <div class="sentence" id="sentence" aria-live="polite"></div>
+      <div class="meter" id="meter" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="feedback" id="machineFb"></div>
+      <div class="row"><button class="btn ghost" id="resetMachine">Start again</button><button class="btn ghost" id="bestMachine">Show a strong version</button></div>
+    </div>
+    <h3>Ten correct ways to write it</h3>
+    <p class="hint">The verb and the paraphrase of “daily routines” are highlighted. Notice how many choices you have.</p>
+    <ol class="serif" style="font-size:18px;line-height:1.7" id="tenWays"></ol>
+  </section>
+
+  <section aria-labelledby="st4">
+    <div class="step"><b>4</b><h2 id="st4">Fix a student’s introduction</h2></div>
+    <p>A student wrote this in class:</p>
+    <div class="example">The bar chart compares how American, Australian and Canadian students how much time they spend daily activities by time.</div>
+    <p>Find the three problems. Click a card to check.</p>
+    <div class="cards" id="fixCards"></div>
+    <div id="fixQ"></div>
+  </section>
+
+  <section aria-labelledby="st5">
+    <div class="step"><b>5</b><h2 id="st5">The overview: the big picture</h2></div>
+    <p>Look at the chart. Which country is different? Which two are similar? That is your overview. Choose the best one.</p>
+    <div id="ovQ"></div>
+    <h3>Now build it yourself</h3>
+    <p class="fill" id="fill1">
+      <select data-a="Overall,"><option value="">…</option><option>Overall,</option><option>In conclusion,</option><option>For example,</option></select>
+      Australian pupils spend
+      <select data-a="far more"><option value="">…</option><option>far more</option><option>slightly more</option><option>less</option></select>
+      time studying than pupils in the other two countries,
+      <select data-a="while"><option value="">…</option><option>while</option><option>because</option><option>so</option></select>
+      routines in the United States and Canada are much more
+      <select data-a="balanced"><option value="">…</option><option>balanced</option><option>busy</option><option>difficult</option></select>.
+    </p>
+    <button class="btn" id="fill1Btn">Check</button>
+    <p class="feedback" id="fill1Fb"></p>
+  </section>
+
+  <section aria-labelledby="st6">
+    <div class="step"><b>6</b><h2 id="st6">The details: group, then compare</h2></div>
+    <p><strong>Group.</strong> Put similar information together. Which paragraph does each fact belong in?</p>
+    <div class="sort" id="group"></div>
+    <p class="feedback" id="groupFb"></p>
+    <p style="margin-top:20px"><strong>Compare.</strong> A list of numbers is not a comparison. Choose the sentence that compares.</p>
+    <div id="cmpQ"></div>
+    <div class="example"><small>Model detail paragraphs</small>In the United States and Canada, daily routines are very similar. American pupils sleep for 8.5 hours, study for 8 and relax for 7.5. Canadian pupils spend almost the same amount of time on each activity: 8 hours sleeping, 8.5 studying and, again, 7.5 relaxing.<br><br>Australia, by contrast, stands out. Pupils there study for 13 hours a day, roughly five hours more than in the other two countries. As a result, they sleep the least, at 7 hours, and relax for only 4, about half the time of American and Canadian pupils.</div>
+  </section>
+
+  <section aria-labelledby="st7">
+    <div class="step"><b>7</b><h2 id="st7">Useful vocabulary</h2></div>
+    <p>Choose a group, then click a card to see it used about the bar chart.</p>
+    <div class="tabs" role="tablist" id="vTabs"></div>
+    <div class="cards" id="vCards"></div>
+    <h3>Upgrade the sentence</h3>
+    <p class="hint">Choose the better version of each simple sentence.</p>
+    <div id="upg"></div><button class="btn" id="upgBtn">Check</button><p class="feedback" id="upgFb"></p>
+  </section>
+
+  <section aria-labelledby="st8">
+    <div class="step"><b>8</b><h2 id="st8">Accuracy check</h2></div>
+    <p>These sentences come from practice reports. Check each one against the chart: is it correct, or is there a mistake?</p>
+    <div class="sort" id="acc"></div>
+    <p class="feedback" id="accFb"></p>
+  </section>
+
+  <section aria-labelledby="st9">
+    <div class="step"><b>9</b><h2 id="st9">Your turn: a full report</h2></div>
+    <div class="prompt"><small>Task (20 minutes)</small><span class="serif">The pie chart below shows the native languages spoken by students at Cambridge College in 2007. Summarise the information by selecting and reporting the main features, and make comparisons where relevant. Write at least 150 words.</span></div>
+    <div class="chart">
+      <div class="pie-wrap">
+        <div class="pie" role="img" aria-label="English 45%, Hindi 30%, Chinese 13%, Urdu 10%, French 2%" style="background:conic-gradient(var(--bar1) 0 45%, var(--bar2) 45% 75%, var(--bar3) 75% 88%, #8a9bb5 88% 98%, var(--mark) 98% 100%)"></div>
+        <div class="legend" style="flex-direction:column;gap:6px">
+          <span><i style="background:var(--bar1)"></i>English 45%</span><span><i style="background:var(--bar2)"></i>Hindi 30%</span><span><i style="background:var(--bar3)"></i>Chinese 13%</span><span><i style="background:#8a9bb5"></i>Urdu 10%</span><span><i style="background:var(--mark)"></i>French 2%</span>
+        </div>
+      </div>
+    </div>
+    <div class="remember">The data is from 2007, so use the <strong>past tense</strong>: “English <em>was</em> the most common language.” It is a pie chart, so use <strong>proportion</strong> and <strong>percentage</strong>, not “number”.</div>
+    <div class="timer"><button class="btn" id="wStart">Start 20 minutes</button><span class="clock" id="wClock">20:00</span></div>
+    <label for="report" class="hint">Your report</label>
+    <textarea id="report" style="min-height:300px" placeholder="The pie chart illustrates …"></textarea>
+    <p class="wc" id="wc">0 words</p>
+    <ul class="checks" id="checks"></ul>
+    <details>
+      <summary>Model report (open after you have written yours)</summary>
+      <p class="serif">The pie chart illustrates the proportion of students at Cambridge College in 2007 who spoke each of five native languages.</p>
+      <p class="serif">Overall, English was the most common first language, followed by Hindi, and together these two languages accounted for three quarters of all students. In contrast, French was spoken by only a very small minority.</p>
+      <p class="serif">English was the native language of 45% of students, almost half of the college population. Hindi was the second most widely spoken language, at 30%, which was two thirds of the figure for English. Taken together, speakers of these two languages greatly outnumbered all of the other groups.</p>
+      <p class="serif">The remaining quarter of the student body was shared among three languages. Chinese and Urdu were spoken by fairly similar proportions of students, at 13% and 10% respectively. French, by contrast, accounted for just 2%, which made it by far the smallest group, at less than a fifth of the figure for Urdu.</p>
+    </details>
+  </section>
+
+  <section aria-labelledby="st10">
+    <div class="step"><b>10</b><h2 id="st10">Homework</h2></div>
+    <ul>
+      <li>Write the full report for the bar chart (daily routines) in 20 minutes. Use a different introduction from the ones in Step 3.</li>
+      <li>Underline at least five expressions from Step 7 in your report.</li>
+      <li>Check every number against the chart, then use the checklist on the <a href="notes.html#checklist">Task 1 notes</a> page.</li>
+    </ul>
+  </section>
+
+  <nav class="pager"><a href="session-01.html">Previous: Session 1</a><a href="session-03.html">Next: Session 3, reading skills</a></nav>
+</main>
+<script>
+const $ = id => document.getElementById(id);
+const norm = t => t.toLowerCase().replace(/[’']/g, "'").replace(/[^a-z0-9,' -]/g, " ").replace(/\s+/g, " ").trim();
+const words = t => t.trim().split(/\s+/).filter(Boolean).length;
+const esc = t => String(t);
+
+function score(id, ok, total, good, bad) {
+  const el = $(id); if (!el) return;
+  el.innerHTML = "<span class='" + (ok === total ? "ok" : "bad") + "'><strong>" + ok + " / " + total + ".</strong> " + (ok === total ? (good || "All correct.") : (bad || "")) + "</span>";
+}
+
+// Multiple choice. items: [question, [options], correctIndex, explanation]
+function mcq(id, items, opt) {
+  opt = opt || {}; const box = $(id); let done = 0, right = 0;
+  items.forEach(([q, opts, ans, why], qi) => {
+    const d = document.createElement("div"); d.className = "q";
+    const num = (opt.start || 1) + qi;
+    d.innerHTML = (q ? "<p><strong>" + num + ".</strong> " + q + "</p>" : "") + "<div></div><p class='why' hidden></p>";
+    const o = d.children[q ? 1 : 0], w = d.children[q ? 2 : 1];
+    opts.forEach((t, i) => {
+      const b = document.createElement("button"); b.className = "btn ghost";
+      b.style.cssText = "display:block;width:100%;text-align:left;margin:8px 0;font-weight:500";
+      b.textContent = "ABCDEFG"[i] + ")  " + t;
+      b.onclick = () => {
+        if (d.dataset.done) return; d.dataset.done = 1; done++;
+        const ok = i === ans; if (ok) right++;
+        d.classList.add(ok ? "right" : "wrong"); o.children[ans].style.borderColor = "var(--green)";
+        w.hidden = false; w.innerHTML = "<strong class='" + (ok ? "ok" : "bad") + "'>" + (ok ? "Correct." : "Not quite.") + "</strong> " + why;
+        if (opt.fb && done === items.length) score(opt.fb, right, items.length, opt.good, opt.bad);
+      };
+      o.appendChild(b);
+    });
+    box.appendChild(d);
+  });
+}
+
+// True/False/Not Given or Yes/No/Not Given. items: [statement, answer, explanation]
+function tfng(id, items, opt) {
+  opt = opt || {}; const labels = opt.labels || ["TRUE", "FALSE", "NOT GIVEN"];
+  const box = $(id); let done = 0, right = 0;
+  items.forEach(([s, ans, why], i) => {
+    const d = document.createElement("div"); d.className = "q";
+    d.innerHTML = "<p><strong>" + ((opt.start || 1) + i) + ".</strong> " + s + "</p><div class='inline-row'></div><p class='why' hidden></p>";
+    const row = d.children[1], w = d.children[2];
+    labels.forEach(l => {
+      const b = document.createElement("button"); b.className = "btn ghost"; b.textContent = l;
+      b.onclick = () => {
+        if (d.dataset.done) return; d.dataset.done = 1; done++;
+        const ok = l === ans; if (ok) right++;
+        d.classList.add(ok ? "right" : "wrong");
+        [...row.children].forEach(x => { if (x.textContent === ans) x.style.borderColor = "var(--green)"; });
+        w.hidden = false;
+        w.innerHTML = "<strong class='" + (ok ? "ok" : "bad") + "'>" + (ok ? "Correct: " : "The answer is ") + ans + ".</strong> " + why;
+        if (done === items.length && opt.fb) score(opt.fb, right, items.length, opt.good, opt.bad);
+      };
+      row.appendChild(b);
+    });
+    box.appendChild(d);
+  });
+}
+
+// Gap fill / short answer. items: [text with ___ (or a question), [accepted], evidence]
+function gaps(id, btnId, fbId, max, items, opt) {
+  opt = opt || {}; const box = $(id);
+  items.forEach(([q], i) => {
+    const d = document.createElement("div"); d.className = "qrow";
+    const n = (opt.start || 1) + i;
+    if (q.includes("___")) {
+      const p = q.split("___");
+      d.innerHTML = "<span class='num'>" + n + "</span><div><span class='serif' style='font-size:18px'>" + p[0] + "</span><input class='ans' aria-label='Answer " + n + "' data-i='" + i + "'><span class='serif' style='font-size:18px'>" + p[1] + "</span><div class='small-fb'></div></div>";
+    } else {
+      d.innerHTML = "<span class='num'>" + n + "</span><div><div>" + q + "</div><input class='ans' aria-label='Answer " + n + "' data-i='" + i + "'><div class='small-fb'></div></div>";
+    }
+    box.appendChild(d);
+  });
+  $(btnId).onclick = () => {
+    let ok = 0;
+    box.querySelectorAll("input").forEach(inp => {
+      const [q, acc, ev] = items[inp.dataset.i]; const v = norm(inp.value).replace(/^the /, "");
+      const fb = inp.parentElement.querySelector(".small-fb");
+      if (!v) { inp.className = "ans"; fb.textContent = ""; return; }
+      if (words(inp.value) > max) { inp.className = "ans badans"; fb.innerHTML = "<span class='bad'>Too many words: the limit is " + max + ". In the exam this is marked wrong.</span>"; return; }
+      const g = acc.some(a => norm(a).replace(/^the /, "") === v); if (g) ok++;
+      inp.className = "ans " + (g ? "good" : "badans");
+      fb.innerHTML = g ? "<span class='ok'>Evidence: " + ev + "</span>" : "<span class='bad'>Answer: <strong>" + acc[0] + "</strong>. Evidence: " + ev + "</span>";
+    });
+    score(fbId, ok, items.length, opt.good || "All correct. Spelling counts, so check every letter.", opt.bad || "Copy words exactly from the passage and keep to the word limit.");
+  };
+}
+
+// Flip cards. items: [front, small, back]
+function cards(id, items) {
+  items.forEach(([f, s, b]) => {
+    const c = document.createElement("button"); c.className = "card"; c.setAttribute("aria-expanded", "false");
+    c.innerHTML = "<div class='front'>" + f + (s ? "<small>" + s + "</small>" : "") + "</div><div class='back'>" + b + "</div>";
+    c.onclick = () => { c.classList.toggle("open"); c.setAttribute("aria-expanded", c.classList.contains("open")); };
+    $(id).appendChild(c);
+  });
+}
+
+// Sorting. cats: [label], items: [text, correctLabel, note]
+function sorter(id, fbId, cats, items, opt) {
+  opt = opt || {}; let done = 0, right = 0;
+  items.forEach(([t, a, note]) => {
+    const d = document.createElement("div"); d.className = "fact"; d.innerHTML = "<span class='serif'>" + t + "</span>";
+    cats.forEach(c => {
+      const b = document.createElement("button"); b.className = "btn ghost"; b.textContent = c;
+      b.onclick = () => {
+        if (d.dataset.done) return; d.dataset.done = 1; done++;
+        const ok = c === a; if (ok) right++; d.classList.add(ok ? "right" : "wrong");
+        const n = document.createElement("span"); n.className = "small-fb " + (ok ? "ok" : "bad"); n.style.flexBasis = "100%";
+        n.textContent = (ok ? "" : "Answer: " + a + ". ") + (note || ""); if (n.textContent) d.appendChild(n);
+        if (done === items.length) score(fbId, right, items.length, opt.good, opt.bad);
+      };
+      d.appendChild(b);
+    });
+    $(id).appendChild(d);
+  });
+}
+
+// Click the topic sentence. paras: [[sentences], correctIndex, explanation]
+function topicPick(id, paras) {
+  paras.forEach(([s, ans, why], pi) => {
+    const d = document.createElement("div"); d.className = "q";
+    d.innerHTML = "<p class='hint' style='margin:0 0 4px'>Paragraph " + "ABCDEFG"[pi] + "</p>";
+    const p = document.createElement("p"); p.className = "serif"; p.style.cssText = "font-size:18px;line-height:1.7";
+    const w = document.createElement("p"); w.className = "why"; w.hidden = true;
+    s.forEach((t, i) => {
+      const sp = document.createElement("span"); sp.className = "sent"; sp.textContent = t; sp.tabIndex = 0; sp.setAttribute("role", "button");
+      const go = () => {
+        if (d.dataset.done) return;
+        if (i === ans) { d.dataset.done = 1; sp.classList.add("yes"); d.classList.add("right"); w.hidden = false; w.innerHTML = "<strong class='ok'>Correct.</strong> " + why; }
+        else { sp.classList.add("no"); w.hidden = false; w.innerHTML = "<span class='bad'>That is a supporting detail. Try again.</span>"; }
+      };
+      sp.onclick = go; sp.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } };
+      p.appendChild(sp); p.appendChild(document.createTextNode(" "));
+    });
+    d.appendChild(p); d.appendChild(w); $(id).appendChild(d);
+  });
+}
+
+// Dropdown matching. rows: [label, correctValue], options: [[value, text]]
+function dropMatch(id, btnId, fbId, rows, options, opt) {
+  opt = opt || {};
+  rows.forEach(([label], i) => {
+    const d = document.createElement("div"); d.className = "qrow";
+    d.innerHTML = "<span class='num'>" + ((opt.start || 1) + i) + "</span><div><div class='serif' style='font-size:18px'>" + label + "</div><select data-i='" + i + "' style='margin-top:6px;max-width:100%'><option value=''>Choose…</option>" + options.map(([v, t]) => "<option value='" + v + "'>" + t + "</option>").join("") + "</select><div class='small-fb'></div></div>";
+    $(id).appendChild(d);
+  });
+  $(btnId).onclick = () => {
+    let ok = 0;
+    $(id).querySelectorAll("select").forEach(s => {
+      const row = rows[s.dataset.i]; const g = s.value === row[1]; if (g) ok++;
+      s.style.borderColor = g ? "var(--green)" : "var(--red)";
+      s.nextElementSibling.innerHTML = s.value ? (g ? (row[2] ? "<span class='ok'>" + row[2] + "</span>" : "") : "<span class='bad'>Not this one.</span>") : "";
+    });
+    score(fbId, ok, rows.length, opt.good, opt.bad);
+  };
+}
+
+// Countdown timer that reveals a blurred element
+function countdown(btnId, clockId, seconds, revealId, onEnd) {
+  let t = null, left = seconds;
+  const show = s => Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0");
+  $(clockId).textContent = show(seconds);
+  $(btnId).onclick = () => {
+    if (t) return; if (revealId) $(revealId).classList.remove("blurred"); $(btnId).disabled = true;
+    t = setInterval(() => { left--; $(clockId).textContent = show(Math.max(left, 0)); if (left <= 0) { clearInterval(t); $(clockId).textContent = "Time!"; if (onEnd) onEnd(); } }, 1000);
+  };
+  return { stop: () => clearInterval(t), elapsed: () => seconds - left };
+}
+
+// Writing box with live checklist. tests: [label, fn(text)]
+function writeBox(taId, wcId, listId, tests) {
+  const ta = $(taId);
+  const run = () => {
+    const t = ta.value; const n = words(t); $(wcId).textContent = n + " word" + (n === 1 ? "" : "s");
+    $(listId).innerHTML = "";
+    tests.forEach(([l, f]) => { const li = document.createElement("li"); li.textContent = l; if (t.trim()) li.className = f(t) ? "pass" : "fail"; $(listId).appendChild(li); });
+  };
+  ta.addEventListener("input", run); run();
+}
+
+// chart
+(function(){const data=[["United States",8.5,8,7.5],["Australia",7,13,4],["Canada",8,8.5,7.5]];const svg=$("barSvg"),NS="http://www.w3.org/2000/svg";
+const el=(n,a,t)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(t!==undefined)e.textContent=t;svg.appendChild(e);};
+const x0=50,y0=240,h=200,max=14;for(let v=0;v<=14;v+=2){const y=y0-v/max*h;el("line",{x1:x0,x2:550,y1:y,y2:y,stroke:"currentColor","stroke-opacity":.15});el("text",{x:x0-8,y:y+4,"text-anchor":"end","font-size":12,fill:"currentColor"},v);}
+el("text",{x:14,y:140,"font-size":12,transform:"rotate(-90 14 140)","text-anchor":"middle",fill:"currentColor"},"Hours per day");const cols=["var(--bar1)","var(--bar2)","var(--bar3)"];
+data.forEach((d,gi)=>{const gx=x0+20+gi*165;[1,2,3].forEach((k,bi)=>{const bh=d[k]/max*h;el("rect",{x:gx+bi*42,y:y0-bh,width:36,height:bh,fill:cols[bi],rx:3});el("text",{x:gx+bi*42+18,y:y0-bh-6,"text-anchor":"middle","font-size":12,fill:"currentColor"},d[k]);});el("text",{x:gx+60,y:y0+22,"text-anchor":"middle","font-size":14,"font-weight":600,fill:"currentColor"},d[0]);});})();
+cards("look", [["What is measured?", "click to check", "Hours per day spent on three activities: sleeping, studying and relaxing."], ["Who and where?", "click to check", "School pupils in the United States, Australia and Canada."], ["When?", "click to check", "No year is given, so write in the <strong>present simple</strong>: “Australian pupils study for 13 hours.”"]]);
+// paraphrase machine
+(function(){
+  const slots=[[["The bar chart",0],["The bar graph",0],["The chart",0]],[["shows a comparison of",0],["compares",0],["illustrates",0],["gives information about",0],["explains the reasons for",1,"A chart only shows data. It cannot explain reasons."]],[["the daily routines of",0],["the amount of time spent each day on sleeping, studying and relaxing by",0],["how many hours a day are spent on sleeping, studying and relaxing by",0],["the number of hours spent at school by",1,"The chart shows sleeping, studying and relaxing, not only school."]],[["school pupils",0],["schoolchildren",0],["pupils at school",0],["university students",1,"The chart is about school pupils, not university students."]],[["between three countries",0],["in three countries",0],["in the United States, Australia and Canada",0],["in three cities",1,"The chart compares countries, not cities."]]];
+  const st=slots.map(()=>0),meter=document.querySelectorAll("#meter span");
+  function render(){const box=$("sentence");box.innerHTML="";let ch=0,tr=[];
+    slots.forEach((s,i)=>{const [t,bad,why]=s[st[i]];const b=document.createElement("span");b.setAttribute("role","button");b.tabIndex=0;b.className="chunk"+(bad?" trap":(st[i]?" changed":""));b.textContent=t;
+      b.onclick=()=>{st[i]=(st[i]+1)%s.length;render();};b.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();b.click();}};
+      box.appendChild(b);box.appendChild(document.createTextNode(i<slots.length-1?" ":"."));if(bad)tr.push(why);else if(st[i])ch++;});
+    meter.forEach((m,i)=>m.classList.toggle("on",!tr.length&&i<ch));
+    $("machineFb").innerHTML=tr.length?"<span class='bad'><strong>Meaning changed.</strong> "+tr.join(" ")+"</span>":ch===0?"<span class='hint'>This is a copy of the task. Click the underlined words.</span>":ch<3?"<span class='hint'>"+ch+" part"+(ch>1?"s":"")+" changed. Aim for three or more.</span>":"<span class='ok'><strong>Strong paraphrase.</strong> "+ch+" parts changed, same meaning.</span>";}
+  $("resetMachine").onclick=()=>{st.fill(0);render();};$("bestMachine").onclick=()=>{st.splice(0,5,0,2,1,1,2);render();};render();
+})();
+["The bar chart <mark>compares</mark> <mark>how school pupils</mark> in three countries <mark>spend their day</mark>.", "The bar graph <mark>illustrates</mark> the <mark>differences in daily activities</mark> of students in three different countries.", "The chart <mark>gives information about</mark> the <mark>everyday routines</mark> of schoolchildren in three nations.", "The bar chart <mark>compares</mark> <mark>how much time</mark> American, Australian and Canadian students <mark>spend on their daily activities</mark>.", "The graph <mark>shows</mark> <mark>how pupils</mark> in three different countries <mark>spend their time each day</mark>.", "The bar chart <mark>illustrates</mark> the <mark>daily schedules</mark> of school students in three countries.", "The chart <mark>compares</mark> the <mark>typical day</mark> of schoolchildren across three different nations.", "The bar graph <mark>provides data on</mark> <mark>how much time</mark> students in three countries <mark>devote to</mark> various daily activities.", "The chart <mark>depicts</mark> the <mark>differences in the daily lives</mark> of school pupils in three countries.", "Information about the <mark>daily routines</mark> of students in three countries <mark>is compared</mark> in the bar chart. <span class='hint'>(passive)</span>"].forEach(t=>{const li=document.createElement("li");li.innerHTML=t;$("tenWays").appendChild(li);});
+cards("fixCards", [["Problem 1", "“how … how”", "The sentence has <strong>how</strong> twice. Use it once: “compares how much time … students spend”."], ["Problem 2", "“spend daily activities”", "We spend time <strong>on</strong> something: “spend on their daily activities”."], ["Problem 3", "“by time”", "This sounds like the activities are sorted in time order. Delete it: “how much time” already says this."]]);
+mcq("fixQ", [["Which is the best correction?", ["The bar chart compares how American, Australian and Canadian students how much time spend on daily activities.", "The bar chart compares how much time American, Australian and Canadian students spend on their daily activities.", "The bar chart compares American, Australian and Canadian students by time.", "The bar chart compares how much time do American, Australian and Canadian students spend?"], 1, "Option B fixes all three problems. Option D uses question word order (“do … spend?”), which is wrong inside a statement."]]);
+mcq("ovQ", [[null, ["The chart points out different habits among the pupils. There’s a big difference in studying time, especially in one country. Overall, it shows how time is used in different ways.", "Overall, Australian pupils study for 13 hours, sleep for 7 hours and relax for 4 hours.", "Overall, Australian pupils devote far more time to studying than those in the other two countries, while routines in the United States and Canada are much more balanced."], 2, "The first is too vague (which country? what difference?). The second gives detailed numbers for one country only. The third names the main difference and the main similarity, with no numbers."]]);
+(function(){const tips={"In conclusion,":"Task 1 has no conclusion. The overview starts with “Overall,”.","For example,":"An overview is the big picture, not an example.","slightly more":"13 hours compared with about 8 is a big difference.","less":"Australians study the most.","because":"You are contrasting, not giving a reason. Use “while”.","so":"You are contrasting, not showing a result. Use “while”.","busy":"The point is that time is shared evenly.","difficult":"The chart says nothing about difficulty."};
+$("fill1Btn").onclick=()=>{const s=[...document.querySelectorAll("#fill1 select")];let ok=0,n=[];s.forEach(x=>{const g=x.value===x.dataset.a;x.style.borderColor=g?"var(--green)":"var(--red)";if(g)ok++;else if(tips[x.value])n.push(tips[x.value]);});score("fill1Fb",ok,4,"A clear overview with no detailed numbers.",n.join(" ")||"Choose a word for every gap.");};})();
+sorter("group", "groupFb", ["Paragraph 3: US and Canada", "Paragraph 4: Australia"], [
+  ["American pupils sleep for 8.5 hours a day.", "Paragraph 3: US and Canada"], ["Australian pupils study for 13 hours a day.", "Paragraph 4: Australia"], ["Canadian pupils relax for 7.5 hours, the same as American pupils.", "Paragraph 3: US and Canada"], ["Australian pupils relax for only 4 hours.", "Paragraph 4: Australia"], ["Canadian pupils study for 8.5 hours, slightly more than American pupils.", "Paragraph 3: US and Canada"], ["Australian pupils sleep the least, at 7 hours.", "Paragraph 4: Australia"]], { good: "Each paragraph now has one clear focus.", bad: "Ask: which country is this fact about?" });
+mcq("cmpQ", [
+  ["List: USA sleep 8.5. Australia sleep 7.", ["The USA is 8.5 and Australia is 7.", "American pupils sleep for 8.5 hours, whereas Australian pupils sleep for only 7.", "American pupils sleep 8.5 hours. Australian pupils sleep 7 hours."], 1, "“Whereas” joins the figures into one comparison, and “only” shows which is smaller."],
+  ["List: Australia study 13. USA study 8. Canada study 8.5.", ["Australian pupils study for 13 hours, compared with 8 hours in the United States and 8.5 in Canada.", "Australian pupils study for 13 hours, which is more than 8 hours in the other two countries.", "Australia 13, the USA 8 and Canada 8.5 hours of study."], 0, "Option B has a mistake: Canada is 8.5, not 8. Always check every number."]], { start: 1 });
+// vocabulary tabs
+(function(){
+  const V={"Introduction":[["illustrates / compares / shows","verbs","The bar chart illustrates how pupils divide their day."],["gives information about","phrase","The chart gives information about pupils’ daily activities."],["presents data on / depicts","verbs","The graph presents data on how pupils use their time."]],
+    "Overview":[["Overall, it is clear that…","starter","Overall, it is clear that Australian pupils study far more than others."],["The most striking feature is…","starter","The most striking feature is the difference in study time."],["A noticeable feature is that…","starter","A noticeable feature is that routines in Canada and the US are almost identical."]],
+    "Comparing":[["whereas / while","one sentence","American pupils sleep for 8.5 hours, whereas Australians sleep for 7."],["By contrast, / In contrast,","two sentences","By contrast, Australian pupils relax for only 4 hours."],["compared with","two figures","13 hours, compared with 8 in the United States"],["similar to / almost the same as","similarity","Canadian routines are very similar to those in the US."],["slightly / considerably / far more","size of difference","Australians study far more than other pupils."],["twice as much / half as much","multiples","Canadians relax almost twice as much as Australians."]],
+    "Numbers and time":[["the amount of time","for time","the amount of time spent relaxing"],["the proportion / percentage of","for % only","the proportion of students who spoke Hindi"],["account for / make up","share of a whole","English accounted for 45% of students."],["per day / a day / daily","time","Pupils in Canada relax for 7.5 hours a day."],["spend / devote / allocate","+ time","Australians devote 13 hours a day to studying."]],
+    "Extremes":[["the highest / the lowest","superlatives","Australia has the lowest figure for relaxation."],["the most / the least","superlatives","Australian pupils sleep the least."],["stands out","verb","Australia stands out for its long study hours."],["the majority / a minority","more / less than half","45% is “almost half”, not “the majority”."]],
+    "Linking":[["In terms of… / Regarding…","topic","In terms of sleep, American pupils have the most."],["When it comes to…","topic","When it comes to studying, Australia stands out."],["As for…","topic","As for Canada, pupils study for 8.5 hours."]]};
+  const keys=Object.keys(V);
+  function show(i){[...$("vTabs").children].forEach((t,j)=>t.setAttribute("aria-selected",j===i));$("vCards").innerHTML="";cards("vCards",V[keys[i]]);}
+  keys.forEach((k,i)=>{const t=document.createElement("button");t.className="tab";t.setAttribute("role","tab");t.textContent=k;t.onclick=()=>show(i);$("vTabs").appendChild(t);});show(0);
+})();
+dropMatch("upg", "upgBtn", "upgFb", [["The chart shows students’ activities.", "a"], ["A increased by 10%.", "b"], ["B is 20%. C is 30%.", "c"], ["Students sleep for 8 hours.", "d"]], [["a", "The bar chart illustrates how students divide their time between different activities."], ["b", "A experienced a 10% increase."], ["c", "C is 10 percentage points higher than B."], ["d", "Canadian pupils spend 8 hours a day sleeping."]], { good: "Notice “percentage points”: the gap between two percentages." });
+sorter("acc", "accFb", ["Correct", "Mistake"], [
+  ["Pupils in the United States and Canada sleep for 8.5 hours.", "Mistake", "Canadian pupils sleep for 8 hours, not 8.5."],
+  ["Australian pupils study for 13 hours, the highest figure.", "Correct", ""],
+  ["The proportion of time spent sleeping in the US is 8.5 hours.", "Mistake", "“Proportion” is for percentages. Write “The amount of time…”."],
+  ["Relaxing accounts for only 4 hours in Australia.", "Correct", ""],
+  ["The number of students was increased to 50%.", "Mistake", "Data changes by itself: “rose to 50%”."],
+  ["Hindi follows English at 30%, while French has the smallest share at 2%.", "Correct", ""],
+  ["Chinese makes up 10% and Urdu 13%.", "Mistake", "The other way round: Chinese 13%, Urdu 10%."]], { good: "You check numbers like an examiner.", bad: "Check every number and every word like “proportion” against the chart." });
+countdown("wStart", "wClock", 1200, null);
+writeBox("report", "wc", "checks", [
+  ["At least 150 words (aim for 160–190)", t => words(t) >= 150],
+  ["Introduction does not copy 5 words in a row from the task", t => { const w = norm(t).split(" "), p = "the pie chart below shows the native languages spoken by students at cambridge college in 2007"; for (let i = 0; i + 5 <= w.length; i++) if (p.includes(w.slice(i, i + 5).join(" "))) return false; return w.length > 5; }],
+  ["An overview starting with “Overall,”", t => /overall,/i.test(t)],
+  ["Past tense, because the data is from 2007 (was / were)", t => /\b(was|were)\b/i.test(t)],
+  ["Percentages in the detail paragraphs", t => (t.match(/\d+\s*%|\d+ ?per ?cent/gi) || []).length >= 3],
+  ["A comparison word (whereas, while, compared with, followed by, by contrast)", t => /\b(whereas|while|compared (with|to)|followed by|by contrast|in contrast)\b/i.test(t)],
+  ["No opinions and no “In conclusion”", t => t.trim() && !/\bI (think|believe|feel)\b|in conclusion/i.test(t)],
+]);
+</script>
+</body>
+</html>

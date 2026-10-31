@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Session 3: Reading Skills | AUM IELTS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --navy:#1F3864; --ink:#1d2433; --muted:#5a6478; --paper:#ffffff; --wash:#eef3fa; --line:#c9d5e8;
+  --mark:#ffe58a; --mark-ink:#3a2f00; --red:#b8322a; --red-wash:#fbe9e7; --green:#2e7d4f; --green-wash:#e5f3ea;
+  --btn:#1F3864; --btn-ink:#ffffff; --bar1:#1F3864; --bar2:#6F94C2; --bar3:#B4C7E7;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --navy:#9fbbe6; --ink:#e6ebf4; --muted:#a5afc2; --paper:#141a26; --wash:#1d2638; --line:#33405a;
+    --mark:#6b5a12; --mark-ink:#fff4c2; --red:#ff8a80; --red-wash:#3a1f1d; --green:#7fd19e; --green-wash:#173022;
+    --btn:#9fbbe6; --btn-ink:#0f1522; --bar1:#9fbbe6; --bar2:#5f86bb; --bar3:#3d5a85;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --navy:#9fbbe6; --ink:#e6ebf4; --muted:#a5afc2; --paper:#141a26; --wash:#1d2638; --line:#33405a;
+  --mark:#6b5a12; --mark-ink:#fff4c2; --red:#ff8a80; --red-wash:#3a1f1d; --green:#7fd19e; --green-wash:#173022;
+  --btn:#9fbbe6; --btn-ink:#0f1522; --bar1:#9fbbe6; --bar2:#5f86bb; --bar3:#3d5a85;
+  color-scheme: dark;
+}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Instrument Sans",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;font-size:17px;line-height:1.55}
+main{max-width:780px;margin:0 auto;padding:40px 20px 80px}
+h1{font-size:clamp(30px,5vw,42px);line-height:1.1;color:var(--navy);margin:0 0 10px;letter-spacing:-0.01em}
+h2{font-size:24px;color:var(--navy);margin:0 0 6px;line-height:1.2}
+h3{font-size:18px;margin:22px 0 8px;color:var(--ink)}
+p{margin:0 0 12px}
+.lead{color:var(--muted);max-width:62ch}
+.serif{font-family:"Newsreader",Georgia,"Times New Roman",serif}
+section{padding:40px 0;border-top:1px solid var(--line)}
+.step{display:flex;gap:14px;align-items:baseline;margin-bottom:8px}
+.step b{font-size:15px;color:var(--paper);background:var(--navy);border-radius:50%;width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.hint{color:var(--muted);font-size:15px}
+mark,.hl{background:var(--mark);color:var(--mark-ink);padding:0 3px;border-radius:3px}
+button{font:inherit;cursor:pointer}
+button:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--navy);outline-offset:2px}
+.btn{background:var(--btn);color:var(--btn-ink);border:0;border-radius:8px;padding:10px 16px;font-weight:600}
+.btn.ghost{background:transparent;color:var(--navy);border:1.5px solid var(--navy)}
+.prompt{background:var(--wash);border-left:5px solid var(--navy);padding:16px 18px;border-radius:0 8px 8px 0;margin:14px 0}
+.prompt small{display:block;color:var(--muted);font-size:13px;margin-bottom:4px}
+
+/* paraphrase machine */
+.machine{margin-top:22px;border:2px solid var(--navy);border-radius:14px;padding:22px}
+.sentence{font-family:"Newsreader",Georgia,serif;font-size:clamp(22px,3.4vw,28px);line-height:1.6}
+.chunk{cursor:pointer;-webkit-box-decoration-break:clone;box-decoration-break:clone;background:none;border:0;border-bottom:3px dashed var(--line);color:var(--ink);padding:0 2px;font:inherit;transition:background .2s}
+.chunk:hover{border-bottom-color:var(--navy)}
+.chunk.changed{background:var(--mark);color:var(--mark-ink);border-bottom-color:var(--mark-ink)}
+.chunk.trap{background:var(--red-wash);color:var(--red);border-bottom:3px solid var(--red);text-decoration:line-through wavy}
+.meter{display:flex;gap:6px;margin:18px 0 8px}
+.meter span{flex:1;height:10px;border-radius:5px;background:var(--line)}
+.meter span.on{background:var(--green)}
+.feedback{min-height:48px;font-size:16px}
+.ok{color:var(--green)} .bad{color:var(--red)}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px}
+
+/* tabs */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.tab{border:1.5px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;padding:7px 14px;font-size:15px}
+.tab[aria-selected="true"]{background:var(--navy);color:var(--paper);border-color:var(--navy)}
+.panel{background:var(--wash);border-radius:10px;padding:18px}
+.pair{display:grid;grid-template-columns:90px 1fr;gap:6px 12px;margin-top:10px;font-size:16px}
+.pair .k{color:var(--muted);font-size:14px;padding-top:3px}
+
+/* quiz */
+.q{border:1.5px solid var(--line);border-radius:10px;padding:16px;margin:12px 0}
+.q .serif{font-size:19px}
+.q .row button{min-width:110px}
+.q.right{border-color:var(--green);background:var(--green-wash)}
+.q.wrong{border-color:var(--red);background:var(--red-wash)}
+.why{margin-top:10px;font-size:15px}
+
+/* chart */
+.chart{border:1.5px solid var(--line);border-radius:10px;padding:16px;margin:12px 0;overflow-x:auto}
+.chart svg{display:block;max-width:100%;height:auto}
+.chart svg text{fill:var(--ink);font-family:"Instrument Sans",Arial,sans-serif}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:14px;margin-top:8px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.pie-wrap{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.pie{width:180px;height:180px;border-radius:50%;flex:none}
+
+/* vocab cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:12px}
+.card{border:1.5px solid var(--line);background:var(--paper);color:var(--ink);border-radius:10px;padding:14px;text-align:left;min-height:120px}
+.card .front{font-weight:700;color:var(--navy);font-size:18px}
+.card .front small{display:block;font-weight:500;color:var(--muted);font-size:13px}
+.card .back{display:none;font-family:"Newsreader",Georgia,serif;font-size:17px;margin-top:8px}
+.card.open{background:var(--wash)}
+.card.open .back{display:block}
+
+/* match */
+.match{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.match button{border:1.5px solid var(--line);background:var(--paper);color:var(--ink);border-radius:8px;padding:10px 12px;text-align:left;font-size:15px}
+.match button.sel{border-color:var(--navy);box-shadow:inset 0 0 0 1px var(--navy)}
+.match button.done{border-color:var(--green);background:var(--green-wash);color:var(--ink);cursor:default}
+.match button.no{animation:shake .3s}
+@keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+@media (prefers-reduced-motion:reduce){.match button.no{animation:none}.chunk{transition:none}}
+
+/* red pen */
+.pen .serif{font-size:19px;line-height:1.8}
+.pen .bit{background:none;border:0;padding:0 2px;color:var(--ink);font:inherit;border-bottom:2px dotted var(--line)}
+.pen .bit:hover{border-bottom-color:var(--red)}
+.pen .bit.hit{color:var(--red);text-decoration:line-through;border-bottom-color:transparent}
+.pen .bit.miss{opacity:.45}
+
+/* writing */
+textarea{width:100%;min-height:120px;font-family:"Newsreader",Georgia,serif;font-size:19px;line-height:1.5;padding:14px;border:1.5px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink);resize:vertical}
+.checks{list-style:none;padding:0;margin:12px 0}
+.checks li{padding:5px 0 5px 30px;position:relative;font-size:15.5px}
+.checks li::before{content:"";position:absolute;left:0;top:8px;width:18px;height:18px;border-radius:50%;border:2px solid var(--line)}
+.checks li.pass::before{background:var(--green);border-color:var(--green)}
+.checks li.fail::before{border-color:var(--red)}
+select{font:inherit;font-size:16px;padding:4px 6px;border-radius:6px;border:1.5px solid var(--navy);background:var(--paper);color:var(--ink)}
+.fill{font-family:"Newsreader",Georgia,serif;font-size:19px;line-height:2.1}
+.models{display:none;margin-top:12px}
+.models.show{display:block}
+.models p{font-family:"Newsreader",Georgia,serif;font-size:18px;border-left:3px solid var(--navy);padding-left:12px}
+details{border:1.5px solid var(--line);border-radius:10px;padding:12px 16px;margin-top:16px}
+summary{cursor:pointer;font-weight:600;color:var(--navy)}
+table{border-collapse:collapse;width:100%;font-size:15px;margin-top:10px}
+td,th{border-bottom:1px solid var(--line);padding:8px 6px;text-align:left;vertical-align:top}
+th{color:var(--muted);font-weight:600}
+.tablewrap{overflow-x:auto}
+.score{font-weight:700;color:var(--navy)}
+
+/* site chrome */
+.topbar{position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--paper)}
+.topbar nav{max-width:780px;margin:0 auto;padding:12px 20px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.topbar .brand{font-weight:700;color:var(--navy);text-decoration:none;margin-right:auto}
+.topbar a{color:var(--ink);text-decoration:none;font-weight:500}
+.topbar a[aria-current="page"]{color:var(--navy);text-decoration:underline;text-underline-offset:5px}
+a{color:var(--navy)}
+.session-list{list-style:none;padding:0;margin:20px 0}
+.session-list li{border-top:1px solid var(--line)}
+.session-list a,.session-list .soon{display:grid;grid-template-columns:56px 1fr;gap:4px 14px;padding:18px 4px;text-decoration:none;color:var(--ink)}
+.session-list a:hover .t{text-decoration:underline}
+.session-list .n{font-size:28px;font-weight:700;color:var(--navy);grid-row:span 2;line-height:1}
+.session-list .t{font-weight:600;font-size:19px}
+.session-list .d{color:var(--muted);font-size:15px}
+.session-list .soon{opacity:.55}
+.pager{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:40px;padding-top:20px;border-top:1px solid var(--line)}
+.notes section{padding:32px 0}
+.toc{columns:2;column-gap:28px;padding-left:20px;font-size:16px}
+@media (max-width:560px){.toc{columns:1}.match{grid-template-columns:1fr}}
+.sort{display:grid;gap:10px;margin-top:12px}
+.fact{display:flex;gap:10px;align-items:center;flex-wrap:wrap;border:1.5px solid var(--line);border-radius:10px;padding:10px 12px}
+.fact span{flex:1 1 100%}
+.fact.right{border-color:var(--green);background:var(--green-wash)}
+.fact.wrong{border-color:var(--red);background:var(--red-wash)}
+.wc{font-size:14px;color:var(--muted);margin-top:4px}
+
+/* ---------- richer site pages ---------- */
+.hero{padding:8px 0 28px}
+.hero .lead{margin-bottom:22px}
+.demo{border:2px solid var(--navy);border-radius:14px;padding:20px 22px;margin-top:6px}
+.demo small{display:block;color:var(--muted);font-size:13px;margin-bottom:6px}
+.demo .sentence{font-size:clamp(20px,3vw,25px)}
+.demo .row{margin-top:14px}
+.badge{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:var(--navy);color:var(--paper);font-weight:700;font-size:19px;flex:none}
+.sgrid{display:grid;gap:14px;margin:18px 0}
+.scard{display:flex;gap:16px;align-items:flex-start;border:1.5px solid var(--line);border-radius:12px;padding:18px;text-decoration:none;color:var(--ink);background:var(--paper)}
+a.scard:hover{border-color:var(--navy);box-shadow:inset 0 0 0 1px var(--navy)}
+.scard .t{font-weight:700;font-size:19px;color:var(--navy);display:block}
+.scard .d{color:var(--muted);font-size:15px;display:block;margin-top:2px}
+.scard .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.tag{font-size:13px;border-radius:999px;padding:2px 10px;background:var(--wash);color:var(--ink)}
+.tag.new{background:var(--mark);color:var(--mark-ink)}
+.tag.done{background:var(--green-wash);color:var(--green)}
+.scard.soon{border-style:dashed;opacity:.6}
+.scard.soon .badge{background:var(--line);color:var(--muted)}
+.scard .body{flex:1}
+.mark-done{margin-left:auto;align-self:center;border:1.5px solid var(--line);background:var(--paper);color:var(--muted);border-radius:999px;padding:5px 12px;font-size:14px;white-space:nowrap}
+.mark-done[aria-pressed="true"]{border-color:var(--green);color:var(--green);background:var(--green-wash)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:10px}
+@media (max-width:620px){.split{grid-template-columns:1fr}.scard{flex-wrap:wrap}.mark-done{margin-left:60px}}
+.panel-link{display:block;background:var(--wash);border-radius:12px;padding:18px;text-decoration:none;color:var(--ink);border-left:5px solid var(--navy)}
+.panel-link strong{color:var(--navy);font-size:18px;display:block;margin-bottom:4px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 4px;padding:0;list-style:none}
+.chips a{display:inline-block;border:1.5px solid var(--line);border-radius:999px;padding:6px 13px;font-size:15px;text-decoration:none;color:var(--ink)}
+.chips a:hover{border-color:var(--navy);color:var(--navy)}
+.example{background:var(--wash);border-left:4px solid var(--navy);border-radius:0 8px 8px 0;padding:12px 16px;margin:12px 0;font-family:"Newsreader",Georgia,serif;font-size:18px}
+.example small{display:block;font-family:"Instrument Sans",system-ui,sans-serif;color:var(--muted);font-size:13px;margin-bottom:2px}
+.wr{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+.wr div{border-radius:8px;padding:10px 14px;font-family:"Newsreader",Georgia,serif;font-size:17px}
+.wr .w{background:var(--red-wash);color:var(--ink);border:1.5px solid var(--red)}
+.wr .w::before{content:"Not this";display:block;font-family:"Instrument Sans",system-ui,sans-serif;font-size:12.5px;color:var(--red);font-weight:600;margin-bottom:2px}
+.wr .r{background:var(--green-wash);color:var(--ink);border:1.5px solid var(--green)}
+.wr .r::before{content:"Write this";display:block;font-family:"Instrument Sans",system-ui,sans-serif;font-size:12.5px;color:var(--green);font-weight:600;margin-bottom:2px}
+@media (max-width:560px){.wr{grid-template-columns:1fr}}
+.structure{display:grid;gap:10px;margin-top:12px}
+.structure .p{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start;border:1.5px solid var(--line);border-radius:12px;padding:14px}
+.structure .p strong{color:var(--navy)}
+.structure .p .serif{display:block;margin-top:6px;font-size:17px}
+.remember{background:var(--mark);color:var(--mark-ink);border-radius:10px;padding:12px 16px;margin:14px 0}
+.cards.small .card{min-height:0}
+.notes .step h2{margin:0}
+
+.chunk:focus-visible{outline:3px solid var(--navy);outline-offset:2px}
+
+</style><style>
+.para{display:grid;grid-template-columns:28px 1fr;gap:10px;margin:0 0 14px;font-family:"Newsreader",Georgia,serif;font-size:18px;line-height:1.6}
+.para b{font-family:"Instrument Sans",system-ui,sans-serif;color:var(--navy)}
+.passage{border:1.5px solid var(--line);border-radius:12px;padding:20px;margin:14px 0}
+.passage h3{margin-top:0;font-family:"Newsreader",Georgia,serif;font-size:22px;color:var(--navy)}
+.sent{cursor:pointer;border-radius:3px;padding:1px 0;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.sent:hover{background:var(--wash)}
+.sent.yes{background:var(--green-wash);color:var(--green);font-weight:500}
+.sent.no{background:var(--red-wash);color:var(--red);text-decoration:line-through}
+.sent:focus-visible{outline:3px solid var(--navy);outline-offset:1px}
+.timer{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:12px 0}
+.clock{font-variant-numeric:tabular-nums;font-weight:700;font-size:28px;color:var(--navy);min-width:4ch}
+.blurred{filter:blur(6px);user-select:none;pointer-events:none}
+@media (prefers-reduced-motion:no-preference){.passage-body{transition:filter .3s}}
+.qrow{display:grid;grid-template-columns:28px 1fr;gap:6px 10px;align-items:start;margin:12px 0}
+.qrow .num{font-weight:700;color:var(--navy)}
+.ans{font:inherit;font-size:17px;padding:5px 8px;border:1.5px solid var(--line);border-radius:6px;background:var(--paper);color:var(--ink);width:min(260px,100%)}
+.ans.good{border-color:var(--green);background:var(--green-wash)}
+.ans.badans{border-color:var(--red);background:var(--red-wash)}
+.small-fb{font-size:14.5px;margin-top:3px}
+.inline-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+</style><style>
+.part{margin:48px 0 0;padding:14px 18px;background:var(--navy);color:var(--paper);border-radius:12px;font-size:22px;scroll-margin-top:70px}
+h2[id],section[id]{scroll-margin-top:70px}
+</style>
+</head>
+<body>
+<header class="topbar"><nav><a class="brand" href="index.html">AUM IELTS</a><a href="index.html">Sessions</a><a href="notes.html">Writing notes</a><a href="reading-notes.html">Reading notes</a></nav></header>
+<main>
+  <p class="hint">Session 3</p>
+  <h1>Reading skills: read smarter, not slower</h1>
+  <p class="lead">You have 60 minutes for three long passages and 40 questions, so you cannot read every word carefully. Today you will learn five skills, in order: get ready before reading, find the main idea, skim and scan, summarise, and answer multiple-choice questions.</p>
+  <ul class="chips"><li><a href="#part-a">A. Before you read</a></li><li><a href="#part-b">B. Main ideas</a></li><li><a href="#part-c">C. Skimming and scanning</a></li><li><a href="#part-d">D. Summaries</a></li><li><a href="#part-e">E. Multiple choice</a></li></ul>
+  <p class="hint">Key ideas from this session are also on the <a href="reading-notes.html">Reading notes</a> page.</p>
+  <h2 class="part" id="part-a">Part A. Before you read</h2>
+  <p class="hint" style="margin-top:0">Good readers prepare: they preview and predict.</p>
+  <section aria-labelledby="st1">
+    <div class="step"><b>1</b><h2 id="st1">Four habits of good readers</h2></div>
+    <p>Click each card. You will use all four habits in today’s lesson.</p>
+    <div class="cards" id="habits"></div>
+  </section>
+  <section aria-labelledby="st2">
+    <div class="step"><b>2</b><h2 id="st2">Preview and predict</h2></div>
+    <p>Before you read, look only at the title and the first line. Which topics do you expect? Decide if each one is likely or unlikely.</p>
+    <div class="prompt"><small>Title</small><span class="serif" style="font-size:20px">The Iron Lady of Paris</span><br><span class="serif">For the 1889 World’s Fair in Paris, the organisers wanted a monument that would show the world what modern engineering could achieve…</span></div>
+    <div class="sort" id="prev"></div>
+    <p class="feedback" id="prevFb"></p>
+  </section>
+  <h2 class="part" id="part-b">Part B. Main ideas and topic sentences</h2>
+  <p class="hint" style="margin-top:0">Learn to see the map of a passage.</p>
+  <section aria-labelledby="st3">
+    <div class="step"><b>3</b><h2 id="st3">The map of a passage</h2></div>
+    <p>Every academic passage has three levels. Learn them, and every question becomes easier to locate.</p>
+    <div class="structure">
+      <div class="p"><span class="badge">1</span><div><strong>Main idea</strong>: the big message of the <em>whole passage</em>. Usually in the first or last paragraph, often matching the title.</div></div>
+      <div class="p"><span class="badge">2</span><div><strong>Topic sentences</strong>: the main idea of <em>each paragraph</em>. Usually the first sentence, but not always.</div></div>
+      <div class="p"><span class="badge">3</span><div><strong>Supporting details</strong>: facts, numbers, names, examples and reasons that explain the topic sentence.</div></div>
+    </div>
+    <div class="remember">IELTS uses the levels differently: <strong>matching headings</strong> and <strong>summary</strong> questions test levels 1 and 2. <strong>True/False/Not Given</strong>, <strong>sentence completion</strong> and <strong>short answers</strong> test level 3.</div>
+  </section>
+  <section aria-labelledby="st4">
+    <div class="step"><b>4</b><h2 id="st4">Find the topic sentence</h2></div>
+    <p>The topic sentence gives the <strong>main idea</strong> of a paragraph. The other sentences give details and examples. It is <em>usually</em> the first sentence, but not always. Click the topic sentence in each paragraph.</p>
+    <div id="topics"></div>
+    <div class="remember">Tip: if the first sentence is a question, a story or a surprising fact, the topic sentence is often the second one. Sometimes it comes last, as a conclusion.</div>
+  </section>
+  <section aria-labelledby="st5">
+    <div class="step"><b>5</b><h2 id="st5">Read and find the topic sentences</h2></div>
+    <p>Click the topic sentence in each paragraph. Watch out: in one paragraph it comes at the end.</p>
+    <div class="passage"><h3>The Iron Lady of Paris</h3><div id="eiffel"></div></div>
+    <p class="hint">Original AUM practice passage.</p>
+  </section>
+  <section aria-labelledby="st6">
+    <div class="step"><b>6</b><h2 id="st6">Main idea, topic sentence or detail?</h2></div>
+    <p>Sort each sentence into the right level of the map.</p>
+    <div class="sort" id="levels"></div>
+    <p class="feedback" id="levelsFb"></p>
+  </section>
+  <section aria-labelledby="st7">
+    <div class="step"><b>7</b><h2 id="st7">Topic sentence to heading</h2></div>
+    <p>In IELTS “matching headings” questions, the heading matches the topic sentence, not one small word in the paragraph. Choose the heading for each topic sentence. There is one extra heading you do not need.</p>
+    <div id="headMatch"></div>
+    <button class="btn" id="checkHeads">Check</button>
+    <p class="feedback" id="headFb"></p>
+  </section>
+  <h2 class="part" id="part-c">Part C. Skimming and scanning</h2>
+  <p class="hint" style="margin-top:0">Read fast for the main idea; jump to the details you need.</p>
+  <section aria-labelledby="st8">
+    <div class="step"><b>8</b><h2 id="st8">Skimming or scanning?</h2></div>
+    <div class="split">
+      <div class="panel"><strong style="color:var(--navy);font-size:18px">Skimming</strong><p style="margin:6px 0 0">Reading quickly for the <mark>main idea</mark>. Read the title, the first sentence of each paragraph and words that stand out.</p><p class="hint" style="margin:6px 0 0">Like reading newspaper headlines.</p></div>
+      <div class="panel"><strong style="color:var(--navy);font-size:18px">Scanning</strong><p style="margin:6px 0 0">Searching quickly for a <mark>specific detail</mark>: a name, a number, a date. Your eyes jump; you do not read.</p><p class="hint" style="margin:6px 0 0">Like finding a friend’s name in your phone contacts.</p></div>
+    </div>
+    <h3>Which one do you use?</h3>
+    <div class="sort" id="skimScan"></div>
+    <p class="feedback" id="skimScanFb"></p>
+  </section>
+  <section aria-labelledby="st9">
+    <div class="step"><b>9</b><h2 id="st9">Skim in 90 seconds</h2></div>
+    <p>Press start. You have 90 seconds to skim the passage: read the title and the first sentence of each paragraph, and look at words that stand out. When the time ends, the passage hides and you answer from memory.</p>
+    <div class="timer"><button class="btn" id="skimStart">Start 90 seconds</button><span class="clock" id="skimClock" aria-live="polite">1:30</span></div>
+    <div class="passage"><div class="passage-body blurred" id="p1body">
+      <h3>The Changing Face of Education</h3>
+      <div class="para"><b>A</b><span>Education today is vastly different from what it was just a few decades ago. One of the most significant changes is the rise of technology in the classroom. Many schools have integrated computers, tablets, and online learning platforms into their teaching methods. This shift has allowed students to access a wealth of information instantly and learn at their own pace. Furthermore, online courses have made education more accessible to people around the world, regardless of their location.</span></div>
+      <div class="para"><b>B</b><span>Another important development is the growing emphasis on skills over memorization. Educators now focus more on critical thinking, creativity, and problem-solving rather than rote learning. This approach prepares students better for the challenges of the modern workforce.</span></div>
+      <div class="para"><b>C</b><span>Despite these advances, traditional teaching methods still play a vital role. Face-to-face interactions, group projects, and classroom discussions foster social skills and teamwork. Many institutions are combining old and new methods to create a balanced curriculum that meets the needs of diverse learners.</span></div>
+      <div class="para"><b>D</b><span>Finally, lifelong learning is becoming essential. Rapid technological and social changes mean people must continually update their skills. Many adults now return to education later in life to stay competitive in their careers. Overall, the education system is evolving to become more flexible, inclusive, and student-centered.</span></div>
+    </div></div>
+    <h3>From memory: what is the passage mainly about?</h3>
+    <div id="mainIdea"></div>
+    <h3>Match each paragraph to a heading</h3>
+    <p class="hint">One heading is extra.</p>
+    <div id="p1Heads"></div>
+    <button class="btn" id="checkP1Heads">Check</button>
+    <p class="feedback" id="p1HeadsFb"></p>
+  </section>
+  <section aria-labelledby="st10">
+    <div class="step"><b>10</b><h2 id="st10">Read for detail</h2></div>
+    <p>Now the passage is visible again. Read carefully to answer. After each answer, you will see the <strong>evidence</strong>: the words in the passage that give the answer.</p>
+    <button class="btn ghost" id="showP1">Show the passage again</button>
+    <h3>Multiple choice</h3>
+    <div id="p1mcq"></div>
+    <h3>Sentence completion</h3>
+    <div class="prompt"><small>Instruction</small>Complete each sentence with <strong>NO MORE THAN THREE WORDS</strong> from the passage.</div>
+    <div id="p1sc"></div>
+    <button class="btn" data-sc="p1sc">Check answers</button>
+    <p class="feedback" id="p1scFb"></p>
+    <div class="remember">The words in the question are often <strong>paraphrased</strong>: “available to people anywhere” in the question means “accessible to people around the world” in the passage. Look for the meaning, not the same words.</div>
+  </section>
+  <section aria-labelledby="st11">
+    <div class="step"><b>11</b><h2 id="st11">Scanning race</h2></div>
+    <p><strong>First, predict.</strong> Before you look at the passage, decide what kind of answer each question needs. Knowing that you are looking for a <em>year</em> or a <em>time</em> makes your eyes much faster.</p>
+    <div id="predict"></div>
+    <button class="btn" id="checkPredict">Check predictions</button>
+    <p class="feedback" id="predictFb"></p>
+
+    <p style="margin-top:22px"><strong>Now race.</strong> Press start, scan for the answers and type them. Try to finish in under 2 minutes.</p>
+    <div class="timer"><button class="btn" id="raceStart">Start the race</button><span class="clock" id="raceClock" aria-live="off">0:00</span></div>
+    <div class="passage"><div class="passage-body blurred" id="p2body">
+      <h3>Green Valley University: A Hub of Innovation</h3>
+      <div class="para"><b>A</b><span>Green Valley University, established in 1980, is one of the leading educational institutions in the country. It currently serves over 15,000 students from various backgrounds, offering more than 120 different academic programs across multiple faculties. The university campus includes modern facilities such as advanced laboratories, a large library, and several sports centers.</span></div>
+      <div class="para"><b>B</b><span>One of the university’s recent initiatives is the launch of an extensive online degree program. This program offers more than 50 courses, allowing students to study remotely and balance education with personal commitments. The online system was introduced in 2022 and has quickly become popular among both undergraduate and postgraduate students.</span></div>
+      <div class="para"><b>C</b><span>The university library operates daily from 8 AM to 10 PM, providing students with a quiet study environment and access to thousands of digital and print resources. Students are required to register for courses before September 1 each year to ensure proper scheduling.</span></div>
+      <div class="para"><b>D</b><span>In addition to academics, Green Valley University promotes extracurricular activities. Various clubs and societies are available, including debate, music, and environmental groups. These provide students with opportunities to develop leadership skills and build networks outside the classroom.</span></div>
+    </div></div>
+    <div id="race"></div>
+    <button class="btn" id="raceCheck">Finish and check</button>
+    <p class="feedback" id="raceFb"></p>
+
+    <h3>Sentence completion</h3>
+    <div class="prompt"><small>Instruction</small>Complete each sentence with <strong>NO MORE THAN TWO WORDS</strong> from the passage.</div>
+    <div id="p2sc"></div>
+    <button class="btn" data-sc="p2sc">Check answers</button>
+    <p class="feedback" id="p2scFb"></p>
+  </section>
+  <h2 class="part" id="part-d">Part D. Summaries</h2>
+  <p class="hint" style="margin-top:0">Say the main ideas in your own words.</p>
+  <section aria-labelledby="st12">
+    <div class="step"><b>12</b><h2 id="st12">Writing a summary</h2></div>
+    <p>A summary is a short version of a text in <strong>your own words</strong>. It gives the main ideas and leaves out small details and examples. Skimming and topic sentences make this easy: the topic sentences <em>are</em> the main ideas.</p>
+    <div class="structure">
+      <div class="p"><span class="badge">1</span><div><strong>Read and find the main idea</strong><br>Ask: what is this text mostly about?</div></div>
+      <div class="p"><span class="badge">2</span><div><strong>Note one key point per paragraph</strong><br>Use the topic sentences. Skip examples, numbers and names.</div></div>
+      <div class="p"><span class="badge">3</span><div><strong>Write in your own words</strong><br>Start with the main idea, then add the key points with linking words.</div></div>
+      <div class="p"><span class="badge">4</span><div><strong>Check</strong><br>Short? No opinions? No copied sentences?</div></div>
+    </div>
+    <h3>Useful language</h3>
+    <div class="cards small" id="sumCards"></div>
+
+    <h3>A model summary of Passage 1</h3>
+    <div class="example"><small>About 75 words. Compare it with the passage: one point per paragraph.</small>The text <mark>explains</mark> how education has changed in recent decades. <mark>Firstly,</mark> technology such as computers and online courses allows students to learn at their own pace and from anywhere. <mark>In addition,</mark> teachers now focus more on skills like critical thinking than on memorising facts. <mark>However,</mark> traditional methods such as group work are still important, so many schools combine old and new approaches. <mark>Finally,</mark> people now need to keep learning throughout their lives.</div>
+    <div class="wr"><div class="w">Many schools have integrated computers, tablets, and online learning platforms into their teaching methods. (copied)</div><div class="r">Technology such as computers and online courses is now common in schools. (own words)</div></div>
+    <div class="wr"><div class="w">I think online learning is the best way to study. (opinion)</div><div class="r">Online courses make education available to more people. (the writer’s idea)</div></div>
+
+    <h3>Your turn: summarise Passage 2</h3>
+    <p>Write 50–80 words about Green Valley University. The checklist updates as you type.</p>
+    <label for="sum" class="hint">Your summary</label>
+    <textarea id="sum" placeholder="The text describes …"></textarea>
+    <p class="wc" id="sumWc">0 words</p>
+    <ul class="checks" id="sumChecks"></ul>
+    <details>
+      <summary>Model summary (open after you have written yours)</summary>
+      <p class="serif">The text describes Green Valley University, a large university with many programs and modern facilities. Firstly, it explains that the university has recently started a popular online degree program that lets students study from home. In addition, the library is open every day, and students must register for courses by a fixed date each year. Finally, the university offers clubs that help students develop leadership skills outside class.</p>
+    </details>
+  </section>
+  <h2 class="part" id="part-e">Part E. Multiple-choice practice</h2>
+  <p class="hint" style="margin-top:0">Put everything together on three passages.</p>
+  <section aria-labelledby="st13">
+    <div class="step"><b>13</b><h2 id="st13">Multiple-choice practice: the Iron Lady of Paris</h2></div>
+    <p>Use the passage “<a href="#eiffel">The Iron Lady of Paris</a>” from Part B. Each question below is a common IELTS multiple-choice pattern. After you answer, read <strong>why the wrong options are wrong</strong>: this is the most useful part.</p>
+    <div class="cards small" id="qtypes"></div>
+    <div id="eiffelQ" style="margin-top:16px"></div>
+    <p class="feedback" id="eiffelQFb"></p>
+  </section>
+  <section aria-labelledby="st14">
+    <div class="step"><b>14</b><h2 id="st14">Multiple-choice practice: the Olympic Games</h2></div>
+    <p>Skim the passage first (two minutes), then answer. Read the explanation after each answer.</p>
+    <div class="passage">
+      <h3>The Olympic Games: From Olympia to the World</h3>
+      <div class="para"><b>A</b><span>The Olympic Games began in ancient Greece, traditionally in 776 BC, at Olympia in the west of the country. Athletes from rival Greek city-states competed in running, wrestling and chariot racing, and a sacred truce was declared so that competitors and spectators could travel to the games safely, even in times of war.</span></div>
+      <div class="para"><b>B</b><span>The ancient games ended in the fourth century AD, and the idea was only revived some 1,500 years later by a French educator, Pierre de Coubertin. He believed that international sport could encourage understanding between nations. The first modern Olympics took place in Athens in 1896. They were small by today’s standards: around a dozen nations took part, and every competitor was a man. Women competed for the first time four years later, at the Paris Games of 1900.</span></div>
+      <div class="para"><b>C</b><span>The Games grew steadily. In 1924, a separate Winter Olympics was held for the first time, in Chamonix, France, with events such as skiing and ice hockey. Like the summer Games, the winter event began modestly but attracted more countries with each edition.</span></div>
+      <div class="para"><b>D</b><span>After the Second World War, the Olympics became a stage for political rivalry. During the Cold War, the United States and the Soviet Union treated the medal table as a measure of national strength, and both led boycotts: many Western countries stayed away from Moscow in 1980, and the Soviet Union and its allies did not attend Los Angeles in 1984. At the same time, many newly independent nations in Africa and Asia used the Games to present themselves to the world for the first time.</span></div>
+      <div class="para"><b>E</b><span>Today the Olympics are the largest sporting event on earth. The 2016 Games in Rio de Janeiro welcomed more than 11,000 athletes from over 200 teams. Hosting has also spread beyond Europe and North America: Beijing in 2008 and Rio in 2016 were seen as signs of the growing confidence of emerging economies.</span></div>
+      <div class="para"><b>F</b><span>Yet this success has a price. Hosting now requires huge investment in stadiums, transport and security, and several cities have withdrawn from the bidding process after local opposition. Oslo, for example, abandoned its bid for the 2022 Winter Games. In my view, unless the Games become simpler and cheaper to organise, fewer cities will be willing to host them, and the Olympic movement will lose much of its appeal.</span></div>
+    </div>
+    <p class="hint">Original AUM practice passage.</p>
+    <div id="olyQ"></div>
+    <p class="feedback" id="olyQFb"></p>
+  </section>
+  <section aria-labelledby="st15">
+    <div class="step"><b>15</b><h2 id="st15">Try it again: a new passage</h2></div>
+    <p>Use the same method: predict from the title, find the topic sentences, then answer.</p>
+    <div class="passage">
+      <h3>The Long Sleep</h3>
+      <div class="para"><b>A</b><span>For many animals, winter is a dangerous season, not because of the cold itself but because food becomes scarce. Some species solve this problem by hibernating: they enter a state of deep inactivity and wait until spring brings food again. Ground squirrels, woodchucks and many kinds of bat are well-known examples.</span></div>
+      <div class="para"><b>B</b><span>Hibernation is very different from ordinary sleep. A hibernating animal’s body temperature falls sharply, sometimes to just a few degrees above freezing, and its heart rate and breathing slow dramatically. The change can be so extreme that the animal appears to be dead.</span></div>
+      <div class="para"><b>C</b><span>To survive these months, hibernators prepare in autumn. They eat far more than usual and build up stores of body fat, which supply energy through the winter. Some also hide food in their burrows to eat during short periods of waking.</span></div>
+      <div class="para"><b>D</b><span>Bears are the animals most people associate with hibernation, yet scientists disagree about whether they are true hibernators. A bear’s body temperature drops by only a few degrees, much less than a squirrel’s. On the other hand, some bears can go for months without eating, drinking or going to the toilet, something even true hibernators rarely manage.</span></div>
+      <div class="para"><b>E</b><span>What tells an animal that it is time to hibernate? Shorter days, falling temperatures and a shrinking food supply all seem to play a part, but the exact biological trigger is still not fully understood. In places where winters are mild, some animals hibernate only briefly, or not at all.</span></div>
+    </div>
+    <p class="hint">Original AUM practice passage.</p>
+    <div id="hibQ"></div>
+    <p class="feedback" id="hibQFb"></p>
+  </section>
+  <section aria-labelledby="st16">
+    <div class="step"><b>16</b><h2 id="st16">Homework</h2></div>
+    <ul>
+      <li>Find a short English article (300–500 words). Skim it in two minutes and write its main idea in one sentence.</li>
+      <li>Write a 60–80 word summary of the article with at least three linking words from Part D.</li>
+      <li>Draw the map of “The Long Sleep”: the main idea, then one topic sentence per paragraph in your own words.</li>
+      <li>Complete one Reading passage from a Cambridge IELTS Academic test, or from the useful websites in Session 1.</li>
+    </ul>
+  </section>
+  <nav class="pager"><a href="session-02.html">Previous: Session 2</a><a href="index.html">All sessions</a></nav>
+</main>
+<script>
+const $ = id => document.getElementById(id);
+const norm = t => t.toLowerCase().replace(/[’']/g, "'").replace(/[^a-z0-9,' -]/g, " ").replace(/\s+/g, " ").trim();
+const words = t => t.trim().split(/\s+/).filter(Boolean).length;
+const esc = t => String(t);
+
+function score(id, ok, total, good, bad) {
+  const el = $(id); if (!el) return;
+  el.innerHTML = "<span class='" + (ok === total ? "ok" : "bad") + "'><strong>" + ok + " / " + total + ".</strong> " + (ok === total ? (good || "All correct.") : (bad || "")) + "</span>";
+}
+
+// Multiple choice. items: [question, [options], correctIndex, explanation]
+function mcq(id, items, opt) {
+  opt = opt || {}; const box = $(id); let done = 0, right = 0;
+  items.forEach(([q, opts, ans, why], qi) => {
+    const d = document.createElement("div"); d.className = "q";
+    const num = (opt.start || 1) + qi;
+    d.innerHTML = (q ? "<p><strong>" + num + ".</strong> " + q + "</p>" : "") + "<div></div><p class='why' hidden></p>";
+    const o = d.children[q ? 1 : 0], w = d.children[q ? 2 : 1];
+    opts.forEach((t, i) => {
+      const b = document.createElement("button"); b.className = "btn ghost";
+      b.style.cssText = "display:block;width:100%;text-align:left;margin:8px 0;font-weight:500";
+      b.textContent = "ABCDEFG"[i] + ")  " + t;
+      b.onclick = () => {
+        if (d.dataset.done) return; d.dataset.done = 1; done++;
+        const ok = i === ans; if (ok) right++;
+        d.classList.add(ok ? "right" : "wrong"); o.children[ans].style.borderColor = "var(--green)";
+        w.hidden = false; w.innerHTML = "<strong class='" + (ok ? "ok" : "bad") + "'>" + (ok ? "Correct." : "Not quite.") + "</strong> " + why;
+        if (opt.fb && done === items.length) score(opt.fb, right, items.length, opt.good, opt.bad);
+      };
+      o.appendChild(b);
+    });
+    box.appendChild(d);
+  });
+}
+
+// True/False/Not Given or Yes/No/Not Given. items: [statement, answer, explanation]
+function tfng(id, items, opt) {
+  opt = opt || {}; const labels = opt.labels || ["TRUE", "FALSE", "NOT GIVEN"];
+  const box = $(id); let done = 0, right = 0;
+  items.forEach(([s, ans, why], i) => {
+    const d = document.createElement("div"); d.className = "q";
+    d.innerHTML = "<p><strong>" + ((opt.start || 1) + i) + ".</strong> " + s + "</p><div class='inline-row'></div><p class='why' hidden></p>";
+    const row = d.children[1], w = d.children[2];
+    labels.forEach(l => {
+      const b = document.createElement("button"); b.className = "btn ghost"; b.textContent = l;
+      b.onclick = () => {
+        if (d.dataset.done) return; d.dataset.done = 1; done++;
+        const ok = l === ans; if (ok) right++;
+        d.classList.add(ok ? "right" : "wrong");
+        [...row.children].forEach(x => { if (x.textContent === ans) x.style.borderColor = "var(--green)"; });
+        w.hidden = false;
+        w.innerHTML = "<strong class='" + (ok ? "ok" : "bad") + "'>" + (ok ? "Correct: " : "The answer is ") + ans + ".</strong> " + why;
+        if (done === items.length && opt.fb) score(opt.fb, right, items.length, opt.good, opt.bad);
+      };
+      row.appendChild(b);
+    });
+    box.appendChild(d);
+  });
+}
+
+// Gap fill / short answer. items: [text with ___ (or a question), [accepted], evidence]
+function gaps(id, btnId, fbId, max, items, opt) {
+  opt = opt || {}; const box = $(id);
+  items.forEach(([q], i) => {
+    const d = document.createElement("div"); d.className = "qrow";
+    const n = (opt.start || 1) + i;
+    if (q.includes("___")) {
+      const p = q.split("___");
+      d.innerHTML = "<span class='num'>" + n + "</span><div><span class='serif' style='font-size:18px'>" + p[0] + "</span><input class='ans' aria-label='Answer " + n + "' data-i='" + i + "'><span class='serif' style='font-size:18px'>" + p[1] + "</span><div class='small-fb'></div></div>";
+    } else {
+      d.innerHTML = "<span class='num'>" + n + "</span><div><div>" + q + "</div><input class='ans' aria-label='Answer " + n + "' data-i='" + i + "'><div class='small-fb'></div></div>";
+    }
+    box.appendChild(d);
+  });
+  $(btnId).onclick = () => {
+    let ok = 0;
+    box.querySelectorAll("input").forEach(inp => {
+      const [q, acc, ev] = items[inp.dataset.i]; const v = norm(inp.value).replace(/^the /, "");
+      const fb = inp.parentElement.querySelector(".small-fb");
+      if (!v) { inp.className = "ans"; fb.textContent = ""; return; }
+      if (words(inp.value) > max) { inp.className = "ans badans"; fb.innerHTML = "<span class='bad'>Too many words: the limit is " + max + ". In the exam this is marked wrong.</span>"; return; }
+      const g = acc.some(a => norm(a).replace(/^the /, "") === v); if (g) ok++;
+      inp.className = "ans " + (g ? "good" : "badans");
+      fb.innerHTML = g ? "<span class='ok'>Evidence: " + ev + "</span>" : "<span class='bad'>Answer: <strong>" + acc[0] + "</strong>. Evidence: " + ev + "</span>";
+    });
+    score(fbId, ok, items.length, opt.good || "All correct. Spelling counts, so check every letter.", opt.bad || "Copy words exactly from the passage and keep to the word limit.");
+  };
+}
+
+// Flip cards. items: [front, small, back]
+function cards(id, items) {
+  items.forEach(([f, s, b]) => {
+    const c = document.createElement("button"); c.className = "card"; c.setAttribute("aria-expanded", "false");
+    c.innerHTML = "<div class='front'>" + f + (s ? "<small>" + s + "</small>" : "") + "</div><div class='back'>" + b + "</div>";
+    c.onclick = () => { c.classList.toggle("open"); c.setAttribute("aria-expanded", c.classList.contains("open")); };
+    $(id).appendChild(c);
+  });
+}
+
+// Sorting. cats: [label], items: [text, correctLabel, note]
+function sorter(id, fbId, cats, items, opt) {
+  opt = opt || {}; let done = 0, right = 0;
+  items.forEach(([t, a, note]) => {
+    const d = document.createElement("div"); d.className = "fact"; d.innerHTML = "<span class='serif'>" + t + "</span>";
+    cats.forEach(c => {
+      const b = document.createElement("button"); b.className = "btn ghost"; b.textContent = c;
+      b.onclick = () => {
+        if (d.dataset.done) return; d.dataset.done = 1; done++;
+        const ok = c === a; if (ok) right++; d.classList.add(ok ? "right" : "wrong");
+        const n = document.createElement("span"); n.className = "small-fb " + (ok ? "ok" : "bad"); n.style.flexBasis = "100%";
+        n.textContent = (ok ? "" : "Answer: " + a + ". ") + (note || ""); if (n.textContent) d.appendChild(n);
+        if (done === items.length) score(fbId, right, items.length, opt.good, opt.bad);
+      };
+      d.appendChild(b);
+    });
+    $(id).appendChild(d);
+  });
+}
+
+// Click the topic sentence. paras: [[sentences], correctIndex, explanation]
+function topicPick(id, paras) {
+  paras.forEach(([s, ans, why], pi) => {
+    const d = document.createElement("div"); d.className = "q";
+    d.innerHTML = "<p class='hint' style='margin:0 0 4px'>Paragraph " + "ABCDEFG"[pi] + "</p>";
+    const p = document.createElement("p"); p.className = "serif"; p.style.cssText = "font-size:18px;line-height:1.7";
+    const w = document.createElement("p"); w.className = "why"; w.hidden = true;
+    s.forEach((t, i) => {
+      const sp = document.createElement("span"); sp.className = "sent"; sp.textContent = t; sp.tabIndex = 0; sp.setAttribute("role", "button");
+      const go = () => {
+        if (d.dataset.done) return;
+        if (i === ans) { d.dataset.done = 1; sp.classList.add("yes"); d.classList.add("right"); w.hidden = false; w.innerHTML = "<strong class='ok'>Correct.</strong> " + why; }
+        else { sp.classList.add("no"); w.hidden = false; w.innerHTML = "<span class='bad'>That is a supporting detail. Try again.</span>"; }
+      };
+      sp.onclick = go; sp.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } };
+      p.appendChild(sp); p.appendChild(document.createTextNode(" "));
+    });
+    d.appendChild(p); d.appendChild(w); $(id).appendChild(d);
+  });
+}
+
+// Dropdown matching. rows: [label, correctValue], options: [[value, text]]
+function dropMatch(id, btnId, fbId, rows, options, opt) {
+  opt = opt || {};
+  rows.forEach(([label], i) => {
+    const d = document.createElement("div"); d.className = "qrow";
+    d.innerHTML = "<span class='num'>" + ((opt.start || 1) + i) + "</span><div><div class='serif' style='font-size:18px'>" + label + "</div><select data-i='" + i + "' style='margin-top:6px;max-width:100%'><option value=''>Choose…</option>" + options.map(([v, t]) => "<option value='" + v + "'>" + t + "</option>").join("") + "</select><div class='small-fb'></div></div>";
+    $(id).appendChild(d);
+  });
+  $(btnId).onclick = () => {
+    let ok = 0;
+    $(id).querySelectorAll("select").forEach(s => {
+      const row = rows[s.dataset.i]; const g = s.value === row[1]; if (g) ok++;
+      s.style.borderColor = g ? "var(--green)" : "var(--red)";
+      s.nextElementSibling.innerHTML = s.value ? (g ? (row[2] ? "<span class='ok'>" + row[2] + "</span>" : "") : "<span class='bad'>Not this one.</span>") : "";
+    });
+    score(fbId, ok, rows.length, opt.good, opt.bad);
+  };
+}
+
+// Countdown timer that reveals a blurred element
+function countdown(btnId, clockId, seconds, revealId, onEnd) {
+  let t = null, left = seconds;
+  const show = s => Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0");
+  $(clockId).textContent = show(seconds);
+  $(btnId).onclick = () => {
+    if (t) return; if (revealId) $(revealId).classList.remove("blurred"); $(btnId).disabled = true;
+    t = setInterval(() => { left--; $(clockId).textContent = show(Math.max(left, 0)); if (left <= 0) { clearInterval(t); $(clockId).textContent = "Time!"; if (onEnd) onEnd(); } }, 1000);
+  };
+  return { stop: () => clearInterval(t), elapsed: () => seconds - left };
+}
+
+// Writing box with live checklist. tests: [label, fn(text)]
+function writeBox(taId, wcId, listId, tests) {
+  const ta = $(taId);
+  const run = () => {
+    const t = ta.value; const n = words(t); $(wcId).textContent = n + " word" + (n === 1 ? "" : "s");
+    $(listId).innerHTML = "";
+    tests.forEach(([l, f]) => { const li = document.createElement("li"); li.textContent = l; if (t.trim()) li.className = f(t) ? "pass" : "fail"; $(listId).appendChild(li); });
+  };
+  ta.addEventListener("input", run); run();
+}
+
+
+
+cards("habits", [
+  ["Preview", "before reading", "Look at the title, headings and first sentences. Ask: what do I already know about this topic?"],
+  ["Predict", "before and during reading", "Guess what the text will say. As you read, check and change your guess. This keeps your brain active."],
+  ["Find the main idea", "while reading", "Ask: what is this paragraph mostly about? What is the whole passage mostly about?"],
+  ["Visualise", "while reading", "Make a picture in your mind: a tower of iron, workers pulling ropes. Pictures are easier to remember than words."],
+]);
+sorter("prev", "prevFb", ["Likely", "Unlikely"], [
+  ["How the Eiffel Tower was designed and built", "Likely", "“Monument”, “1889”, “engineering” all point to this."],
+  ["The history of French cooking", "Unlikely", "Nothing in the title or first line suggests food."],
+  ["What people thought of the tower", "Likely", "Famous monuments are often discussed in terms of public reaction."],
+  ["How to travel cheaply in Paris", "Unlikely", "The first line is about history and engineering, not travel tips."],
+], { good: "Good predictions. Now read to check them." , bad: "Use only the title and first line as evidence."});
+topicPick("eiffel", [
+  [["For the 1889 World’s Fair in Paris, held to mark one hundred years since the French Revolution, the organisers wanted a monument that would show the world what modern engineering could achieve.", "More than a hundred designs were entered in a competition.", "The winner was the company of Gustave Eiffel, an engineer already famous for his iron bridges."], 0, "It introduces the purpose of the project. The other sentences give details: the competition and the winner."],
+  [["Not everyone welcomed the plan.", "In 1887, a group of well-known artists and writers published a letter in a Paris newspaper calling the tower useless and monstrous.", "They feared that a giant iron structure would spoil the beauty of the city.", "Eiffel replied that engineering could be beautiful too, and construction went ahead."], 0, "A short topic sentence; the letter and Eiffel’s reply are the supporting details."],
+  [["The speed of construction was remarkable.", "Around 18,000 iron pieces were prepared in a factory and then fixed together on site with about 2.5 million rivets.", "Thanks to this careful planning, a team of a few hundred workers completed the tower in just over two years."], 0, "The numbers all support the idea of speed."],
+  [["At about 300 metres, the tower was the tallest structure in the world when it opened, and it kept this title until the Chrysler Building in New York was completed in 1930.", "Because its four legs curve inwards, special lifts had to be designed to travel up at an angle.", "These lifts soon became an attraction in themselves."], 0, "The paragraph is about the tower’s height and how visitors reached the top."],
+  [["The tower was only meant to stand for twenty years.", "However, Eiffel encouraged scientists to use it for experiments, and in the early twentieth century it became an important radio transmitter.", "Today it attracts millions of visitors every year.", "In the end, the structure that critics had called useless proved to be both practical and loved."], 3, "Here the topic sentence comes last, as a conclusion. Clue words: “In the end”. This last sentence also expresses the main idea of the whole passage."],
+]);
+sorter("levels", "levelsFb", ["Main idea", "Topic sentence", "Detail"], [
+  ["The Eiffel Tower began as a controversial project but became a celebrated engineering achievement.", "Main idea", "It covers the whole passage."],
+  ["Not everyone welcomed the plan.", "Topic sentence", "It introduces paragraph B only."],
+  ["About 2.5 million rivets were used.", "Detail", "A number that supports the idea of speed."],
+  ["The speed of construction was remarkable.", "Topic sentence", "It introduces paragraph C."],
+  ["Artists called the tower useless and monstrous.", "Detail", "An example of the opposition."],
+  ["It kept the title of tallest structure until 1930.", "Detail", "A fact supporting paragraph D."],
+], { good: "You can now read a passage like a map.", bad: "Main idea = whole passage; topic sentence = one paragraph; detail = a fact or example." });
+cards("qtypes", [
+  ["Which is INCORRECT?", "find the false option", "Check each option against the passage. Three are true; one is wrong or contradicts the text."],
+  ["Who / what was…?", "a detail", "Scan for the name, then read the sentence around it."],
+  ["What does ‘X’ mean?", "vocabulary in context", "Replace the word with each option and read the sentence again. Which option keeps the meaning?"],
+  ["Why…? / …because", "a reason", "Look for cause words: because, so, as a result, thanks to."],
+  ["Best summary", "the main idea", "The right option covers the whole passage. Wrong options are too narrow, too detailed or not stated."],
+]);
+mcq("eiffelQ", [
+  ["According to the passage, which statement is INCORRECT?", ["More than a hundred designs were entered in the competition.", "Some artists opposed the tower before it was built.", "The tower was built by thousands of workers over ten years.", "The tower was originally planned as a temporary structure."], 2, "Paragraph C says “a few hundred workers” and “just over two years”. A, B and D are all stated in the passage."],
+  ["Who was Gustave Eiffel?", ["A writer who opposed the tower", "An engineer known for his iron bridges", "A member of the competition committee", "The designer of the Chrysler Building"], 1, "Paragraph A: “an engineer already famous for his iron bridges”. Option A is the opposite: the writers opposed him."],
+  ["The word “remarkable” in paragraph C is closest in meaning to", ["ordinary", "dangerous", "impressive", "slow"], 2, "Replace the word: “The speed of construction was impressive.” The details (two years) show the speed was surprising, so “ordinary” and “slow” do not fit."],
+  ["The lifts had to travel up at an angle because", ["the organisers wanted a new attraction.", "the tower’s legs curve inwards.", "the critics demanded it.", "the tower was too tall for straight lifts."], 1, "Paragraph D: “Because its four legs curve inwards…”. Option A is a result (the lifts became an attraction), not the reason."],
+  ["Which sentence best summarises the passage?", ["Eiffel won a competition to build a monument in Paris.", "The Eiffel Tower used 2.5 million rivets and took two years to build.", "Although it was criticised at first, the Eiffel Tower became an engineering success and a much-loved landmark.", "Artists in Paris succeeded in stopping a new iron monument."], 2, "Option C covers the whole passage. A is only paragraph A (too narrow), B is details only, and D is false: the tower was built."],
+], { fb: "eiffelQFb", good: "Excellent. You read the passage as a map." , bad: "Read the explanations: they show the traps examiners use."});
+mcq("hibQ", [
+  ["What is the main reason some animals hibernate?", ["Winter temperatures are too cold for them", "There is not enough food in winter", "They need to recover from summer", "Their bodies stop working in the dark"], 1, "Paragraph A: winter is dangerous “not because of the cold itself but because food becomes scarce”. Option A is the trap: the passage says the opposite."],
+  ["According to the passage, which statement is INCORRECT?", ["A hibernating animal can appear to be dead.", "Hibernators eat more than usual in autumn.", "All bears are true hibernators.", "In mild regions, some animals may not hibernate."], 2, "Paragraph D: scientists “disagree about whether they are true hibernators”. The word “All” is a warning sign."],
+  ["Some animals hide food in their burrows in order to", ["eat during short periods of waking.", "share it with other animals.", "attract a partner in spring.", "keep their burrows warm."], 0, "Paragraph C: “to eat during short periods of waking”."],
+  ["What feature makes a bear different from a squirrel during hibernation?", ["A bear’s heart beats faster", "A bear’s body temperature drops much less", "A bear wakes up more often", "A bear stores less fat"], 1, "Paragraph D: “drops by only a few degrees, much less than a squirrel’s”."],
+  ["What triggers hibernation, according to the passage?", ["Only falling temperatures", "A decision made by the animal", "Several factors, but the exact trigger is not fully known", "The length of the previous summer"], 2, "Paragraph E lists several factors and says the trigger “is still not fully understood”."],
+  ["Which sentence best summarises the passage?", ["Bears are the most famous hibernators.", "Many animals hibernate to survive winters with little food; their bodies change greatly, and scientists still do not fully understand what triggers it.", "Hibernation is the same as a long night’s sleep.", "Animals eat a lot in autumn and hide food in their burrows."], 1, "Option B covers paragraphs A–E. A is one paragraph, C is false (paragraph B), and D is detail only."],
+], { fb: "hibQFb", good: "All correct. You are ready for the question types in Session 5." , bad: "Watch for words like “all”, “only” and “always”: they often make an option wrong."});
+mcq("olyQ", [
+  ["The word “abandoned” in paragraph F is closest in meaning to", ["gave up", "won", "delayed", "shared"], 0, "Oslo stopped trying to host: it “abandoned its bid”. Replace the word: “Oslo gave up its bid.”"],
+  ["Which statement is FALSE according to the passage?", ["Criticism of the cost of hosting has grown.", "Recent hosts have included emerging economies.", "Women competed at the first modern Olympics in 1896.", "Cold War rivals used the Games to show national strength."], 2, "Paragraph B: in 1896 “every competitor was a man”; women first competed in 1900."],
+  ["The phrase “emerging economies” in paragraph E is closest in meaning to", ["countries with failing economies", "countries whose economies are growing and developing", "the oldest nations in the world", "the richest countries in the world"], 1, "Beijing and Rio are examples: countries that are “up-and-coming”, growing in wealth and confidence."],
+  ["What is the main contrast between the start and the end of the passage?", ["The ancient Games were only for Greeks, but the modern Games are only for rich nations.", "The early Games were political, but the modern Games are purely about sport.", "The early Games were large, but the modern Games are small.", "The early Games brought rivals together, but today the cost of hosting causes opposition."], 3, "Paragraph A: a truce allowed rivals to meet. Paragraph F: costs make cities withdraw. A, B and C contradict the passage."],
+], { fb: "olyQFb", good: "Excellent.", bad: "Read the explanations, then find each piece of evidence yourself." });
+</script>
+<script>
+(function(){
+  const $ = id => document.getElementById(id);
+  const norm = t => t.toLowerCase().replace(/[’']/g,"'").replace(/[^a-z0-9,' ]/g," ").replace(/\s+/g," ").trim();
+  const words = t => t.trim().split(/\s+/).filter(Boolean).length;
+
+  // generic MCQ
+  function mcq(id, items){
+    const box=$(id);
+    items.forEach(([q,opts,ans,why],qi)=>{
+      const d=document.createElement("div");d.className="q";
+      d.innerHTML=(q?"<p><strong>"+(qi+1)+".</strong> "+q+"</p>":"")+"<div></div><p class='why' hidden></p>";
+      const o=d.children[q?1:0],w=d.children[q?2:1];
+      opts.forEach((t,i)=>{const b=document.createElement("button");b.className="btn ghost";b.style.cssText="display:block;width:100%;text-align:left;margin:8px 0;font-weight:500";b.textContent="ABCD"[i]+")  "+t;
+        b.onclick=()=>{if(d.dataset.done)return;d.dataset.done=1;const ok=i===ans;d.classList.add(ok?"right":"wrong");o.children[ans].style.borderColor="var(--green)";w.hidden=false;w.innerHTML="<strong class='"+(ok?"ok":"bad")+"'>"+(ok?"Correct.":"Not quite.")+"</strong> "+why;};
+        o.appendChild(b);});
+      box.appendChild(d);});
+  }
+
+  // Step 1 skim or scan
+  const ss=[["You want to know if an article is useful for your essay.","skim"],["You need the date of your exam on a long timetable.","scan"],["A question asks: “In which year was the university founded?”","scan"],["You must match headings to paragraphs.","skim"],["You want the general idea of a news story in one minute.","skim"],["A question asks you to find a researcher’s name in the passage.","scan"]];
+  let ssDone=0,ssRight=0;
+  ss.forEach(([t,a])=>{const d=document.createElement("div");d.className="fact";d.innerHTML="<span class='serif'>"+t+"</span>";
+    ["skim","scan"].forEach(k=>{const b=document.createElement("button");b.className="btn ghost";b.textContent=k==="skim"?"Skim":"Scan";
+      b.onclick=()=>{if(d.dataset.done)return;d.dataset.done=1;ssDone++;const ok=k===a;if(ok)ssRight++;d.classList.add(ok?"right":"wrong");
+        if(!ok){const n=document.createElement("span");n.className="small-fb bad";n.style.flexBasis="100%";n.textContent=a==="skim"?"You need the general idea, so skim.":"You need one specific detail, so scan.";d.appendChild(n);}
+        if(ssDone===ss.length)$("skimScanFb").innerHTML="<span class='"+(ssRight===ss.length?"ok":"bad")+"'><strong>"+ssRight+" / "+ss.length+".</strong> "+(ssRight===ss.length?"Main idea: skim. Specific detail: scan.":"Remember: main idea = skim, specific detail = scan.")+"</span>";};
+      d.appendChild(b);});
+    $("skimScan").appendChild(d);});
+
+  // Step 2 topic sentences
+  const paras=[
+    [["Online learning platforms have become more common in recent years.","Many students prefer studying at home, especially after the COVID-19 pandemic.","These platforms offer video lessons, quizzes, and discussion forums.","Some experts believe this could change traditional classroom education in the future."],0,"The first sentence gives the main idea. The others give reasons, examples and a prediction."],
+    [["Scientists have discovered a link between sleep and memory.","During sleep, the brain organizes and stores information from the day.","People who sleep well often perform better in tests.","This research highlights the importance of healthy sleep habits."],0,"The first sentence states the main finding. The rest explain it and give evidence."],
+    [["Some cities give free bus passes to students.","Others have built new cycle lanes and limited car parking in the centre.","A few have even banned older cars on certain days.","Clearly, cities are trying many different ways to reduce traffic."],3,"Here the topic sentence comes last. The first three sentences are examples, and the last one sums them up. Notice the word “Clearly”."],
+    [["Imagine paying for your coffee just by looking at a camera.","In several countries, face recognition is now used for everyday payments.","Customers do not need a card or a phone.","Supporters say it is faster, although some people worry about privacy."],1,"The first sentence is a hook to get your attention. The main idea is in the second sentence."],
+  ];
+  paras.forEach(([s,ans,why],pi)=>{
+    const d=document.createElement("div");d.className="q";const p=document.createElement("p");p.className="serif";p.style.fontSize="18px";p.style.lineHeight="1.7";
+    const w=document.createElement("p");w.className="why";w.hidden=true;
+    d.innerHTML="<p class='hint' style='margin:0 0 4px'>Paragraph "+(pi+1)+"</p>";
+    s.forEach((t,i)=>{const sp=document.createElement("span");sp.className="sent";sp.textContent=t;sp.tabIndex=0;sp.setAttribute("role","button");
+      const go=()=>{if(d.dataset.done)return;
+        if(i===ans){d.dataset.done=1;sp.classList.add("yes");d.classList.add("right");w.hidden=false;w.innerHTML="<strong class='ok'>Correct.</strong> "+why;}
+        else{sp.classList.add("no");w.hidden=false;w.innerHTML="<span class='bad'>That sentence gives a detail or example. Try again.</span>";}};
+      sp.onclick=go;sp.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();go();}};
+      p.appendChild(sp);p.appendChild(document.createTextNode(" "));});
+    d.appendChild(p);d.appendChild(w);$("topics").appendChild(d);});
+
+  // Step 3 heading match
+  const heads=["A. The health risks of processed meals","B. Cleaner power for the future","C. Digital tools for city transport","D. The history of public buses"];
+  const ts=[["Many cities are now using smart technology to manage traffic.","C","Smart technology = digital tools; manage traffic = transport. Heading D is about buses, but the sentence is about technology, not history."],["Renewable energy is becoming more affordable and efficient.","B","Renewable energy = cleaner power."],["Fast food is contributing to rising obesity rates worldwide.","A","Fast food = processed meals; obesity = a health risk."]];
+  ts.forEach(([t],i)=>{const d=document.createElement("div");d.className="qrow";
+    d.innerHTML="<span class='num'>"+(i+1)+"</span><div><div class='serif' style='font-size:18px'>"+t+"</div><select data-i='"+i+"' style='margin-top:6px'><option value=''>Choose a heading…</option>"+heads.map(h=>"<option value='"+h[0]+"'>"+h+"</option>").join("")+"</select><div class='small-fb'></div></div>";
+    $("headMatch").appendChild(d);});
+  $("checkHeads").onclick=()=>{let ok=0;document.querySelectorAll("#headMatch select").forEach(s=>{const [t,a,why]=ts[s.dataset.i];const g=s.value===a;if(g)ok++;s.style.borderColor=g?"var(--green)":"var(--red)";
+    s.nextElementSibling.innerHTML=s.value?(g?"<span class='ok'>"+why+"</span>":"<span class='bad'>Not this one. Look for the same meaning in different words.</span>"):"";});
+    $("headFb").innerHTML="<span class='"+(ok===3?"ok":"bad")+"'><strong>"+ok+" / 3.</strong> "+(ok===3?"Heading D was the extra one: it matches a word, not the meaning.":"")+"</span>";};
+
+  // Step 4 skim timer
+  const p1=$("p1body");let skimT=null;
+  $("skimStart").onclick=()=>{if(skimT)return;let left=90;p1.classList.remove("blurred");$("skimStart").disabled=true;
+    skimT=setInterval(()=>{left--;$("skimClock").textContent=Math.floor(left/60)+":"+String(left%60).padStart(2,"0");
+      if(left<=0){clearInterval(skimT);p1.classList.add("blurred");$("skimClock").textContent="Time!";}},1000);};
+  $("showP1").onclick=()=>{clearInterval(skimT);p1.classList.remove("blurred");$("skimClock").textContent="—";$("skimStart").disabled=true;p1.scrollIntoView({behavior:"smooth",block:"start"});};
+
+  mcq("mainIdea",[[null,["Technology is replacing teachers in modern schools.","Education is changing in several ways: more technology, more focus on skills, a mix of old and new methods, and learning throughout life.","Online courses are better than classroom lessons."],1,"Option B includes the idea of every paragraph. A and C are not said in the passage; C is an opinion the writer never gives."]]);
+
+  const hlist=["i. Learning never stops","ii. Old methods still matter","iii. Technology enters the classroom","iv. Thinking, not memorising","v. Teachers lose their jobs"];
+  const p1a=["iii","iv","ii","i"];
+  ["A","B","C","D"].forEach((L,i)=>{const d=document.createElement("div");d.className="qrow";d.innerHTML="<span class='num'>"+L+"</span><div class='inline-row'>Paragraph "+L+" <select data-i='"+i+"'><option value=''>…</option>"+hlist.map(h=>"<option value='"+h.split(".")[0]+"'>"+h+"</option>").join("")+"</select></div>";$("p1Heads").appendChild(d);});
+  $("checkP1Heads").onclick=()=>{let ok=0;document.querySelectorAll("#p1Heads select").forEach(s=>{const g=s.value===p1a[s.dataset.i];if(g)ok++;s.style.borderColor=g?"var(--green)":"var(--red)";});
+    $("p1HeadsFb").innerHTML="<span class='"+(ok===4?"ok":"bad")+"'><strong>"+ok+" / 4.</strong> "+(ok===4?"Each heading matches a topic sentence. Heading v is not in the passage.":"Read only the first sentence of each paragraph again.")+"</span>";};
+
+  // Step 5
+  mcq("p1mcq",[
+    ["What is one of the main changes in education in recent decades?",["More school holidays","Smaller class sizes","Increased use of technology","More focus on memorization"],2,"Evidence (A): “One of the most significant changes is the rise of technology in the classroom.”"],
+    ["What advantage of technology does the passage mention?",["It helps students learn at their own pace","It reduces the need for teachers","It improves exam results","It limits student interaction"],0,"Evidence (A): “allowed students to … learn at their own pace.” Options A, B and D are not mentioned."],
+    ["Why are schools moving from memorization to skills?",["Skills are easier to teach","Memorization is now banned","Skills make lessons shorter","Skills prepare students for modern jobs"],3,"Evidence (B): “prepares students better for the challenges of the modern workforce.” Workforce = jobs."],
+    ["How are many schools responding to modern needs?",["Removing traditional lessons","Combining traditional and modern methods","Focusing only on technology","Offering fewer subjects"],1,"Evidence (C): “combining old and new methods.”"],
+    ["What does the passage say about adults?",["They learn faster than children","They study for fun","They return to education to stay competitive","They only attend night classes"],2,"Evidence (D): “return to education later in life to stay competitive in their careers.”"],
+  ]);
+
+  const SC={
+    p1sc:{max:3,items:[
+      ["Many schools now use ___, tablets and online learning platforms.",["computers"],"A: “integrated computers, tablets, and online learning platforms”"],
+      ["Online courses make education available to people anywhere, regardless of their ___.",["location"],"A: “regardless of their location”. The question has “their”, so write only “location”."],
+      ["Group projects and discussions develop ___ and teamwork.",["social skills"],"C: “foster social skills and teamwork”"],
+      ["Many institutions combine old and new methods to create a ___.",["balanced curriculum"],"C: “to create a balanced curriculum”"],
+      ["Adults return to education to ___ in their careers.",["stay competitive"],"D: “to stay competitive in their careers”"]]},
+    p2sc:{max:2,items:[
+      ["The online program lets students balance education with personal ___.",["commitments"],"B: “balance education with personal commitments”"],
+      ["The library gives access to thousands of ___ and print resources.",["digital"],"C: “thousands of digital and print resources”"],
+      ["Clubs help students develop ___ skills.",["leadership"],"D: “develop leadership skills”"],
+      ["The campus has laboratories, a large library and several ___.",["sports centers","sports centres"],"A: “several sports centers”"]]}
+  };
+  Object.entries(SC).forEach(([id,cfg])=>{cfg.items.forEach(([q],i)=>{const parts=q.split("___");const d=document.createElement("div");d.className="qrow";
+    d.innerHTML="<span class='num'>"+(i+1)+"</span><div><span class='serif' style='font-size:18px'>"+parts[0]+"</span><input class='ans' aria-label='Answer "+(i+1)+"' data-i='"+i+"'><span class='serif' style='font-size:18px'>"+parts[1]+"</span><div class='small-fb'></div></div>";$(id).appendChild(d);});});
+  document.querySelectorAll("[data-sc]").forEach(b=>b.onclick=()=>{const id=b.dataset.sc,cfg=SC[id];let ok=0;
+    document.querySelectorAll("#"+id+" input").forEach(inp=>{const [q,acc,ev]=cfg.items[inp.dataset.i];const v=norm(inp.value),fb=inp.parentElement.querySelector(".small-fb");
+      if(!v){inp.className="ans";fb.textContent="";return;}
+      if(words(v)>cfg.max){inp.className="ans badans";fb.innerHTML="<span class='bad'>Too many words. The limit is "+cfg.max+". In the exam this answer is marked wrong.</span>";return;}
+      const g=acc.includes(v);if(g)ok++;inp.className="ans "+(g?"good":"badans");fb.innerHTML=g?"<span class='ok'>Evidence: "+ev+"</span>":"<span class='bad'>Not quite. Answer: <strong>"+acc[0]+"</strong>. Evidence: "+ev+"</span>";});
+    $(id+"Fb").innerHTML="<span class='"+(ok===cfg.items.length?"ok":"bad")+"'><strong>"+ok+" / "+cfg.items.length+".</strong> "+(ok===cfg.items.length?"All correct. Spelling counts in the exam, so check every letter.":"Copy words exactly from the passage, and check the word limit.")+"</span>";});
+
+  // Step 6 predict + race
+  const RQ=[
+    ["When was the university established?","a year",[/^(in )?1980$/]],
+    ["How many students study there now?","a number",[/15,?000/]],
+    ["How many academic programs does it offer?","a number",[/120/]],
+    ["When was the online degree program introduced?","a year",[/^(in )?2022$/]],
+    ["What are the library’s opening hours?","a time",[/8.*10/]],
+    ["By when must students register for courses?","a date",[/(sep[a-z]*\.? ?1\b|\b1 ?(st )?sep)/]],
+    ["Name three types of clubs.","names",[/debate/,/music/,/environment/]],
+  ];
+  const kinds=["a year","a number","a time","a date","names"];
+  RQ.forEach(([q],i)=>{const d=document.createElement("div");d.className="qrow";d.innerHTML="<span class='num'>"+(i+1)+"</span><div class='inline-row'><span>"+q+"</span><select data-i='"+i+"'><option value=''>Answer type…</option>"+kinds.map(k=>"<option>"+k+"</option>").join("")+"</select></div>";$("predict").appendChild(d);});
+  $("checkPredict").onclick=()=>{let ok=0;document.querySelectorAll("#predict select").forEach(s=>{const g=s.value===RQ[s.dataset.i][1];if(g)ok++;s.style.borderColor=g?"var(--green)":"var(--red)";});
+    $("predictFb").innerHTML="<span class='"+(ok===RQ.length?"ok":"bad")+"'><strong>"+ok+" / "+RQ.length+".</strong> "+(ok===RQ.length?"Now your eyes know what to look for: four-digit years, big numbers, “AM/PM”, a month.":"“When” can mean a year, a date or a time. Look at the rest of the question.")+"</span>";};
+  RQ.forEach(([q],i)=>{const d=document.createElement("div");d.className="qrow";d.innerHTML="<span class='num'>"+(i+1)+"</span><div><div>"+q+"</div><input class='ans' aria-label='Answer "+(i+1)+"' data-i='"+i+"'><div class='small-fb'></div></div>";$("race").appendChild(d);});
+  const p2=$("p2body");let raceT=null,sec=0;
+  $("raceStart").onclick=()=>{if(raceT)return;p2.classList.remove("blurred");$("raceStart").disabled=true;
+    raceT=setInterval(()=>{sec++;$("raceClock").textContent=Math.floor(sec/60)+":"+String(sec%60).padStart(2,"0");},1000);};
+  $("raceCheck").onclick=()=>{clearInterval(raceT);p2.classList.remove("blurred");let ok=0;
+    document.querySelectorAll("#race input").forEach(inp=>{const pats=RQ[inp.dataset.i][2];const v=norm(inp.value),fb=inp.parentElement.querySelector(".small-fb");
+      const g=v&&pats.every(r=>r.test(v));if(g)ok++;inp.className="ans "+(v?(g?"good":"badans"):"");
+      if(v&&!g)fb.innerHTML="<span class='bad'>Check the passage again.</span>";else fb.textContent="";});
+    const t=Math.floor(sec/60)+" min "+(sec%60)+" s";
+    $("raceFb").innerHTML="<span class='"+(ok===RQ.length?"ok":"bad")+"'><strong>"+ok+" / "+RQ.length+"</strong>"+(sec?" in "+t+".":".")+" "+(ok===RQ.length?(sec&&sec<=120?"Excellent scanning.":"All correct. Next time, try to be faster."):"Look for the answer type you predicted.")+"</span>";};
+
+  // Step 7 summary
+  const sc=[["The text is about… / The text explains…","main idea","The text explains how education has changed."],["Firstly, … / The text begins by…","first point","Firstly, technology is now common in schools."],["In addition, … / Also, … / Moreover, …","extra point","In addition, teachers focus more on skills."],["However, … / On the other hand, …","contrast","However, traditional methods are still important."],["Finally, … / Overall, …","last point","Finally, people need to keep learning all their lives."]];
+  sc.forEach(([w,c,e])=>{const b=document.createElement("button");b.className="card";b.innerHTML="<div class='front'>"+w+"<small>"+c+"</small></div><div class='back'>"+e+"</div>";b.onclick=()=>b.classList.toggle("open");$("sumCards").appendChild(b);});
+  const p2text=norm([...p2.querySelectorAll(".para span")].map(s=>s.textContent).join(" "));
+  const tests=[
+    ["50–80 words",t=>{const n=words(t);return n>=50&&n<=80;}],
+    ["Starts with the main idea (The text… / The article… / The passage…)",t=>/^\s*the (text|article|passage)/i.test(t)],
+    ["Uses at least two linking words (Firstly, In addition, However, Finally…)",t=>(t.match(/\b(firstly|first|in addition|also|moreover|however|finally|overall)\b/gi)||[]).length>=2],
+    ["Own words: no run of 6 or more words copied from the passage",t=>{const w=norm(t).split(" ");if(w.length<6)return false;for(let i=0;i+6<=w.length;i++){if(p2text.includes(w.slice(i,i+6).join(" ")))return false;}return true;}],
+    ["Few small details: no more than two numbers",t=>(t.match(/\d+/g)||[]).length<=2],
+    ["No opinions (no “I think”)",t=>t.trim().length>0&&!/\bI (think|believe|feel)\b/i.test(t)],
+  ];
+  const ta=$("sum");
+  function chk(){const t=ta.value;$("sumWc").textContent=words(t)+" words";$("sumChecks").innerHTML="";tests.forEach(([l,f])=>{const li=document.createElement("li");li.textContent=l;if(t.trim())li.className=f(t)?"pass":"fail";$("sumChecks").appendChild(li);});}
+  ta.addEventListener("input",chk);chk();
+})();
+</script>
+</body>
+</html>

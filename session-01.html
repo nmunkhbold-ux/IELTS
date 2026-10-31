@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Session 1: Mock Test | AUM IELTS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --navy:#1F3864; --ink:#1d2433; --muted:#5a6478; --paper:#ffffff; --wash:#eef3fa; --line:#c9d5e8;
+  --mark:#ffe58a; --mark-ink:#3a2f00; --red:#b8322a; --red-wash:#fbe9e7; --green:#2e7d4f; --green-wash:#e5f3ea;
+  --btn:#1F3864; --btn-ink:#ffffff; --bar1:#1F3864; --bar2:#6F94C2; --bar3:#B4C7E7;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --navy:#9fbbe6; --ink:#e6ebf4; --muted:#a5afc2; --paper:#141a26; --wash:#1d2638; --line:#33405a;
+    --mark:#6b5a12; --mark-ink:#fff4c2; --red:#ff8a80; --red-wash:#3a1f1d; --green:#7fd19e; --green-wash:#173022;
+    --btn:#9fbbe6; --btn-ink:#0f1522; --bar1:#9fbbe6; --bar2:#5f86bb; --bar3:#3d5a85;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --navy:#9fbbe6; --ink:#e6ebf4; --muted:#a5afc2; --paper:#141a26; --wash:#1d2638; --line:#33405a;
+  --mark:#6b5a12; --mark-ink:#fff4c2; --red:#ff8a80; --red-wash:#3a1f1d; --green:#7fd19e; --green-wash:#173022;
+  --btn:#9fbbe6; --btn-ink:#0f1522; --bar1:#9fbbe6; --bar2:#5f86bb; --bar3:#3d5a85;
+  color-scheme: dark;
+}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Instrument Sans",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;font-size:17px;line-height:1.55}
+main{max-width:780px;margin:0 auto;padding:40px 20px 80px}
+h1{font-size:clamp(30px,5vw,42px);line-height:1.1;color:var(--navy);margin:0 0 10px;letter-spacing:-0.01em}
+h2{font-size:24px;color:var(--navy);margin:0 0 6px;line-height:1.2}
+h3{font-size:18px;margin:22px 0 8px;color:var(--ink)}
+p{margin:0 0 12px}
+.lead{color:var(--muted);max-width:62ch}
+.serif{font-family:"Newsreader",Georgia,"Times New Roman",serif}
+section{padding:40px 0;border-top:1px solid var(--line)}
+.step{display:flex;gap:14px;align-items:baseline;margin-bottom:8px}
+.step b{font-size:15px;color:var(--paper);background:var(--navy);border-radius:50%;width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.hint{color:var(--muted);font-size:15px}
+mark,.hl{background:var(--mark);color:var(--mark-ink);padding:0 3px;border-radius:3px}
+button{font:inherit;cursor:pointer}
+button:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--navy);outline-offset:2px}
+.btn{background:var(--btn);color:var(--btn-ink);border:0;border-radius:8px;padding:10px 16px;font-weight:600}
+.btn.ghost{background:transparent;color:var(--navy);border:1.5px solid var(--navy)}
+.prompt{background:var(--wash);border-left:5px solid var(--navy);padding:16px 18px;border-radius:0 8px 8px 0;margin:14px 0}
+.prompt small{display:block;color:var(--muted);font-size:13px;margin-bottom:4px}
+
+/* paraphrase machine */
+.machine{margin-top:22px;border:2px solid var(--navy);border-radius:14px;padding:22px}
+.sentence{font-family:"Newsreader",Georgia,serif;font-size:clamp(22px,3.4vw,28px);line-height:1.6}
+.chunk{cursor:pointer;-webkit-box-decoration-break:clone;box-decoration-break:clone;background:none;border:0;border-bottom:3px dashed var(--line);color:var(--ink);padding:0 2px;font:inherit;transition:background .2s}
+.chunk:hover{border-bottom-color:var(--navy)}
+.chunk.changed{background:var(--mark);color:var(--mark-ink);border-bottom-color:var(--mark-ink)}
+.chunk.trap{background:var(--red-wash);color:var(--red);border-bottom:3px solid var(--red);text-decoration:line-through wavy}
+.meter{display:flex;gap:6px;margin:18px 0 8px}
+.meter span{flex:1;height:10px;border-radius:5px;background:var(--line)}
+.meter span.on{background:var(--green)}
+.feedback{min-height:48px;font-size:16px}
+.ok{color:var(--green)} .bad{color:var(--red)}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px}
+
+/* tabs */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.tab{border:1.5px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;padding:7px 14px;font-size:15px}
+.tab[aria-selected="true"]{background:var(--navy);color:var(--paper);border-color:var(--navy)}
+.panel{background:var(--wash);border-radius:10px;padding:18px}
+.pair{display:grid;grid-template-columns:90px 1fr;gap:6px 12px;margin-top:10px;font-size:16px}
+.pair .k{color:var(--muted);font-size:14px;padding-top:3px}
+
+/* quiz */
+.q{border:1.5px solid var(--line);border-radius:10px;padding:16px;margin:12px 0}
+.q .serif{font-size:19px}
+.q .row button{min-width:110px}
+.q.right{border-color:var(--green);background:var(--green-wash)}
+.q.wrong{border-color:var(--red);background:var(--red-wash)}
+.why{margin-top:10px;font-size:15px}
+
+/* chart */
+.chart{border:1.5px solid var(--line);border-radius:10px;padding:16px;margin:12px 0;overflow-x:auto}
+.chart svg{display:block;max-width:100%;height:auto}
+.chart svg text{fill:var(--ink);font-family:"Instrument Sans",Arial,sans-serif}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:14px;margin-top:8px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.pie-wrap{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.pie{width:180px;height:180px;border-radius:50%;flex:none}
+
+/* vocab cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:12px}
+.card{border:1.5px solid var(--line);background:var(--paper);color:var(--ink);border-radius:10px;padding:14px;text-align:left;min-height:120px}
+.card .front{font-weight:700;color:var(--navy);font-size:18px}
+.card .front small{display:block;font-weight:500;color:var(--muted);font-size:13px}
+.card .back{display:none;font-family:"Newsreader",Georgia,serif;font-size:17px;margin-top:8px}
+.card.open{background:var(--wash)}
+.card.open .back{display:block}
+
+/* match */
+.match{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.match button{border:1.5px solid var(--line);background:var(--paper);color:var(--ink);border-radius:8px;padding:10px 12px;text-align:left;font-size:15px}
+.match button.sel{border-color:var(--navy);box-shadow:inset 0 0 0 1px var(--navy)}
+.match button.done{border-color:var(--green);background:var(--green-wash);color:var(--ink);cursor:default}
+.match button.no{animation:shake .3s}
+@keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+@media (prefers-reduced-motion:reduce){.match button.no{animation:none}.chunk{transition:none}}
+
+/* red pen */
+.pen .serif{font-size:19px;line-height:1.8}
+.pen .bit{background:none;border:0;padding:0 2px;color:var(--ink);font:inherit;border-bottom:2px dotted var(--line)}
+.pen .bit:hover{border-bottom-color:var(--red)}
+.pen .bit.hit{color:var(--red);text-decoration:line-through;border-bottom-color:transparent}
+.pen .bit.miss{opacity:.45}
+
+/* writing */
+textarea{width:100%;min-height:120px;font-family:"Newsreader",Georgia,serif;font-size:19px;line-height:1.5;padding:14px;border:1.5px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink);resize:vertical}
+.checks{list-style:none;padding:0;margin:12px 0}
+.checks li{padding:5px 0 5px 30px;position:relative;font-size:15.5px}
+.checks li::before{content:"";position:absolute;left:0;top:8px;width:18px;height:18px;border-radius:50%;border:2px solid var(--line)}
+.checks li.pass::before{background:var(--green);border-color:var(--green)}
+.checks li.fail::before{border-color:var(--red)}
+select{font:inherit;font-size:16px;padding:4px 6px;border-radius:6px;border:1.5px solid var(--navy);background:var(--paper);color:var(--ink)}
+.fill{font-family:"Newsreader",Georgia,serif;font-size:19px;line-height:2.1}
+.models{display:none;margin-top:12px}
+.models.show{display:block}
+.models p{font-family:"Newsreader",Georgia,serif;font-size:18px;border-left:3px solid var(--navy);padding-left:12px}
+details{border:1.5px solid var(--line);border-radius:10px;padding:12px 16px;margin-top:16px}
+summary{cursor:pointer;font-weight:600;color:var(--navy)}
+table{border-collapse:collapse;width:100%;font-size:15px;margin-top:10px}
+td,th{border-bottom:1px solid var(--line);padding:8px 6px;text-align:left;vertical-align:top}
+th{color:var(--muted);font-weight:600}
+.tablewrap{overflow-x:auto}
+.score{font-weight:700;color:var(--navy)}
+
+/* site chrome */
+.topbar{position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--paper)}
+.topbar nav{max-width:780px;margin:0 auto;padding:12px 20px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.topbar .brand{font-weight:700;color:var(--navy);text-decoration:none;margin-right:auto}
+.topbar a{color:var(--ink);text-decoration:none;font-weight:500}
+.topbar a[aria-current="page"]{color:var(--navy);text-decoration:underline;text-underline-offset:5px}
+a{color:var(--navy)}
+.session-list{list-style:none;padding:0;margin:20px 0}
+.session-list li{border-top:1px solid var(--line)}
+.session-list a,.session-list .soon{display:grid;grid-template-columns:56px 1fr;gap:4px 14px;padding:18px 4px;text-decoration:none;color:var(--ink)}
+.session-list a:hover .t{text-decoration:underline}
+.session-list .n{font-size:28px;font-weight:700;color:var(--navy);grid-row:span 2;line-height:1}
+.session-list .t{font-weight:600;font-size:19px}
+.session-list .d{color:var(--muted);font-size:15px}
+.session-list .soon{opacity:.55}
+.pager{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:40px;padding-top:20px;border-top:1px solid var(--line)}
+.notes section{padding:32px 0}
+.toc{columns:2;column-gap:28px;padding-left:20px;font-size:16px}
+@media (max-width:560px){.toc{columns:1}.match{grid-template-columns:1fr}}
+.sort{display:grid;gap:10px;margin-top:12px}
+.fact{display:flex;gap:10px;align-items:center;flex-wrap:wrap;border:1.5px solid var(--line);border-radius:10px;padding:10px 12px}
+.fact span{flex:1 1 100%}
+.fact.right{border-color:var(--green);background:var(--green-wash)}
+.fact.wrong{border-color:var(--red);background:var(--red-wash)}
+.wc{font-size:14px;color:var(--muted);margin-top:4px}
+
+/* ---------- richer site pages ---------- */
+.hero{padding:8px 0 28px}
+.hero .lead{margin-bottom:22px}
+.demo{border:2px solid var(--navy);border-radius:14px;padding:20px 22px;margin-top:6px}
+.demo small{display:block;color:var(--muted);font-size:13px;margin-bottom:6px}
+.demo .sentence{font-size:clamp(20px,3vw,25px)}
+.demo .row{margin-top:14px}
+.badge{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:var(--navy);color:var(--paper);font-weight:700;font-size:19px;flex:none}
+.sgrid{display:grid;gap:14px;margin:18px 0}
+.scard{display:flex;gap:16px;align-items:flex-start;border:1.5px solid var(--line);border-radius:12px;padding:18px;text-decoration:none;color:var(--ink);background:var(--paper)}
+a.scard:hover{border-color:var(--navy);box-shadow:inset 0 0 0 1px var(--navy)}
+.scard .t{font-weight:700;font-size:19px;color:var(--navy);display:block}
+.scard .d{color:var(--muted);font-size:15px;display:block;margin-top:2px}
+.scard .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.tag{font-size:13px;border-radius:999px;padding:2px 10px;background:var(--wash);color:var(--ink)}
+.tag.new{background:var(--mark);color:var(--mark-ink)}
+.tag.done{background:var(--green-wash);color:var(--green)}
+.scard.soon{border-style:dashed;opacity:.6}
+.scard.soon .badge{background:var(--line);color:var(--muted)}
+.scard .body{flex:1}
+.mark-done{margin-left:auto;align-self:center;border:1.5px solid var(--line);background:var(--paper);color:var(--muted);border-radius:999px;padding:5px 12px;font-size:14px;white-space:nowrap}
+.mark-done[aria-pressed="true"]{border-color:var(--green);color:var(--green);background:var(--green-wash)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:10px}
+@media (max-width:620px){.split{grid-template-columns:1fr}.scard{flex-wrap:wrap}.mark-done{margin-left:60px}}
+.panel-link{display:block;background:var(--wash);border-radius:12px;padding:18px;text-decoration:none;color:var(--ink);border-left:5px solid var(--navy)}
+.panel-link strong{color:var(--navy);font-size:18px;display:block;margin-bottom:4px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 4px;padding:0;list-style:none}
+.chips a{display:inline-block;border:1.5px solid var(--line);border-radius:999px;padding:6px 13px;font-size:15px;text-decoration:none;color:var(--ink)}
+.chips a:hover{border-color:var(--navy);color:var(--navy)}
+.example{background:var(--wash);border-left:4px solid var(--navy);border-radius:0 8px 8px 0;padding:12px 16px;margin:12px 0;font-family:"Newsreader",Georgia,serif;font-size:18px}
+.example small{display:block;font-family:"Instrument Sans",system-ui,sans-serif;color:var(--muted);font-size:13px;margin-bottom:2px}
+.wr{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+.wr div{border-radius:8px;padding:10px 14px;font-family:"Newsreader",Georgia,serif;font-size:17px}
+.wr .w{background:var(--red-wash);color:var(--ink);border:1.5px solid var(--red)}
+.wr .w::before{content:"Not this";display:block;font-family:"Instrument Sans",system-ui,sans-serif;font-size:12.5px;color:var(--red);font-weight:600;margin-bottom:2px}
+.wr .r{background:var(--green-wash);color:var(--ink);border:1.5px solid var(--green)}
+.wr .r::before{content:"Write this";display:block;font-family:"Instrument Sans",system-ui,sans-serif;font-size:12.5px;color:var(--green);font-weight:600;margin-bottom:2px}
+@media (max-width:560px){.wr{grid-template-columns:1fr}}
+.structure{display:grid;gap:10px;margin-top:12px}
+.structure .p{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start;border:1.5px solid var(--line);border-radius:12px;padding:14px}
+.structure .p strong{color:var(--navy)}
+.structure .p .serif{display:block;margin-top:6px;font-size:17px}
+.remember{background:var(--mark);color:var(--mark-ink);border-radius:10px;padding:12px 16px;margin:14px 0}
+.cards.small .card{min-height:0}
+.notes .step h2{margin:0}
+
+.chunk:focus-visible{outline:3px solid var(--navy);outline-offset:2px}
+
+</style><style>
+.para{display:grid;grid-template-columns:28px 1fr;gap:10px;margin:0 0 14px;font-family:"Newsreader",Georgia,serif;font-size:18px;line-height:1.6}
+.para b{font-family:"Instrument Sans",system-ui,sans-serif;color:var(--navy)}
+.passage{border:1.5px solid var(--line);border-radius:12px;padding:20px;margin:14px 0}
+.passage h3{margin-top:0;font-family:"Newsreader",Georgia,serif;font-size:22px;color:var(--navy)}
+.sent{cursor:pointer;border-radius:3px;padding:1px 0;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.sent:hover{background:var(--wash)}
+.sent.yes{background:var(--green-wash);color:var(--green);font-weight:500}
+.sent.no{background:var(--red-wash);color:var(--red);text-decoration:line-through}
+.sent:focus-visible{outline:3px solid var(--navy);outline-offset:1px}
+.timer{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:12px 0}
+.clock{font-variant-numeric:tabular-nums;font-weight:700;font-size:28px;color:var(--navy);min-width:4ch}
+.blurred{filter:blur(6px);user-select:none;pointer-events:none}
+@media (prefers-reduced-motion:no-preference){.passage-body{transition:filter .3s}}
+.qrow{display:grid;grid-template-columns:28px 1fr;gap:6px 10px;align-items:start;margin:12px 0}
+.qrow .num{font-weight:700;color:var(--navy)}
+.ans{font:inherit;font-size:17px;padding:5px 8px;border:1.5px solid var(--line);border-radius:6px;background:var(--paper);color:var(--ink);width:min(260px,100%)}
+.ans.good{border-color:var(--green);background:var(--green-wash)}
+.ans.badans{border-color:var(--red);background:var(--red-wash)}
+.small-fb{font-size:14.5px;margin-top:3px}
+.inline-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+</style><style>
+.part{margin:48px 0 0;padding:14px 18px;background:var(--navy);color:var(--paper);border-radius:12px;font-size:22px;scroll-margin-top:70px}
+h2[id],section[id]{scroll-margin-top:70px}
+</style>
+</head>
+<body>
+<header class="topbar"><nav><a class="brand" href="index.html">AUM IELTS</a><a href="index.html">Sessions</a><a href="notes.html">Writing notes</a><a href="reading-notes.html">Reading notes</a></nav></header>
+<main>
+  <p class="hint">Session 1</p>
+  <h1>Mock test: where are you now?</h1>
+  <p class="lead">This first session shows your starting level. Do one reading passage and one Writing Task 1 report under exam conditions, then check your answers and learn the method for the hardest reading question type: True, False or Not Given.</p>
+  <ul class="chips"><li><a href="#part-r">Reading test</a></li><li><a href="#part-m">How to answer T/F/NG</a></li><li><a href="#part-w">Writing test</a></li><li><a href="#part-h">Homework</a></li></ul>
+<div id="part-r"></div>
+  <section aria-labelledby="st1">
+    <div class="step"><b>1</b><h2 id="st1">Part 1: Reading (20 minutes)</h2></div>
+    <p>Press start. The passage appears and the clock counts down. Answer Questions 1–8 before time runs out.</p>
+    <div class="timer"><button class="btn" id="rStart">Start 20 minutes</button><span class="clock" id="rClock" aria-live="off">20:00</span></div>
+    <div class="passage"><div class="passage-body blurred" id="pyr">
+      <h3>How the Pyramids Were Built</h3>
+      <div class="para"><b>A</b><span>The Great Pyramid at Giza is the most famous, but it is only one of more than a hundred pyramids that survive in Egypt. How such enormous monuments were built more than 4,500 years ago, without modern machines, has puzzled visitors for centuries. Archaeologists now understand much of the process, although some questions remain open.</span></div>
+      <div class="para"><b>B</b><span>The stone blocks were cut in quarries and then moved to the building site. Much of the ordinary limestone came from quarries close by, but finer stone, including the granite used inside the Great Pyramid, was transported hundreds of kilometres, usually by boat along the River Nile. Over land, the blocks were dragged on wooden sledges, since wheels would simply have sunk into the soft sand.</span></div>
+      <div class="para"><b>C</b><span>An ancient wall painting shows a worker pouring water onto the sand in front of a sledge carrying a huge statue. For a long time, this was thought to be a religious ritual. Modern experiments, however, have shown that sand with the right amount of water becomes firmer, so that much less force is needed to pull a heavy load across it. Teams of workers hauled the sledges with ropes, and oxen may sometimes have helped.</span></div>
+      <div class="para"><b>D</b><span>Once the blocks reached the site, they were probably raised using ramps made of mud brick and rubble. Exactly how these ramps were arranged, whether straight, zigzagging or spiralling around the pyramid, is still debated by experts.</span></div>
+      <div class="para"><b>E</b><span>A popular belief is that the pyramids were built by slaves. Excavations near Giza, however, have uncovered the villages where the builders lived and the cemeteries where they were buried close to the pyramids, with bread and beer for the afterlife. Such honours would hardly have been given to slaves, and most experts now believe the builders were organised teams of respected workers.</span></div>
+      <div class="para"><b>F</b><span>Nor were the pyramids perfected at the first attempt. The earliest, the Step Pyramid at Saqqara, designed by the architect Imhotep, consists of six stone platforms placed one on top of another. Under King Sneferu, builders tried to create smooth sides: one pyramid had to change its angle halfway up, giving it a bent shape, before the Red Pyramid finally succeeded. Many people still imagine that the pyramids were built with the help of mysterious forces. The real explanation is less magical but more impressive: skill, planning and generations of trial and error.</span></div>
+    </div></div>
+    <p class="hint">Original AUM practice passage.</p>
+    <div class="prompt"><small>Questions 1–8</small>Do the following statements agree with the information in the passage? Choose <strong>TRUE</strong>, <strong>FALSE</strong> or <strong>NOT GIVEN</strong>.</div>
+    <div id="tf"></div>
+    <p class="feedback" id="tfFb"></p>
+  </section>
+  <section aria-labelledby="st2">
+    <div class="step"><b>2</b><h2 id="st2">Learn from the passage: key vocabulary</h2></div>
+    <p>These words often appear in IELTS passages. Click each card for the meaning and an example.</p>
+    <div class="cards small" id="vocab"></div>
+    <div class="remember">The two hardest answers are usually FALSE and NOT GIVEN. Ask: <strong>does the passage say the opposite</strong> (FALSE), or <strong>does it say nothing</strong> (NOT GIVEN)?</div>
+  </section>
+<div id="part-m"></div>
+  <section aria-labelledby="st3">
+    <div class="step"><b>3</b><h2 id="st3">The three answers</h2></div>
+    <div class="structure">
+      <div class="p"><span class="badge">T</span><div><strong>TRUE</strong>: the passage says the same thing, usually in different words.<span class="serif">Passage: “His father worked at a mill.” Statement: “His father was a miller.”</span></div></div>
+      <div class="p"><span class="badge">F</span><div><strong>FALSE</strong>: the passage says the <mark>opposite</mark>.<span class="serif">Passage: “His father worked at a mill.” Statement: “His father was an architect.”</span></div></div>
+      <div class="p"><span class="badge">NG</span><div><strong>NOT GIVEN</strong>: the passage says <mark>nothing</mark> about it. You cannot say true or false.<span class="serif">Passage: “His father worked at a mill.” Statement: “His father was rich.”</span></div></div>
+    </div>
+  </section>
+  <section aria-labelledby="st4">
+    <div class="step"><b>4</b><h2 id="st4">A four-step method</h2></div>
+    <div class="structure">
+      <div class="p"><span class="badge">1</span><div><strong>Underline keywords</strong> in the statement, especially names, numbers and dates that are easy to scan for.</div></div>
+      <div class="p"><span class="badge">2</span><div><strong>Find the place</strong> in the passage. Answers follow the order of the passage.</div></div>
+      <div class="p"><span class="badge">3</span><div><strong>Compare carefully</strong>. Check small words: <mark>only, all, never, always, first, most, some</mark>. One word can change the answer.</div></div>
+      <div class="p"><span class="badge">4</span><div><strong>Decide</strong>. Same meaning: TRUE. Opposite meaning: FALSE. Missing information: NOT GIVEN.</div></div>
+    </div>
+    <h3>Warm-up: spot the trap word</h3>
+    <p>Passage sentence: <span class="serif">“Teams of workers hauled the sledges, and oxen may sometimes have helped.”</span></p>
+    <div id="warm"></div>
+  </section>
+<div id="part-w"></div>
+  <section aria-labelledby="st5">
+    <div class="step"><b>5</b><h2 id="st5">Part 2: Writing Task 1 (20 minutes)</h2></div>
+    <div class="prompt"><small>Task</small><span class="serif">The pie charts compare ways of accessing the news in Canada and Australia. Summarise the information by selecting and reporting the main features, and make comparisons where relevant. Write at least 150 words.</span></div>
+    <div class="chart">
+      <div class="pie-wrap" style="justify-content:space-around">
+        <figure style="margin:0;text-align:center"><div class="pie" role="img" aria-label="Canada: TV 40%, Online 36%, Print 14%, Radio 7%, Not specified 3%" style="background:conic-gradient(var(--bar1) 0 40%, var(--bar2) 40% 76%, var(--bar3) 76% 90%, #8a9bb5 90% 97%, var(--mark) 97% 100%)"></div><figcaption style="margin-top:8px;font-weight:600">Canada</figcaption></figure>
+        <figure style="margin:0;text-align:center"><div class="pie" role="img" aria-label="Australia: TV 37%, Online 52%, Print 7%, Radio 2%, Not specified 2%" style="background:conic-gradient(var(--bar1) 0 37%, var(--bar2) 37% 89%, var(--bar3) 89% 96%, #8a9bb5 96% 98%, var(--mark) 98% 100%)"></div><figcaption style="margin-top:8px;font-weight:600">Australia</figcaption></figure>
+      </div>
+      <div class="tablewrap" style="margin-top:14px"><table>
+        <tr><th>Source</th><th>Canada</th><th>Australia</th></tr>
+        <tr><td><i style="display:inline-block;width:12px;height:12px;background:var(--bar1);border-radius:2px"></i> TV</td><td>40%</td><td>37%</td></tr>
+        <tr><td><i style="display:inline-block;width:12px;height:12px;background:var(--bar2);border-radius:2px"></i> Online</td><td>36%</td><td>52%</td></tr>
+        <tr><td><i style="display:inline-block;width:12px;height:12px;background:var(--bar3);border-radius:2px"></i> Print</td><td>14%</td><td>7%</td></tr>
+        <tr><td><i style="display:inline-block;width:12px;height:12px;background:#8a9bb5;border-radius:2px"></i> Radio</td><td>7%</td><td>2%</td></tr>
+        <tr><td><i style="display:inline-block;width:12px;height:12px;background:var(--mark);border-radius:2px"></i> Not specified</td><td>3%</td><td>2%</td></tr>
+      </table></div>
+    </div>
+    <div class="timer"><button class="btn" id="wStart">Start 20 minutes</button><span class="clock" id="wClock" aria-live="off">20:00</span></div>
+    <label for="essay" class="hint">Your report</label>
+    <textarea id="essay" style="min-height:320px" placeholder="The pie charts compare …"></textarea>
+    <p class="wc" id="wc">0 words</p>
+    <ul class="checks" id="checks"></ul>
+  </section>
+  <section aria-labelledby="st6">
+    <div class="step"><b>6</b><h2 id="st6">After writing: did you find the main features?</h2></div>
+    <p>A strong report mentions these. Tick the ones you included.</p>
+    <ul class="checks" id="features"></ul>
+    <h3>Useful language from the models</h3>
+    <div class="cards small" id="lang"></div>
+  </section>
+  <section aria-labelledby="st7">
+    <div class="step"><b>7</b><h2 id="st7">Model answers</h2></div>
+    <p>Open these only after you have written your own report. Compare the overview first: it matters most.</p>
+    <details>
+      <summary>Simpler model (about 165 words)</summary>
+      <p class="serif">The two pie charts show how people in Canada and Australia get their news from five different sources: TV, the internet, newspapers, radio and other sources.</p>
+      <p class="serif">Overall, TV and online news are the most popular sources in both countries. However, TV is the main source in Canada, while online news is the main source in Australia.</p>
+      <p class="serif">In Canada, TV is the most popular source of news, at 40%. Online news comes second with 36%. Newspapers account for 14%, which is twice the figure for radio (7%). The remaining 3% comes from other sources.</p>
+      <p class="serif">In Australia, more than half of people (52%) use online news, which is much higher than in Canada. TV comes second at 37%, slightly lower than the Canadian figure. Only 7% read newspapers, half the Canadian figure, and just 2% listen to the radio. Another 2% use other sources.</p>
+    </details>
+    <details>
+      <summary>Higher-level model (about 185 words)</summary>
+      <p class="serif">The two pie charts compare the proportions of people in Canada and Australia who obtain their news from five different sources: television, online platforms, print media, radio and unspecified sources.</p>
+      <p class="serif">Overall, television and online platforms are the dominant sources of news in both countries. However, while television is slightly more popular than online media in Canada, the opposite is true in Australia, where online platforms account for more than half of the total. Radio and print media play a minor role in both nations.</p>
+      <p class="serif">In Canada, television is the leading source, accounting for 40% of the total, closely followed by online platforms at 36%. Print media represents 14%, twice the proportion who rely on radio (7%), while the remaining 3% comes from unspecified sources.</p>
+      <p class="serif">In Australia, by contrast, online platforms dominate, at 52%, which is 16 percentage points higher than in Canada. Television ranks second at 37%, slightly below the Canadian figure. Print media accounts for just 7%, half the Canadian proportion, and radio and unspecified sources each make up only 2%.</p>
+    </details>
+    <div class="remember">Notice that neither model ends with “In conclusion”. In Task 1, the overview does the job of a conclusion.</div>
+  </section>
+<div id="part-h"></div>
+  <section aria-labelledby="st8">
+    <div class="step"><b>8</b><h2 id="st8">Homework: practice passage (20 minutes)</h2></div>
+    <div class="timer"><button class="btn" id="pStart">Start 20 minutes</button><span class="clock" id="pClock" aria-live="off">20:00</span></div>
+    <div class="passage"><div class="passage-body blurred" id="pal">
+      <h3>Andrea Palladio: From Stonemason to Master Architect</h3>
+      <div class="para"><b>A</b><span>Andrea Palladio, born in Padua in 1508, is often described as the most influential architect in Western history. His work inspired so many later buildings that a whole style, Palladian architecture, is named after him. Yet he came from a modest background: his father worked at a mill, grinding grain.</span></div>
+      <div class="para"><b>B</b><span>At thirteen, the boy was apprenticed to a stonemason in Padua, and a few years later he moved to the nearby city of Vicenza. There he joined a workshop of stonecutters, carving decorative details such as columns, doorways and fireplaces. His skill with stone gave him a practical understanding of building that many architects of his time lacked.</span></div>
+      <div class="para"><b>C</b><span>His life changed when he met Gian Giorgio Trissino, a wealthy scholar who recognised his talent. Trissino arranged his education in mathematics and classical literature, gave him the name “Palladio”, and took him to Rome, where he spent months measuring and drawing the ruins of ancient temples and other buildings.</span></div>
+      <div class="para"><b>D</b><span>Back in the Veneto region, Palladio designed country villas for landowners who wanted houses that were also working farms. Many of these villas have a portico at the front: a porch with columns, topped by a triangular roof called a pediment, an idea borrowed from ancient temples. The best known, the Villa Rotonda near Vicenza, has a portico on each of its four sides.</span></div>
+      <div class="para"><b>E</b><span>In Venice, he designed two famous churches, San Giorgio Maggiore and Il Redentore. Both stand across the water from the historic centre of the city, so their white fronts can be admired from a distance.</span></div>
+      <div class="para"><b>F</b><span>Palladio’s influence spread mainly through a book. In 1570 he published “The Four Books of Architecture”, which explained his ideas with clear illustrations. Decades after Palladio’s death in 1580, the English architect Inigo Jones travelled to Italy, studied his buildings and drawings, and brought the style to England. In the eighteenth century, Thomas Jefferson, who later became president of the United States, used Palladian ideas when he designed his own house, Monticello.</span></div>
+      <div class="para"><b>G</b><span>Some critics point out that Palladio worked mostly for the rich and powerful. That may be true, but it hardly reduces his achievement. Five centuries later, the calm balance and clear proportions of his buildings still give visitors a feeling of peace, and in my view no architect has been more widely imitated.</span></div>
+    </div></div>
+    <p class="hint">Original AUM practice passage.</p>
+
+    <div class="prompt"><small>Questions 1–7</small>Do the following statements agree with the information in the passage? Choose <strong>TRUE</strong>, <strong>FALSE</strong> or <strong>NOT GIVEN</strong>.</div>
+    <div id="hwtf"></div>
+    <p class="feedback" id="hwtfFb"></p>
+
+    <div class="prompt"><small>Questions 8–13</small>Answer the questions. Choose <strong>NO MORE THAN THREE WORDS</strong> from the passage for each answer.</div>
+    <div id="hwsa"></div>
+    <button class="btn" id="hwsaBtn">Check answers</button>
+    <p class="feedback" id="hwsaFb"></p>
+  </section>
+  <section aria-labelledby="st9">
+    <div class="step"><b>9</b><h2 id="st9">Short answers: how marks are lost</h2></div>
+    <div class="wr"><div class="w">He was training to be a stonemason in Padua.</div><div class="r">stonemason</div></div>
+    <div class="wr"><div class="w">Gian Giorgio Trisino</div><div class="r">Gian Giorgio Trissino (spelling must be exact)</div></div>
+    <div class="wr"><div class="w">the calm balance and clear proportions</div><div class="r">peace (keep to the word limit)</div></div>
+    <div class="remember">Copy words exactly from the passage. Do not change the word form, do not add extra words, and check the spelling of names letter by letter.</div>
+  </section>
+  <section aria-labelledby="st10">
+    <div class="step"><b>10</b><h2 id="st10">Homework</h2></div>
+    <ul>
+      <li>Complete the practice passage above in 20 minutes, then check your answers.</li>
+      <li>Rewrite your Writing Task 1 report using the feedback and at least four expressions from the useful-language cards.</li>
+      <li>For every reading question you got wrong, copy the evidence sentence and explain your mistake in one sentence.</li>
+    </ul>
+  </section>
+  <section aria-labelledby="st11">
+    <div class="step"><b>11</b><h2 id="st11">Useful websites for extra practice</h2></div>
+    <p>Free practice tests and lessons. Use them after you finish this session’s homework.</p>
+    <div class="split">
+      <a class="panel-link" href="https://ieltsliz.com/" target="_blank" rel="noopener"><strong>IELTS Liz</strong>Lessons and tips for every part of the test.</a>
+      <a class="panel-link" href="https://ielts-up.com/reading/ielts-reading-practice.html" target="_blank" rel="noopener"><strong>IELTS-up</strong>Reading practice passages.</a>
+      <a class="panel-link" href="https://engnovate.com/ielts-reading-tests/" target="_blank" rel="noopener"><strong>Engnovate</strong>Full reading tests with answers.</a>
+      <a class="panel-link" href="https://www.ieltsbuddy.com/paragraph-headings.html" target="_blank" rel="noopener"><strong>IELTS Buddy</strong>Matching headings practice.</a>
+      <a class="panel-link" href="https://ieltstrainingonline.com/" target="_blank" rel="noopener"><strong>IELTS Training Online</strong>Practice tests for all skills.</a>
+      <a class="panel-link" href="https://www.ielts-writing.info/EXAM/" target="_blank" rel="noopener"><strong>IELTS Writing Info</strong>Writing tasks with sample answers.</a>
+    </div>
+  </section>
+  <nav class="pager"><a href="index.html">All sessions</a><a href="session-02.html">Next: Session 2, Writing Task 1</a></nav>
+</main>
+<script>
+const $ = id => document.getElementById(id);
+const norm = t => t.toLowerCase().replace(/[’']/g, "'").replace(/[^a-z0-9,' -]/g, " ").replace(/\s+/g, " ").trim();
+const words = t => t.trim().split(/\s+/).filter(Boolean).length;
+const esc = t => String(t);
+
+function score(id, ok, total, good, bad) {
+  const el = $(id); if (!el) return;
+  el.innerHTML = "<span class='" + (ok === total ? "ok" : "bad") + "'><strong>" + ok + " / " + total + ".</strong> " + (ok === total ? (good || "All correct.") : (bad || "")) + "</span>";
+}
+
+// Multiple choice. items: [question, [options], correctIndex, explanation]
+function mcq(id, items, opt) {
+  opt = opt || {}; const box = $(id); let done = 0, right = 0;
+  items.forEach(([q, opts, ans, why], qi) => {
+    const d = document.createElement("div"); d.className = "q";
+    const num = (opt.start || 1) + qi;
+    d.innerHTML = (q ? "<p><strong>" + num + ".</strong> " + q + "</p>" : "") + "<div></div><p class='why' hidden></p>";
+    const o = d.children[q ? 1 : 0], w = d.children[q ? 2 : 1];
+    opts.forEach((t, i) => {
+      const b = document.createElement("button"); b.className = "btn ghost";
+      b.style.cssText = "display:block;width:100%;text-align:left;margin:8px 0;font-weight:500";
+      b.textContent = "ABCDEFG"[i] + ")  " + t;
+      b.onclick = () => {
+        if (d.dataset.done) return; d.dataset.done = 1; done++;
+        const ok = i === ans; if (ok) right++;
+        d.classList.add(ok ? "right" : "wrong"); o.children[ans].style.borderColor = "var(--green)";
+        w.hidden = false; w.innerHTML = "<strong class='" + (ok ? "ok" : "bad") + "'>" + (ok ? "Correct." : "Not quite.") + "</strong> " + why;
+        if (opt.fb && done === items.length) score(opt.fb, right, items.length, opt.good, opt.bad);
+      };
+      o.appendChild(b);
+    });
+    box.appendChild(d);
+  });
+}
+
+// True/False/Not Given or Yes/No/Not Given. items: [statement, answer, explanation]
+function tfng(id, items, opt) {
+  opt = opt || {}; const labels = opt.labels || ["TRUE", "FALSE", "NOT GIVEN"];
+  const box = $(id); let done = 0, right = 0;
+  items.forEach(([s, ans, why], i) => {
+    const d = document.createElement("div"); d.className = "q";
+    d.innerHTML = "<p><strong>" + ((opt.start || 1) + i) + ".</strong> " + s + "</p><div class='inline-row'></div><p class='why' hidden></p>";
+    const row = d.children[1], w = d.children[2];
+    labels.forEach(l => {
+      const b = document.createElement("button"); b.className = "btn ghost"; b.textContent = l;
+      b.onclick = () => {
+        if (d.dataset.done) return; d.dataset.done = 1; done++;
+        const ok = l === ans; if (ok) right++;
+        d.classList.add(ok ? "right" : "wrong");
+        [...row.children].forEach(x => { if (x.textContent === ans) x.style.borderColor = "var(--green)"; });
+        w.hidden = false;
+        w.innerHTML = "<strong class='" + (ok ? "ok" : "bad") + "'>" + (ok ? "Correct: " : "The answer is ") + ans + ".</strong> " + why;
+        if (done === items.length && opt.fb) score(opt.fb, right, items.length, opt.good, opt.bad);
+      };
+      row.appendChild(b);
+    });
+    box.appendChild(d);
+  });
+}
+
+// Gap fill / short answer. items: [text with ___ (or a question), [accepted], evidence]
+function gaps(id, btnId, fbId, max, items, opt) {
+  opt = opt || {}; const box = $(id);
+  items.forEach(([q], i) => {
+    const d = document.createElement("div"); d.className = "qrow";
+    const n = (opt.start || 1) + i;
+    if (q.includes("___")) {
+      const p = q.split("___");
+      d.innerHTML = "<span class='num'>" + n + "</span><div><span class='serif' style='font-size:18px'>" + p[0] + "</span><input class='ans' aria-label='Answer " + n + "' data-i='" + i + "'><span class='serif' style='font-size:18px'>" + p[1] + "</span><div class='small-fb'></div></div>";
+    } else {
+      d.innerHTML = "<span class='num'>" + n + "</span><div><div>" + q + "</div><input class='ans' aria-label='Answer " + n + "' data-i='" + i + "'><div class='small-fb'></div></div>";
+    }
+    box.appendChild(d);
+  });
+  $(btnId).onclick = () => {
+    let ok = 0;
+    box.querySelectorAll("input").forEach(inp => {
+      const [q, acc, ev] = items[inp.dataset.i]; const v = norm(inp.value).replace(/^the /, "");
+      const fb = inp.parentElement.querySelector(".small-fb");
+      if (!v) { inp.className = "ans"; fb.textContent = ""; return; }
+      if (words(inp.value) > max) { inp.className = "ans badans"; fb.innerHTML = "<span class='bad'>Too many words: the limit is " + max + ". In the exam this is marked wrong.</span>"; return; }
+      const g = acc.some(a => norm(a).replace(/^the /, "") === v); if (g) ok++;
+      inp.className = "ans " + (g ? "good" : "badans");
+      fb.innerHTML = g ? "<span class='ok'>Evidence: " + ev + "</span>" : "<span class='bad'>Answer: <strong>" + acc[0] + "</strong>. Evidence: " + ev + "</span>";
+    });
+    score(fbId, ok, items.length, opt.good || "All correct. Spelling counts, so check every letter.", opt.bad || "Copy words exactly from the passage and keep to the word limit.");
+  };
+}
+
+// Flip cards. items: [front, small, back]
+function cards(id, items) {
+  items.forEach(([f, s, b]) => {
+    const c = document.createElement("button"); c.className = "card"; c.setAttribute("aria-expanded", "false");
+    c.innerHTML = "<div class='front'>" + f + (s ? "<small>" + s + "</small>" : "") + "</div><div class='back'>" + b + "</div>";
+    c.onclick = () => { c.classList.toggle("open"); c.setAttribute("aria-expanded", c.classList.contains("open")); };
+    $(id).appendChild(c);
+  });
+}
+
+// Sorting. cats: [label], items: [text, correctLabel, note]
+function sorter(id, fbId, cats, items, opt) {
+  opt = opt || {}; let done = 0, right = 0;
+  items.forEach(([t, a, note]) => {
+    const d = document.createElement("div"); d.className = "fact"; d.innerHTML = "<span class='serif'>" + t + "</span>";
+    cats.forEach(c => {
+      const b = document.createElement("button"); b.className = "btn ghost"; b.textContent = c;
+      b.onclick = () => {
+        if (d.dataset.done) return; d.dataset.done = 1; done++;
+        const ok = c === a; if (ok) right++; d.classList.add(ok ? "right" : "wrong");
+        const n = document.createElement("span"); n.className = "small-fb " + (ok ? "ok" : "bad"); n.style.flexBasis = "100%";
+        n.textContent = (ok ? "" : "Answer: " + a + ". ") + (note || ""); if (n.textContent) d.appendChild(n);
+        if (done === items.length) score(fbId, right, items.length, opt.good, opt.bad);
+      };
+      d.appendChild(b);
+    });
+    $(id).appendChild(d);
+  });
+}
+
+// Click the topic sentence. paras: [[sentences], correctIndex, explanation]
+function topicPick(id, paras) {
+  paras.forEach(([s, ans, why], pi) => {
+    const d = document.createElement("div"); d.className = "q";
+    d.innerHTML = "<p class='hint' style='margin:0 0 4px'>Paragraph " + "ABCDEFG"[pi] + "</p>";
+    const p = document.createElement("p"); p.className = "serif"; p.style.cssText = "font-size:18px;line-height:1.7";
+    const w = document.createElement("p"); w.className = "why"; w.hidden = true;
+    s.forEach((t, i) => {
+      const sp = document.createElement("span"); sp.className = "sent"; sp.textContent = t; sp.tabIndex = 0; sp.setAttribute("role", "button");
+      const go = () => {
+        if (d.dataset.done) return;
+        if (i === ans) { d.dataset.done = 1; sp.classList.add("yes"); d.classList.add("right"); w.hidden = false; w.innerHTML = "<strong class='ok'>Correct.</strong> " + why; }
+        else { sp.classList.add("no"); w.hidden = false; w.innerHTML = "<span class='bad'>That is a supporting detail. Try again.</span>"; }
+      };
+      sp.onclick = go; sp.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } };
+      p.appendChild(sp); p.appendChild(document.createTextNode(" "));
+    });
+    d.appendChild(p); d.appendChild(w); $(id).appendChild(d);
+  });
+}
+
+// Dropdown matching. rows: [label, correctValue], options: [[value, text]]
+function dropMatch(id, btnId, fbId, rows, options, opt) {
+  opt = opt || {};
+  rows.forEach(([label], i) => {
+    const d = document.createElement("div"); d.className = "qrow";
+    d.innerHTML = "<span class='num'>" + ((opt.start || 1) + i) + "</span><div><div class='serif' style='font-size:18px'>" + label + "</div><select data-i='" + i + "' style='margin-top:6px;max-width:100%'><option value=''>Choose…</option>" + options.map(([v, t]) => "<option value='" + v + "'>" + t + "</option>").join("") + "</select><div class='small-fb'></div></div>";
+    $(id).appendChild(d);
+  });
+  $(btnId).onclick = () => {
+    let ok = 0;
+    $(id).querySelectorAll("select").forEach(s => {
+      const row = rows[s.dataset.i]; const g = s.value === row[1]; if (g) ok++;
+      s.style.borderColor = g ? "var(--green)" : "var(--red)";
+      s.nextElementSibling.innerHTML = s.value ? (g ? (row[2] ? "<span class='ok'>" + row[2] + "</span>" : "") : "<span class='bad'>Not this one.</span>") : "";
+    });
+    score(fbId, ok, rows.length, opt.good, opt.bad);
+  };
+}
+
+// Countdown timer that reveals a blurred element
+function countdown(btnId, clockId, seconds, revealId, onEnd) {
+  let t = null, left = seconds;
+  const show = s => Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0");
+  $(clockId).textContent = show(seconds);
+  $(btnId).onclick = () => {
+    if (t) return; if (revealId) $(revealId).classList.remove("blurred"); $(btnId).disabled = true;
+    t = setInterval(() => { left--; $(clockId).textContent = show(Math.max(left, 0)); if (left <= 0) { clearInterval(t); $(clockId).textContent = "Time!"; if (onEnd) onEnd(); } }, 1000);
+  };
+  return { stop: () => clearInterval(t), elapsed: () => seconds - left };
+}
+
+// Writing box with live checklist. tests: [label, fn(text)]
+function writeBox(taId, wcId, listId, tests) {
+  const ta = $(taId);
+  const run = () => {
+    const t = ta.value; const n = words(t); $(wcId).textContent = n + " word" + (n === 1 ? "" : "s");
+    $(listId).innerHTML = "";
+    tests.forEach(([l, f]) => { const li = document.createElement("li"); li.textContent = l; if (t.trim()) li.className = f(t) ? "pass" : "fail"; $(listId).appendChild(li); });
+  };
+  ta.addEventListener("input", run); run();
+}
+
+
+
+countdown("rStart", "rClock", 1200, "pyr");
+tfng("tf", [
+  ["Scientists have fully explained every part of how the pyramids were built.", "FALSE", "Paragraph A: “some questions remain open”, and D: ramp design “is still debated”."],
+  ["Water may have been used to make it easier to move heavy loads over sand.", "TRUE", "Paragraph C: wet sand means “much less force is needed to pull a heavy load”."],
+  ["Only animals were used to pull the sledges.", "FALSE", "Paragraph C: “Teams of workers hauled the sledges… oxen may sometimes have helped.” Watch the word “only”."],
+  ["Boats were used to carry some of the building stone.", "TRUE", "Paragraph B: finer stone was transported “usually by boat along the River Nile”."],
+  ["The pyramid builders received their wages in coins.", "NOT GIVEN", "Paragraph E describes their villages and burials, but says nothing about how they were paid."],
+  ["Some people believe that supernatural forces helped to build the pyramids.", "TRUE", "Paragraph F: “Many people still imagine… the help of mysterious forces.” The question is about what people believe, not what is true."],
+  ["The Step Pyramid was the first pyramid with smooth sides.", "FALSE", "Paragraph F: the Step Pyramid has six platforms; smooth sides were first achieved later, with the Red Pyramid."],
+  ["The design of the pyramids improved through experiments and mistakes.", "TRUE", "Paragraph F: the bent pyramid, then success; “generations of trial and error”."],
+], { fb: "tfFb", good: "Excellent work.", bad: "Read each explanation. Then find the evidence sentence in the passage yourself." });
+cards("vocab", [
+  ["puzzle (v.)", "verb", "To confuse someone because it is hard to understand. <em>The pyramids have puzzled visitors for centuries.</em>"],
+  ["transport (v.)", "verb", "To move goods from one place to another. <em>The granite was transported by boat.</em>"],
+  ["haul", "verb", "To pull something heavy. <em>Workers hauled the sledges with ropes.</em>"],
+  ["debate (v.)", "verb", "To discuss something people disagree about. <em>The design of the ramps is still debated.</em>"],
+  ["excavation", "noun", "Digging to find ancient objects or buildings. <em>Excavations uncovered the builders’ villages.</em>"],
+  ["trial and error", "phrase", "Trying different methods and learning from mistakes. <em>The pyramids were perfected by trial and error.</em>"],
+  ["debunk", "verb", "To show that a belief is false. <em>The idea that slaves built the pyramids has been debunked.</em>"],
+  ["unrivalled / unsurpassed", "adjective", "Better than anything else; never matched. <em>Their building work remains unrivalled.</em>"],
+]);
+writeBox("essay", "wc", "checks", [
+  ["At least 150 words (aim for 160–190)", t => words(t) >= 150],
+  ["An overview starting with “Overall,”", t => /overall,/i.test(t)],
+  ["Both countries mentioned", t => /canad/i.test(t) && /australi/i.test(t)],
+  ["Percentages included in the detail paragraphs", t => (t.match(/\d+\s*%|\d+ ?per ?cent/gi) || []).length >= 4],
+  ["A comparison word (while, whereas, compared with, by contrast, twice)", t => /\b(while|whereas|compared (with|to)|by contrast|in contrast|twice|half)\b/i.test(t)],
+  ["Present tense (no year is given in the task)", t => /\b(is|are|accounts?|makes? up|represents?)\b/i.test(t)],
+  ["No opinions and no “In conclusion”", t => t.trim() && !/\bI (think|believe|feel)\b|in conclusion/i.test(t)],
+]);
+const feats = ["TV and online news are the two largest sources in both countries.", "TV is the top source in Canada (40%).", "Online news is the top source in Australia (52%), more than half.", "Online news is 16 percentage points higher in Australia than in Canada.", "Print and radio are small in both countries, but larger in Canada.", "Print in Canada (14%) is twice the figure for Australia (7%)."];
+feats.forEach(t => { const li = document.createElement("li"); li.textContent = t; li.tabIndex = 0; li.style.cursor = "pointer"; li.setAttribute("role", "checkbox"); li.setAttribute("aria-checked", "false");
+  const tg = () => { li.classList.toggle("pass"); li.setAttribute("aria-checked", li.classList.contains("pass")); }; li.onclick = tg; li.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); tg(); } }; $("features").appendChild(li); });
+cards("lang", [
+  ["obtain their news", "= get their news", "the proportion of people who obtain their news online"],
+  ["account for / make up", "= be a share of", "TV accounts for 40% of the total."],
+  ["closely followed by", "= second, with a similar figure", "TV leads at 40%, closely followed by online platforms at 36%."],
+  ["dominate", "= have the largest share", "Online platforms dominate in Australia."],
+  ["slightly below", "= a little lower than", "TV, at 37%, is slightly below the Canadian figure."],
+  ["percentage points", "= the gap between two percentages", "52% is 16 percentage points higher than 36%."],
+  ["twice / half the proportion", "= ×2 / ÷2", "Print (14%) is twice the proportion for radio (7%)."],
+  ["the opposite is true", "= the reverse pattern", "TV leads in Canada; the opposite is true in Australia."],
+]);
+countdown("wStart", "wClock", 1200, null);
+
+
+
+countdown("pStart", "pClock", 1200, "pal");
+tfng("warm", [
+  ["Only animals pulled the sledges.", "FALSE", "“Only” makes it false: the passage says teams of workers pulled them."],
+  ["People sometimes had help from animals.", "TRUE", "“Oxen may sometimes have helped” has the same meaning."],
+  ["The oxen were fed twice a day.", "NOT GIVEN", "The passage says nothing about feeding the animals."],
+]);
+tfng("hwtf", [
+  ["Palladio’s father worked as an architect.", "FALSE", "Paragraph A: “his father worked at a mill, grinding grain.”"],
+  ["“Palladio” was not the name he was given at birth.", "TRUE", "Paragraph C: Trissino “gave him the name ‘Palladio’”."],
+  ["Palladio’s family refused to pay for his studies.", "NOT GIVEN", "The passage says Trissino arranged his education, but says nothing about his family’s attitude. Do not guess."],
+  ["Palladio’s villas were designed only as holiday homes.", "FALSE", "Paragraph D: the owners wanted houses “that were also working farms”. Notice “only”."],
+  ["Both of Palladio’s Venetian churches can be seen from the city centre.", "TRUE", "Paragraph E: they stand across the water and “can be admired from a distance”."],
+  ["Inigo Jones met Palladio during his visit to Italy.", "FALSE", "Paragraph F: Jones travelled to Italy “decades after Palladio’s death”, so they could not have met."],
+  ["Some people have criticised Palladio for working mainly for wealthy clients.", "TRUE", "Paragraph G: “Some critics point out that Palladio worked mostly for the rich and powerful.”"],
+], { fb: "hwtfFb", good: "Excellent work.", bad: "Check the trap words (only, refused, met) in the statements you missed." });
+gaps("hwsa", "hwsaBtn", "hwsaFb", 3, [
+  ["What trade did Palladio first train in?", ["stonemason", "stonemasonry", "a stonemason"], "Paragraph B: “apprenticed to a stonemason”."],
+  ["Who arranged Palladio’s education?", ["Gian Giorgio Trissino", "Trissino", "Giorgio Trissino"], "Paragraph C. Check the double “s” in Trissino."],
+  ["In which city did Palladio study ancient ruins?", ["Rome"], "Paragraph C: “took him to Rome”."],
+  ["What is the name of the triangular roof above a portico?", ["pediment", "a pediment"], "Paragraph D: “a triangular roof called a pediment”."],
+  ["What did Palladio use in his book to explain his ideas clearly?", ["clear illustrations", "illustrations"], "Paragraph F: “explained his ideas with clear illustrations”."],
+  ["According to the writer, what feeling do Palladio’s buildings give visitors?", ["peace", "feeling of peace"], "Paragraph G: “give visitors a feeling of peace”."],
+], { start: 8 });
+
+
+</script>
+</body>
+</html>
