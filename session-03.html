@@ -235,6 +235,11 @@ a.scard:hover{border-color:var(--navy);box-shadow:inset 0 0 0 1px var(--navy)}
 </style><style>
 .part{margin:48px 0 0;padding:14px 18px;background:var(--navy);color:var(--paper);border-radius:12px;font-size:22px;scroll-margin-top:70px}
 h2[id],section[id]{scroll-margin-top:70px}
+.gl,.gl-demo{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;text-decoration:underline dotted var(--navy);text-decoration-thickness:2px;text-underline-offset:3px}
+.gl:hover{background:var(--mark);color:var(--mark-ink)}
+.gl-out{position:sticky;bottom:8px;box-shadow:0 2px 8px rgba(0,0,0,.12);min-height:1.4em;margin:8px 0 0;padding:8px 12px;background:var(--wash);border-radius:8px}
+.gl-out:empty{display:none}
+.btn[aria-pressed="true"]{box-shadow:inset 0 0 0 2px var(--navy)}
 </style>
 </head>
 <body>
@@ -242,211 +247,174 @@ h2[id],section[id]{scroll-margin-top:70px}
 <main>
   <p class="hint">Session 3</p>
   <h1>Reading skills: read smarter, not slower</h1>
-  <p class="lead">You have 60 minutes for three long passages and 40 questions, so you cannot read every word carefully. Today you will learn five skills, in order: get ready before reading, find the main idea, skim and scan, summarise, and answer multiple-choice questions.</p>
-  <ul class="chips"><li><a href="#part-a">A. Before you read</a></li><li><a href="#part-b">B. Main ideas</a></li><li><a href="#part-c">C. Skimming and scanning</a></li><li><a href="#part-d">D. Summaries</a></li><li><a href="#part-e">E. Multiple choice</a></li></ul>
-  <p class="hint">Key ideas from this session are also on the <a href="reading-notes.html">Reading notes</a> page.</p>
-  <h2 class="part" id="part-a">Part A. Before you read</h2>
-  <p class="hint" style="margin-top:0">Good readers prepare: they preview and predict.</p>
-  <section aria-labelledby="st1">
-    <div class="step"><b>1</b><h2 id="st1">Four habits of good readers</h2></div>
-    <p>Click each card. You will use all four habits in today’s lesson.</p>
-    <div class="cards" id="habits"></div>
-  </section>
-  <section aria-labelledby="st2">
-    <div class="step"><b>2</b><h2 id="st2">Preview and predict</h2></div>
-    <p>Before you read, look only at the title and the first line. Which topics do you expect? Decide if each one is likely or unlikely.</p>
-    <div class="prompt"><small>Title</small><span class="serif" style="font-size:20px">The Iron Lady of Paris</span><br><span class="serif">For the 1889 World’s Fair in Paris, the organisers wanted a monument that would show the world what modern engineering could achieve…</span></div>
-    <div class="sort" id="prev"></div>
-    <p class="feedback" id="prevFb"></p>
-  </section>
-  <h2 class="part" id="part-b">Part B. Main ideas and topic sentences</h2>
-  <p class="hint" style="margin-top:0">Learn to see the map of a passage.</p>
-  <section aria-labelledby="st3">
-    <div class="step"><b>3</b><h2 id="st3">The map of a passage</h2></div>
-    <p>Every academic passage has three levels. Learn them, and every question becomes easier to locate.</p>
-    <div class="structure">
-      <div class="p"><span class="badge">1</span><div><strong>Main idea</strong>: the big message of the <em>whole passage</em>. Usually in the first or last paragraph, often matching the title.</div></div>
-      <div class="p"><span class="badge">2</span><div><strong>Topic sentences</strong>: the main idea of <em>each paragraph</em>. Usually the first sentence, but not always.</div></div>
-      <div class="p"><span class="badge">3</span><div><strong>Supporting details</strong>: facts, numbers, names, examples and reasons that explain the topic sentence.</div></div>
-    </div>
-    <div class="remember">IELTS uses the levels differently: <strong>matching headings</strong> and <strong>summary</strong> questions test levels 1 and 2. <strong>True/False/Not Given</strong>, <strong>sentence completion</strong> and <strong>short answers</strong> test level 3.</div>
-  </section>
-  <section aria-labelledby="st4">
-    <div class="step"><b>4</b><h2 id="st4">Find the topic sentence</h2></div>
-    <p>The topic sentence gives the <strong>main idea</strong> of a paragraph. The other sentences give details and examples. It is <em>usually</em> the first sentence, but not always. Click the topic sentence in each paragraph.</p>
-    <div id="topics"></div>
-    <div class="remember">Tip: if the first sentence is a question, a story or a surprising fact, the topic sentence is often the second one. Sometimes it comes last, as a conclusion.</div>
-  </section>
-  <section aria-labelledby="st5">
-    <div class="step"><b>5</b><h2 id="st5">Read and find the topic sentences</h2></div>
-    <p>Click the topic sentence in each paragraph. Watch out: in one paragraph it comes at the end.</p>
-    <div class="passage"><h3>The Iron Lady of Paris</h3><div id="eiffel"></div></div>
-    <p class="hint">Original AUM practice passage.</p>
-  </section>
-  <section aria-labelledby="st6">
-    <div class="step"><b>6</b><h2 id="st6">Main idea, topic sentence or detail?</h2></div>
-    <p>Sort each sentence into the right level of the map.</p>
-    <div class="sort" id="levels"></div>
-    <p class="feedback" id="levelsFb"></p>
-  </section>
-  <section aria-labelledby="st7">
-    <div class="step"><b>7</b><h2 id="st7">Topic sentence to heading</h2></div>
-    <p>In IELTS “matching headings” questions, the heading matches the topic sentence, not one small word in the paragraph. Choose the heading for each topic sentence. There is one extra heading you do not need.</p>
-    <div id="headMatch"></div>
-    <button class="btn" id="checkHeads">Check</button>
-    <p class="feedback" id="headFb"></p>
-  </section>
-  <h2 class="part" id="part-c">Part C. Skimming and scanning</h2>
-  <p class="hint" style="margin-top:0">Read fast for the main idea; jump to the details you need.</p>
-  <section aria-labelledby="st8">
-    <div class="step"><b>8</b><h2 id="st8">Skimming or scanning?</h2></div>
+  <p class="lead">You have 60 minutes for three long passages and 40 questions, so you cannot read every word carefully. First you will learn four skills. Then you will practise them on five passages, from easy to harder.</p>
+  <ul class="chips">
+    <li><a href="#part-a">A. Learn the skills</a></li><li><a href="#part-b">B. Education</a></li><li><a href="#part-c">C. Green Valley</a></li>
+    <li><a href="#part-d">D. Eiffel Tower</a></li><li><a href="#part-e">E. Olympics</a></li><li><a href="#part-f">F. Hibernation</a></li>
+  </ul>
+  <div class="remember"><strong>Tip:</strong> in every passage, <span class="gl-demo">underlined words</span> are new vocabulary. Click one to see its meaning.</div>
+
+  <!-- PART A -->
+  <h2 class="part" id="part-a">Part A. Learn the skills</h2>
+
+  <section>
+    <div class="step"><b>1</b><h2>Skimming or scanning?</h2></div>
     <div class="split">
-      <div class="panel"><strong style="color:var(--navy);font-size:18px">Skimming</strong><p style="margin:6px 0 0">Reading quickly for the <mark>main idea</mark>. Read the title, the first sentence of each paragraph and words that stand out.</p><p class="hint" style="margin:6px 0 0">Like reading newspaper headlines.</p></div>
-      <div class="panel"><strong style="color:var(--navy);font-size:18px">Scanning</strong><p style="margin:6px 0 0">Searching quickly for a <mark>specific detail</mark>: a name, a number, a date. Your eyes jump; you do not read.</p><p class="hint" style="margin:6px 0 0">Like finding a friend’s name in your phone contacts.</p></div>
+      <div class="panel"><strong style="color:var(--navy);font-size:18px">Skimming</strong><p style="margin:6px 0 0">Reading quickly for the <mark>main idea</mark>: the title, headings, first sentences and words that stand out.</p><p class="hint" style="margin:6px 0 0">Like reading newspaper headlines.</p></div>
+      <div class="panel"><strong style="color:var(--navy);font-size:18px">Scanning</strong><p style="margin:6px 0 0">Searching quickly for a <mark>specific detail</mark>: a name, a number, a date. Your eyes jump; you do not read.</p><p class="hint" style="margin:6px 0 0">Like finding a friend’s name in your contacts.</p></div>
     </div>
     <h3>Which one do you use?</h3>
     <div class="sort" id="skimScan"></div>
     <p class="feedback" id="skimScanFb"></p>
   </section>
-  <section aria-labelledby="st9">
-    <div class="step"><b>9</b><h2 id="st9">Skim in 90 seconds</h2></div>
-    <p>Press start. You have 90 seconds to skim the passage: read the title and the first sentence of each paragraph, and look at words that stand out. When the time ends, the passage hides and you answer from memory.</p>
-    <div class="timer"><button class="btn" id="skimStart">Start 90 seconds</button><span class="clock" id="skimClock" aria-live="polite">1:30</span></div>
-    <div class="passage"><div class="passage-body blurred" id="p1body">
-      <h3>The Changing Face of Education</h3>
-      <div class="para"><b>A</b><span>Education today is vastly different from what it was just a few decades ago. One of the most significant changes is the rise of technology in the classroom. Many schools have integrated computers, tablets, and online learning platforms into their teaching methods. This shift has allowed students to access a wealth of information instantly and learn at their own pace. Furthermore, online courses have made education more accessible to people around the world, regardless of their location.</span></div>
-      <div class="para"><b>B</b><span>Another important development is the growing emphasis on skills over memorization. Educators now focus more on critical thinking, creativity, and problem-solving rather than rote learning. This approach prepares students better for the challenges of the modern workforce.</span></div>
-      <div class="para"><b>C</b><span>Despite these advances, traditional teaching methods still play a vital role. Face-to-face interactions, group projects, and classroom discussions foster social skills and teamwork. Many institutions are combining old and new methods to create a balanced curriculum that meets the needs of diverse learners.</span></div>
-      <div class="para"><b>D</b><span>Finally, lifelong learning is becoming essential. Rapid technological and social changes mean people must continually update their skills. Many adults now return to education later in life to stay competitive in their careers. Overall, the education system is evolving to become more flexible, inclusive, and student-centered.</span></div>
-    </div></div>
-    <h3>From memory: what is the passage mainly about?</h3>
-    <div id="mainIdea"></div>
-    <h3>Match each paragraph to a heading</h3>
-    <p class="hint">One heading is extra.</p>
-    <div id="p1Heads"></div>
-    <button class="btn" id="checkP1Heads">Check</button>
-    <p class="feedback" id="p1HeadsFb"></p>
+
+  <section>
+    <div class="step"><b>2</b><h2>Find the topic sentence</h2></div>
+    <p>The <strong>topic sentence</strong> gives the main idea of a paragraph; the other sentences are details and examples. It is <em>usually</em> the first sentence, but not always. Click the topic sentence.</p>
+    <div id="topics"></div>
+    <div class="remember">Clues: a topic sentence is <strong>general</strong> (it could be a heading). Details contain <strong>examples, numbers and names</strong>. If the first sentence is a question or a story, look at the second. Words like “Clearly” or “In short” can mark a topic sentence at the end.</div>
   </section>
-  <section aria-labelledby="st10">
-    <div class="step"><b>10</b><h2 id="st10">Read for detail</h2></div>
-    <p>Now the passage is visible again. Read carefully to answer. After each answer, you will see the <strong>evidence</strong>: the words in the passage that give the answer.</p>
-    <button class="btn ghost" id="showP1">Show the passage again</button>
+
+  <section>
+    <div class="step"><b>3</b><h2>Topic sentence to heading</h2></div>
+    <p>A heading matches the meaning of the topic sentence, often in different words. One heading is extra.</p>
+    <div id="heads"></div><button class="btn" id="headsBtn">Check</button><p class="feedback" id="headsFb"></p>
+  </section>
+
+  <section>
+    <div class="step"><b>4</b><h2>The map of a passage</h2></div>
+    <div class="structure">
+      <div class="p"><span class="badge">1</span><div><strong>Main idea</strong>: the message of the <em>whole passage</em>.</div></div>
+      <div class="p"><span class="badge">2</span><div><strong>Topic sentences</strong>: the message of <em>each paragraph</em>.</div></div>
+      <div class="p"><span class="badge">3</span><div><strong>Supporting details</strong>: facts, numbers, examples and reasons.</div></div>
+    </div>
+    <div class="remember">A <strong>summary</strong> = the main idea + one topic sentence per paragraph, in your own words. Leave out the details.</div>
+    <h3>Useful language for summaries</h3>
+    <div class="cards small" id="sumLang"></div>
+  </section>
+
+  <!-- PART B -->
+  <h2 class="part" id="part-b">Part B. Practice 1: The Changing Face of Education</h2>
+  <p class="hint" style="margin-top:0">Skills: skimming, main idea, multiple choice, sentence completion, summary.</p>
+
+  <section>
+    <div class="step"><b>5</b><h2>Skim in 90 seconds</h2></div>
+    <p>Press start. Read only the title, the first sentence of each paragraph and the words that stand out. When time is up, the passage hides.</p>
+    <div class="timer"><button class="btn" id="skimBtn">Start 90 seconds</button><span class="clock" id="skimClock">1:30</span></div>
+    <div class="passage"><div class="passage-body blurred" id="edu"></div><p class="feedback gl-out" id="eduGl"></p></div>
+    <h3>From memory: what is the passage mainly about?</h3>
+    <div id="eduMain"></div>
+    <h3>Choose the four best keywords</h3>
+    <p class="hint">Good keywords carry the main idea of a paragraph, not a small detail. Choose four, then check.</p>
+    <div class="inline-row" id="kw"></div>
+    <button class="btn" id="kwBtn" style="margin-top:10px">Check</button>
+    <p class="feedback" id="kwFb"></p>
+  </section>
+
+  <section>
+    <div class="step"><b>6</b><h2>Read for detail</h2></div>
+    <button class="btn ghost" id="showEdu">Show the passage again</button>
     <h3>Multiple choice</h3>
-    <div id="p1mcq"></div>
+    <div id="eduMcq"></div><p class="feedback" id="eduMcqFb"></p>
     <h3>Sentence completion</h3>
     <div class="prompt"><small>Instruction</small>Complete each sentence with <strong>NO MORE THAN THREE WORDS</strong> from the passage.</div>
-    <div id="p1sc"></div>
-    <button class="btn" data-sc="p1sc">Check answers</button>
-    <p class="feedback" id="p1scFb"></p>
-    <div class="remember">The words in the question are often <strong>paraphrased</strong>: “available to people anywhere” in the question means “accessible to people around the world” in the passage. Look for the meaning, not the same words.</div>
+    <div id="eduSc"></div><button class="btn" id="eduScBtn">Check answers</button><p class="feedback" id="eduScFb"></p>
   </section>
-  <section aria-labelledby="st11">
-    <div class="step"><b>11</b><h2 id="st11">Scanning race</h2></div>
-    <p><strong>First, predict.</strong> Before you look at the passage, decide what kind of answer each question needs. Knowing that you are looking for a <em>year</em> or a <em>time</em> makes your eyes much faster.</p>
-    <div id="predict"></div>
-    <button class="btn" id="checkPredict">Check predictions</button>
-    <p class="feedback" id="predictFb"></p>
 
-    <p style="margin-top:22px"><strong>Now race.</strong> Press start, scan for the answers and type them. Try to finish in under 2 minutes.</p>
-    <div class="timer"><button class="btn" id="raceStart">Start the race</button><span class="clock" id="raceClock" aria-live="off">0:00</span></div>
-    <div class="passage"><div class="passage-body blurred" id="p2body">
-      <h3>Green Valley University: A Hub of Innovation</h3>
-      <div class="para"><b>A</b><span>Green Valley University, established in 1980, is one of the leading educational institutions in the country. It currently serves over 15,000 students from various backgrounds, offering more than 120 different academic programs across multiple faculties. The university campus includes modern facilities such as advanced laboratories, a large library, and several sports centers.</span></div>
-      <div class="para"><b>B</b><span>One of the university’s recent initiatives is the launch of an extensive online degree program. This program offers more than 50 courses, allowing students to study remotely and balance education with personal commitments. The online system was introduced in 2022 and has quickly become popular among both undergraduate and postgraduate students.</span></div>
-      <div class="para"><b>C</b><span>The university library operates daily from 8 AM to 10 PM, providing students with a quiet study environment and access to thousands of digital and print resources. Students are required to register for courses before September 1 each year to ensure proper scheduling.</span></div>
-      <div class="para"><b>D</b><span>In addition to academics, Green Valley University promotes extracurricular activities. Various clubs and societies are available, including debate, music, and environmental groups. These provide students with opportunities to develop leadership skills and build networks outside the classroom.</span></div>
-    </div></div>
-    <div id="race"></div>
-    <button class="btn" id="raceCheck">Finish and check</button>
-    <p class="feedback" id="raceFb"></p>
-
-    <h3>Sentence completion</h3>
-    <div class="prompt"><small>Instruction</small>Complete each sentence with <strong>NO MORE THAN TWO WORDS</strong> from the passage.</div>
-    <div id="p2sc"></div>
-    <button class="btn" data-sc="p2sc">Check answers</button>
-    <p class="feedback" id="p2scFb"></p>
+  <section>
+    <div class="step"><b>7</b><h2>Write a summary</h2></div>
+    <p>Write 2–3 sentences (40–70 words) about the whole passage. Use one idea per paragraph and your own words.</p>
+    <textarea id="eduSum" placeholder="The text explains …"></textarea>
+    <p class="wc" id="eduSumWc">0 words</p>
+    <ul class="checks" id="eduSumChecks"></ul>
+    <details><summary>Model summary</summary><p class="serif">The text explains how education has changed in recent decades. Technology now lets students learn at their own pace, and teachers focus more on skills such as critical thinking than on memorising facts. However, traditional methods like group work are still valuable, and people increasingly need to keep learning throughout their lives.</p></details>
   </section>
-  <h2 class="part" id="part-d">Part D. Summaries</h2>
-  <p class="hint" style="margin-top:0">Say the main ideas in your own words.</p>
-  <section aria-labelledby="st12">
-    <div class="step"><b>12</b><h2 id="st12">Writing a summary</h2></div>
-    <p>A summary is a short version of a text in <strong>your own words</strong>. It gives the main ideas and leaves out small details and examples. Skimming and topic sentences make this easy: the topic sentences <em>are</em> the main ideas.</p>
-    <div class="structure">
-      <div class="p"><span class="badge">1</span><div><strong>Read and find the main idea</strong><br>Ask: what is this text mostly about?</div></div>
-      <div class="p"><span class="badge">2</span><div><strong>Note one key point per paragraph</strong><br>Use the topic sentences. Skip examples, numbers and names.</div></div>
-      <div class="p"><span class="badge">3</span><div><strong>Write in your own words</strong><br>Start with the main idea, then add the key points with linking words.</div></div>
-      <div class="p"><span class="badge">4</span><div><strong>Check</strong><br>Short? No opinions? No copied sentences?</div></div>
-    </div>
-    <h3>Useful language</h3>
-    <div class="cards small" id="sumCards"></div>
 
-    <h3>A model summary of Passage 1</h3>
-    <div class="example"><small>About 75 words. Compare it with the passage: one point per paragraph.</small>The text <mark>explains</mark> how education has changed in recent decades. <mark>Firstly,</mark> technology such as computers and online courses allows students to learn at their own pace and from anywhere. <mark>In addition,</mark> teachers now focus more on skills like critical thinking than on memorising facts. <mark>However,</mark> traditional methods such as group work are still important, so many schools combine old and new approaches. <mark>Finally,</mark> people now need to keep learning throughout their lives.</div>
-    <div class="wr"><div class="w">Many schools have integrated computers, tablets, and online learning platforms into their teaching methods. (copied)</div><div class="r">Technology such as computers and online courses is now common in schools. (own words)</div></div>
-    <div class="wr"><div class="w">I think online learning is the best way to study. (opinion)</div><div class="r">Online courses make education available to more people. (the writer’s idea)</div></div>
+  <!-- PART C -->
+  <h2 class="part" id="part-c">Part C. Practice 2: Green Valley University</h2>
+  <p class="hint" style="margin-top:0">Skills: predicting the answer type, scanning, sentence completion.</p>
 
-    <h3>Your turn: summarise Passage 2</h3>
-    <p>Write 50–80 words about Green Valley University. The checklist updates as you type.</p>
-    <label for="sum" class="hint">Your summary</label>
-    <textarea id="sum" placeholder="The text describes …"></textarea>
-    <p class="wc" id="sumWc">0 words</p>
-    <ul class="checks" id="sumChecks"></ul>
-    <details>
-      <summary>Model summary (open after you have written yours)</summary>
-      <p class="serif">The text describes Green Valley University, a large university with many programs and modern facilities. Firstly, it explains that the university has recently started a popular online degree program that lets students study from home. In addition, the library is open every day, and students must register for courses by a fixed date each year. Finally, the university offers clubs that help students develop leadership skills outside class.</p>
+  <section>
+    <div class="step"><b>8</b><h2>Predict the answer type</h2></div>
+    <p>Before you look at the passage, decide what kind of answer each question needs. Your eyes will find a <em>year</em> or a <em>time</em> much faster if you know what to look for.</p>
+    <div id="pred"></div><button class="btn" id="predBtn">Check</button><p class="feedback" id="predFb"></p>
+  </section>
+
+  <section>
+    <div class="step"><b>9</b><h2>Scanning race</h2></div>
+    <p>Press start, scan for the answers and type them. Try to finish in under 3 minutes.</p>
+    <div class="timer"><button class="btn" id="raceBtn">Start the race</button><span class="clock" id="raceClock">0:00</span></div>
+    <div class="passage"><div class="passage-body blurred" id="gv"></div><p class="feedback gl-out" id="gvGl"></p></div>
+    <div id="race"></div><button class="btn" id="raceCheck">Finish and check</button><p class="feedback" id="raceFb"></p>
+  </section>
+
+  <section>
+    <div class="step"><b>10</b><h2>Check your understanding</h2></div>
+    <div id="gvMcq"></div><p class="feedback" id="gvMcqFb"></p>
+    <div class="prompt"><small>Instruction</small>Complete each sentence with <strong>NO MORE THAN THREE WORDS AND/OR A NUMBER</strong> from the passage.</div>
+    <div id="gvSc"></div><button class="btn" id="gvScBtn">Check answers</button><p class="feedback" id="gvScFb"></p>
+  </section>
+
+  <!-- PART D -->
+  <h2 class="part" id="part-d">Part D. Practice 3: The Eiffel Tower</h2>
+  <p class="hint" style="margin-top:0">Skills: main idea map, vocabulary in context, multiple choice. Now the passages are longer: allow about 12 minutes.</p>
+
+  <section>
+    <div class="step"><b>11</b><h2>Read and map the passage</h2></div>
+    <div class="passage"><div id="eif"></div><p class="feedback gl-out" id="eifGl"></p></div>
+    <p>Match each paragraph to its main idea.</p>
+    <div id="eifMap"></div><button class="btn" id="eifMapBtn">Check</button><p class="feedback" id="eifMapFb"></p>
+  </section>
+
+  <section>
+    <div class="step"><b>12</b><h2>Questions 1–8</h2></div>
+    <div id="eifQ"></div><p class="feedback" id="eifQFb"></p>
+    <details><summary>Example summary of this passage</summary>
+      <p class="serif">The text is about the Eiffel Tower, a famous structure in Paris built for the 1889 World’s Fair. Firstly, it explains that Gustave Eiffel’s design was chosen from more than 100 plans. In addition, the tower was built quickly from iron by a small workforce. Moreover, it was the tallest structure in the world at that time and had special lifts that travelled up on a curve. However, some people disliked its appearance at first. Finally, it became a symbol of modern engineering and a popular tourist attraction.</p>
     </details>
   </section>
-  <h2 class="part" id="part-e">Part E. Multiple-choice practice</h2>
-  <p class="hint" style="margin-top:0">Put everything together on three passages.</p>
-  <section aria-labelledby="st13">
-    <div class="step"><b>13</b><h2 id="st13">Multiple-choice practice: the Iron Lady of Paris</h2></div>
-    <p>Use the passage “<a href="#eiffel">The Iron Lady of Paris</a>” from Part B. Each question below is a common IELTS multiple-choice pattern. After you answer, read <strong>why the wrong options are wrong</strong>: this is the most useful part.</p>
-    <div class="cards small" id="qtypes"></div>
-    <div id="eiffelQ" style="margin-top:16px"></div>
-    <p class="feedback" id="eiffelQFb"></p>
+
+  <!-- PART E -->
+  <h2 class="part" id="part-e">Part E. Practice 4: The Olympics</h2>
+  <p class="hint" style="margin-top:0">Skills: scanning for numbers, vocabulary in context, true or false statements.</p>
+
+  <section>
+    <div class="step"><b>13</b><h2>Read and scan</h2></div>
+    <div class="passage"><div id="oly"></div><p class="feedback gl-out" id="olyGl"></p></div>
+    <div class="prompt"><small>Scanning</small>Answer with <strong>ONE WORD AND/OR A NUMBER</strong> from the passage.</div>
+    <div id="olySc"></div><button class="btn" id="olyScBtn">Check answers</button><p class="feedback" id="olyScFb"></p>
   </section>
-  <section aria-labelledby="st14">
-    <div class="step"><b>14</b><h2 id="st14">Multiple-choice practice: the Olympic Games</h2></div>
-    <p>Skim the passage first (two minutes), then answer. Read the explanation after each answer.</p>
-    <div class="passage">
-      <h3>The Olympic Games: From Olympia to the World</h3>
-      <div class="para"><b>A</b><span>The Olympic Games began in ancient Greece, traditionally in 776 BC, at Olympia in the west of the country. Athletes from rival Greek city-states competed in running, wrestling and chariot racing, and a sacred truce was declared so that competitors and spectators could travel to the games safely, even in times of war.</span></div>
-      <div class="para"><b>B</b><span>The ancient games ended in the fourth century AD, and the idea was only revived some 1,500 years later by a French educator, Pierre de Coubertin. He believed that international sport could encourage understanding between nations. The first modern Olympics took place in Athens in 1896. They were small by today’s standards: around a dozen nations took part, and every competitor was a man. Women competed for the first time four years later, at the Paris Games of 1900.</span></div>
-      <div class="para"><b>C</b><span>The Games grew steadily. In 1924, a separate Winter Olympics was held for the first time, in Chamonix, France, with events such as skiing and ice hockey. Like the summer Games, the winter event began modestly but attracted more countries with each edition.</span></div>
-      <div class="para"><b>D</b><span>After the Second World War, the Olympics became a stage for political rivalry. During the Cold War, the United States and the Soviet Union treated the medal table as a measure of national strength, and both led boycotts: many Western countries stayed away from Moscow in 1980, and the Soviet Union and its allies did not attend Los Angeles in 1984. At the same time, many newly independent nations in Africa and Asia used the Games to present themselves to the world for the first time.</span></div>
-      <div class="para"><b>E</b><span>Today the Olympics are the largest sporting event on earth. The 2016 Games in Rio de Janeiro welcomed more than 11,000 athletes from over 200 teams. Hosting has also spread beyond Europe and North America: Beijing in 2008 and Rio in 2016 were seen as signs of the growing confidence of emerging economies.</span></div>
-      <div class="para"><b>F</b><span>Yet this success has a price. Hosting now requires huge investment in stadiums, transport and security, and several cities have withdrawn from the bidding process after local opposition. Oslo, for example, abandoned its bid for the 2022 Winter Games. In my view, unless the Games become simpler and cheaper to organise, fewer cities will be willing to host them, and the Olympic movement will lose much of its appeal.</span></div>
-    </div>
-    <p class="hint">Original AUM practice passage.</p>
-    <div id="olyQ"></div>
-    <p class="feedback" id="olyQFb"></p>
+
+  <section>
+    <div class="step"><b>14</b><h2>Questions 9–12</h2></div>
+    <div id="olyQ"></div><p class="feedback" id="olyQFb"></p>
   </section>
-  <section aria-labelledby="st15">
-    <div class="step"><b>15</b><h2 id="st15">Try it again: a new passage</h2></div>
-    <p>Use the same method: predict from the title, find the topic sentences, then answer.</p>
-    <div class="passage">
-      <h3>The Long Sleep</h3>
-      <div class="para"><b>A</b><span>For many animals, winter is a dangerous season, not because of the cold itself but because food becomes scarce. Some species solve this problem by hibernating: they enter a state of deep inactivity and wait until spring brings food again. Ground squirrels, woodchucks and many kinds of bat are well-known examples.</span></div>
-      <div class="para"><b>B</b><span>Hibernation is very different from ordinary sleep. A hibernating animal’s body temperature falls sharply, sometimes to just a few degrees above freezing, and its heart rate and breathing slow dramatically. The change can be so extreme that the animal appears to be dead.</span></div>
-      <div class="para"><b>C</b><span>To survive these months, hibernators prepare in autumn. They eat far more than usual and build up stores of body fat, which supply energy through the winter. Some also hide food in their burrows to eat during short periods of waking.</span></div>
-      <div class="para"><b>D</b><span>Bears are the animals most people associate with hibernation, yet scientists disagree about whether they are true hibernators. A bear’s body temperature drops by only a few degrees, much less than a squirrel’s. On the other hand, some bears can go for months without eating, drinking or going to the toilet, something even true hibernators rarely manage.</span></div>
-      <div class="para"><b>E</b><span>What tells an animal that it is time to hibernate? Shorter days, falling temperatures and a shrinking food supply all seem to play a part, but the exact biological trigger is still not fully understood. In places where winters are mild, some animals hibernate only briefly, or not at all.</span></div>
-    </div>
-    <p class="hint">Original AUM practice passage.</p>
-    <div id="hibQ"></div>
-    <p class="feedback" id="hibQFb"></p>
+
+  <!-- PART F -->
+  <h2 class="part" id="part-f">Part F. Practice 5: Why do animals hibernate?</h2>
+  <p class="hint" style="margin-top:0">Skills: everything together. Try to answer in 10 minutes.</p>
+
+  <section>
+    <div class="step"><b>15</b><h2>Read and answer Questions 13–18</h2></div>
+    <div class="timer"><button class="btn" id="hibBtn">Start 10 minutes</button><span class="clock" id="hibClock">10:00</span></div>
+    <div class="passage"><div id="hib"></div><p class="feedback gl-out" id="hibGl"></p></div>
+    <div id="hibQ"></div><p class="feedback" id="hibQFb"></p>
   </section>
-  <section aria-labelledby="st16">
-    <div class="step"><b>16</b><h2 id="st16">Homework</h2></div>
+
+  <section>
+    <div class="step"><b>16</b><h2>Your progress and homework</h2></div>
+    <p>Your score today:</p>
+    <div class="tablewrap"><table id="prog"></table></div>
     <ul>
-      <li>Find a short English article (300–500 words). Skim it in two minutes and write its main idea in one sentence.</li>
-      <li>Write a 60–80 word summary of the article with at least three linking words from Part D.</li>
-      <li>Draw the map of “The Long Sleep”: the main idea, then one topic sentence per paragraph in your own words.</li>
-      <li>Complete one Reading passage from a Cambridge IELTS Academic test, or from the useful websites in Session 1.</li>
+      <li>Write a 5–6 sentence summary of the Olympics passage, using the summary language from Step 4.</li>
+      <li>Add 10 new words from today’s passages to your vocabulary list, each with a synonym.</li>
+      <li>Complete one reading passage from the <a href="session-01.html#part-h">useful websites</a> in Session 1.</li>
     </ul>
   </section>
-  <nav class="pager"><a href="session-02.html">Previous: Session 2</a><a href="index.html">All sessions</a></nav>
+
+  <nav class="pager"><a href="session-02.html">Previous: Session 2</a><a href="reading-notes.html">Reading notes</a></nav>
 </main>
+<script src="passages.js"></script>
 <script>
 const $ = id => document.getElementById(id);
 const norm = t => t.toLowerCase().replace(/[’']/g, "'").replace(/[^a-z0-9,' -]/g, " ").replace(/\s+/g, " ").trim();
@@ -630,210 +598,162 @@ function writeBox(taId, wcId, listId, tests) {
   ta.addEventListener("input", run); run();
 }
 
-
-
-cards("habits", [
-  ["Preview", "before reading", "Look at the title, headings and first sentences. Ask: what do I already know about this topic?"],
-  ["Predict", "before and during reading", "Guess what the text will say. As you read, check and change your guess. This keeps your brain active."],
-  ["Find the main idea", "while reading", "Ask: what is this paragraph mostly about? What is the whole passage mostly about?"],
-  ["Visualise", "while reading", "Make a picture in your mind: a tower of iron, workers pulling ropes. Pictures are easier to remember than words."],
-]);
-sorter("prev", "prevFb", ["Likely", "Unlikely"], [
-  ["How the Eiffel Tower was designed and built", "Likely", "“Monument”, “1889”, “engineering” all point to this."],
-  ["The history of French cooking", "Unlikely", "Nothing in the title or first line suggests food."],
-  ["What people thought of the tower", "Likely", "Famous monuments are often discussed in terms of public reaction."],
-  ["How to travel cheaply in Paris", "Unlikely", "The first line is about history and engineering, not travel tips."],
-], { good: "Good predictions. Now read to check them." , bad: "Use only the title and first line as evidence."});
-topicPick("eiffel", [
-  [["For the 1889 World’s Fair in Paris, held to mark one hundred years since the French Revolution, the organisers wanted a monument that would show the world what modern engineering could achieve.", "More than a hundred designs were entered in a competition.", "The winner was the company of Gustave Eiffel, an engineer already famous for his iron bridges."], 0, "It introduces the purpose of the project. The other sentences give details: the competition and the winner."],
-  [["Not everyone welcomed the plan.", "In 1887, a group of well-known artists and writers published a letter in a Paris newspaper calling the tower useless and monstrous.", "They feared that a giant iron structure would spoil the beauty of the city.", "Eiffel replied that engineering could be beautiful too, and construction went ahead."], 0, "A short topic sentence; the letter and Eiffel’s reply are the supporting details."],
-  [["The speed of construction was remarkable.", "Around 18,000 iron pieces were prepared in a factory and then fixed together on site with about 2.5 million rivets.", "Thanks to this careful planning, a team of a few hundred workers completed the tower in just over two years."], 0, "The numbers all support the idea of speed."],
-  [["At about 300 metres, the tower was the tallest structure in the world when it opened, and it kept this title until the Chrysler Building in New York was completed in 1930.", "Because its four legs curve inwards, special lifts had to be designed to travel up at an angle.", "These lifts soon became an attraction in themselves."], 0, "The paragraph is about the tower’s height and how visitors reached the top."],
-  [["The tower was only meant to stand for twenty years.", "However, Eiffel encouraged scientists to use it for experiments, and in the early twentieth century it became an important radio transmitter.", "Today it attracts millions of visitors every year.", "In the end, the structure that critics had called useless proved to be both practical and loved."], 3, "Here the topic sentence comes last, as a conclusion. Clue words: “In the end”. This last sentence also expresses the main idea of the whole passage."],
-]);
-sorter("levels", "levelsFb", ["Main idea", "Topic sentence", "Detail"], [
-  ["The Eiffel Tower began as a controversial project but became a celebrated engineering achievement.", "Main idea", "It covers the whole passage."],
-  ["Not everyone welcomed the plan.", "Topic sentence", "It introduces paragraph B only."],
-  ["About 2.5 million rivets were used.", "Detail", "A number that supports the idea of speed."],
-  ["The speed of construction was remarkable.", "Topic sentence", "It introduces paragraph C."],
-  ["Artists called the tower useless and monstrous.", "Detail", "An example of the opposition."],
-  ["It kept the title of tallest structure until 1930.", "Detail", "A fact supporting paragraph D."],
-], { good: "You can now read a passage like a map.", bad: "Main idea = whole passage; topic sentence = one paragraph; detail = a fact or example." });
-cards("qtypes", [
-  ["Which is INCORRECT?", "find the false option", "Check each option against the passage. Three are true; one is wrong or contradicts the text."],
-  ["Who / what was…?", "a detail", "Scan for the name, then read the sentence around it."],
-  ["What does ‘X’ mean?", "vocabulary in context", "Replace the word with each option and read the sentence again. Which option keeps the meaning?"],
-  ["Why…? / …because", "a reason", "Look for cause words: because, so, as a result, thanks to."],
-  ["Best summary", "the main idea", "The right option covers the whole passage. Wrong options are too narrow, too detailed or not stated."],
-]);
-mcq("eiffelQ", [
-  ["According to the passage, which statement is INCORRECT?", ["More than a hundred designs were entered in the competition.", "Some artists opposed the tower before it was built.", "The tower was built by thousands of workers over ten years.", "The tower was originally planned as a temporary structure."], 2, "Paragraph C says “a few hundred workers” and “just over two years”. A, B and D are all stated in the passage."],
-  ["Who was Gustave Eiffel?", ["A writer who opposed the tower", "An engineer known for his iron bridges", "A member of the competition committee", "The designer of the Chrysler Building"], 1, "Paragraph A: “an engineer already famous for his iron bridges”. Option A is the opposite: the writers opposed him."],
-  ["The word “remarkable” in paragraph C is closest in meaning to", ["ordinary", "dangerous", "impressive", "slow"], 2, "Replace the word: “The speed of construction was impressive.” The details (two years) show the speed was surprising, so “ordinary” and “slow” do not fit."],
-  ["The lifts had to travel up at an angle because", ["the organisers wanted a new attraction.", "the tower’s legs curve inwards.", "the critics demanded it.", "the tower was too tall for straight lifts."], 1, "Paragraph D: “Because its four legs curve inwards…”. Option A is a result (the lifts became an attraction), not the reason."],
-  ["Which sentence best summarises the passage?", ["Eiffel won a competition to build a monument in Paris.", "The Eiffel Tower used 2.5 million rivets and took two years to build.", "Although it was criticised at first, the Eiffel Tower became an engineering success and a much-loved landmark.", "Artists in Paris succeeded in stopping a new iron monument."], 2, "Option C covers the whole passage. A is only paragraph A (too narrow), B is details only, and D is false: the tower was built."],
-], { fb: "eiffelQFb", good: "Excellent. You read the passage as a map." , bad: "Read the explanations: they show the traps examiners use."});
-mcq("hibQ", [
-  ["What is the main reason some animals hibernate?", ["Winter temperatures are too cold for them", "There is not enough food in winter", "They need to recover from summer", "Their bodies stop working in the dark"], 1, "Paragraph A: winter is dangerous “not because of the cold itself but because food becomes scarce”. Option A is the trap: the passage says the opposite."],
-  ["According to the passage, which statement is INCORRECT?", ["A hibernating animal can appear to be dead.", "Hibernators eat more than usual in autumn.", "All bears are true hibernators.", "In mild regions, some animals may not hibernate."], 2, "Paragraph D: scientists “disagree about whether they are true hibernators”. The word “All” is a warning sign."],
-  ["Some animals hide food in their burrows in order to", ["eat during short periods of waking.", "share it with other animals.", "attract a partner in spring.", "keep their burrows warm."], 0, "Paragraph C: “to eat during short periods of waking”."],
-  ["What feature makes a bear different from a squirrel during hibernation?", ["A bear’s heart beats faster", "A bear’s body temperature drops much less", "A bear wakes up more often", "A bear stores less fat"], 1, "Paragraph D: “drops by only a few degrees, much less than a squirrel’s”."],
-  ["What triggers hibernation, according to the passage?", ["Only falling temperatures", "A decision made by the animal", "Several factors, but the exact trigger is not fully known", "The length of the previous summer"], 2, "Paragraph E lists several factors and says the trigger “is still not fully understood”."],
-  ["Which sentence best summarises the passage?", ["Bears are the most famous hibernators.", "Many animals hibernate to survive winters with little food; their bodies change greatly, and scientists still do not fully understand what triggers it.", "Hibernation is the same as a long night’s sleep.", "Animals eat a lot in autumn and hide food in their burrows."], 1, "Option B covers paragraphs A–E. A is one paragraph, C is false (paragraph B), and D is detail only."],
-], { fb: "hibQFb", good: "All correct. You are ready for the question types in Session 5." , bad: "Watch for words like “all”, “only” and “always”: they often make an option wrong."});
-mcq("olyQ", [
-  ["The word “abandoned” in paragraph F is closest in meaning to", ["gave up", "won", "delayed", "shared"], 0, "Oslo stopped trying to host: it “abandoned its bid”. Replace the word: “Oslo gave up its bid.”"],
-  ["Which statement is FALSE according to the passage?", ["Criticism of the cost of hosting has grown.", "Recent hosts have included emerging economies.", "Women competed at the first modern Olympics in 1896.", "Cold War rivals used the Games to show national strength."], 2, "Paragraph B: in 1896 “every competitor was a man”; women first competed in 1900."],
-  ["The phrase “emerging economies” in paragraph E is closest in meaning to", ["countries with failing economies", "countries whose economies are growing and developing", "the oldest nations in the world", "the richest countries in the world"], 1, "Beijing and Rio are examples: countries that are “up-and-coming”, growing in wealth and confidence."],
-  ["What is the main contrast between the start and the end of the passage?", ["The ancient Games were only for Greeks, but the modern Games are only for rich nations.", "The early Games were political, but the modern Games are purely about sport.", "The early Games were large, but the modern Games are small.", "The early Games brought rivals together, but today the cost of hosting causes opposition."], 3, "Paragraph A: a truce allowed rivals to meet. Paragraph F: costs make cities withdraw. A, B and C contradict the passage."],
-], { fb: "olyQFb", good: "Excellent.", bad: "Read the explanations, then find each piece of evidence yourself." });
-</script>
-<script>
-(function(){
-  const $ = id => document.getElementById(id);
-  const norm = t => t.toLowerCase().replace(/[’']/g,"'").replace(/[^a-z0-9,' ]/g," ").replace(/\s+/g," ").trim();
-  const words = t => t.trim().split(/\s+/).filter(Boolean).length;
-
-  // generic MCQ
-  function mcq(id, items){
-    const box=$(id);
-    items.forEach(([q,opts,ans,why],qi)=>{
-      const d=document.createElement("div");d.className="q";
-      d.innerHTML=(q?"<p><strong>"+(qi+1)+".</strong> "+q+"</p>":"")+"<div></div><p class='why' hidden></p>";
-      const o=d.children[q?1:0],w=d.children[q?2:1];
-      opts.forEach((t,i)=>{const b=document.createElement("button");b.className="btn ghost";b.style.cssText="display:block;width:100%;text-align:left;margin:8px 0;font-weight:500";b.textContent="ABCD"[i]+")  "+t;
-        b.onclick=()=>{if(d.dataset.done)return;d.dataset.done=1;const ok=i===ans;d.classList.add(ok?"right":"wrong");o.children[ans].style.borderColor="var(--green)";w.hidden=false;w.innerHTML="<strong class='"+(ok?"ok":"bad")+"'>"+(ok?"Correct.":"Not quite.")+"</strong> "+why;};
-        o.appendChild(b);});
-      box.appendChild(d);});
+/* ---------- glossary and passages ---------- */
+const GLOSS = {
+  education: { integrated: "combined into something", shift: "a change", pace: "speed", accessible: "easy to reach or use", regardless: "not affected by", emphasis: "special importance", rote: "learning by repeating, without understanding", despite: "even though there are", vital: "very important", interactions: "communication between people", foster: "help to develop", combining: "putting together", curriculum: "the subjects taught in a course", rapid: "very fast", competitive: "able to compete well", evolving: "slowly changing and developing", inclusive: "open to everyone" },
+  greenvalley: { various: "many different", facilities: "buildings and equipment for a purpose", advanced: "modern and well developed", initiatives: "new plans or actions", launch: "the start of something new", extensive: "large in amount", remotely: "from a distance, not on campus", commitments: "duties you have promised to do", undergraduate: "a student doing a first degree", postgraduate: "a student doing a master’s or PhD", resources: "useful materials", promotes: "supports and encourages" },
+  eiffel: { parisian: "from Paris", exposition: "a large public exhibition", centenary: "the 100th anniversary", committee: "a group chosen to make decisions", "open-lattice": "a pattern of crossed metal strips with spaces between", wrought: "(of iron) shaped by hammering", aroused: "caused (a feeling)", skepticism: "doubt", opposition: "disagreement", aesthetic: "about beauty and appearance", remotely: "even slightly", "labor force": "the workers", presaged: "was an early sign of", vindicated: "proved to be right", principal: "main" },
+  olympics: { brief: "short", reputation: "what people think of someone", competed: "took part in a contest", existence: "the state of being real", evolved: "developed slowly", separate: "different, not joined", predominantly: "mainly", "up-and-coming": "becoming successful", announce: "tell everyone", prosperity: "wealth and success", criticism: "saying what is wrong", costs: "money that must be spent", burden: "a heavy duty or problem", bid: "an offer to do something", hassle: "trouble and difficulty", setbacks: "problems that delay progress" },
+  hibernation: { bypass: "avoid", plentiful: "available in large amounts", associated: "connected in people’s minds", compound: "a chemical substance", diminishing: "getting smaller", anticipation: "expecting something", slumber: "sleep", brief: "short", plunges: "falls quickly", appear: "seem", factors: "things that cause a result", rouse: "wake up", species: "a type of animal or plant" },
+};
+function renderPassage(boxId, key, glId) {
+  const P = (window.PASSAGES || {})[key], box = $(boxId);
+  if (!P || !P.text || /PASTE THE PASSAGE HERE/.test(P.text)) {
+    box.innerHTML = "<div class='remember'><strong>Passage not added yet.</strong> Open <code>passages.js</code>, paste the “" + (P ? P.title : key) + "” passage from the Google Doc where it says PASTE THE PASSAGE HERE, and upload the file again.</div>";
+    return;
   }
+  const words = Object.keys(GLOSS[key] || {}).sort((a, b) => b.length - a.length);
+  const re = words.length ? new RegExp("\\b(" + words.map(w => w.replace(/[-]/g, "\\-")).join("|") + ")\\b", "gi") : null;
+  const esc = t => t.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+  const paras = P.text.trim().split(/\n\s*\n/);
+  box.innerHTML = "<h3>" + P.title + "</h3>" + paras.map((p, i) => {
+    let h = esc(p.trim());
+    if (re) h = h.replace(re, m => "<button class='gl' data-k='" + m.toLowerCase() + "'>" + m + "</button>");
+    return "<div class='para'><b>" + (i + 1) + "</b><span>" + h + "</span></div>";
+  }).join("");
+  box.querySelectorAll(".gl").forEach(b => b.onclick = () => { $(glId).innerHTML = "<strong>" + b.textContent + "</strong>: " + GLOSS[key][b.dataset.k]; });
+}
+renderPassage("edu", "education", "eduGl"); renderPassage("gv", "greenvalley", "gvGl");
+renderPassage("eif", "eiffel", "eifGl"); renderPassage("oly", "olympics", "olyGl"); renderPassage("hib", "hibernation", "hibGl");
 
-  // Step 1 skim or scan
-  const ss=[["You want to know if an article is useful for your essay.","skim"],["You need the date of your exam on a long timetable.","scan"],["A question asks: “In which year was the university founded?”","scan"],["You must match headings to paragraphs.","skim"],["You want the general idea of a news story in one minute.","skim"],["A question asks you to find a researcher’s name in the passage.","scan"]];
-  let ssDone=0,ssRight=0;
-  ss.forEach(([t,a])=>{const d=document.createElement("div");d.className="fact";d.innerHTML="<span class='serif'>"+t+"</span>";
-    ["skim","scan"].forEach(k=>{const b=document.createElement("button");b.className="btn ghost";b.textContent=k==="skim"?"Skim":"Scan";
-      b.onclick=()=>{if(d.dataset.done)return;d.dataset.done=1;ssDone++;const ok=k===a;if(ok)ssRight++;d.classList.add(ok?"right":"wrong");
-        if(!ok){const n=document.createElement("span");n.className="small-fb bad";n.style.flexBasis="100%";n.textContent=a==="skim"?"You need the general idea, so skim.":"You need one specific detail, so scan.";d.appendChild(n);}
-        if(ssDone===ss.length)$("skimScanFb").innerHTML="<span class='"+(ssRight===ss.length?"ok":"bad")+"'><strong>"+ssRight+" / "+ss.length+".</strong> "+(ssRight===ss.length?"Main idea: skim. Specific detail: scan.":"Remember: main idea = skim, specific detail = scan.")+"</span>";};
-      d.appendChild(b);});
-    $("skimScan").appendChild(d);});
+/* ---------- Part A ---------- */
+sorter("skimScan", "skimScanFb", ["Skim", "Scan"], [
+  ["You want to know if an article is useful for your essay.", "Skim"], ["You need the date of your exam on a long timetable.", "Scan"],
+  ["A question asks: “In which year was the university founded?”", "Scan"], ["You must match headings to paragraphs.", "Skim"],
+  ["You want the general idea of a news story in one minute.", "Skim"], ["You need a researcher’s name in the passage.", "Scan"]],
+  { good: "Main idea: skim. Specific detail: scan.", bad: "Main idea = skim; specific detail = scan." });
+topicPick("topics", [
+  [["Many species of birds are now endangered due to habitat destruction.", "Forests are being cleared for farming and urban development.", "This loss of habitat means birds have fewer places to feed and breed.", "In some countries, laws have been introduced to protect nesting areas."], 0, "It gives the main idea: birds are endangered because of habitat loss. The rest explains and gives examples."],
+  [["Online learning platforms have become more common in recent years.", "Many students prefer studying at home, especially after the COVID-19 pandemic.", "These platforms offer video lessons, quizzes, and discussion forums.", "Some experts believe this could change traditional classroom education in the future."], 0, "General statement first; then reasons, examples and a prediction."],
+  [["Scientists have discovered a link between sleep and memory.", "During sleep, the brain organizes and stores information from the day.", "People who sleep well often perform better in tests.", "This research highlights the importance of healthy sleep habits."], 0, "The main finding comes first; the rest explains it."],
+  [["Some cities give free bus passes to students.", "Others have built new cycle lanes and limited car parking in the centre.", "A few have even banned older cars on certain days.", "Clearly, cities are trying many different ways to reduce traffic."], 3, "Here it comes last. The first three sentences are examples; “Clearly” introduces the general idea."],
+  [["Imagine paying for your coffee just by looking at a camera.", "In several countries, face recognition is now used for everyday payments.", "Customers do not need a card or a phone.", "Supporters say it is faster, although some people worry about privacy."], 1, "The first sentence is a hook to catch your attention. The main idea is the second sentence."],
+]);
+dropMatch("heads", "headsBtn", "headsFb", [
+  ["Many cities are now using smart technology to manage traffic.", "C", "smart technology = digital tools; traffic = urban transport"],
+  ["Renewable energy is becoming more affordable and efficient.", "B", "renewable energy = cleaner power"],
+  ["Fast food is contributing to rising obesity rates worldwide.", "A", "fast food = processed meals; obesity = a health risk"]],
+  [["A", "A. The health risks of processed meals"], ["B", "B. Cleaner power for the future"], ["C", "C. Digital tools for urban transport"], ["D", "D. The history of public buses"]],
+  { good: "Heading D was extra: it shares a topic word (buses) but not the meaning.", bad: "Look for the same meaning in different words." });
+cards("sumLang", [["The text is about… / The article explains…", "main idea", "The text explains how education has changed."], ["Firstly, … / The text begins by…", "first point", "Firstly, technology is now common in schools."], ["In addition, … / Also, … / Moreover, …", "extra point", "In addition, teachers focus more on skills."], ["However, … / On the other hand, …", "contrast", "However, traditional methods are still important."], ["Finally, … / Overall, …", "last point", "Finally, people need to keep learning all their lives."]]);
 
-  // Step 2 topic sentences
-  const paras=[
-    [["Online learning platforms have become more common in recent years.","Many students prefer studying at home, especially after the COVID-19 pandemic.","These platforms offer video lessons, quizzes, and discussion forums.","Some experts believe this could change traditional classroom education in the future."],0,"The first sentence gives the main idea. The others give reasons, examples and a prediction."],
-    [["Scientists have discovered a link between sleep and memory.","During sleep, the brain organizes and stores information from the day.","People who sleep well often perform better in tests.","This research highlights the importance of healthy sleep habits."],0,"The first sentence states the main finding. The rest explain it and give evidence."],
-    [["Some cities give free bus passes to students.","Others have built new cycle lanes and limited car parking in the centre.","A few have even banned older cars on certain days.","Clearly, cities are trying many different ways to reduce traffic."],3,"Here the topic sentence comes last. The first three sentences are examples, and the last one sums them up. Notice the word “Clearly”."],
-    [["Imagine paying for your coffee just by looking at a camera.","In several countries, face recognition is now used for everyday payments.","Customers do not need a card or a phone.","Supporters say it is faster, although some people worry about privacy."],1,"The first sentence is a hook to get your attention. The main idea is in the second sentence."],
-  ];
-  paras.forEach(([s,ans,why],pi)=>{
-    const d=document.createElement("div");d.className="q";const p=document.createElement("p");p.className="serif";p.style.fontSize="18px";p.style.lineHeight="1.7";
-    const w=document.createElement("p");w.className="why";w.hidden=true;
-    d.innerHTML="<p class='hint' style='margin:0 0 4px'>Paragraph "+(pi+1)+"</p>";
-    s.forEach((t,i)=>{const sp=document.createElement("span");sp.className="sent";sp.textContent=t;sp.tabIndex=0;sp.setAttribute("role","button");
-      const go=()=>{if(d.dataset.done)return;
-        if(i===ans){d.dataset.done=1;sp.classList.add("yes");d.classList.add("right");w.hidden=false;w.innerHTML="<strong class='ok'>Correct.</strong> "+why;}
-        else{sp.classList.add("no");w.hidden=false;w.innerHTML="<span class='bad'>That sentence gives a detail or example. Try again.</span>";}};
-      sp.onclick=go;sp.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();go();}};
-      p.appendChild(sp);p.appendChild(document.createTextNode(" "));});
-    d.appendChild(p);d.appendChild(w);$("topics").appendChild(d);});
-
-  // Step 3 heading match
-  const heads=["A. The health risks of processed meals","B. Cleaner power for the future","C. Digital tools for city transport","D. The history of public buses"];
-  const ts=[["Many cities are now using smart technology to manage traffic.","C","Smart technology = digital tools; manage traffic = transport. Heading D is about buses, but the sentence is about technology, not history."],["Renewable energy is becoming more affordable and efficient.","B","Renewable energy = cleaner power."],["Fast food is contributing to rising obesity rates worldwide.","A","Fast food = processed meals; obesity = a health risk."]];
-  ts.forEach(([t],i)=>{const d=document.createElement("div");d.className="qrow";
-    d.innerHTML="<span class='num'>"+(i+1)+"</span><div><div class='serif' style='font-size:18px'>"+t+"</div><select data-i='"+i+"' style='margin-top:6px'><option value=''>Choose a heading…</option>"+heads.map(h=>"<option value='"+h[0]+"'>"+h+"</option>").join("")+"</select><div class='small-fb'></div></div>";
-    $("headMatch").appendChild(d);});
-  $("checkHeads").onclick=()=>{let ok=0;document.querySelectorAll("#headMatch select").forEach(s=>{const [t,a,why]=ts[s.dataset.i];const g=s.value===a;if(g)ok++;s.style.borderColor=g?"var(--green)":"var(--red)";
-    s.nextElementSibling.innerHTML=s.value?(g?"<span class='ok'>"+why+"</span>":"<span class='bad'>Not this one. Look for the same meaning in different words.</span>"):"";});
-    $("headFb").innerHTML="<span class='"+(ok===3?"ok":"bad")+"'><strong>"+ok+" / 3.</strong> "+(ok===3?"Heading D was the extra one: it matches a word, not the meaning.":"")+"</span>";};
-
-  // Step 4 skim timer
-  const p1=$("p1body");let skimT=null;
-  $("skimStart").onclick=()=>{if(skimT)return;let left=90;p1.classList.remove("blurred");$("skimStart").disabled=true;
-    skimT=setInterval(()=>{left--;$("skimClock").textContent=Math.floor(left/60)+":"+String(left%60).padStart(2,"0");
-      if(left<=0){clearInterval(skimT);p1.classList.add("blurred");$("skimClock").textContent="Time!";}},1000);};
-  $("showP1").onclick=()=>{clearInterval(skimT);p1.classList.remove("blurred");$("skimClock").textContent="—";$("skimStart").disabled=true;p1.scrollIntoView({behavior:"smooth",block:"start"});};
-
-  mcq("mainIdea",[[null,["Technology is replacing teachers in modern schools.","Education is changing in several ways: more technology, more focus on skills, a mix of old and new methods, and learning throughout life.","Online courses are better than classroom lessons."],1,"Option B includes the idea of every paragraph. A and C are not said in the passage; C is an opinion the writer never gives."]]);
-
-  const hlist=["i. Learning never stops","ii. Old methods still matter","iii. Technology enters the classroom","iv. Thinking, not memorising","v. Teachers lose their jobs"];
-  const p1a=["iii","iv","ii","i"];
-  ["A","B","C","D"].forEach((L,i)=>{const d=document.createElement("div");d.className="qrow";d.innerHTML="<span class='num'>"+L+"</span><div class='inline-row'>Paragraph "+L+" <select data-i='"+i+"'><option value=''>…</option>"+hlist.map(h=>"<option value='"+h.split(".")[0]+"'>"+h+"</option>").join("")+"</select></div>";$("p1Heads").appendChild(d);});
-  $("checkP1Heads").onclick=()=>{let ok=0;document.querySelectorAll("#p1Heads select").forEach(s=>{const g=s.value===p1a[s.dataset.i];if(g)ok++;s.style.borderColor=g?"var(--green)":"var(--red)";});
-    $("p1HeadsFb").innerHTML="<span class='"+(ok===4?"ok":"bad")+"'><strong>"+ok+" / 4.</strong> "+(ok===4?"Each heading matches a topic sentence. Heading v is not in the passage.":"Read only the first sentence of each paragraph again.")+"</span>";};
-
-  // Step 5
-  mcq("p1mcq",[
-    ["What is one of the main changes in education in recent decades?",["More school holidays","Smaller class sizes","Increased use of technology","More focus on memorization"],2,"Evidence (A): “One of the most significant changes is the rise of technology in the classroom.”"],
-    ["What advantage of technology does the passage mention?",["It helps students learn at their own pace","It reduces the need for teachers","It improves exam results","It limits student interaction"],0,"Evidence (A): “allowed students to … learn at their own pace.” Options A, B and D are not mentioned."],
-    ["Why are schools moving from memorization to skills?",["Skills are easier to teach","Memorization is now banned","Skills make lessons shorter","Skills prepare students for modern jobs"],3,"Evidence (B): “prepares students better for the challenges of the modern workforce.” Workforce = jobs."],
-    ["How are many schools responding to modern needs?",["Removing traditional lessons","Combining traditional and modern methods","Focusing only on technology","Offering fewer subjects"],1,"Evidence (C): “combining old and new methods.”"],
-    ["What does the passage say about adults?",["They learn faster than children","They study for fun","They return to education to stay competitive","They only attend night classes"],2,"Evidence (D): “return to education later in life to stay competitive in their careers.”"],
-  ]);
-
-  const SC={
-    p1sc:{max:3,items:[
-      ["Many schools now use ___, tablets and online learning platforms.",["computers"],"A: “integrated computers, tablets, and online learning platforms”"],
-      ["Online courses make education available to people anywhere, regardless of their ___.",["location"],"A: “regardless of their location”. The question has “their”, so write only “location”."],
-      ["Group projects and discussions develop ___ and teamwork.",["social skills"],"C: “foster social skills and teamwork”"],
-      ["Many institutions combine old and new methods to create a ___.",["balanced curriculum"],"C: “to create a balanced curriculum”"],
-      ["Adults return to education to ___ in their careers.",["stay competitive"],"D: “to stay competitive in their careers”"]]},
-    p2sc:{max:2,items:[
-      ["The online program lets students balance education with personal ___.",["commitments"],"B: “balance education with personal commitments”"],
-      ["The library gives access to thousands of ___ and print resources.",["digital"],"C: “thousands of digital and print resources”"],
-      ["Clubs help students develop ___ skills.",["leadership"],"D: “develop leadership skills”"],
-      ["The campus has laboratories, a large library and several ___.",["sports centers","sports centres"],"A: “several sports centers”"]]}
-  };
-  Object.entries(SC).forEach(([id,cfg])=>{cfg.items.forEach(([q],i)=>{const parts=q.split("___");const d=document.createElement("div");d.className="qrow";
-    d.innerHTML="<span class='num'>"+(i+1)+"</span><div><span class='serif' style='font-size:18px'>"+parts[0]+"</span><input class='ans' aria-label='Answer "+(i+1)+"' data-i='"+i+"'><span class='serif' style='font-size:18px'>"+parts[1]+"</span><div class='small-fb'></div></div>";$(id).appendChild(d);});});
-  document.querySelectorAll("[data-sc]").forEach(b=>b.onclick=()=>{const id=b.dataset.sc,cfg=SC[id];let ok=0;
-    document.querySelectorAll("#"+id+" input").forEach(inp=>{const [q,acc,ev]=cfg.items[inp.dataset.i];const v=norm(inp.value),fb=inp.parentElement.querySelector(".small-fb");
-      if(!v){inp.className="ans";fb.textContent="";return;}
-      if(words(v)>cfg.max){inp.className="ans badans";fb.innerHTML="<span class='bad'>Too many words. The limit is "+cfg.max+". In the exam this answer is marked wrong.</span>";return;}
-      const g=acc.includes(v);if(g)ok++;inp.className="ans "+(g?"good":"badans");fb.innerHTML=g?"<span class='ok'>Evidence: "+ev+"</span>":"<span class='bad'>Not quite. Answer: <strong>"+acc[0]+"</strong>. Evidence: "+ev+"</span>";});
-    $(id+"Fb").innerHTML="<span class='"+(ok===cfg.items.length?"ok":"bad")+"'><strong>"+ok+" / "+cfg.items.length+".</strong> "+(ok===cfg.items.length?"All correct. Spelling counts in the exam, so check every letter.":"Copy words exactly from the passage, and check the word limit.")+"</span>";});
-
-  // Step 6 predict + race
-  const RQ=[
-    ["When was the university established?","a year",[/^(in )?1980$/]],
-    ["How many students study there now?","a number",[/15,?000/]],
-    ["How many academic programs does it offer?","a number",[/120/]],
-    ["When was the online degree program introduced?","a year",[/^(in )?2022$/]],
-    ["What are the library’s opening hours?","a time",[/8.*10/]],
-    ["By when must students register for courses?","a date",[/(sep[a-z]*\.? ?1\b|\b1 ?(st )?sep)/]],
-    ["Name three types of clubs.","names",[/debate/,/music/,/environment/]],
-  ];
-  const kinds=["a year","a number","a time","a date","names"];
-  RQ.forEach(([q],i)=>{const d=document.createElement("div");d.className="qrow";d.innerHTML="<span class='num'>"+(i+1)+"</span><div class='inline-row'><span>"+q+"</span><select data-i='"+i+"'><option value=''>Answer type…</option>"+kinds.map(k=>"<option>"+k+"</option>").join("")+"</select></div>";$("predict").appendChild(d);});
-  $("checkPredict").onclick=()=>{let ok=0;document.querySelectorAll("#predict select").forEach(s=>{const g=s.value===RQ[s.dataset.i][1];if(g)ok++;s.style.borderColor=g?"var(--green)":"var(--red)";});
-    $("predictFb").innerHTML="<span class='"+(ok===RQ.length?"ok":"bad")+"'><strong>"+ok+" / "+RQ.length+".</strong> "+(ok===RQ.length?"Now your eyes know what to look for: four-digit years, big numbers, “AM/PM”, a month.":"“When” can mean a year, a date or a time. Look at the rest of the question.")+"</span>";};
-  RQ.forEach(([q],i)=>{const d=document.createElement("div");d.className="qrow";d.innerHTML="<span class='num'>"+(i+1)+"</span><div><div>"+q+"</div><input class='ans' aria-label='Answer "+(i+1)+"' data-i='"+i+"'><div class='small-fb'></div></div>";$("race").appendChild(d);});
-  const p2=$("p2body");let raceT=null,sec=0;
-  $("raceStart").onclick=()=>{if(raceT)return;p2.classList.remove("blurred");$("raceStart").disabled=true;
-    raceT=setInterval(()=>{sec++;$("raceClock").textContent=Math.floor(sec/60)+":"+String(sec%60).padStart(2,"0");},1000);};
-  $("raceCheck").onclick=()=>{clearInterval(raceT);p2.classList.remove("blurred");let ok=0;
-    document.querySelectorAll("#race input").forEach(inp=>{const pats=RQ[inp.dataset.i][2];const v=norm(inp.value),fb=inp.parentElement.querySelector(".small-fb");
-      const g=v&&pats.every(r=>r.test(v));if(g)ok++;inp.className="ans "+(v?(g?"good":"badans"):"");
-      if(v&&!g)fb.innerHTML="<span class='bad'>Check the passage again.</span>";else fb.textContent="";});
-    const t=Math.floor(sec/60)+" min "+(sec%60)+" s";
-    $("raceFb").innerHTML="<span class='"+(ok===RQ.length?"ok":"bad")+"'><strong>"+ok+" / "+RQ.length+"</strong>"+(sec?" in "+t+".":".")+" "+(ok===RQ.length?(sec&&sec<=120?"Excellent scanning.":"All correct. Next time, try to be faster."):"Look for the answer type you predicted.")+"</span>";};
-
-  // Step 7 summary
-  const sc=[["The text is about… / The text explains…","main idea","The text explains how education has changed."],["Firstly, … / The text begins by…","first point","Firstly, technology is now common in schools."],["In addition, … / Also, … / Moreover, …","extra point","In addition, teachers focus more on skills."],["However, … / On the other hand, …","contrast","However, traditional methods are still important."],["Finally, … / Overall, …","last point","Finally, people need to keep learning all their lives."]];
-  sc.forEach(([w,c,e])=>{const b=document.createElement("button");b.className="card";b.innerHTML="<div class='front'>"+w+"<small>"+c+"</small></div><div class='back'>"+e+"</div>";b.onclick=()=>b.classList.toggle("open");$("sumCards").appendChild(b);});
-  const p2text=norm([...p2.querySelectorAll(".para span")].map(s=>s.textContent).join(" "));
-  const tests=[
-    ["50–80 words",t=>{const n=words(t);return n>=50&&n<=80;}],
-    ["Starts with the main idea (The text… / The article… / The passage…)",t=>/^\s*the (text|article|passage)/i.test(t)],
-    ["Uses at least two linking words (Firstly, In addition, However, Finally…)",t=>(t.match(/\b(firstly|first|in addition|also|moreover|however|finally|overall)\b/gi)||[]).length>=2],
-    ["Own words: no run of 6 or more words copied from the passage",t=>{const w=norm(t).split(" ");if(w.length<6)return false;for(let i=0;i+6<=w.length;i++){if(p2text.includes(w.slice(i,i+6).join(" ")))return false;}return true;}],
-    ["Few small details: no more than two numbers",t=>(t.match(/\d+/g)||[]).length<=2],
-    ["No opinions (no “I think”)",t=>t.trim().length>0&&!/\bI (think|believe|feel)\b/i.test(t)],
-  ];
-  const ta=$("sum");
-  function chk(){const t=ta.value;$("sumWc").textContent=words(t)+" words";$("sumChecks").innerHTML="";tests.forEach(([l,f])=>{const li=document.createElement("li");li.textContent=l;if(t.trim())li.className=f(t)?"pass":"fail";$("sumChecks").appendChild(li);});}
-  ta.addEventListener("input",chk);chk();
+/* ---------- Part B ---------- */
+let skimT = null;
+$("skimBtn").onclick = () => { if (skimT) return; let left = 90; $("edu").classList.remove("blurred"); $("skimBtn").disabled = true;
+  skimT = setInterval(() => { left--; $("skimClock").textContent = Math.floor(left / 60) + ":" + String(left % 60).padStart(2, "0"); if (left <= 0) { clearInterval(skimT); $("edu").classList.add("blurred"); $("skimClock").textContent = "Time!"; } }, 1000); };
+$("showEdu").onclick = () => { clearInterval(skimT); $("edu").classList.remove("blurred"); $("skimClock").textContent = "—"; $("skimBtn").disabled = true; $("edu").scrollIntoView({ behavior: "smooth" }); };
+mcq("eduMain", [[null, ["Technology is replacing teachers in modern schools.", "Education is changing in several ways: more technology, more focus on skills, a mix of old and new methods, and learning throughout life.", "Online courses are better than classroom lessons."], 1, "B covers every paragraph. A and C are not said in the passage."]]);
+(function () {
+  const opts = [["technology", 1], ["tablets", 0], ["skills", 1], ["workforce", 0], ["traditional methods", 1], ["location", 0], ["lifelong learning", 1], ["group projects", 0]];
+  const sel = new Set();
+  opts.forEach(([w]) => { const b = document.createElement("button"); b.className = "btn ghost"; b.textContent = w; b.setAttribute("aria-pressed", "false");
+    b.onclick = () => { if (sel.has(w)) sel.delete(w); else sel.add(w); b.setAttribute("aria-pressed", sel.has(w)); b.style.background = sel.has(w) ? "var(--wash)" : ""; b.style.borderWidth = sel.has(w) ? "3px" : ""; }; $("kw").appendChild(b); });
+  $("kwBtn").onclick = () => { const good = opts.filter(o => o[1]).map(o => o[0]); const ok = good.filter(g => sel.has(g)).length;
+    $("kwFb").innerHTML = (ok === 4 && sel.size === 4 ? "<span class='ok'><strong>4 / 4.</strong> " : "<span class='bad'><strong>" + ok + " / 4.</strong> ") + "The best keywords are one per paragraph: <strong>technology</strong> (1), <strong>skills</strong> (2), <strong>traditional methods</strong> (3), <strong>lifelong learning</strong> (4). Words like “tablets” and “group projects” are only examples.</span>"; };
 })();
+mcq("eduMcq", [
+  ["What is one of the main changes in education in recent decades?", ["More school holidays", "Smaller class sizes", "Increased use of technology", "More focus on memorization"], 2, "Paragraph 1: “the rise of technology in the classroom”."],
+  ["What advantage of online learning is mentioned in the passage?", ["It helps students learn at their own pace", "It reduces the need for teachers", "It improves exam results", "It limits student interaction"], 0, "Paragraph 1: students can “learn at their own pace”. The others are not mentioned."],
+  ["Why is there a shift from memorization to skills-based learning?", ["Skills are easier to teach", "Memorization is now banned", "Skills make lessons shorter", "Skills prepare students for modern jobs"], 3, "Paragraph 2: it “prepares students better for the challenges of the modern workforce”. Workforce = jobs."],
+  ["How are many schools responding to modern educational needs?", ["Removing traditional lessons", "Mixing traditional and modern methods", "Focusing only on technology", "Offering fewer subjects"], 1, "Paragraph 3: “combining old and new methods”."],
+  ["What does the passage say about adults?", ["They learn faster than children", "They study for fun", "They return to education to stay competitive", "They only attend night classes"], 2, "Paragraph 4: they return “to stay competitive in their careers”."]],
+  { fb: "eduMcqFb", good: "Excellent.", bad: "Read the explanations and find the evidence yourself." });
+gaps("eduSc", "eduScBtn", "eduScFb", 3, [
+  ["Many schools now use ___, tablets, and online learning platforms.", ["computers"], "Paragraph 1"],
+  ["Educators now focus on skills rather than ___ learning.", ["rote"], "Paragraph 2: “rather than rote learning”"],
+  ["Group projects and discussions help develop ___ and teamwork.", ["social skills"], "Paragraph 3"],
+  ["The education system is becoming more flexible, inclusive, and ___.", ["student-centered", "student-centred", "student centered"], "Paragraph 4"],
+  ["Adults return to education to ___ in their careers.", ["stay competitive"], "Paragraph 4"]]);
+writeBox("eduSum", "eduSumWc", "eduSumChecks", [
+  ["40–70 words", t => { const n = words(t); return n >= 40 && n <= 70; }],
+  ["Starts with the main idea (The text… / The article… / The passage…)", t => /^\s*the (text|article|passage)/i.test(t)],
+  ["Mentions technology, skills, traditional methods and lifelong learning", t => /technolog/i.test(t) && /skill/i.test(t) && /tradition|old/i.test(t) && /lifelong|throughout (their|our) lives|keep learning|later in life|adult/i.test(t)],
+  ["Own words: no 6 words in a row copied from the passage", t => { const p = norm(window.PASSAGES.education.text), w = norm(t).split(" "); if (w.length < 6) return false; for (let i = 0; i + 6 <= w.length; i++) if (p.includes(w.slice(i, i + 6).join(" "))) return false; return true; }],
+  ["No opinions (no “I think”)", t => t.trim() && !/\bI (think|believe|feel)\b/i.test(t)]]);
+
+/* ---------- Part C ---------- */
+const RQ = [
+  ["When was the university established?", "a year", [/1980/]], ["How many students study there now?", "a number", [/15,?000/]],
+  ["How many academic programs does it offer?", "a number", [/120/]], ["Name the three facilities on campus.", "names", [/lab/, /librar/, /sport/]],
+  ["When was the online program introduced?", "a year", [/2022/]], ["How many courses does the online program offer?", "a number", [/50/]],
+  ["What are the library’s opening hours?", "a time", [/8/, /10/]], ["By when must students register for courses?", "a date", [/sep/]],
+  ["Name three types of clubs.", "names", [/debate/, /music/, /environment/]]];
+const kinds = ["a year", "a number", "a time", "a date", "names"];
+RQ.forEach(([q], i) => { const d = document.createElement("div"); d.className = "qrow"; d.innerHTML = "<span class='num'>" + (i + 1) + "</span><div class='inline-row'><span>" + q + "</span><select data-i='" + i + "'><option value=''>Answer type…</option>" + kinds.map(k => "<option>" + k + "</option>").join("") + "</select></div>"; $("pred").appendChild(d); });
+$("predBtn").onclick = () => { let ok = 0; document.querySelectorAll("#pred select").forEach(s => { const g = s.value === RQ[s.dataset.i][1]; if (g) ok++; s.style.borderColor = g ? "var(--green)" : "var(--red)"; }); score("predFb", ok, RQ.length, "Now your eyes know what to look for: four-digit years, big numbers, AM/PM, a month.", "“When” can mean a year, a date or a time. Read the whole question."); };
+RQ.forEach(([q], i) => { const d = document.createElement("div"); d.className = "qrow"; d.innerHTML = "<span class='num'>" + (i + 1) + "</span><div><div>" + q + "</div><input class='ans' aria-label='Answer " + (i + 1) + "' data-i='" + i + "'><div class='small-fb'></div></div>"; $("race").appendChild(d); });
+let raceT = null, sec = 0;
+$("raceBtn").onclick = () => { if (raceT) return; $("gv").classList.remove("blurred"); $("raceBtn").disabled = true; raceT = setInterval(() => { sec++; $("raceClock").textContent = Math.floor(sec / 60) + ":" + String(sec % 60).padStart(2, "0"); }, 1000); };
+$("raceCheck").onclick = () => { clearInterval(raceT); $("gv").classList.remove("blurred"); let ok = 0;
+  document.querySelectorAll("#race input").forEach(inp => { const v = norm(inp.value), fb = inp.parentElement.querySelector(".small-fb"); const g = v && RQ[inp.dataset.i][2].every(r => r.test(v)); if (g) ok++; inp.className = "ans " + (v ? (g ? "good" : "badans") : ""); fb.innerHTML = v && !g ? "<span class='bad'>Check the passage again.</span>" : ""; });
+  score("raceFb", ok, RQ.length, sec ? "Time: " + Math.floor(sec / 60) + " min " + sec % 60 + " s." : "", "Look for the answer type you predicted."); };
+mcq("gvMcq", [
+  ["What is the main purpose of the online program?", ["To reduce the number of professors", "To focus only on postgraduate students", "To allow students to study flexibly", "To promote in-person education"], 2, "Paragraph 2: students can “study remotely and balance education with personal commitments”."],
+  ["Why do students have to register before September 1?", ["To pay lower fees", "So that courses can be scheduled properly", "To join a club", "To use the library"], 1, "Paragraph 3: “to ensure proper scheduling”."],
+  ["What do clubs help students to develop?", ["Leadership skills and networks", "Exam techniques", "Computer skills", "Sports skills only"], 0, "Paragraph 4: “develop leadership skills and build networks”."]],
+  { fb: "gvMcqFb", good: "Excellent." });
+gaps("gvSc", "gvScBtn", "gvScFb", 3, [
+  ["The university has over ___ students.", ["15,000", "15000"], "Paragraph 1"],
+  ["The online degree program began in ___.", ["2022"], "Paragraph 2"],
+  ["Students can study remotely and ___ with personal commitments.", ["balance education"], "Paragraph 2"],
+  ["The library opens at ___ every day.", ["8 AM", "8am", "8 a.m.", "8"], "Paragraph 3"],
+  ["Clubs give students chances to develop ___ and build networks.", ["leadership skills"], "Paragraph 4"]]);
+
+/* ---------- Part D: Eiffel ---------- */
+dropMatch("eifMap", "eifMapBtn", "eifMapFb", [["Paragraph 1", "a"], ["Paragraph 2", "b"], ["Paragraph 3", "c"], ["Paragraph 4", "d"]],
+  [["a", "How the tower came to be built, and early reactions to the design"], ["b", "Why the tower was an engineering revolution"], ["c", "How the structure is designed, including its lifts"], ["d", "The tower’s height and its record as the tallest structure"]],
+  { good: "Main idea of the whole passage: the Eiffel Tower was a groundbreaking engineering achievement that became a symbol of Paris despite early criticism.", bad: "Read the first one or two sentences of each paragraph again." });
+mcq("eifQ", [
+  ["According to the passage, which statement is INCORRECT?", ["The Chrysler Building took the title of tallest structure in 1929.", "The four arches at the base are an essential part of the supporting structure.", "The curved lifts helped make the tower a major tourist attraction.", "The design was criticised at first but was later accepted."], 1, "Paragraph 3 says the arches are “purely aesthetic” and have “no structural function”. A, C and D are all stated."],
+  ["Who was Gustave Eiffel?", ["A member of the Centennial Committee", "A representative of the Otis Elevator Company", "A well-known bridge engineer", "A leader of the French Revolution"], 2, "Paragraph 1: “the noted bridge engineer Gustave Eiffel”."],
+  ["The word “presaged” in paragraph 2 is closest in meaning to", ["copied", "was an early sign of", "prevented", "followed"], 1, "The tower came before the revolution in design and showed it was coming. Replace the word: “a structure that was an early sign of a revolution in civil engineering”."],
+  ["The lifts needed to travel up on a curve because", ["the committee requested it", "a special feature was needed to attract tourists", "the tower stands on four piers that curve inwards", "French people prefer curves to straight lines"], 2, "Paragraph 3: because of the piers’ curved shape, the lifts had to “ascend on a curve”. Attracting tourists (B) was a result, not the reason."],
+  ["The word “principal” in paragraph 3 could best be replaced by", ["main", "ordinary", "only", "single"], 0, "“One of the principal features” = one of the main features. Do not confuse it with “principle” (a rule)."],
+  ["Why was building the tower in about two years significant?", ["It cost the government a great deal of money", "The design had faced opposition", "It needed an unusually large number of workers", "It was a remarkable engineering achievement for its time"], 3, "Paragraph 2 contrasts it with older monuments: it went up quickly, with a small workforce, at low cost. B is true but is not the reason; A and C contradict the passage."],
+  ["The word “centenary” in paragraph 1 means", ["a hundredth anniversary", "something very important", "something in the centre", "the main event"], 0, "The 1889 exposition celebrated 100 years since the French Revolution of 1789."],
+  ["Which sentence best summarises the passage?", ["Eiffel had to deal with a lot of bureaucracy before his design was approved.", "The authorities disliked the design at first but later accepted it.", "Eiffel’s engineering background made the design easy for him.", "The Eiffel Tower was an unprecedented engineering achievement that later became an iconic landmark of Paris."], 3, "D covers the whole passage. A and C are not stated; B is only part of paragraph 1 (and it was critics, not the authorities, who objected)."]],
+  { fb: "eifQFb", good: "Excellent.", bad: "Read the explanations: they show the traps examiners use." });
+
+/* ---------- Part E: Olympics ---------- */
+gaps("olySc", "olyScBtn", "olyScFb", 1, [
+  ["In which city were the first modern Olympics held?", ["Athens"], "Paragraph 2"],
+  ["How many countries competed in 1896?", ["14", "fourteen"], "Paragraph 2"],
+  ["In which year did women first compete?", ["1900"], "Paragraph 2: “Just four years later”"],
+  ["Which French town hosted the first Winter Olympics?", ["Chamonix"], "Paragraph 3"],
+  ["How many countries competed in Rio?", ["205"], "Paragraph 5"],
+  ["Which country withdrew from a Winter Olympics bid?", ["Norway"], "Paragraph 7"]]);
+mcq("olyQ", [
+  ["The word “hassle” in the last paragraph refers to", ["the prestige of hosting the Olympics", "the thousands of tourists who visit", "the cost and burden of hosting the Olympics", "the hours of training athletes need"], 2, "The paragraph is about criticism of the “costs and burden” of the Games; Norway’s citizens did not want this trouble."],
+  ["According to the passage, which statement is FALSE?", ["Criticism of the cost of hosting has increased recently.", "Until recently, the Games were mostly hosted by developed countries.", "Women competed in the first modern Olympics in 1896.", "The Olympics helped to maintain peace during the Cold War."], 2, "Paragraph 2: in 1896 all the athletes were men; women first competed in 1900."],
+  ["The phrase “up-and-coming” in paragraph 5 is closest in meaning to", ["struggling", "emerging", "impending", "ancient"], 1, "Up-and-coming nations are growing in wealth and importance, like Brazil and China."],
+  ["What is the main contrast between the start and the end of the passage?", ["The early Games were purely athletic, while the modern Games have become a show of prosperity that places a heavy burden on hosts.", "The ancient Games were only for Greeks, while the modern Games are only for rich nations.", "The early Games were large, while the modern Games are small.", "The early Games caused conflict, while the modern Games are always peaceful."], 0, "The passage moves from friendly competition and peace to prosperity, cost and criticism. B, C and D contradict the passage."]],
+  { fb: "olyQFb", good: "Excellent.", bad: "Read the explanations, then find the evidence yourself." });
+
+/* ---------- Part F: Hibernation ---------- */
+countdown("hibBtn", "hibClock", 600, null);
+mcq("hibQ", [
+  ["The word “rouse” in the last paragraph means", ["to go for a walk", "to eat food", "to wake up", "to excite"], 2, "Animals “rouse briefly to go to the bathroom and eat a snack before falling asleep again”: they wake up for a short time."],
+  ["According to the passage, which statement is INCORRECT?", ["All bears hibernate during the winter months.", "Where winters are mild, animals may hibernate only briefly.", "A compound in the blood called HIT tells animals when to hibernate.", "At least one bird, the poorwill, hibernates."], 0, "The passage says bears are not considered true hibernators, and only certain species of bears behave in a special way. “All” is the warning word."],
+  ["Why do some animals not hibernate at all?", ["They decide not to", "They have plenty of food stored", "They live where winters are relatively mild", "They hibernated for longer the year before"], 2, "Last paragraph: in regions with mild winters, animals may hibernate briefly “or not at all”."],
+  ["According to the passage, what is a key feature of true hibernation?", ["Carrying HIT in the blood", "A significant drop in body temperature", "Eating more food in autumn", "Appearing to be dead"], 1, "Paragraph 1: bears are not true hibernators “because their body temperature doesn’t lower significantly”. So a big temperature drop defines true hibernation."],
+  ["What triggers hibernation?", ["Only cold temperatures", "The animal’s own decision", "A compound called HIT, influenced by shorter days, less food and cold, although the exact mechanism is unknown", "Hunger alone"], 2, "Paragraph 2 names HIT and the factors that influence it, and says the exact mechanism “remains a mystery”."],
+  ["Which is the best summary of the passage?", ["Hibernation only affects bears and lowers their body temperature and heart rate.", "Many animals hibernate to avoid winter food shortages; the trigger is not fully understood, but the physical changes and the animals involved are well known.", "Animals eat more in autumn because a compound called HIT makes them hungry.", "Hibernators are animals whose winter behaviour is well documented."], 1, "B covers the whole passage. A is false (many animals hibernate), C misreads the passage, and D is too vague."]],
+  { fb: "hibQFb", good: "Excellent. You used every skill from today.", bad: "Watch for “all”, “only” and “always”: they often make an option wrong." });
+
+/* ---------- progress ---------- */
+const PROG = [["Education: multiple choice", "eduMcqFb"], ["Education: sentence completion", "eduScFb"], ["Green Valley: scanning race", "raceFb"], ["Green Valley: questions", "gvMcqFb"], ["Eiffel Tower: Questions 1–8", "eifQFb"], ["Olympics: scanning", "olyScFb"], ["Olympics: Questions 9–12", "olyQFb"], ["Hibernation: Questions 13–18", "hibQFb"]];
+function drawProg() { $("prog").innerHTML = "<tr><th>Practice</th><th>Score</th></tr>" + PROG.map(([n, id]) => { const m = ($(id).textContent.match(/(\d+) \/ (\d+)/) || []); return "<tr><td>" + n + "</td><td>" + (m[0] || "not done yet") + "</td></tr>"; }).join(""); }
+drawProg(); const mo = new MutationObserver(drawProg); PROG.forEach(([, id]) => mo.observe($(id), { childList: true, subtree: true }));
 </script>
 </body>
 </html>
