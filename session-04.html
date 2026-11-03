@@ -243,10 +243,10 @@ details ol{margin:8px 0 4px;padding-left:22px;line-height:1.7}
 <main>
   <p class="hint">Session 4</p>
   <h1>Speaking Part 1: talk about yourself</h1>
-  <p class="lead">Part 1 is the first 4–5 minutes of the Speaking test: easy questions about your life. The skill is not the content but the English: answer directly, add one or two details, and sound natural. Today you will learn how, then practise with more than 380 real-style questions.</p>
+  <p class="lead">Part 1 is the first 4–5 minutes of the Speaking test: easy questions about your life. The skill is not the content but the English: answer directly, add one or two details, and sound natural. Today you will learn how, collect linking words and useful phrases, and practise with more than 380 real-style questions.</p>
   <ul class="chips">
     <li><a href="#part-a">A. What happens</a></li><li><a href="#part-b">B. Good answers</a></li><li><a href="#part-c">C. 7 ways to extend</a></li>
-    <li><a href="#part-d">D. Paraphrasing</a></li><li><a href="#part-e">E. Practise</a></li><li><a href="#part-f">F. Question bank</a></li>
+    <li><a href="#part-d">D. Paraphrasing</a></li><li><a href="#part-e">E. Practise</a></li><li><a href="#part-f">F. Linking words</a></li><li><a href="#part-g">G. Useful phrases</a></li><li><a href="#part-h">H. Chain game</a></li><li><a href="#part-i">I. Question bank</a></li>
   </ul>
 
   <h2 class="part" id="part-a">Part A. What happens in Part 1</h2>
@@ -361,21 +361,81 @@ details ol{margin:8px 0 4px;padding-left:22px;line-height:1.7}
     </div>
   </section>
 
-  <h2 class="part" id="part-f">Part F. The question bank</h2>
+  <h2 class="part" id="part-f">Part F. Linking words</h2>
 
   <section>
-    <div class="step"><b>12</b><h2>All questions by topic</h2></div>
+    <div class="step"><b>12</b><h2>What linking words do</h2></div>
+    <p>Linking words join ideas inside a sentence and between sentences. They show the <strong>direction</strong> of your ideas: adding, contrasting, giving a reason, a result or an example. In speaking, they make your answers sound organised (Fluency and Coherence); in writing, they help the reader follow you (Coherence and Cohesion).</p>
+    <p>Choose a function, then click a card to see the word in a sentence.</p>
+    <div class="tabs" role="tablist" id="lwTabs"></div>
+    <div class="cards small" id="lwCards"></div>
+    <div class="remember"><strong>Speaking or writing?</strong> In speaking, simple linkers sound most natural: <em>and, but, so, because, also, actually</em>. Formal words such as <em>furthermore, hence, notwithstanding</em> belong in essays, not in a chat with the examiner.</div>
+  </section>
+
+  <section>
+    <div class="step"><b>13</b><h2>What does it do?</h2></div>
+    <p>Sort each linking word by its function.</p>
+    <div class="sort" id="lwSort"></div>
+    <p class="feedback" id="lwSortFb"></p>
+  </section>
+
+  <section>
+    <div class="step"><b>14</b><h2>Choose the linking word</h2></div>
+    <p>Complete each sentence with the best linking word.</p>
+    <div class="fill" id="lwFill"></div>
+    <button class="btn" id="lwFillBtn">Check</button>
+    <p class="feedback" id="lwFillFb"></p>
+  </section>
+
+  <h2 class="part" id="part-g">Part G. Useful phrases</h2>
+
+  <section>
+    <div class="step"><b>15</b><h2>Phrases for every stage of an answer</h2></div>
+    <p>These phrases help you start, keep going, fix a mistake and finish. Click a card to see examples.</p>
+    <div class="cards" id="upCards"></div>
+    <div class="remember">In Part 1, the examiner can <strong>repeat</strong> a question but cannot explain it. So “Could you repeat the question, please?” is fine; “What do you mean?” will usually just get the same question again.</div>
+  </section>
+
+  <section>
+    <div class="step"><b>16</b><h2>Ten natural phrases for Part 1</h2></div>
+    <p>Instead of “Yes, I like it” or “Sometimes”, use these. Click each card to see when to use it.</p>
+    <div class="cards small" id="tenCards"></div>
+    <h3>Match the question with a natural answer</h3>
+    <div id="tenMatch"></div><button class="btn" id="tenMatchBtn">Check</button><p class="feedback" id="tenMatchFb"></p>
+  </section>
+
+  <h2 class="part" id="part-h">Part H. The speaking chain game</h2>
+
+  <section>
+    <div class="step"><b>17</b><h2>Keep the answer going</h2></div>
+    <p>One person answers a Part 1 question in one or two sentences. The next person adds something new to the same answer, starting with a linking word. Keep taking turns. The round ends if someone pauses for more than 10 seconds, repeats an idea, or runs out of ideas.</p>
+    <p class="hint">In a one-to-one class, the student and the teacher take turns. In a group, go round the circle.</p>
+    <div class="example"><small>Example: “What do you usually do in the evening?”</small>A: In the evening, I usually watch a TV series to relax.<br>B: <mark>Also</mark>, I often play games on my phone <mark>because</mark> it helps me unwind after a busy day.<br>A: <mark>On top of that</mark>, I sometimes take my dog for a short walk, <mark>especially</mark> if the weather is nice.<br>B: <mark>And</mark> I usually spend some time talking with my family about our day.</div>
+    <div class="machine" style="margin-top:14px">
+      <p class="hint" id="chainCount" style="margin:0"></p>
+      <div class="sentence" id="chainQ">Press “New question” to start.</div>
+      <p class="feedback" id="chainLink"></p>
+      <div class="timer"><button class="btn" id="chainNew">New question</button><button class="btn ghost" id="chainTurn">Next turn (10 seconds)</button><span class="clock" id="chainClock">0:10</span></div>
+      <p class="hint" id="chainTurns"></p>
+    </div>
+  </section>
+
+  <h2 class="part" id="part-i">Part I. The question bank</h2>
+
+  <section>
+    <div class="step"><b>18</b><h2>All questions by topic</h2></div>
     <p>Prepare ideas, not memorised answers. Open a topic and practise every question with a partner or alone.</p>
     <input id="bankSearch" class="ans" style="width:100%;max-width:420px" placeholder="Search, for example: hometown, weather, music" aria-label="Search questions">
     <div id="bankList" style="margin-top:12px"></div>
   </section>
 
   <section>
-    <div class="step"><b>13</b><h2>Homework</h2></div>
+    <div class="step"><b>19</b><h2>Homework</h2></div>
     <ul>
       <li>Answer “How often do you socialise with friends?” in three different ways, each using a different pair of strategies.</li>
       <li>Choose two topics from the question bank. Record yourself answering every question in each, then write out one answer and underline the strategies you used.</li>
       <li>Do one mock Part 1 test and note any question that made you stop and think. Practise it again.</li>
+      <li>Use three of the ten natural phrases from Part G and three different linking words in your recorded answers.</li>
     </ul>
   </section>
 
@@ -1161,6 +1221,93 @@ dropMatch("paraM", "paraMBtn", "paraMFb", [["visit", "a"], ["foreign countries",
     }).join("") || "<p class='hint'>No questions found.</p>";
   }
   $("bankSearch").addEventListener("input", e => drawBank(e.target.value)); drawBank("");
+})();
+// ---------- Part F: linking words ----------
+(function () {
+  const LW = {
+    "Adding": [["also / as well", "speaking and writing", "He likes apples. He also enjoys bananas."], ["in addition / additionally", "start of a sentence", "She works hard. In addition, she takes care of her family."], ["moreover / furthermore", "formal, mainly writing", "The product is affordable. Moreover, it is durable."], ["besides", "adds a further reason", "I don't want to go out. Besides, it's raining."]],
+    "Comparing": [["similarly / likewise", "a similar idea", "He enjoys hiking. Likewise, she loves outdoor activities."], ["in the same way", "a similar idea", "She loves painting. In the same way, her sister enjoys drawing."], ["compared with", "+ noun", "Compared with last year, profits have doubled."]],
+    "Contrast": [["but / however", "however starts a new sentence", "The task was difficult. However, they managed to complete it."], ["although / though", "+ clause", "Although it was raining, they went for a hike."], ["despite / in spite of", "+ noun or -ing", "Despite the rain, the match continued."], ["whereas / while", "two different facts", "He likes tea, whereas she prefers coffee."], ["by contrast / on the other hand", "between sentences", "The summer was hot. By contrast, the winter was freezing."], ["nevertheless / nonetheless", "= but still", "The journey was long. Nonetheless, it was worth it."], ["yet", "= but (surprising)", "He studied hard, yet he didn't pass the exam."]],
+    "Reason": [["because", "+ clause", "The game was cancelled because it was raining."], ["because of / due to / owing to", "+ noun", "Owing to the heavy traffic, they arrived late."], ["as / since", "+ clause, often at the start", "As it was late, we took a taxi."]],
+    "Result": [["so", "speaking and writing", "I was tired, so I went to bed early."], ["as a result", "start of a sentence", "He studied hard. As a result, he passed the test."], ["therefore / consequently", "more formal", "The road was slippery. Therefore, we drove slowly."], ["thus / hence", "formal writing", "The machine broke down. Hence, the work was delayed."], ["for this reason", "start of a sentence", "The experiment failed. For this reason, they started again."]],
+    "Examples": [["for example / for instance", "before an example", "Many animals are nocturnal. For instance, owls hunt at night."], ["such as", "+ noun, no comma after", "She enjoys outdoor activities such as hiking and cycling."], ["especially / particularly", "the most important case", "She loves desserts, especially chocolate cake."], ["namely", "gives the exact items", "Three students were absent, namely John, Sarah and Mark."]],
+    "Sequence": [["first(ly) / second(ly)", "order of points", "Firstly, gather all the ingredients. Secondly, mix them well."], ["then / next / after that", "steps", "Next, add the chopped vegetables."], ["eventually", "= in the end, after a long time", "They worked hard and eventually succeeded."], ["finally", "the last point", "Finally, review everything before you submit it."]],
+    "Rephrasing": [["in other words", "says it more simply", "He is introverted. In other words, he prefers his own company."], ["to put it another way", "speaking", "To put it another way, I'm a morning person."], ["rather", "corrects a word", "She wasn't angry. Rather, she was disappointed."]],
+    "Alternatives": [["alternatively", "another option", "You can take the bus. Alternatively, you can walk."], ["instead", "replaces one thing with another", "I didn't watch TV. Instead, I read a book."], ["otherwise", "= if not", "Study hard; otherwise, you might fail."]],
+    "Concluding": [["overall / on the whole", "general view", "Overall, the trip was enjoyable."], ["in conclusion / to sum up", "end of an essay or talk", "In conclusion, the project was a success."]],
+  };
+  const keys = Object.keys(LW);
+  function show(i) { [...$("lwTabs").children].forEach((t, j) => t.setAttribute("aria-selected", j === i)); $("lwCards").innerHTML = ""; cards("lwCards", LW[keys[i]]); }
+  keys.forEach((k, i) => { const t = document.createElement("button"); t.className = "tab"; t.setAttribute("role", "tab"); t.textContent = k; t.onclick = () => show(i); $("lwTabs").appendChild(t); });
+  show(0);
+})();
+sorter("lwSort", "lwSortFb", ["Adding", "Contrast", "Reason", "Result", "Example"], [
+  ["moreover", "Adding"], ["nevertheless", "Contrast"], ["owing to", "Reason"], ["consequently", "Result"], ["namely", "Example"],
+  ["whereas", "Contrast"], ["as a result", "Result"], ["in addition", "Adding"], ["because of", "Reason"], ["such as", "Example"]],
+  { good: "You know what each linking word does.", bad: "Check the cards in Step 12 for the ones you missed." });
+(function () {
+  const F = [
+    ["The road was slippery.", ["Therefore,", "However,", "For instance,"], "we drove slowly.", "Therefore,", "The second fact is a result of the first."],
+    ["", ["Despite", "Although", "Because"], "the rain, the match continued.", "Despite", "“the rain” is a noun, so use “despite”. “Although” needs a clause: although it was raining."],
+    ["He likes tea,", ["whereas", "so", "because"], "she prefers coffee.", "whereas", "Two different facts side by side: contrast."],
+    ["She enjoys outdoor activities", ["such as", "however", "therefore"], "hiking and cycling.", "such as", "Examples follow."],
+    ["You can take the bus.", ["Alternatively,", "Consequently,", "Likewise,"], "you can walk.", "Alternatively,", "Another option."],
+    ["", ["Although", "Despite", "However"], "it was cold, they went swimming.", "Although", "“it was cold” is a clause, so use “although”."],
+    ["I didn't watch TV.", ["Instead,", "Moreover,", "Similarly,"], "I read a book.", "Instead,", "One thing replaces another."],
+    ["He studied hard.", ["As a result,", "Nevertheless,", "For example,"], "he passed the test.", "As a result,", "Passing is the result of studying."]];
+  $("lwFill").innerHTML = F.map(([a, o, b], i) => "<span style='display:block'>" + (i + 1) + ". " + a + " <select data-i='" + i + "'><option value=''>…</option>" + o.map(x => "<option>" + x + "</option>").join("") + "</select> " + b + "</span>").join("");
+  $("lwFillBtn").onclick = () => { let ok = 0, notes = []; document.querySelectorAll("#lwFill select").forEach(s => { const f = F[s.dataset.i], g = s.value === f[3]; if (g) ok++; else if (s.value) notes.push((+s.dataset.i + 1) + ": " + f[4]); s.style.borderColor = g ? "var(--green)" : "var(--red)"; });
+    score("lwFillFb", ok, F.length, "Excellent: you chose the right direction every time.", notes.join(" ") || "Choose a word for every gap."); };
+})();
+// ---------- Part G: useful phrases ----------
+cards("upCards", [
+  ["Buying a little time", "beginnings", "“That's an interesting question. I haven't really thought about it before, but…” / “Let me see…” / “Well, if I had to choose, I'd say…”"],
+  ["Asking for repetition", "beginnings", "“Could you repeat the question, please?” / “Sorry, could you say that again?”"],
+  ["Giving an opinion", "middles", "“Personally, I'd say…” / “If you ask me, …” / “As I see it, …” / “I reckon…” / “I guess…”"],
+  ["Adding a point", "middles", "“And I should add that…” / “Another thing is that…” / “Oh, and I almost forgot…”"],
+  ["Fixing a mistake", "middles", "“Let me rephrase that.” / “What I'm trying to say is…” / “Or, to put it another way, …”"],
+  ["Forgetting a word", "middles", "“Sorry, it's on the tip of my tongue…” / “I'm not sure of the exact word, but it's a kind of…”"],
+  ["Going back to an idea", "coherence", "“As I was saying, …” / “As I mentioned before, …”"],
+  ["Saying how likely", "variety", "“It's fairly likely that…” / “It's rather unlikely that…” / “I'm sure it will / won't…”"],
+  ["Finishing", "ends", "“So that's my main point, really.” / “And finally, I'd say…” / “I think that's about it.”"]]);
+cards("tenCards", [
+  ["1. I can't get enough of it.", "= I really like it", "Do you like music? “Yes, I can't get enough of it.” For plural things, use them: “I can't get enough of them.”"],
+  ["2. What I like most about it is…", "like + reason", "Do you like science? “Yes. What I like most about it is that it's so interesting. Last week, for example, I read about solar panels.”"],
+  ["3. I love that it allows me to…", "like + benefit", "Do you like social media? “Yes, I love that it allows me to keep in touch with my family.”"],
+  ["4. I have a knack for it.", "= I'm good at it", "Are you good at cooking? “Yes, I have a knack for it.”"],
+  ["5. I'm hopeless at it.", "= I'm very bad at it", "Are you good at swimming? “No, I'm hopeless at it.”"],
+  ["6. from time to time", "= sometimes", "Do you go to the cinema? “Yes, from time to time.”"],
+  ["7. now and again", "= sometimes", "Do you sing? “Now and again, mostly in the car.”"],
+  ["8. every once in a while", "= occasionally", "Do you eat fast food? “Every once in a while, but not often.”"],
+  ["9. more often than not", "= usually", "“I play football at weekends, more often than not.”"],
+  ["10. I'm not the least bit interested in it.", "= not at all", "Do you watch golf? “No, I'm not the least bit interested in it.”"]]);
+dropMatch("tenMatch", "tenMatchBtn", "tenMatchFb", [
+  ["Do you like cakes?", "a"], ["Are you good at cooking?", "b"], ["Are you good at swimming?", "c"], ["How often do you go to parks?", "d"],
+  ["Do you like social media?", "e"], ["Do you play football?", "f"], ["Do you like science?", "g"]],
+  [["a", "Yes, I can't get enough of them."], ["b", "Yes, I have a knack for it."], ["c", "Honestly, I'm hopeless at it."], ["d", "Now and again, mainly in summer."], ["e", "Yes, I love that it allows me to keep in touch with my family."], ["f", "Yes, at weekends, more often than not."], ["g", "Yes, what I like most about it is that it explains how things work."]],
+  { good: "Notice “them” for cakes (plural) and “it” for the others." });
+// ---------- Part H: chain game ----------
+(function () {
+  const Q = ["What do you usually do in the evening?", "Do you enjoy reading books or magazines?", "What kind of music do you like?", "Do you prefer living in the city or the countryside? Why?", "What do you do at weekends?", "Do you like cooking? Why or why not?", "How do you usually spend your holidays?", "What is your favourite season of the year? Why?", "Do you prefer watching films at home or at the cinema?", "How do you usually get to school or work?", "What is your favourite type of food?", "Do you use social media a lot?"];
+  const LINKS = ["also", "because", "for example", "but", "especially", "so", "on top of that", "actually", "although", "such as", "and another thing is", "as a result"];
+  let order = [], qi = -1, turns = 0, t = null;
+  const pick = a => a[Math.floor(Math.random() * a.length)];
+  function stop() { clearInterval(t); t = null; }
+  $("chainNew").onclick = () => {
+    if (!order.length || qi >= order.length - 1) { order = [...Q].sort(() => Math.random() - .5); qi = -1; }
+    qi++; turns = 0; stop(); $("chainClock").textContent = "0:10";
+    $("chainCount").textContent = "Question " + (qi + 1) + " of " + Q.length;
+    $("chainQ").textContent = order[qi]; $("chainLink").innerHTML = "First turn: answer in one or two sentences.";
+    $("chainTurns").textContent = "";
+  };
+  $("chainTurn").onclick = () => {
+    if (qi < 0) { $("chainNew").click(); return; }
+    turns++; stop(); let left = 10; $("chainClock").textContent = "0:10";
+    $("chainLink").innerHTML = "Turn " + (turns + 1) + ": add something new, starting with <strong>“" + pick(LINKS) + "”</strong>.";
+    $("chainTurns").textContent = "Chain length: " + turns + (turns === 1 ? " addition" : " additions");
+    t = setInterval(() => { left--; $("chainClock").textContent = "0:" + String(Math.max(left, 0)).padStart(2, "0");
+      if (left <= 0) { stop(); $("chainClock").textContent = "Time!"; $("chainLink").innerHTML = "<span class='bad'><strong>Chain broken</strong> after " + turns + (turns === 1 ? " addition" : " additions") + ". Press “New question” to start again.</span>"; } }, 1000);
+  };
 })();
 </script>
 </body>
