@@ -615,7 +615,7 @@ function renderPassage(boxId, key, glId) {
   const words = Object.keys(GLOSS[key] || {}).sort((a, b) => b.length - a.length);
   const re = words.length ? new RegExp("\\b(" + words.map(w => w.replace(/[-]/g, "\\-")).join("|") + ")\\b", "gi") : null;
   const esc = t => t.replace(/&/g, "&amp;").replace(/</g, "&lt;");
-  const paras = P.text.trim().split(/\n\s*\n/);
+  let paras = P.text.trim().split(/\n\s*\n/); if (paras.length === 1) paras = P.text.trim().split(/\n/); paras = paras.map(p => p.trim()).filter(p => p && !/^reading passage \d+$/i.test(p)); if (paras.length && paras[0].length < 60 && !/\.$/.test(paras[0])) paras.shift();
   box.innerHTML = "<h3>" + P.title + "</h3>" + paras.map((p, i) => {
     let h = esc(p.trim());
     if (re) h = h.replace(re, m => "<button class='gl' data-k='" + m.toLowerCase() + "'>" + m + "</button>");
