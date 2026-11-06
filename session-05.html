@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Session 5: Writing Task 2 | AUM IELTS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --navy:#1F3864; --ink:#1d2433; --muted:#5a6478; --paper:#ffffff; --wash:#eef3fa; --line:#c9d5e8;
+  --mark:#ffe58a; --mark-ink:#3a2f00; --red:#b8322a; --red-wash:#fbe9e7; --green:#2e7d4f; --green-wash:#e5f3ea;
+  --btn:#1F3864; --btn-ink:#ffffff; --bar1:#1F3864; --bar2:#6F94C2; --bar3:#B4C7E7;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --navy:#9fbbe6; --ink:#e6ebf4; --muted:#a5afc2; --paper:#141a26; --wash:#1d2638; --line:#33405a;
+    --mark:#6b5a12; --mark-ink:#fff4c2; --red:#ff8a80; --red-wash:#3a1f1d; --green:#7fd19e; --green-wash:#173022;
+    --btn:#9fbbe6; --btn-ink:#0f1522; --bar1:#9fbbe6; --bar2:#5f86bb; --bar3:#3d5a85;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --navy:#9fbbe6; --ink:#e6ebf4; --muted:#a5afc2; --paper:#141a26; --wash:#1d2638; --line:#33405a;
+  --mark:#6b5a12; --mark-ink:#fff4c2; --red:#ff8a80; --red-wash:#3a1f1d; --green:#7fd19e; --green-wash:#173022;
+  --btn:#9fbbe6; --btn-ink:#0f1522; --bar1:#9fbbe6; --bar2:#5f86bb; --bar3:#3d5a85;
+  color-scheme: dark;
+}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Instrument Sans",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;font-size:17px;line-height:1.55}
+main{max-width:780px;margin:0 auto;padding:40px 20px 80px}
+h1{font-size:clamp(30px,5vw,42px);line-height:1.1;color:var(--navy);margin:0 0 10px;letter-spacing:-0.01em}
+h2{font-size:24px;color:var(--navy);margin:0 0 6px;line-height:1.2}
+h3{font-size:18px;margin:22px 0 8px;color:var(--ink)}
+p{margin:0 0 12px}
+.lead{color:var(--muted);max-width:62ch}
+.serif{font-family:"Newsreader",Georgia,"Times New Roman",serif}
+section{padding:40px 0;border-top:1px solid var(--line)}
+.step{display:flex;gap:14px;align-items:baseline;margin-bottom:8px}
+.step b{font-size:15px;color:var(--paper);background:var(--navy);border-radius:50%;width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.hint{color:var(--muted);font-size:15px}
+mark,.hl{background:var(--mark);color:var(--mark-ink);padding:0 3px;border-radius:3px}
+button{font:inherit;cursor:pointer}
+button:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--navy);outline-offset:2px}
+.btn{background:var(--btn);color:var(--btn-ink);border:0;border-radius:8px;padding:10px 16px;font-weight:600}
+.btn.ghost{background:transparent;color:var(--navy);border:1.5px solid var(--navy)}
+.prompt{background:var(--wash);border-left:5px solid var(--navy);padding:16px 18px;border-radius:0 8px 8px 0;margin:14px 0}
+.prompt small{display:block;color:var(--muted);font-size:13px;margin-bottom:4px}
+
+/* paraphrase machine */
+.machine{margin-top:22px;border:2px solid var(--navy);border-radius:14px;padding:22px}
+.sentence{font-family:"Newsreader",Georgia,serif;font-size:clamp(22px,3.4vw,28px);line-height:1.6}
+.chunk{cursor:pointer;-webkit-box-decoration-break:clone;box-decoration-break:clone;background:none;border:0;border-bottom:3px dashed var(--line);color:var(--ink);padding:0 2px;font:inherit;transition:background .2s}
+.chunk:hover{border-bottom-color:var(--navy)}
+.chunk.changed{background:var(--mark);color:var(--mark-ink);border-bottom-color:var(--mark-ink)}
+.chunk.trap{background:var(--red-wash);color:var(--red);border-bottom:3px solid var(--red);text-decoration:line-through wavy}
+.meter{display:flex;gap:6px;margin:18px 0 8px}
+.meter span{flex:1;height:10px;border-radius:5px;background:var(--line)}
+.meter span.on{background:var(--green)}
+.feedback{min-height:48px;font-size:16px}
+.ok{color:var(--green)} .bad{color:var(--red)}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px}
+
+/* tabs */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.tab{border:1.5px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;padding:7px 14px;font-size:15px}
+.tab[aria-selected="true"]{background:var(--navy);color:var(--paper);border-color:var(--navy)}
+.panel{background:var(--wash);border-radius:10px;padding:18px}
+.pair{display:grid;grid-template-columns:90px 1fr;gap:6px 12px;margin-top:10px;font-size:16px}
+.pair .k{color:var(--muted);font-size:14px;padding-top:3px}
+
+/* quiz */
+.q{border:1.5px solid var(--line);border-radius:10px;padding:16px;margin:12px 0}
+.q .serif{font-size:19px}
+.q .row button{min-width:110px}
+.q.right{border-color:var(--green);background:var(--green-wash)}
+.q.wrong{border-color:var(--red);background:var(--red-wash)}
+.why{margin-top:10px;font-size:15px}
+
+/* chart */
+.chart{border:1.5px solid var(--line);border-radius:10px;padding:16px;margin:12px 0;overflow-x:auto}
+.chart svg{display:block;max-width:100%;height:auto}
+.chart svg text{fill:var(--ink);font-family:"Instrument Sans",Arial,sans-serif}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:14px;margin-top:8px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.pie-wrap{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.pie{width:180px;height:180px;border-radius:50%;flex:none}
+
+/* vocab cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:12px}
+.card{border:1.5px solid var(--line);background:var(--paper);color:var(--ink);border-radius:10px;padding:14px;text-align:left;min-height:120px}
+.card .front{font-weight:700;color:var(--navy);font-size:18px}
+.card .front small{display:block;font-weight:500;color:var(--muted);font-size:13px}
+.card .back{display:none;font-family:"Newsreader",Georgia,serif;font-size:17px;margin-top:8px}
+.card.open{background:var(--wash)}
+.card.open .back{display:block}
+
+/* match */
+.match{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.match button{border:1.5px solid var(--line);background:var(--paper);color:var(--ink);border-radius:8px;padding:10px 12px;text-align:left;font-size:15px}
+.match button.sel{border-color:var(--navy);box-shadow:inset 0 0 0 1px var(--navy)}
+.match button.done{border-color:var(--green);background:var(--green-wash);color:var(--ink);cursor:default}
+.match button.no{animation:shake .3s}
+@keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+@media (prefers-reduced-motion:reduce){.match button.no{animation:none}.chunk{transition:none}}
+
+/* red pen */
+.pen .serif{font-size:19px;line-height:1.8}
+.pen .bit{background:none;border:0;padding:0 2px;color:var(--ink);font:inherit;border-bottom:2px dotted var(--line)}
+.pen .bit:hover{border-bottom-color:var(--red)}
+.pen .bit.hit{color:var(--red);text-decoration:line-through;border-bottom-color:transparent}
+.pen .bit.miss{opacity:.45}
+
+/* writing */
+textarea{width:100%;min-height:120px;font-family:"Newsreader",Georgia,serif;font-size:19px;line-height:1.5;padding:14px;border:1.5px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink);resize:vertical}
+.checks{list-style:none;padding:0;margin:12px 0}
+.checks li{padding:5px 0 5px 30px;position:relative;font-size:15.5px}
+.checks li::before{content:"";position:absolute;left:0;top:8px;width:18px;height:18px;border-radius:50%;border:2px solid var(--line)}
+.checks li.pass::before{background:var(--green);border-color:var(--green)}
+.checks li.fail::before{border-color:var(--red)}
+select{font:inherit;font-size:16px;padding:4px 6px;border-radius:6px;border:1.5px solid var(--navy);background:var(--paper);color:var(--ink)}
+.fill{font-family:"Newsreader",Georgia,serif;font-size:19px;line-height:2.1}
+.models{display:none;margin-top:12px}
+.models.show{display:block}
+.models p{font-family:"Newsreader",Georgia,serif;font-size:18px;border-left:3px solid var(--navy);padding-left:12px}
+details{border:1.5px solid var(--line);border-radius:10px;padding:12px 16px;margin-top:16px}
+summary{cursor:pointer;font-weight:600;color:var(--navy)}
+table{border-collapse:collapse;width:100%;font-size:15px;margin-top:10px}
+td,th{border-bottom:1px solid var(--line);padding:8px 6px;text-align:left;vertical-align:top}
+th{color:var(--muted);font-weight:600}
+.tablewrap{overflow-x:auto}
+.score{font-weight:700;color:var(--navy)}
+
+/* site chrome */
+.topbar{position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--paper)}
+.topbar nav{max-width:780px;margin:0 auto;padding:12px 20px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.topbar .brand{font-weight:700;color:var(--navy);text-decoration:none;margin-right:auto}
+.topbar a{color:var(--ink);text-decoration:none;font-weight:500}
+.topbar a[aria-current="page"]{color:var(--navy);text-decoration:underline;text-underline-offset:5px}
+a{color:var(--navy)}
+.session-list{list-style:none;padding:0;margin:20px 0}
+.session-list li{border-top:1px solid var(--line)}
+.session-list a,.session-list .soon{display:grid;grid-template-columns:56px 1fr;gap:4px 14px;padding:18px 4px;text-decoration:none;color:var(--ink)}
+.session-list a:hover .t{text-decoration:underline}
+.session-list .n{font-size:28px;font-weight:700;color:var(--navy);grid-row:span 2;line-height:1}
+.session-list .t{font-weight:600;font-size:19px}
+.session-list .d{color:var(--muted);font-size:15px}
+.session-list .soon{opacity:.55}
+.pager{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:40px;padding-top:20px;border-top:1px solid var(--line)}
+.notes section{padding:32px 0}
+.toc{columns:2;column-gap:28px;padding-left:20px;font-size:16px}
+@media (max-width:560px){.toc{columns:1}.match{grid-template-columns:1fr}}
+.sort{display:grid;gap:10px;margin-top:12px}
+.fact{display:flex;gap:10px;align-items:center;flex-wrap:wrap;border:1.5px solid var(--line);border-radius:10px;padding:10px 12px}
+.fact span{flex:1 1 100%}
+.fact.right{border-color:var(--green);background:var(--green-wash)}
+.fact.wrong{border-color:var(--red);background:var(--red-wash)}
+.wc{font-size:14px;color:var(--muted);margin-top:4px}
+
+/* ---------- richer site pages ---------- */
+.hero{padding:8px 0 28px}
+.hero .lead{margin-bottom:22px}
+.demo{border:2px solid var(--navy);border-radius:14px;padding:20px 22px;margin-top:6px}
+.demo small{display:block;color:var(--muted);font-size:13px;margin-bottom:6px}
+.demo .sentence{font-size:clamp(20px,3vw,25px)}
+.demo .row{margin-top:14px}
+.badge{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:var(--navy);color:var(--paper);font-weight:700;font-size:19px;flex:none}
+.sgrid{display:grid;gap:14px;margin:18px 0}
+.scard{display:flex;gap:16px;align-items:flex-start;border:1.5px solid var(--line);border-radius:12px;padding:18px;text-decoration:none;color:var(--ink);background:var(--paper)}
+a.scard:hover{border-color:var(--navy);box-shadow:inset 0 0 0 1px var(--navy)}
+.scard .t{font-weight:700;font-size:19px;color:var(--navy);display:block}
+.scard .d{color:var(--muted);font-size:15px;display:block;margin-top:2px}
+.scard .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.tag{font-size:13px;border-radius:999px;padding:2px 10px;background:var(--wash);color:var(--ink)}
+.tag.new{background:var(--mark);color:var(--mark-ink)}
+.tag.done{background:var(--green-wash);color:var(--green)}
+.scard.soon{border-style:dashed;opacity:.6}
+.scard.soon .badge{background:var(--line);color:var(--muted)}
+.scard .body{flex:1}
+.mark-done{margin-left:auto;align-self:center;border:1.5px solid var(--line);background:var(--paper);color:var(--muted);border-radius:999px;padding:5px 12px;font-size:14px;white-space:nowrap}
+.mark-done[aria-pressed="true"]{border-color:var(--green);color:var(--green);background:var(--green-wash)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:10px}
+@media (max-width:620px){.split{grid-template-columns:1fr}.scard{flex-wrap:wrap}.mark-done{margin-left:60px}}
+.panel-link{display:block;background:var(--wash);border-radius:12px;padding:18px;text-decoration:none;color:var(--ink);border-left:5px solid var(--navy)}
+.panel-link strong{color:var(--navy);font-size:18px;display:block;margin-bottom:4px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 4px;padding:0;list-style:none}
+.chips a{display:inline-block;border:1.5px solid var(--line);border-radius:999px;padding:6px 13px;font-size:15px;text-decoration:none;color:var(--ink)}
+.chips a:hover{border-color:var(--navy);color:var(--navy)}
+.example{background:var(--wash);border-left:4px solid var(--navy);border-radius:0 8px 8px 0;padding:12px 16px;margin:12px 0;font-family:"Newsreader",Georgia,serif;font-size:18px}
+.example small{display:block;font-family:"Instrument Sans",system-ui,sans-serif;color:var(--muted);font-size:13px;margin-bottom:2px}
+.wr{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+.wr div{border-radius:8px;padding:10px 14px;font-family:"Newsreader",Georgia,serif;font-size:17px}
+.wr .w{background:var(--red-wash);color:var(--ink);border:1.5px solid var(--red)}
+.wr .w::before{content:"Not this";display:block;font-family:"Instrument Sans",system-ui,sans-serif;font-size:12.5px;color:var(--red);font-weight:600;margin-bottom:2px}
+.wr .r{background:var(--green-wash);color:var(--ink);border:1.5px solid var(--green)}
+.wr .r::before{content:"Write this";display:block;font-family:"Instrument Sans",system-ui,sans-serif;font-size:12.5px;color:var(--green);font-weight:600;margin-bottom:2px}
+@media (max-width:560px){.wr{grid-template-columns:1fr}}
+.structure{display:grid;gap:10px;margin-top:12px}
+.structure .p{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start;border:1.5px solid var(--line);border-radius:12px;padding:14px}
+.structure .p strong{color:var(--navy)}
+.structure .p .serif{display:block;margin-top:6px;font-size:17px}
+.remember{background:var(--mark);color:var(--mark-ink);border-radius:10px;padding:12px 16px;margin:14px 0}
+.cards.small .card{min-height:0}
+.notes .step h2{margin:0}
+
+.chunk:focus-visible{outline:3px solid var(--navy);outline-offset:2px}
+
+</style><style>
+.para{display:grid;grid-template-columns:28px 1fr;gap:10px;margin:0 0 14px;font-family:"Newsreader",Georgia,serif;font-size:18px;line-height:1.6}
+.para b{font-family:"Instrument Sans",system-ui,sans-serif;color:var(--navy)}
+.passage{border:1.5px solid var(--line);border-radius:12px;padding:20px;margin:14px 0}
+.passage h3{margin-top:0;font-family:"Newsreader",Georgia,serif;font-size:22px;color:var(--navy)}
+.sent{cursor:pointer;border-radius:3px;padding:1px 0;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.sent:hover{background:var(--wash)}
+.sent.yes{background:var(--green-wash);color:var(--green);font-weight:500}
+.sent.no{background:var(--red-wash);color:var(--red);text-decoration:line-through}
+.sent:focus-visible{outline:3px solid var(--navy);outline-offset:1px}
+.timer{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:12px 0}
+.clock{font-variant-numeric:tabular-nums;font-weight:700;font-size:28px;color:var(--navy);min-width:4ch}
+.blurred{filter:blur(6px);user-select:none;pointer-events:none}
+@media (prefers-reduced-motion:no-preference){.passage-body{transition:filter .3s}}
+.qrow{display:grid;grid-template-columns:28px 1fr;gap:6px 10px;align-items:start;margin:12px 0}
+.qrow .num{font-weight:700;color:var(--navy)}
+.ans{font:inherit;font-size:17px;padding:5px 8px;border:1.5px solid var(--line);border-radius:6px;background:var(--paper);color:var(--ink);width:min(260px,100%)}
+.ans.good{border-color:var(--green);background:var(--green-wash)}
+.ans.badans{border-color:var(--red);background:var(--red-wash)}
+.small-fb{font-size:14.5px;margin-top:3px}
+.inline-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+</style><style>
+.part{margin:48px 0 0;padding:14px 18px;background:var(--navy);color:var(--paper);border-radius:12px;font-size:22px;scroll-margin-top:70px}
+h2[id],section[id]{scroll-margin-top:70px}
+</style>
+</head>
+<body>
+<header class="topbar"><nav><a class="brand" href="index.html">AUM IELTS</a><a href="index.html">Sessions</a><a href="notes.html">Writing notes</a><a href="reading-notes.html">Reading notes</a></nav></header>
+<main>
+  <p class="hint">Session 5</p>
+  <h1>Writing Task 2: the essay, step by step</h1>
+  <p class="lead">Task 2 is worth twice as much as Task 1. A Band 7 essay is not about difficult words: it answers the exact question, has a clear plan, and develops two strong ideas with explanations and examples. Today you will practise each step, then write a full essay.</p>
+  <ul class="chips">
+    <li><a href="#part-a">A. The task</a></li><li><a href="#part-b">B. The question</a></li><li><a href="#part-c">C. Planning</a></li><li><a href="#part-d">D. Introduction</a></li>
+    <li><a href="#part-e">E. Body paragraphs</a></li><li><a href="#part-f">F. Conclusion</a></li><li><a href="#part-g">G. Model essays</a></li><li><a href="#part-h">H. Your essay</a></li>
+  </ul>
+
+  <h2 class="part" id="part-a">Part A. Understanding Task 2</h2>
+
+  <section>
+    <div class="step"><b>1</b><h2>The task at a glance</h2></div>
+    <div class="cards">
+      <button class="card"><div class="front">40 minutes<small>time</small></div><div class="back">About 5–10 minutes planning, 25–30 minutes writing, 5 minutes checking.</div></button>
+      <button class="card"><div class="front">250+ words<small>length</small></div><div class="back">Aim for 260–300. Shorter essays lose marks; much longer essays usually contain more mistakes.</div></button>
+      <button class="card"><div class="front">2× Task 1<small>weight</small></div><div class="back">Task 2 counts for two-thirds of your Writing score, so give it the full 40 minutes.</div></button>
+    </div>
+    <h3>Five steps to a Band 7 essay</h3>
+    <div class="structure">
+      <div class="p"><span class="badge">1</span><div><strong>Understand the question:</strong> topic, keywords and instruction words.</div></div>
+      <div class="p"><span class="badge">2</span><div><strong>Plan</strong> for 5–10 minutes: ideas, reasons and examples.</div></div>
+      <div class="p"><span class="badge">3</span><div><strong>Introduction:</strong> paraphrase, position, main ideas.</div></div>
+      <div class="p"><span class="badge">4</span><div><strong>Body paragraphs:</strong> point, explanation, example.</div></div>
+      <div class="p"><span class="badge">5</span><div><strong>Conclusion:</strong> restate the position and summarise. No new ideas.</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="step"><b>2</b><h2>Recognise the essay type</h2></div>
+    <div class="tablewrap"><table>
+      <tr><th>Essay type</th><th>What you need to do</th></tr>
+      <tr><td><strong>Agree or disagree</strong></td><td>Give your opinion and explain why.</td></tr>
+      <tr><td><strong>Discuss both views</strong></td><td>Explain both opinions and give your own.</td></tr>
+      <tr><td><strong>Advantages and disadvantages</strong></td><td>Discuss the positive and negative sides.</td></tr>
+      <tr><td><strong>Causes and solutions</strong></td><td>Explain why a problem happens and how to solve it.</td></tr>
+      <tr><td><strong>Causes and effects</strong></td><td>Explain why something happens and its results.</td></tr>
+      <tr><td><strong>Problems and solutions</strong></td><td>Identify problems and propose solutions.</td></tr>
+      <tr><td><strong>Two-part question</strong></td><td>Answer two different questions, for example “Why?” and “Is it good?”.</td></tr>
+    </table></div>
+    <p>Which type is each question?</p>
+    <div id="types"></div><button class="btn" id="typesBtn">Check</button><p class="feedback" id="typesFb"></p>
+  </section>
+
+  <h2 class="part" id="part-b">Part B. Analyse the question</h2>
+
+  <section>
+    <div class="step"><b>3</b><h2>Topic, keywords and instruction</h2></div>
+    <div class="example"><small>Question</small>The crime rate among teenagers has increased dramatically in many countries. Discuss some possible reasons for this increase and suggest solutions.</div>
+    <div class="structure">
+      <div class="p"><span class="badge">1</span><div><strong>Topic:</strong> <mark>teenage crime</mark>, not “crime”. Writing about crime in general would only partly answer the question.</div></div>
+      <div class="p"><span class="badge">2</span><div><strong>Keywords:</strong> crime rate, teenagers, increased dramatically, many countries.</div></div>
+      <div class="p"><span class="badge">3</span><div><strong>Instruction:</strong> <mark>reasons</mark> for the increase <strong>and</strong> <mark>solutions</mark>. Two parts: answer both.</div></div>
+    </div>
+    <div class="cards small" id="instr"></div>
+  </section>
+
+  <section>
+    <div class="step"><b>4</b><h2>Practice: choose the precise topic</h2></div>
+    <p>The right topic is not too general and not too narrow. Read the explanation after each answer.</p>
+    <div id="topicQ"></div><p class="feedback" id="topicQFb"></p>
+  </section>
+
+  <h2 class="part" id="part-c">Part C. Brainstorm and plan</h2>
+
+  <section>
+    <div class="step"><b>5</b><h2>From question to plan</h2></div>
+    <div class="structure">
+      <div class="p"><span class="badge">1</span><div><strong>Turn the instruction into focus questions.</strong> Why has teenage crime increased? What can be done?</div></div>
+      <div class="p"><span class="badge">2</span><div><strong>Brainstorm two ideas for each.</strong> Reasons: family breakdown, nothing to do. Solutions: government support, parental responsibility.</div></div>
+      <div class="p"><span class="badge">3</span><div><strong>Extend each idea</strong> by asking: Why does this happen? What is the result? Can I give an example?</div></div>
+      <div class="p"><span class="badge">4</span><div><strong>Organise</strong> the ideas into an introduction, two body paragraphs and a conclusion.</div></div>
+    </div>
+    <h3>Extend an idea</h3>
+    <p>Click each question to see how one idea becomes a full argument.</p>
+    <div class="cards" id="extend"></div>
+  </section>
+
+  <section>
+    <div class="step"><b>6</b><h2>Make your own plan</h2></div>
+    <div class="prompt"><small>Question</small><span class="serif">Many young people spend several hours a day on social media. Why is this the case? Is it a positive or negative development?</span></div>
+    <div class="tablewrap"><table>
+      <tr><th style="width:32%">Plan</th><th>Your notes</th></tr>
+      <tr><td><strong>Focus question 1</strong><br><span class="hint">Why?</span></td><td><textarea style="min-height:70px" aria-label="Reasons"></textarea></td></tr>
+      <tr><td><strong>Focus question 2</strong><br><span class="hint">Positive or negative? Your position</span></td><td><textarea style="min-height:70px" aria-label="Position"></textarea></td></tr>
+      <tr><td><strong>Body 1</strong><br><span class="hint">Point, explanation, example</span></td><td><textarea style="min-height:70px" aria-label="Body 1"></textarea></td></tr>
+      <tr><td><strong>Body 2</strong><br><span class="hint">Point, explanation, example</span></td><td><textarea style="min-height:70px" aria-label="Body 2"></textarea></td></tr>
+    </table></div>
+    <details><summary>Compare with a sample plan</summary>
+      <p><strong>Why?</strong> Apps are designed to keep users scrolling; friends and school life are organised online.</p>
+      <p><strong>Position:</strong> mainly negative.</p>
+      <p><strong>Body 1 (reasons):</strong> endless scrolling and notifications → hard to stop. Social pressure: missing group chats = feeling left out.</p>
+      <p><strong>Body 2 (negative):</strong> late-night use → less sleep → poorer concentration at school; example: a student checking messages until midnight before an exam.</p>
+    </details>
+  </section>
+
+  <h2 class="part" id="part-d">Part D. The introduction</h2>
+
+  <section>
+    <div class="step"><b>7</b><h2>Three parts of a good introduction</h2></div>
+    <div class="structure">
+      <div class="p"><span class="badge">1</span><div><strong>Paraphrase the question</strong> in your own words.</div></div>
+      <div class="p"><span class="badge">2</span><div><strong>Give your position</strong> clearly, if the question asks for it.</div></div>
+      <div class="p"><span class="badge">3</span><div><strong>Outline your main ideas</strong> in a few words.</div></div>
+    </div>
+    <div class="example"><small>Question</small>There is a good deal of evidence that increasing car use is contributing to global warming and having other undesirable effects on people’s health and well-being. To what extent do you agree or disagree?</div>
+    <div class="wr"><div class="w">Nowadays, cars are very popular in modern life. Many people drive cars every day. Cars are good but also bad for the environment and health. This essay will talk about cars.</div><div class="r">It is often claimed that the growing number of cars on the roads is damaging both the environment and people’s health. I agree with this view, because vehicle emissions are a major cause of global warming, and heavy car use encourages an inactive lifestyle and exposes people to polluted air.</div></div>
+    <p>The weak introduction is too general, repeats words, gives no position and no main ideas. Which part of the strong introduction is which?</p>
+    <div class="sort" id="introParts"></div><p class="feedback" id="introPartsFb"></p>
+    <div class="remember">You do not need an interesting opening. Avoid starting with “Nowadays…”, “In modern life…” or “In today’s society…”: they lead to general sentences that do not answer the question.</div>
+  </section>
+
+  <h2 class="part" id="part-e">Part E. Body paragraphs</h2>
+
+  <section>
+    <div class="step"><b>8</b><h2>Point → Explanation → Example</h2></div>
+    <p>Question: <em>Companies should be required to give a certain percentage of senior positions to women. Do you agree?</em> Which is the best topic sentence for a paragraph that agrees?</p>
+    <div id="tsQ"></div>
+    <h3>Language for explaining</h3>
+    <div class="cards small" id="explainLang"></div>
+    <h3>Which example is most effective?</h3>
+    <div id="exQ"></div>
+  </section>
+
+  <section>
+    <div class="step"><b>9</b><h2>Label the paragraph</h2></div>
+    <p>Question: <em>Increasing the price of petrol is the best way to solve growing traffic and pollution problems. To what extent do you agree or disagree?</em> Label each sentence of this body paragraph.</p>
+    <div class="sort" id="pee"></div><p class="feedback" id="peeFb"></p>
+    <div class="remember">Check that your example really supports your point. An example about food prices, for instance, does not prove that petrol prices reduce traffic.</div>
+  </section>
+
+  <h2 class="part" id="part-f">Part F. The conclusion</h2>
+
+  <section>
+    <div class="step"><b>10</b><h2>Rules for conclusions</h2></div>
+    <div class="structure">
+      <div class="p"><span class="badge">1</span><div><strong>Restate your position</strong> in new words.</div></div>
+      <div class="p"><span class="badge">2</span><div><strong>Summarise your main arguments</strong> in one or two sentences.</div></div>
+      <div class="p"><span class="badge">3</span><div><strong>No new ideas.</strong> A recommendation or prediction is optional, and only if it follows from your arguments.</div></div>
+    </div>
+    <p>Which conclusion starters are good for an IELTS essay?</p>
+    <div class="sort" id="starters"></div><p class="feedback" id="startersFb"></p>
+    <div id="newIdea" style="margin-top:14px"></div>
+    <div class="remember">Paraphrase, but don’t force it. Repeating an accurate word is better than using an incorrect synonym.</div>
+  </section>
+
+  <h2 class="part" id="part-g">Part G. Model essays</h2>
+
+  <section>
+    <div class="step"><b>11</b><h2>Two complete essays</h2></div>
+    <p>Click the coloured labels to see what each paragraph does.</p>
+    <div class="tabs" role="tablist" id="mTabs"></div>
+    <div id="mBox"></div>
+  </section>
+
+  <section>
+    <div class="step"><b>12</b><h2>Common mistakes</h2></div>
+    <div class="wr"><div class="w">Writing generally: “In today’s society, technology is very important.”</div><div class="r">Start with the exact issue in the question.</div></div>
+    <div class="wr"><div class="w">No clear opinion, or changing your opinion halfway.</div><div class="r">State it in the introduction and keep it to the end.</div></div>
+    <div class="wr"><div class="w">A list of five ideas with one sentence each.</div><div class="r">Two ideas, each explained and supported with an example.</div></div>
+    <div class="wr"><div class="w">Informal words: “kids”, “a lot of stuff”, “gonna”.</div><div class="r">Academic style: “children”, “many things”, “going to”.</div></div>
+    <div class="wr"><div class="w">Long, impressive words you are not sure about.</div><div class="r">Words you can use accurately. Clarity beats complexity.</div></div>
+    <div class="wr"><div class="w">Running out of time with no conclusion.</div><div class="r">Always finish with at least a one-sentence conclusion.</div></div>
+  </section>
+
+  <h2 class="part" id="part-h">Part H. Write your essay</h2>
+
+  <section>
+    <div class="step"><b>13</b><h2>40-minute practice</h2></div>
+    <div class="inline-row"><label for="promptSel" class="hint">Choose a question</label><select id="promptSel" style="max-width:100%"></select></div>
+    <div class="prompt" style="margin-top:12px"><small>Task 2</small><span class="serif" id="promptText"></span></div>
+    <div class="timer"><button class="btn" id="eStart">Start 40 minutes</button><span class="clock" id="eClock">40:00</span></div>
+    <textarea id="essay" style="min-height:420px" placeholder="Write your essay here…"></textarea>
+    <p class="wc" id="essayWc">0 words</p>
+    <ul class="checks" id="essayChecks"></ul>
+    <h3>Final checklist: tick each one when you have checked it</h3>
+    <ul class="checks" id="finalChecks"></ul>
+  </section>
+
+  <section>
+    <div class="step"><b>14</b><h2>Homework</h2></div>
+    <ul>
+      <li>Finish your 40-minute essay if you did not finish it in class, and send it to your teacher.</li>
+      <li>Choose two questions from Step 4. For each, write only the plan (5 minutes) and the introduction.</li>
+      <li>Find three sentences in your essay that could be clearer. Rewrite each one.</li>
+    </ul>
+  </section>
+
+  <nav class="pager"><a href="session-04.html">Previous: Session 4</a><a href="index.html">All sessions</a></nav>
+</main>
+<script>
+const $ = id => document.getElementById(id);
+const norm = t => t.toLowerCase().replace(/[’']/g, "'").replace(/[^a-z0-9,' -]/g, " ").replace(/\s+/g, " ").trim();
+const words = t => t.trim().split(/\s+/).filter(Boolean).length;
+const esc = t => String(t);
+
+function score(id, ok, total, good, bad) {
+  const el = $(id); if (!el) return;
+  el.innerHTML = "<span class='" + (ok === total ? "ok" : "bad") + "'><strong>" + ok + " / " + total + ".</strong> " + (ok === total ? (good || "All correct.") : (bad || "")) + "</span>";
+}
+
+// Multiple choice. items: [question, [options], correctIndex, explanation]
+function mcq(id, items, opt) {
+  opt = opt || {}; const box = $(id); let done = 0, right = 0;
+  items.forEach(([q, opts, ans, why], qi) => {
+    const d = document.createElement("div"); d.className = "q";
+    const num = (opt.start || 1) + qi;
+    d.innerHTML = (q ? "<p><strong>" + num + ".</strong> " + q + "</p>" : "") + "<div></div><p class='why' hidden></p>";
+    const o = d.children[q ? 1 : 0], w = d.children[q ? 2 : 1];
+    opts.forEach((t, i) => {
+      const b = document.createElement("button"); b.className = "btn ghost";
+      b.style.cssText = "display:block;width:100%;text-align:left;margin:8px 0;font-weight:500";
+      b.textContent = "ABCDEFG"[i] + ")  " + t;
+      b.onclick = () => {
+        if (d.dataset.done) return; d.dataset.done = 1; done++;
+        const ok = i === ans; if (ok) right++;
+        d.classList.add(ok ? "right" : "wrong"); o.children[ans].style.borderColor = "var(--green)";
+        w.hidden = false; w.innerHTML = "<strong class='" + (ok ? "ok" : "bad") + "'>" + (ok ? "Correct." : "Not quite.") + "</strong> " + why;
+        if (opt.fb && done === items.length) score(opt.fb, right, items.length, opt.good, opt.bad);
+      };
+      o.appendChild(b);
+    });
+    box.appendChild(d);
+  });
+}
+
+// True/False/Not Given or Yes/No/Not Given. items: [statement, answer, explanation]
+function tfng(id, items, opt) {
+  opt = opt || {}; const labels = opt.labels || ["TRUE", "FALSE", "NOT GIVEN"];
+  const box = $(id); let done = 0, right = 0;
+  items.forEach(([s, ans, why], i) => {
+    const d = document.createElement("div"); d.className = "q";
+    d.innerHTML = "<p><strong>" + ((opt.start || 1) + i) + ".</strong> " + s + "</p><div class='inline-row'></div><p class='why' hidden></p>";
+    const row = d.children[1], w = d.children[2];
+    labels.forEach(l => {
+      const b = document.createElement("button"); b.className = "btn ghost"; b.textContent = l;
+      b.onclick = () => {
+        if (d.dataset.done) return; d.dataset.done = 1; done++;
+        const ok = l === ans; if (ok) right++;
+        d.classList.add(ok ? "right" : "wrong");
+        [...row.children].forEach(x => { if (x.textContent === ans) x.style.borderColor = "var(--green)"; });
+        w.hidden = false;
+        w.innerHTML = "<strong class='" + (ok ? "ok" : "bad") + "'>" + (ok ? "Correct: " : "The answer is ") + ans + ".</strong> " + why;
+        if (done === items.length && opt.fb) score(opt.fb, right, items.length, opt.good, opt.bad);
+      };
+      row.appendChild(b);
+    });
+    box.appendChild(d);
+  });
+}
+
+// Gap fill / short answer. items: [text with ___ (or a question), [accepted], evidence]
+function gaps(id, btnId, fbId, max, items, opt) {
+  opt = opt || {}; const box = $(id);
+  items.forEach(([q], i) => {
+    const d = document.createElement("div"); d.className = "qrow";
+    const n = (opt.start || 1) + i;
+    if (q.includes("___")) {
+      const p = q.split("___");
+      d.innerHTML = "<span class='num'>" + n + "</span><div><span class='serif' style='font-size:18px'>" + p[0] + "</span><input class='ans' aria-label='Answer " + n + "' data-i='" + i + "'><span class='serif' style='font-size:18px'>" + p[1] + "</span><div class='small-fb'></div></div>";
+    } else {
+      d.innerHTML = "<span class='num'>" + n + "</span><div><div>" + q + "</div><input class='ans' aria-label='Answer " + n + "' data-i='" + i + "'><div class='small-fb'></div></div>";
+    }
+    box.appendChild(d);
+  });
+  $(btnId).onclick = () => {
+    let ok = 0;
+    box.querySelectorAll("input").forEach(inp => {
+      const [q, acc, ev] = items[inp.dataset.i]; const v = norm(inp.value).replace(/^the /, "");
+      const fb = inp.parentElement.querySelector(".small-fb");
+      if (!v) { inp.className = "ans"; fb.textContent = ""; return; }
+      if (words(inp.value) > max) { inp.className = "ans badans"; fb.innerHTML = "<span class='bad'>Too many words: the limit is " + max + ". In the exam this is marked wrong.</span>"; return; }
+      const g = acc.some(a => norm(a).replace(/^the /, "") === v); if (g) ok++;
+      inp.className = "ans " + (g ? "good" : "badans");
+      fb.innerHTML = g ? "<span class='ok'>Evidence: " + ev + "</span>" : "<span class='bad'>Answer: <strong>" + acc[0] + "</strong>. Evidence: " + ev + "</span>";
+    });
+    score(fbId, ok, items.length, opt.good || "All correct. Spelling counts, so check every letter.", opt.bad || "Copy words exactly from the passage and keep to the word limit.");
+  };
+}
+
+// Flip cards. items: [front, small, back]
+function cards(id, items) {
+  items.forEach(([f, s, b]) => {
+    const c = document.createElement("button"); c.className = "card"; c.setAttribute("aria-expanded", "false");
+    c.innerHTML = "<div class='front'>" + f + (s ? "<small>" + s + "</small>" : "") + "</div><div class='back'>" + b + "</div>";
+    c.onclick = () => { c.classList.toggle("open"); c.setAttribute("aria-expanded", c.classList.contains("open")); };
+    $(id).appendChild(c);
+  });
+}
+
+// Sorting. cats: [label], items: [text, correctLabel, note]
+function sorter(id, fbId, cats, items, opt) {
+  opt = opt || {}; let done = 0, right = 0;
+  items.forEach(([t, a, note]) => {
+    const d = document.createElement("div"); d.className = "fact"; d.innerHTML = "<span class='serif'>" + t + "</span>";
+    cats.forEach(c => {
+      const b = document.createElement("button"); b.className = "btn ghost"; b.textContent = c;
+      b.onclick = () => {
+        if (d.dataset.done) return; d.dataset.done = 1; done++;
+        const ok = c === a; if (ok) right++; d.classList.add(ok ? "right" : "wrong");
+        const n = document.createElement("span"); n.className = "small-fb " + (ok ? "ok" : "bad"); n.style.flexBasis = "100%";
+        n.textContent = (ok ? "" : "Answer: " + a + ". ") + (note || ""); if (n.textContent) d.appendChild(n);
+        if (done === items.length) score(fbId, right, items.length, opt.good, opt.bad);
+      };
+      d.appendChild(b);
+    });
+    $(id).appendChild(d);
+  });
+}
+
+// Click the topic sentence. paras: [[sentences], correctIndex, explanation]
+function topicPick(id, paras) {
+  paras.forEach(([s, ans, why], pi) => {
+    const d = document.createElement("div"); d.className = "q";
+    d.innerHTML = "<p class='hint' style='margin:0 0 4px'>Paragraph " + "ABCDEFG"[pi] + "</p>";
+    const p = document.createElement("p"); p.className = "serif"; p.style.cssText = "font-size:18px;line-height:1.7";
+    const w = document.createElement("p"); w.className = "why"; w.hidden = true;
+    s.forEach((t, i) => {
+      const sp = document.createElement("span"); sp.className = "sent"; sp.textContent = t; sp.tabIndex = 0; sp.setAttribute("role", "button");
+      const go = () => {
+        if (d.dataset.done) return;
+        if (i === ans) { d.dataset.done = 1; sp.classList.add("yes"); d.classList.add("right"); w.hidden = false; w.innerHTML = "<strong class='ok'>Correct.</strong> " + why; }
+        else { sp.classList.add("no"); w.hidden = false; w.innerHTML = "<span class='bad'>That is a supporting detail. Try again.</span>"; }
+      };
+      sp.onclick = go; sp.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } };
+      p.appendChild(sp); p.appendChild(document.createTextNode(" "));
+    });
+    d.appendChild(p); d.appendChild(w); $(id).appendChild(d);
+  });
+}
+
+// Dropdown matching. rows: [label, correctValue], options: [[value, text]]
+function dropMatch(id, btnId, fbId, rows, options, opt) {
+  opt = opt || {};
+  rows.forEach(([label], i) => {
+    const d = document.createElement("div"); d.className = "qrow";
+    d.innerHTML = "<span class='num'>" + ((opt.start || 1) + i) + "</span><div><div class='serif' style='font-size:18px'>" + label + "</div><select data-i='" + i + "' style='margin-top:6px;max-width:100%'><option value=''>Choose…</option>" + options.map(([v, t]) => "<option value='" + v + "'>" + t + "</option>").join("") + "</select><div class='small-fb'></div></div>";
+    $(id).appendChild(d);
+  });
+  $(btnId).onclick = () => {
+    let ok = 0;
+    $(id).querySelectorAll("select").forEach(s => {
+      const row = rows[s.dataset.i]; const g = s.value === row[1]; if (g) ok++;
+      s.style.borderColor = g ? "var(--green)" : "var(--red)";
+      s.nextElementSibling.innerHTML = s.value ? (g ? (row[2] ? "<span class='ok'>" + row[2] + "</span>" : "") : "<span class='bad'>Not this one.</span>") : "";
+    });
+    score(fbId, ok, rows.length, opt.good, opt.bad);
+  };
+}
+
+// Countdown timer that reveals a blurred element
+function countdown(btnId, clockId, seconds, revealId, onEnd) {
+  let t = null, left = seconds;
+  const show = s => Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0");
+  $(clockId).textContent = show(seconds);
+  $(btnId).onclick = () => {
+    if (t) return; if (revealId) $(revealId).classList.remove("blurred"); $(btnId).disabled = true;
+    t = setInterval(() => { left--; $(clockId).textContent = show(Math.max(left, 0)); if (left <= 0) { clearInterval(t); $(clockId).textContent = "Time!"; if (onEnd) onEnd(); } }, 1000);
+  };
+  return { stop: () => clearInterval(t), elapsed: () => seconds - left };
+}
+
+// Writing box with live checklist. tests: [label, fn(text)]
+function writeBox(taId, wcId, listId, tests) {
+  const ta = $(taId);
+  const run = () => {
+    const t = ta.value; const n = words(t); $(wcId).textContent = n + " word" + (n === 1 ? "" : "s");
+    $(listId).innerHTML = "";
+    tests.forEach(([l, f]) => { const li = document.createElement("li"); li.textContent = l; if (t.trim()) li.className = f(t) ? "pass" : "fail"; $(listId).appendChild(li); });
+  };
+  ta.addEventListener("input", run); run();
+}
+
+document.querySelectorAll("main .card").forEach(c => c.onclick = () => c.classList.toggle("open"));
+const TYPES = [["agree", "Agree or disagree"], ["discuss", "Discuss both views"], ["advdis", "Advantages and disadvantages"], ["causesol", "Causes and solutions"], ["causeeff", "Causes and effects"], ["probsol", "Problems and solutions"], ["two", "Two-part question"]];
+dropMatch("types", "typesBtn", "typesFb", [
+  ["Forests are the lungs of the earth. Destruction of the world's forests amounts to the death of the world we know. To what extent do you agree or disagree?", "agree"],
+  ["Some people feel animals should have the same rights as humans, while others argue that humans must use animals for food and research. Discuss both positions and give your own opinion.", "discuss"],
+  ["Many countries are seeing an increase in criminal activity among young people. Discuss the reasons and suggest ways to deal with the problem.", "causesol"],
+  ["Telecommuting is growing in many countries. How do you think society will be affected by this growth?", "causeeff"],
+  ["We are becoming increasingly dependent on computers. What will they be used for in the future? Is this dependence a good thing?", "two"],
+  ["More people are working from home. What are the advantages and disadvantages of this?", "advdis"]], TYPES,
+  { good: "Remember: some questions mix types. Answer every part.", bad: "Look at the instruction words at the end of each question." });
+cards("instr", [
+  ["To what extent do you agree or disagree?", "instruction", "Give your opinion and explain your position."],
+  ["Discuss both views.", "instruction", "Explain both sides, then give your own opinion if asked."],
+  ["What are the causes?", "instruction", "Explain why something happens."],
+  ["Suggest solutions.", "instruction", "Recommend ways to solve the problem."],
+  ["Discuss the advantages and disadvantages.", "instruction", "Explain the positive and negative sides."]]);
+mcq("topicQ", [
+  ["“Telecommuting” means working from home and communicating with the office by computer. It is growing in many countries. How will society be affected by the growth of telecommuting?", ["Working from home", "Telecommuting", "Computer technology"], 1, "The question defines telecommuting and asks about its growth. “Computer technology” is too general."],
+  ["To what extent is the use of animals in scientific research acceptable?", ["Animal research", "Animals", "Scientific research"], 0, "Both other options are too general: the focus is animals used in research."],
+  ["We are becoming increasingly dependent on computers… Is this dependence a good thing?", ["The benefits of computers", "Computers in businesses, hospitals and planes", "Computer dependency"], 2, "The question is about dependence. The second option is just the examples; the first is only one side."],
+  ["In what ways has information technology changed work and working practices in the past 10 years?", ["Information technology and work", "Information technology", "Working practices"], 0, "You need both: how IT has changed work."],
+  ["Blood sports are increasingly seen as cruel. All blood sports should be banned. Discuss the arguments and give your opinion.", ["Animal cruelty", "Blood sports", "Blood sports and uncivilised activity"], 1, "Animal cruelty is too general; the third option is only one argument."],
+  ["Some feel animals should have the same rights as humans; others argue humans must use animals for food and research. Discuss both positions.", ["Satisfying human needs", "Animals and humans", "Animal rights"], 2, "The debate is about whether animals should have rights."],
+  ["Forests are the lungs of the earth. Destruction of the world’s forests amounts to death of the world we know. To what extent do you agree?", ["The Earth", "Deforestation", "Death of the world"], 1, "Destruction of forests = deforestation."],
+  ["Going overseas for university is exciting, but it is probably better to stay at home because of the difficulties. To what extent do you agree?", ["Studying abroad", "Studying", "Living in a different culture"], 0, "Living in a different culture is only one part of studying abroad."],
+  ["Zoos are sometimes seen as necessary but poor alternatives to a natural environment. Discuss the arguments for and against keeping animals in zoos.", ["Natural environments", "Alternatives to zoos", "Keeping animals in zoos"], 2, "The instruction says it directly: keeping animals in zoos."],
+  ["Many countries are seeing an increase in criminal activity among young people. Discuss the reasons and suggest solutions.", ["Youth crime", "Criminal activity", "Increases in crime"], 0, "The question narrows crime to young people."]],
+  { fb: "topicQFb", good: "Excellent: you can find the exact topic every time.", bad: "Look for the words that make the topic narrower: teenagers, abroad, in research." });
+cards("extend", [
+  ["Main idea", "start", "Family breakdown is one reason for teenage crime."],
+  ["Why does it happen?", "reason", "Divorce rates are high, and in some families both parents work long hours."],
+  ["What is the result?", "effect", "Some children grow up with little guidance and no positive role model."],
+  ["What could happen next?", "consequence", "They are more easily influenced by others and may become involved in drugs or crime."],
+  ["Example?", "support", "A teenager who is alone every evening may start spending time with older friends who are already in trouble."]]);
+sorter("introParts", "introPartsFb", ["Paraphrase", "Position", "Main ideas"], [
+  ["It is often claimed that the growing number of cars on the roads is damaging both the environment and people’s health.", "Paraphrase", "It restates the question in new words."],
+  ["I agree with this view,", "Position", "A clear answer to “To what extent…?”"],
+  ["because vehicle emissions are a major cause of global warming, and heavy car use encourages an inactive lifestyle and exposes people to polluted air.", "Main ideas", "These become Body 1 and Body 2."]],
+  { good: "Paraphrase + position + main ideas: a complete introduction." });
+mcq("tsQ", [[null, ["Women are important in companies.", "There are many reasons for and against this idea.", "Companies should reserve a share of senior positions for women because, without such a rule, many qualified women are held back by discrimination.", "For example, few large companies are run by women."], 2, "C gives one clear controlling idea with a reason. A is too general, B has no position, and D is an example, not a topic sentence."]]);
+cards("explainLang", [["That is to say… / In other words…", "clarifying", "In other words, women are denied jobs because of their gender, not their skills."], ["This is because… / The reason is…", "giving reasons", "This is because higher prices reduce demand."], ["As a result… / Therefore…", "describing results", "As a result, fewer people would drive every day."]]);
+mcq("exQ", [[null, ["For example, many women fail to get jobs because of their gender.", "For example, a woman with the same degree and experience as a male colleague may be passed over for promotion because managers assume she will leave to start a family.", "For example, exactly 91% of companies in Asia had no female directors in 2014."], 1, "B is specific and realistic. A is too general. C looks impressive, but an invented statistic can damage your credibility: use real facts only if you are sure of them."]]);
+sorter("pee", "peeFb", ["Point", "Explanation", "Example"], [
+  ["Raising fuel prices would reduce traffic because it would make driving more expensive.", "Point", "The topic sentence: one clear idea."],
+  ["When petrol costs more, people think more carefully about unnecessary journeys and choose cheaper alternatives such as buses, trains or cycling.", "Explanation", "It explains how the point works."],
+  ["For instance, when fuel prices have risen sharply in the past, many commuters switched to public transport or began sharing cars with colleagues.", "Example", "It shows the idea in a real situation."]],
+  { good: "Point → Explanation → Example." });
+sorter("starters", "startersFb", ["Good", "Avoid"], [
+  ["In conclusion,", "Good", ""], ["To conclude,", "Good", ""],
+  ["Finally,", "Avoid", "It introduces a last body point, not a conclusion."], ["In a nutshell,", "Avoid", "Too informal."], ["In general,", "Avoid", "It does not signal that you are concluding."]],
+  { good: "Keep it simple: “In conclusion,” or “To conclude,”." });
+mcq("newIdea", [["Which sentence should NOT be in the conclusion of an essay arguing that schools should teach money management?", ["In conclusion, teenagers should learn financial planning because it prepares them for adult life.", "Without this knowledge, many young people may fall into serious debt.", "Schools should also teach students how to cook healthy meals."], 2, "C introduces a completely new idea (cooking), which was not discussed in the essay."]]);
+// model essays
+(function () {
+  const M = [
+    ["IT: more negative than positive?", "In the last 20 years there have been significant developments in information technology, for example the World Wide Web and communication by email. However, these developments are likely to have more negative effects than positive in the future. To what extent do you agree or disagree?", [
+      ["Introduction", "Paraphrase + clear position", "Over the past two decades, information technology has transformed the way people communicate, work and learn. Although these changes have brought clear benefits, I agree that, unless they are better managed, their negative effects are likely to become greater in the future."],
+      ["Body 1", "Concession: the benefits", "There is no doubt that the internet and email have made life more convenient. Messages that once took days to arrive by post can now be sent around the world in seconds, which has made international business far more efficient. In addition, almost any information, from news to online courses, is now available to anyone with a connection. A student in a small town, for example, can now attend lectures given by professors on the other side of the world."],
+      ["Body 2", "Main argument: the risks, with two developed points", "However, these advantages come with growing risks. Firstly, constant online communication may weaken people’s ability to interact face to face. Many young people already spend more time messaging than talking, and this could make it harder for them to build close relationships and communicate confidently at work. Secondly, the internet is extremely difficult to regulate. As a result, children can easily access unsuitable content, and personal data can be stolen or misused. As more of daily life moves online, from banking to healthcare, the damage caused by such problems is likely to increase."],
+      ["Conclusion", "Restated position + summary", "In conclusion, while developments in IT have made communication and learning faster and easier, I believe their negative effects on social skills and online safety are likely to outweigh these benefits unless stronger safeguards are introduced."]]],
+    ["Teenage crime: causes and solutions", "The crime rate among teenagers has increased dramatically in many countries. Discuss some possible reasons for this increase and suggest solutions.", [
+      ["Introduction", "Paraphrase + main ideas", "In many countries, the number of crimes committed by teenagers has risen sharply in recent years. This essay will argue that family problems and a lack of positive activities are the main causes, and that better support from governments and parents can help to reverse this trend."],
+      ["Body 1", "Two reasons, each explained", "The first reason for the increase is the breakdown of family life. When parents divorce or both work long hours, some children grow up with little guidance or supervision. Without a positive role model, these teenagers are more easily influenced by older friends who may introduce them to drugs or crime. Another cause is boredom. In many neighbourhoods there are few affordable places where young people can meet, so they spend their evenings on the streets, where minor offences such as vandalism can quickly become a form of entertainment."],
+      ["Body 2", "Two solutions, matched to the reasons", "These problems can be tackled in two ways. Firstly, governments should invest in youth centres and sports clubs that offer free activities and trained youth workers. This would give teenagers a safe place to spend their free time and adults they can turn to for advice. Secondly, parents need to take more responsibility. Spending regular time with their children, knowing who their friends are and setting clear rules can make a teenager far less likely to get into trouble. Where a parent is absent, another relative or a mentor can provide the guidance that is missing."],
+      ["Conclusion", "Summary of causes and solutions", "In conclusion, teenage crime has increased mainly because of family breakdown and a lack of things to do. With greater investment in youth facilities and stronger involvement from parents, this problem can be significantly reduced."]]]];
+  function show(i) {
+    [...$("mTabs").children].forEach((t, j) => t.setAttribute("aria-selected", j === i));
+    const [, q, ps] = M[i]; const n = words(ps.map(p => p[2]).join(" "));
+    $("mBox").innerHTML = "<div class='prompt'><small>Question</small><span class='serif'>" + q + "</span></div>" + ps.map(([lab, note, txt]) => "<div class='example'><small><button class='tag' style='border:0;cursor:pointer;font:inherit;font-size:13px'>" + lab + "</button> <span class='note' hidden>" + note + "</span></small>" + txt + "</div>").join("") + "<p class='hint'>" + n + " words.</p>";
+    $("mBox").querySelectorAll(".tag").forEach(b => b.onclick = () => { const s = b.nextElementSibling; s.hidden = !s.hidden; });
+  }
+  M.forEach((m, i) => { const t = document.createElement("button"); t.className = "tab"; t.setAttribute("role", "tab"); t.textContent = m[0]; t.onclick = () => show(i); $("mTabs").appendChild(t); });
+  show(0);
+})();
+// final practice
+(function () {
+  const P = [
+    "Increasing the price of petrol is the best way to solve growing traffic and pollution problems. To what extent do you agree or disagree?",
+    "Going overseas for university study offers some advantages, but it is probably better to stay at home because of the difficulties students face living in a different culture. To what extent do you agree or disagree?",
+    "Most high-level positions in companies are filled by men even though the workforce in many countries is more than 50% female. Companies should be required to give a certain percentage of these positions to women. Do you agree?",
+    "Many young people spend several hours a day on social media. Why is this the case? Is it a positive or negative development?"];
+  $("promptSel").innerHTML = P.map((p, i) => "<option value='" + i + "'>" + (i + 1) + ". " + p.slice(0, 60) + "…</option>").join("");
+  const set = () => $("promptText").textContent = P[$("promptSel").value]; $("promptSel").onchange = set; set();
+  countdown("eStart", "eClock", 2400, null);
+  writeBox("essay", "essayWc", "essayChecks", [
+    ["At least 250 words", t => words(t) >= 250],
+    ["Four or more paragraphs (leave an empty line between them)", t => t.trim().split(/\n\s*\n/).filter(p => p.trim()).length >= 4],
+    ["Does not start with “Nowadays”, “In modern life” or “In today’s society”", t => t.trim() && !/^\s*(nowadays|in modern life|in today'?’?s society)/i.test(t)],
+    ["Gives a clear position (I agree / I disagree / I believe / this essay will argue)", t => /\b(I (strongly )?(agree|disagree|believe)|this essay (will )?(argue|agree)s?)/i.test(t)],
+    ["Uses an example (for example / for instance / such as)", t => /\b(for example|for instance|such as)\b/i.test(t)],
+    ["Ends with “In conclusion,” or “To conclude,”", t => /(in conclusion|to conclude),[^]*$/i.test(t.split(/\n\s*\n/).filter(Boolean).slice(-1)[0] || "")],
+    ["No informal words (kids, gonna, stuff, a lot of)", t => t.trim() && !/\b(kids|gonna|wanna|stuff|a lot of)\b/i.test(t)]]);
+  ["I answered every part of the question.", "My opinion is clear and the same from beginning to end.", "Each body paragraph has one main idea with an explanation and an example.", "My ideas are in a logical order, with linking words used correctly.", "I avoided repeating the same words.", "I checked subject–verb agreement, tenses, articles, spelling and punctuation.", "My conclusion restates my position and adds no new ideas."].forEach(t => { const li = document.createElement("li"); li.textContent = t; li.tabIndex = 0; li.style.cursor = "pointer"; li.onclick = () => li.classList.toggle("pass"); li.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); li.classList.toggle("pass"); } }; $("finalChecks").appendChild(li); });
+})();
+</script>
+</body>
+</html>
