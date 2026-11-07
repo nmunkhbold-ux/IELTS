@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Session 6: Reading Test (computer format) | AUM IELTS</title>
+<style>
+:root{
+  --bg:#ffffff; --text:#1a1a1a; --muted:#5b5b5b; --line:#d4d4d4; --bar:#f2f2ef; --bar-line:#dadad5;
+  --accent:#0a3d91; --focus:#1f6fd1; --hl:#fff176; --note:#ffd9a8; --ok:#1e7a3c; --bad:#b3261e; --flag:#c25e00;
+  --btn:#000; --btn-text:#fff; --btn-off:#e3e3e3;
+  --fs:16px;
+  color-scheme: light;
+}
+:root[data-contrast="wob"]{ --bg:#000; --text:#fff; --muted:#cfcfcf; --line:#555; --bar:#111; --bar-line:#444; --accent:#9cc4ff; --focus:#9cc4ff; --hl:#7a6a00; --note:#7a4a12; --ok:#7bd88f; --bad:#ff8a80; --flag:#ffb74d; --btn:#fff; --btn-text:#000; --btn-off:#333; color-scheme: dark; }
+:root[data-contrast="yob"]{ --bg:#000; --text:#ffe600; --muted:#e6cf00; --line:#665c00; --bar:#111; --bar-line:#555; --accent:#ffe600; --focus:#fff; --hl:#5a5200; --note:#6b3d00; --ok:#b8f5a0; --bad:#ffab91; --flag:#ffcc80; --btn:#ffe600; --btn-text:#000; --btn-off:#333; color-scheme: dark; }
+:root[data-size="l"]{ --fs:19px; } :root[data-size="xl"]{ --fs:22px; }
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{background:var(--bg);color:var(--text);font:var(--fs)/1.6 Arial, "Helvetica Neue", Helvetica, sans-serif;display:flex;flex-direction:column;overflow:hidden}
+button,select,input{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+a{color:var(--accent)}
+/* header */
+.top{display:flex;align-items:center;gap:20px;padding:10px 20px;border-bottom:1px solid var(--line);flex:none}
+.brand{font-weight:700;font-size:26px;letter-spacing:-.5px;color:var(--accent);text-decoration:none}
+.who{line-height:1.3}
+.who b{display:block;font-size:15px}
+.who span{font-size:14px;color:var(--muted)}
+.timer{font-variant-numeric:tabular-nums;font-weight:700;font-size:15px;padding:4px 10px;border-radius:4px}
+.timer.warn{background:#fdecc8;color:#7a4a00}
+.timer.hide{visibility:hidden}
+.top .grow{flex:1}
+.iconbtn{background:none;border:0;padding:6px 8px;cursor:pointer;border-radius:4px;line-height:1}
+.iconbtn:hover{background:var(--bar)}
+.menu{position:absolute;right:16px;top:58px;background:var(--bg);border:1px solid var(--line);border-radius:6px;box-shadow:0 6px 24px rgba(0,0,0,.18);padding:14px 16px;z-index:50;width:280px;font-size:15px}
+.menu h4{margin:10px 0 6px;font-size:15px}.menu h4:first-child{margin-top:0}
+.menu label{display:flex;gap:8px;align-items:center;padding:3px 0;cursor:pointer}
+.menu hr{border:0;border-top:1px solid var(--line);margin:12px 0}
+.menu .linkbtn{background:none;border:0;padding:4px 0;color:var(--accent);cursor:pointer;text-decoration:underline}
+/* part bar */
+.partbar{margin:14px 20px 0;background:var(--bar);border:1px solid var(--bar-line);border-radius:4px;padding:10px 16px;flex:none;line-height:1.4}
+.partbar b{display:block}
+/* split */
+.split{flex:1;display:flex;min-height:0;margin:10px 0 0;position:relative}
+.pane{overflow-y:auto;padding:16px 20px 40px;min-width:0}
+#passagePane{flex:0 0 50%}
+#questionPane{flex:1}
+.divider{flex:none;width:14px;position:relative;cursor:col-resize;background:linear-gradient(var(--line),var(--line)) center/2px 100% no-repeat}
+.divider button{position:absolute;top:45%;left:50%;transform:translate(-50%,-50%);width:34px;height:34px;border:1px solid var(--text);background:var(--bg);border-radius:3px;cursor:col-resize;font-size:16px;line-height:1;padding:0}
+.passage h2{font-size:1.15em;margin:4px 0 4px}
+.passage .sub{font-style:italic;color:var(--muted);margin:0 0 14px}
+.passage p{margin:0 0 1em;max-width:72ch}
+.passage .pl{font-weight:700;margin-right:.4em}
+mark.hl{background:var(--hl);color:inherit;border-radius:2px;cursor:pointer}
+mark.hl.note{background:var(--note);border-bottom:2px dotted var(--flag)}
+/* questions */
+.group{margin:0 0 28px;max-width:72ch}
+.group h3{font-size:1em;margin:0 0 6px}
+.group .ins{margin:0 0 12px}
+.box{border:1px solid var(--line);border-radius:4px;padding:10px 14px;margin:0 0 14px}
+.box b{display:block;margin-bottom:4px}
+.box ol{margin:0;padding-left:0;list-style:none}
+.q{display:flex;gap:10px;align-items:flex-start;margin:0 0 14px;padding:6px 8px;border-radius:4px;border:2px solid transparent;scroll-margin-top:14px}
+.q.current{border-color:var(--focus)}
+.num{flex:none;min-width:30px;height:28px;border:1px solid var(--text);border-radius:3px;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:.9em}
+.q .body{flex:1;min-width:0}
+.opts{display:grid;gap:2px;margin-top:6px}
+.opts label{display:flex;gap:10px;align-items:flex-start;padding:4px 6px;border-radius:3px;cursor:pointer}
+.opts label:hover{background:var(--bar)}
+.opts input{margin-top:.35em}
+select.ans{padding:4px 6px;border:1px solid var(--muted);border-radius:3px;background:var(--bg);max-width:100%}
+input.ans{padding:3px 8px;border:1px solid var(--muted);border-radius:3px;background:var(--bg);width:12em;max-width:100%}
+.inl{display:inline-flex;align-items:center;gap:6px;vertical-align:middle}
+.inl .num{min-width:28px;height:24px}
+.summary{line-height:2.2}
+.mark-ok{border-color:var(--ok)!important;background:color-mix(in srgb,var(--ok) 12%,transparent)}
+.mark-bad{border-color:var(--bad)!important;background:color-mix(in srgb,var(--bad) 10%,transparent)}
+.fix{display:block;font-size:.85em;margin-top:4px}
+.fix .c{color:var(--ok);font-weight:700}
+/* footer nav */
+.foot{flex:none;border-top:1px solid var(--line);display:flex;align-items:stretch;min-height:58px;position:relative}
+.parts{flex:1;display:flex;align-items:center;gap:6px 26px;padding:8px 16px;overflow-x:auto;flex-wrap:nowrap}
+.pseg{display:flex;align-items:center;gap:8px;flex:none}
+.pseg>button.plabel{background:none;border:0;font-weight:700;cursor:pointer;padding:4px 2px;white-space:nowrap}
+.pseg .count{color:var(--muted);white-space:nowrap;font-size:.92em}
+.qn{position:relative;background:none;border:1px solid transparent;min-width:28px;height:28px;padding:0 4px;cursor:pointer;border-radius:3px;font-size:.92em}
+.qn.answered{border-bottom:3px solid var(--text)}
+.qn.current{border:2px solid var(--focus)}
+.qn.flag::after{content:"";position:absolute;top:-1px;right:-1px;border-style:solid;border-width:0 9px 9px 0;border-color:transparent var(--flag) transparent transparent}
+.navbtns{position:absolute;right:96px;bottom:70px;display:flex;gap:6px;z-index:5}
+.navbtns button{width:58px;height:52px;border:0;border-radius:3px;cursor:pointer;font-size:26px;background:var(--btn);color:var(--btn-text)}
+.navbtns button:disabled{background:var(--btn-off);color:var(--muted);cursor:default}
+.footbtn{flex:none;width:86px;border:0;border-left:1px solid var(--line);background:var(--bar);cursor:pointer;font-size:22px}
+.reviewbtn{flex:none;border:0;border-left:1px solid var(--line);background:none;cursor:pointer;padding:0 14px;font-size:.92em;display:flex;align-items:center;gap:6px;white-space:nowrap}
+.reviewbtn[aria-pressed="true"]{color:var(--flag);font-weight:700}
+/* popovers & modals */
+.pop{position:fixed;z-index:60;background:var(--bg);border:1px solid var(--line);border-radius:6px;box-shadow:0 6px 20px rgba(0,0,0,.2);padding:4px;display:flex;gap:2px}
+.pop button{background:none;border:0;padding:6px 10px;cursor:pointer;border-radius:4px;white-space:nowrap}
+.pop button:hover{background:var(--bar)}
+.notebox{position:fixed;z-index:61;background:var(--bg);border:1px solid var(--line);border-radius:6px;box-shadow:0 6px 20px rgba(0,0,0,.2);padding:10px;width:280px}
+.notebox textarea{width:100%;min-height:90px;padding:6px;border:1px solid var(--muted);border-radius:4px;background:var(--bg);color:var(--text);font:inherit;font-size:15px}
+.notebox .row{display:flex;gap:8px;justify-content:flex-end;margin-top:8px}
+.btn{border:1px solid var(--text);background:var(--btn);color:var(--btn-text);border-radius:4px;padding:8px 16px;cursor:pointer}
+.btn.ghost{background:none;color:var(--text)}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:80;display:flex;align-items:center;justify-content:center;padding:20px}
+.modal{background:var(--bg);color:var(--text);border-radius:8px;max-width:640px;width:100%;max-height:90vh;overflow:auto;padding:24px 26px}
+.modal h2{margin:0 0 10px;font-size:1.3em}
+.modal ul{padding-left:20px}
+.modal .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.results table{border-collapse:collapse;width:100%;font-size:.9em;margin-top:8px}
+.results th,.results td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+.results .ok{color:var(--ok);font-weight:700}.results .bad{color:var(--bad);font-weight:700}
+.score{font-size:2.2em;font-weight:700;line-height:1.1;margin:6px 0}
+.mobiletabs{display:none}
+@media (max-width:760px){
+  .who span{display:none}
+  .split{flex-direction:column}
+  .divider{display:none}
+  #passagePane,#questionPane{flex:1 1 auto}
+  .split[data-show="q"] #passagePane,.split[data-show="p"] #questionPane{display:none}
+  .mobiletabs{display:flex;gap:6px;margin:10px 20px 0}
+  .mobiletabs button{flex:1;padding:8px;border:1px solid var(--line);background:var(--bg);border-radius:4px;cursor:pointer}
+  .mobiletabs button[aria-pressed="true"]{border-color:var(--text);font-weight:700}
+  .navbtns{right:12px;bottom:70px}
+  .navbtns button{width:46px;height:44px}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="index.html" title="Back to all sessions">AUM</a>
+  <div class="who"><b id="testName">Session 6 · Reading practice test</b><span id="timeText">60 minutes · 3 parts · 40 questions</span></div>
+  <div class="grow"></div>
+  <span class="timer" id="timer" aria-live="off">60:00</span>
+  <button class="iconbtn" id="menuBtn" aria-label="Settings" aria-expanded="false"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button>
+</header>
+<div class="menu" id="menu" hidden>
+  <h4>Text size</h4>
+  <label><input type="radio" name="size" value="m" checked> Standard</label>
+  <label><input type="radio" name="size" value="l"> Large</label>
+  <label><input type="radio" name="size" value="xl"> Extra large</label>
+  <h4>Colours</h4>
+  <label><input type="radio" name="contrast" value="bow" checked> Black on white</label>
+  <label><input type="radio" name="contrast" value="wob"> White on black</label>
+  <label><input type="radio" name="contrast" value="yob"> Yellow on black</label>
+  <hr>
+  <label><input type="checkbox" id="hideTimer"> Hide the timer</label>
+  <hr>
+  <p style="margin:0 0 6px;font-size:14px">Highlight: select text, then choose <b>Highlight</b> or <b>Note</b>. Click a highlight to remove it or read its note.</p>
+  <button class="linkbtn" id="restart">Restart the test</button><br>
+  <button class="linkbtn" id="switchTest">Choose a different test</button><br>
+  <a href="index.html">Back to all sessions</a>
+</div>
+
+<div class="partbar" id="partbar"></div>
+<div class="mobiletabs"><button id="tabP" aria-pressed="true">Passage</button><button id="tabQ" aria-pressed="false">Questions</button></div>
+<main class="split" id="split" data-show="p">
+  <section class="pane passage" id="passagePane" aria-label="Reading passage"></section>
+  <div class="divider" id="divider"><button aria-label="Drag to resize the panels" title="Drag to resize">&#8596;</button></div>
+  <section class="pane" id="questionPane" aria-label="Questions"></section>
+</main>
+
+<div class="navbtns"><button id="prevQ" aria-label="Previous question">&#8592;</button><button id="nextQ" aria-label="Next question">&#8594;</button></div>
+<footer class="foot">
+  <nav class="parts" id="parts" aria-label="Question navigation"></nav>
+  <button class="reviewbtn" id="flagBtn" aria-pressed="false" title="Mark this question to come back to it">&#9873; Review</button>
+  <button class="footbtn" id="finishBtn" aria-label="Finish and submit the test">&#10003;</button>
+</footer>
+
+<script src="test-data.js"></script>
+<script>
+/* ===================== TEST CONTENT =====================
+   AUM original practice test. All passages, people and studies are invented for teaching.
+   To make another test, copy this file and change only the TEST object.
+   Question types: headings, tfng, ynng, match, complete, summary, mcq.
+*/
+const BUILTIN = {
+  id: "aum-reading-1",
+  name: "AUM original practice test",
+  minutes: 60,
+  parts: [
+  {
+    title: "Part 1", range: [1, 13],
+    passageTitle: "The return of the city bicycle",
+    sub: "Why cycling is growing again in some cities but not in others",
+    lettered: true,
+    paragraphs: [
+      "In the middle of the twentieth century, the bicycle seemed to be disappearing from the streets of many European and Asian cities. As incomes rose, families bought cars, and planners widened roads to make room for them. In some cities, cycling fell by more than half in just two decades, and the bicycle came to be seen as a vehicle for children or for those who could not afford anything better.",
+      "Several forces have reversed this decline. Traffic congestion has made car journeys slower and less predictable, especially at rush hour. Concern about air quality has grown, and many people now look for ways to exercise as part of their daily routine rather than in a gym. Rising fuel and parking costs have also made the car a more expensive choice for short trips, which account for a large share of urban journeys.",
+      "Yet these pressures alone do not explain why cycling has grown quickly in some cities and hardly at all in others. Researchers who compare cities point to one factor above all: whether people feel safe. Surveys repeatedly show that the main reason people give for not cycling is fear of traffic, not distance, weather or hills. Cities that have built continuous lanes physically separated from cars have seen the largest increases, while painted lines on busy roads have done little to attract new riders.",
+      "Public bicycle-sharing schemes have also played a part. The first schemes, launched in the 1960s, failed because bicycles were stolen or damaged within weeks. Modern systems use docking stations, electronic payment and GPS tracking, which make it possible to know where every bicycle is. In a number of large cities, shared bicycles are now used for millions of journeys each year, many of them by people who do not own a bicycle themselves.",
+      "The arrival of the electric bicycle has widened the appeal of cycling further. A small motor that assists the rider makes long distances and steep streets far less tiring, and allows riders to arrive at work without needing to change clothes. Sales of electric bicycles have grown especially fast among older people, a group that rarely cycled in the past.",
+      "Not everyone has welcomed these changes. Shop owners have sometimes opposed the removal of parking spaces, fearing that customers who drive will go elsewhere. Some studies have suggested that cyclists and pedestrians actually spend more per month in local shops, because they visit more often, but the debate continues in many places. Conflicts between cyclists and pedestrians on shared paths have also become more common.",
+      "Planners now argue that the bicycle should not be seen as a competitor to public transport but as a partner to it. In cities where bicycles can be parked securely at stations, or carried on trains, people combine the two to make journeys that would otherwise require a car. The most successful cities, it seems, are those that treat cycling as one part of a connected transport system rather than as a separate leisure activity."
+    ],
+    groups: [
+      { type: "headings", title: "Questions 1–7",
+        ins: "Reading Passage 1 has seven paragraphs, A–G. Choose the correct heading for each paragraph from the list of headings.",
+        list: [["i","Why the bicycle lost its place"],["ii","A technology that attracts new groups of riders"],["iii","Learning from the failure of early schemes"],["iv","A disagreement about the effect on local business"],["v","Pressures that brought people back to cycling"],["vi","The key difference between more and less successful cities"],["vii","Bicycles and trains working together"],["viii","The rising cost of building cycle lanes"],["ix","How the weather affects cycling"]],
+        items: [
+          {n:1, text:"Paragraph A", a:"i", why:"Paragraph A describes the decline: families bought cars and cycling fell by more than half."},
+          {n:2, text:"Paragraph B", a:"v", why:"“Several forces have reversed this decline”: congestion, air quality, exercise and costs."},
+          {n:3, text:"Paragraph C", a:"vi", why:"“Researchers who compare cities point to one factor above all: whether people feel safe.” Weather is mentioned only as something that is NOT the main reason, so ix is a trap."},
+          {n:4, text:"Paragraph D", a:"iii", why:"Early schemes failed; modern systems use docking stations and GPS to solve the problem."},
+          {n:5, text:"Paragraph E", a:"ii", why:"Electric bicycles attract older people, “a group that rarely cycled in the past”."},
+          {n:6, text:"Paragraph F", a:"iv", why:"Shop owners oppose losing parking; studies disagree, and “the debate continues”."},
+          {n:7, text:"Paragraph G", a:"vii", why:"The bicycle as “a partner” to public transport: parking at stations, carrying bicycles on trains."}]},
+      { type: "tfng", title: "Questions 8–13",
+        ins: "Do the following statements agree with the information given in the passage? Choose TRUE if the statement agrees with the information, FALSE if it contradicts the information, or NOT GIVEN if there is no information on this.",
+        items: [
+          {n:8, text:"In some cities, the amount of cycling dropped by over 50% in twenty years.", a:"TRUE", why:"Paragraph A: “cycling fell by more than half in just two decades”."},
+          {n:9, text:"Most journeys in cities are short ones.", a:"NOT GIVEN", why:"Paragraph B says short trips are “a large share” of journeys. A large share is not necessarily most, so we cannot tell."},
+          {n:10, text:"Painted cycle lanes on busy roads have attracted many new cyclists.", a:"FALSE", why:"Paragraph C: painted lines “have done little to attract new riders”."},
+          {n:11, text:"The earliest bicycle-sharing schemes were unsuccessful because of theft and damage.", a:"TRUE", why:"Paragraph D: the first schemes “failed because bicycles were stolen or damaged”."},
+          {n:12, text:"Electric bicycles cost more than ordinary bicycles.", a:"NOT GIVEN", why:"The passage never mentions the price of electric bicycles."},
+          {n:13, text:"It has been proven that cyclists spend more in local shops than drivers do.", a:"FALSE", why:"Paragraph F: some studies only “suggested” this, and “the debate continues”. So it has not been proven."}]}
+    ]
+  },
+  {
+    title: "Part 2", range: [14, 26],
+    passageTitle: "Sleep and the learning brain",
+    sub: "What happens to new knowledge while we sleep",
+    lettered: true,
+    paragraphs: [
+      "For much of the twentieth century, sleep was regarded as a passive state, a time when the brain simply rested. Researchers now believe the opposite: sleep is an active period in which the brain sorts and stores the experiences of the day. In one widely reported experiment, psychologist Laura Hendricks taught two groups of students a list of unfamiliar words in the evening. The group that slept normally remembered nearly a third more words the next morning than a group kept awake all night, even after both groups had rested for a full day afterwards.",
+      "Different stages of sleep appear to do different jobs. During deep sleep, which is most common early in the night, the brain seems to replay recent memories and transfer them from short-term to long-term storage. Rapid eye movement (REM) sleep, which becomes longer towards morning, is linked with creativity and with finding connections between ideas. Neuroscientist Tomas Berg found that people who woke from REM sleep were better at solving word puzzles that required an unexpected link than those woken from other stages.",
+      "These findings have practical consequences for students. Mei Lin Zhou, who studies learning in secondary schools, argues that staying up late to revise before an exam is one of the least effective strategies a student can choose. In her research, students who reduced their sleep to study more performed worse on tests the following day, partly because a tired brain struggles to retrieve information it has already learned. She recommends spreading revision over several days, with a full night’s sleep after each session.",
+      "Teenagers face a particular difficulty. During adolescence, the body clock shifts so that young people naturally feel sleepy later at night and wake later in the morning. Daniel Okafor, a medical researcher, points out that early school start times therefore force many teenagers to learn at an hour when their brains are not fully alert. When a group of schools in his study moved their start time from 8:00 to 9:00, attendance improved and fewer students fell asleep in class.",
+      "Naps can also help, but only if they are short. Priya Nair found that a nap of 20 to 30 minutes in the early afternoon improved attention and memory for several hours. Longer naps, however, often left people feeling heavy and confused on waking, an effect known as sleep inertia, and could make it harder to fall asleep at night.",
+      "Screens are frequently blamed for poor sleep among young people. The light from phones and tablets can delay the release of melatonin, the hormone that prepares the body for sleep. However, researchers increasingly argue that the content matters as much as the light: an exciting game or a stressful conversation keeps the brain alert long after the screen is switched off. Most experts now advise putting devices away at least an hour before bed, and keeping them out of the bedroom altogether."
+    ],
+    groups: [
+      { type: "match", title: "Questions 14–17",
+        ins: "Reading Passage 2 has six paragraphs, A–F. Which paragraph contains the following information? You may use any letter more than once.",
+        options: [["A","A"],["B","B"],["C","C"],["D","D"],["E","E"],["F","F"]],
+        items: [
+          {n:14, text:"a change to the school day that had positive results", a:"D", why:"Schools moved their start time to 9:00 and “attendance improved”."},
+          {n:15, text:"a reason why long naps may be unhelpful", a:"E", why:"Long naps cause “sleep inertia” and can make it harder to sleep at night."},
+          {n:16, text:"a comparison between people who slept and people who did not", a:"A", why:"Hendricks compared a group that slept with a group kept awake all night."},
+          {n:17, text:"the idea that what people do on screens can affect their sleep", a:"F", why:"“the content matters as much as the light”."}]},
+      { type: "match", title: "Questions 18–22",
+        ins: "Look at the following statements and the list of people. Match each statement with the correct person, A–E.",
+        box: "List of people",
+        options: [["A","Laura Hendricks"],["B","Tomas Berg"],["C","Mei Lin Zhou"],["D","Daniel Okafor"],["E","Priya Nair"]],
+        items: [
+          {n:18, text:"Studying late at night can make it harder to remember what you already know.", a:"C", why:"Zhou: “a tired brain struggles to retrieve information it has already learned”."},
+          {n:19, text:"One stage of sleep may help people see unexpected connections.", a:"B", why:"Berg: people woken from REM sleep were better at puzzles needing “an unexpected link”."},
+          {n:20, text:"A short rest during the day can improve concentration.", a:"E", why:"Nair: a 20–30 minute nap “improved attention and memory”."},
+          {n:21, text:"Sleep helped students remember new vocabulary.", a:"A", why:"Hendricks: the group that slept “remembered nearly a third more words”."},
+          {n:22, text:"Teenagers are often expected to learn when they are not fully awake.", a:"D", why:"Okafor: early start times force teenagers to learn when brains are “not fully alert”."}]},
+      { type: "complete", title: "Questions 23–26",
+        ins: "Complete the sentences. Choose NO MORE THAN TWO WORDS from the passage for each answer.",
+        items: [
+          {n:23, text:"During deep sleep, memories are moved from short-term to ___ storage.", a:["long-term","long term"], why:"Paragraph B: “transfer them from short-term to long-term storage”."},
+          {n:24, text:"REM sleep becomes longer towards ___.", a:["morning","the morning"], why:"Paragraph B: “REM sleep, which becomes longer towards morning”."},
+          {n:25, text:"Feeling heavy and confused after a long nap is known as ___.", a:["sleep inertia"], why:"Paragraph E: “an effect known as sleep inertia”."},
+          {n:26, text:"Light from screens can delay the release of a hormone called ___.", a:["melatonin"], why:"Paragraph F: “the release of melatonin”."}]}
+    ]
+  },
+  {
+    title: "Part 3", range: [27, 40],
+    passageTitle: "Does handwriting still matter?",
+    sub: "An education writer argues for balance in the digital classroom",
+    lettered: false,
+    paragraphs: [
+      "In many classrooms, the pen is losing ground to the keyboard. Students take notes on laptops, submit essays online and, in some countries, sit national examinations on computers. Some education authorities have reduced or even removed the time spent teaching joined-up writing, arguing that it is an old-fashioned skill in a digital world. It is easy to see why. Typing is faster for most adults, typed work is easier to read, and digital documents can be edited, shared and searched in seconds.",
+      "Yet I believe it would be a mistake to abandon handwriting too quickly. A growing body of research suggests that writing by hand is not simply a slower way of recording words; it engages the brain differently. When children form letters by hand, areas of the brain linked with reading become more active than when they type the same letters. Learning to write letters, it seems, helps children learn to recognise them.",
+      "The effect is not limited to young children. In studies comparing note-taking methods, students who typed their notes often wrote down far more words, but tended to copy the lecturer’s sentences exactly. Those who wrote by hand could not keep up, so they were forced to choose what mattered and put it in their own words. When tested a week later, the handwriting group usually understood the ideas better, even though their notes were shorter. Speed, in other words, is not always an advantage.",
+      "None of this means that schools should reject technology. Keyboards are essential for many tasks, and for students with certain physical difficulties they can be the difference between taking part and being left behind. The question is not which tool is better in general but which is better for a particular purpose. Typing suits a final draft that must be clear and easy to share; handwriting may suit the earlier stages of thinking, when ideas are still taking shape.",
+      "There is also a cultural loss to consider, although I accept that it is harder to measure. Handwritten letters, diaries and notes carry something of the person who wrote them, which is why families keep them for generations. A printed message, however warm its words, rarely has the same effect.",
+      "What schools need, therefore, is balance rather than replacement. Children should still learn to write fluently by hand, and teachers should be free to ask for handwritten work where it supports learning. At the same time, students must become confident typists, since much of their future study and work will take place on screens. Treating the two skills as rivals helps no one."
+    ],
+    groups: [
+      { type: "summary", title: "Questions 27–31",
+        ins: "Complete the summary using the list of words, A–L.",
+        heading: "Pen or keyboard?",
+        box: "List of words",
+        options: [["A","quicker"],["B","read"],["C","reading"],["D","sentences"],["E","understanding"],["F","speaking"],["G","cheaper"],["H","translate"],["I","slides"],["J","grades"],["K","slower"],["L","drawing"]],
+        text: "Many schools now prefer keyboards because, for most adults, typing is [27], and typed work is easier to [28]. However, research shows that forming letters by hand activates parts of the brain connected with [29]. In note-taking studies, students who typed recorded more words but often copied the lecturer’s [30] exactly, while those writing by hand had to choose ideas and express them in their own words, which led to better [31] of the material.",
+        items: [
+          {n:27, a:"A", why:"Paragraph 1: “Typing is faster for most adults” → quicker."},
+          {n:28, a:"B", why:"Paragraph 1: “typed work is easier to read”."},
+          {n:29, a:"C", why:"Paragraph 2: “areas of the brain linked with reading become more active”."},
+          {n:30, a:"D", why:"Paragraph 3: they “tended to copy the lecturer’s sentences exactly”."},
+          {n:31, a:"E", why:"Paragraph 3: the handwriting group “understood the ideas better”. Grades and memory are not mentioned."}]},
+      { type: "mcq", title: "Questions 32–35",
+        ins: "Choose the correct letter, A, B, C or D.",
+        items: [
+          {n:32, text:"In the first paragraph, the writer", opts:["criticises education authorities for removing handwriting lessons.","explains why some schools have chosen typing over handwriting.","argues that handwriting will soon disappear.","describes how national examinations are changing."], a:"B", why:"“It is easy to see why” is followed by the reasons typing is attractive. The writer’s criticism comes later, in paragraph 2."},
+          {n:33, text:"According to the third paragraph, students who wrote notes by hand understood ideas better because they", opts:["wrote down more words than other students.","had to select and rephrase the main points.","were tested sooner after the lecture.","had more experience of note-taking."], a:"B", why:"They “were forced to choose what mattered and put it in their own words”. Option A describes the typing group."},
+          {n:34, text:"The writer mentions students with physical difficulties to show that", opts:["typing should replace handwriting in all schools.","keyboards can allow some students to take part fully.","schools often ignore the needs of these students.","handwriting is difficult for most students."], a:"B", why:"Keyboards “can be the difference between taking part and being left behind”."},
+          {n:35, text:"What does the writer say about handwritten letters?", opts:["They are more accurate than printed messages.","They reflect something personal about the writer.","They are becoming popular again.","Their value is easy to measure."], a:"B", why:"They “carry something of the person who wrote them”. The writer says the cultural loss is “harder to measure”, so D is wrong."}]},
+      { type: "ynng", title: "Questions 36–40",
+        ins: "Do the following statements agree with the views of the writer? Choose YES if the statement agrees with the views of the writer, NO if it contradicts the views of the writer, or NOT GIVEN if it is impossible to say what the writer thinks about this.",
+        items: [
+          {n:36, text:"For most people, typed work is easier to read than handwriting.", a:"YES", why:"Paragraph 1: the writer accepts that “typed work is easier to read”."},
+          {n:37, text:"Learning to write letters by hand helps children to recognise them.", a:"YES", why:"Paragraph 2: “Learning to write letters, it seems, helps children learn to recognise them.”"},
+          {n:38, text:"Taking more notes always leads to better learning.", a:"NO", why:"Paragraph 3: the typists wrote more words but understood less. “Speed … is not always an advantage.”"},
+          {n:39, text:"Schools should spend more money on computers.", a:"NOT GIVEN", why:"The writer never discusses money or spending."},
+          {n:40, text:"The cultural value of handwriting can be measured precisely.", a:"NO", why:"Paragraph 5: the writer accepts that the cultural loss “is harder to measure”."}]}
+    ]
+  }]
+};
+
+/* ===================== ENGINE ===================== */
+const HAS2 = !!window.TEST_DATA;
+const TEST = (location.hash === "#test2" && HAS2) ? window.TEST_DATA : BUILTIN;
+const unfilled = s => /PASTE /.test(String(s || ""));
+TEST.parts.forEach(p => {
+  if (p.paragraphs) return;
+  let t = String(p.passage || "").replace(/\r/g, "").trim();
+  let ps = t.split(/\n\s*\n/);
+  if (ps.length === 1) ps = t.split(/\n/);
+  ps = ps.map(x => x.trim()).filter(Boolean);
+  const out = [];
+  for (let i = 0; i < ps.length; i++) {
+    const solo = ps[i].replace(/\*/g, "").trim();
+    if (/^[A-Z]$/.test(solo) && i + 1 < ps.length) { out.push(ps[i + 1].replace(/^\*\*|\*\*$/g, "")); i++; continue; }
+    out.push(ps[i].replace(/^\**[A-Z]\**\s*\n/, ""));
+  }
+  p.paragraphs = out;
+});
+const $ = id => document.getElementById(id);
+const KEY = "aum-cdreading-" + TEST.id;
+const ALL = []; TEST.parts.forEach((p, pi) => p.groups.forEach(g => g.items.forEach(it => ALL.push({ ...it, part: pi, group: g }))));
+const BYN = Object.fromEntries(ALL.map(q => [q.n, q]));
+let state = load() || { answers: {}, flags: [], left: TEST.minutes * 60, started: false, finished: false };
+let part = 0, current = ALL[0].n, tick = null;
+
+function load() { try { return JSON.parse(localStorage.getItem(KEY)); } catch (e) { return null; } }
+function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const norm = s => String(s || "").toLowerCase().replace(/[“”"’'.,;:!?]/g, "").replace(/\s+/g, " ").trim();
+const alts = a => String(a || "").split("/").map(norm).filter(Boolean);
+const gaps = q => (String(q.text || "").match(/___/g) || []).length;
+const hasKey = q => Array.isArray(q.a) ? q.a.some(x => alts(x).length) : alts(q.a).length > 0;
+function isRight(q, v) {
+  if (!v || !hasKey(q)) return false;
+  if (Array.isArray(q.a) && gaps(q) > 1) {
+    const given = String(v).split("||").map(norm); const left = q.a.map(alts);
+    return given.length === left.length && given.every(g => { const i = left.findIndex(l => l.includes(g)); if (i < 0) return false; left.splice(i, 1); return true; });
+  }
+  const list = Array.isArray(q.a) ? q.a.flatMap(alts) : alts(q.a);
+  return list.includes(norm(v));
+}
+const keyText = q => Array.isArray(q.a) && gaps(q) > 1 ? q.a.map(x => String(x).split("/")[0].trim()).join(" / ") : String(Array.isArray(q.a) ? q.a[0] : q.a).split("/")[0].trim();
+const answered = n => { const v = state.answers[n]; if (!v) return false; return String(v).split("||").every(x => x.trim()); };
+
+/* ----- settings ----- */
+(function () {
+  let s = {}; try { s = JSON.parse(localStorage.getItem("aum-cd-settings")) || {}; } catch (e) {}
+  if (!s.contrast && matchMedia("(prefers-color-scheme: dark)").matches) s.contrast = "wob";
+  const apply = () => { document.documentElement.dataset.size = s.size || "m"; document.documentElement.dataset.contrast = s.contrast || "bow"; $("timer").classList.toggle("hide", !!s.hideTimer);
+    document.querySelectorAll("input[name=size]").forEach(r => r.checked = r.value === (s.size || "m")); document.querySelectorAll("input[name=contrast]").forEach(r => r.checked = r.value === (s.contrast || "bow")); $("hideTimer").checked = !!s.hideTimer; };
+  const store = () => { try { localStorage.setItem("aum-cd-settings", JSON.stringify(s)); } catch (e) {} };
+  document.querySelectorAll("input[name=size]").forEach(r => r.onchange = () => { s.size = r.value; apply(); store(); });
+  document.querySelectorAll("input[name=contrast]").forEach(r => r.onchange = () => { s.contrast = r.value; apply(); store(); });
+  $("hideTimer").onchange = e => { s.hideTimer = e.target.checked; apply(); store(); };
+  apply();
+  $("menuBtn").onclick = () => { const h = $("menu").hidden; $("menu").hidden = !h; $("menuBtn").setAttribute("aria-expanded", h); };
+  document.addEventListener("click", e => { if (!$("menu").hidden && !$("menu").contains(e.target) && !$("menuBtn").contains(e.target)) { $("menu").hidden = true; $("menuBtn").setAttribute("aria-expanded", false); } });
+  $("switchTest").onclick = () => { $("menu").hidden = true; intro(); };
+  $("restart").onclick = () => { if (confirm("Restart the test? Your answers will be cleared.")) { localStorage.removeItem(KEY); location.reload(); } };
+})();
+
+/* ----- rendering ----- */
+function renderPassage() {
+  const p = TEST.parts[part];
+  if (unfilled(p.passage) || unfilled(p.passageTitle)) { $("passagePane").innerHTML = "<div class='box'><b>This passage has not been added yet.</b>Open <code>test-data.js</code> on GitHub and paste the passage where it says PASTE PASSAGE " + (part + 1) + " HERE.</div>"; return; }
+  $("passagePane").innerHTML = "<h2>" + esc(p.passageTitle) + "</h2>" + (p.sub && !unfilled(p.sub) ? "<p class='sub'>" + esc(p.sub) + "</p>" : "") +
+    p.paragraphs.map((t, i) => "<p>" + (p.lettered ? "<span class='pl'>" + String.fromCharCode(65 + i) + "</span>" : "") + esc(t) + "</p>").join("");
+  $("passagePane").scrollTop = 0;
+}
+function sel(q, opts, cls) { return "<select class='ans " + (cls || "") + "' data-n='" + q.n + "' aria-label='Question " + q.n + "'><option value=''></option>" + opts.map(([v, l]) => "<option value='" + esc(v) + "'>" + esc(l) + "</option>").join("") + "</select>"; }
+function radios(q, opts) { return "<div class='opts' role='radiogroup' aria-label='Question " + q.n + "'>" + opts.map(([v, l]) => "<label><input type='radio' name='q" + q.n + "' value='" + esc(v) + "' data-n='" + q.n + "'> <span>" + esc(l) + "</span></label>").join("") + "</div>"; }
+function renderQuestions() {
+  const p = TEST.parts[part]; let h = "";
+  p.groups.forEach(g => {
+    h += "<div class='group'><h3>" + esc(g.title) + "</h3><p class='ins'>" + esc(g.ins) + "</p>";
+    if (g.type === "headings") h += "<div class='box'><b>List of headings</b><ol>" + g.list.map(([v, l]) => "<li><b style='display:inline'>" + v + "</b>&nbsp; " + esc(l) + "</li>").join("") + "</ol></div>";
+    if ((g.type === "match" || g.type === "summary") && g.box) h += "<div class='box'><b>" + esc(g.box) + "</b><ol>" + g.options.map(([v, l]) => "<li><b style='display:inline'>" + v + "</b>&nbsp; " + esc(l) + "</li>").join("") + "</ol></div>";
+    if (g.type === "summary") {
+      h += "<div class='box summary'><b>" + esc(g.heading || "") + "</b>" + esc(g.text).replace(/\[(\d+)\]/g, (m, n) => { const q = BYN[n]; return "<span class='q inl' id='q" + n + "' data-n='" + n + "'><span class='num'>" + n + "</span>" + sel(q, g.options.map(([v]) => [v, v])) + "</span>"; }) + "</div>";
+    } else g.items.forEach(q => {
+      h += "<div class='q' id='q" + q.n + "' data-n='" + q.n + "'><span class='num'>" + q.n + "</span><div class='body'>";
+      if (g.type === "headings") h += esc(q.text) + " &nbsp;" + sel(q, g.list.map(([v]) => [v, v]));
+      else if (g.type === "tfng") h += esc(q.text) + radios(q, [["TRUE", "TRUE"], ["FALSE", "FALSE"], ["NOT GIVEN", "NOT GIVEN"]]);
+      else if (g.type === "ynng") h += esc(q.text) + radios(q, [["YES", "YES"], ["NO", "NO"], ["NOT GIVEN", "NOT GIVEN"]]);
+      else if (g.type === "match") h += esc(q.text) + " &nbsp;" + sel(q, g.options.map(([v]) => [v, v]));
+      else if (g.type === "mcq") h += esc(q.text) + radios(q, q.opts.map((o, i) => [String.fromCharCode(65 + i), String.fromCharCode(65 + i) + "  " + o]));
+      else if (g.type === "complete") { let k = 0; const many = gaps(q) > 1; h += esc(q.text).replace(/___/g, () => "<input class='ans' type='text' autocomplete='off' spellcheck='false' data-n='" + q.n + "'" + (many ? " data-k='" + k + "'" : "") + " aria-label='Answer " + q.n + (many ? ", gap " + (++k) : "") + "'>"); }
+      h += "</div></div>";
+    });
+    h += "</div>";
+  });
+  $("questionPane").innerHTML = h;
+  // restore values
+  $("questionPane").querySelectorAll("[data-n]").forEach(el => {
+    const n = el.dataset.n, v = state.answers[n] || "";
+    if (el.tagName === "SELECT") el.value = v;
+    if (el.tagName === "INPUT" && el.type === "text") el.value = el.dataset.k !== undefined ? (String(v).split("||")[+el.dataset.k] || "") : v;
+    if (el.type === "radio") el.checked = el.value === v;
+  });
+  $("questionPane").querySelectorAll("select.ans").forEach(el => el.addEventListener("change", () => setAns(el.dataset.n, el.value)));
+  $("questionPane").querySelectorAll("input.ans").forEach(el => el.addEventListener("input", () => { const all = [...$("questionPane").querySelectorAll("input.ans[data-n='" + el.dataset.n + "']")]; setAns(el.dataset.n, all.length > 1 ? all.map(i => i.value.trim()).join("||") : el.value); }));
+  $("questionPane").querySelectorAll("input[type=radio]").forEach(el => el.addEventListener("change", () => setAns(el.dataset.n, el.value)));
+  $("questionPane").querySelectorAll(".q").forEach(el => el.addEventListener("focusin", () => setCurrent(+el.dataset.n, false)));
+  $("questionPane").querySelectorAll(".q").forEach(el => el.addEventListener("click", () => setCurrent(+el.dataset.n, false)));
+  if (state.finished) showMarks();
+  $("questionPane").scrollTop = 0;
+}
+function renderPartbar() { const p = TEST.parts[part]; $("partbar").innerHTML = "<b>" + p.title + "</b>Read the text and answer questions " + p.range[0] + "–" + p.range[1] + "."; }
+function renderNav() {
+  $("parts").innerHTML = TEST.parts.map((p, pi) => {
+    const qs = ALL.filter(q => q.part === pi), done = qs.filter(q => answered(q.n)).length;
+    if (pi !== part) return "<div class='pseg'><button class='plabel' data-part='" + pi + "'>" + p.title + "</button><span class='count'>" + done + " of " + qs.length + "</span></div>";
+    return "<div class='pseg'><button class='plabel' data-part='" + pi + "'>" + p.title + "</button>" + qs.map(q => "<button class='qn" + (answered(q.n) ? " answered" : "") + (q.n === current ? " current" : "") + (state.flags.includes(q.n) ? " flag" : "") + "' data-q='" + q.n + "' aria-label='Question " + q.n + (answered(q.n) ? ", answered" : ", not answered") + (state.flags.includes(q.n) ? ", marked for review" : "") + "'>" + q.n + "</button>").join("") + "</div>";
+  }).join("");
+  $("parts").querySelectorAll("[data-part]").forEach(b => b.onclick = () => goPart(+b.dataset.part));
+  $("parts").querySelectorAll("[data-q]").forEach(b => b.onclick = () => go(+b.dataset.q));
+  $("flagBtn").setAttribute("aria-pressed", state.flags.includes(current));
+  $("prevQ").disabled = current === ALL[0].n; $("nextQ").disabled = current === ALL[ALL.length - 1].n;
+}
+function goPart(pi) { if (pi === part) return; part = pi; renderPartbar(); renderPassage(); renderQuestions(); current = ALL.find(q => q.part === pi).n; highlightCurrent(); renderNav(); }
+function go(n) {
+  const q = BYN[n]; if (q.part !== part) { part = q.part; renderPartbar(); renderPassage(); renderQuestions(); }
+  setCurrent(n, true);
+  if (matchMedia("(max-width:760px)").matches) showPane("q");
+}
+function setCurrent(n, scroll) {
+  current = n; highlightCurrent(); renderNav();
+  const el = $("q" + n); if (el && scroll) { el.scrollIntoView({ block: "center", behavior: "smooth" }); const f = el.querySelector("select,input"); if (f) f.focus({ preventScroll: true }); }
+}
+function highlightCurrent() { document.querySelectorAll(".q.current").forEach(e => e.classList.remove("current")); const el = $("q" + current); if (el) el.classList.add("current"); }
+function setAns(n, v) { if (state.finished) return; state.answers[n] = v; save(); renderNav(); }
+$("prevQ").onclick = () => { const i = ALL.findIndex(q => q.n === current); if (i > 0) go(ALL[i - 1].n); };
+$("nextQ").onclick = () => { const i = ALL.findIndex(q => q.n === current); if (i < ALL.length - 1) go(ALL[i + 1].n); };
+$("flagBtn").onclick = () => { const i = state.flags.indexOf(current); i < 0 ? state.flags.push(current) : state.flags.splice(i, 1); save(); renderNav(); };
+
+/* ----- mobile tabs ----- */
+function showPane(w) { $("split").dataset.show = w; $("tabP").setAttribute("aria-pressed", w === "p"); $("tabQ").setAttribute("aria-pressed", w === "q"); }
+$("tabP").onclick = () => showPane("p"); $("tabQ").onclick = () => showPane("q");
+
+/* ----- resizable divider ----- */
+(function () {
+  const d = $("divider"); let drag = false;
+  d.addEventListener("pointerdown", e => { drag = true; d.setPointerCapture(e.pointerId); e.preventDefault(); });
+  d.addEventListener("pointermove", e => { if (!drag) return; const r = $("split").getBoundingClientRect(); const pct = Math.min(75, Math.max(25, (e.clientX - r.left) / r.width * 100)); $("passagePane").style.flexBasis = pct + "%"; });
+  d.addEventListener("pointerup", () => drag = false);
+  d.querySelector("button").addEventListener("keydown", e => { if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return; const cur = parseFloat($("passagePane").style.flexBasis) || 50; $("passagePane").style.flexBasis = Math.min(75, Math.max(25, cur + (e.key === "ArrowRight" ? 5 : -5))) + "%"; });
+})();
+
+/* ----- highlighting and notes ----- */
+let pop = null, noteBox = null;
+function closePops() { if (pop) { pop.remove(); pop = null; } if (noteBox) { noteBox.remove(); noteBox = null; } }
+function placeAt(el, rect) { el.style.left = Math.max(8, Math.min(innerWidth - el.offsetWidth - 8, rect.left)) + "px"; el.style.top = (rect.bottom + 8 + el.offsetHeight > innerHeight ? rect.top - el.offsetHeight - 8 : rect.bottom + 8) + "px"; }
+function wrapSelection(cls) {
+  const s = getSelection(); if (!s.rangeCount) return null; let r = s.getRangeAt(0);
+  const block = n => (n.nodeType === 3 ? n.parentNode : n).closest("p, .body, .summary");
+  const sb = block(r.startContainer), eb = block(r.endContainer);
+  if (!sb) return null;
+  if (sb !== eb) { r = r.cloneRange(); r.setEnd(sb, sb.childNodes.length); }
+  if (r.cloneContents().querySelector && r.cloneContents().querySelector("select,input,.num")) return null;
+  const m = document.createElement("mark"); m.className = "hl" + (cls ? " " + cls : "");
+  m.appendChild(r.extractContents()); r.insertNode(m); s.removeAllRanges(); return m;
+}
+function unwrap(m) { const p = m.parentNode; while (m.firstChild) p.insertBefore(m.firstChild, m); p.removeChild(m); p.normalize(); }
+function openNote(m) {
+  closePops(); noteBox = document.createElement("div"); noteBox.className = "notebox";
+  noteBox.innerHTML = "<label style='font-size:14px;font-weight:700'>Note<textarea></textarea></label><div class='row'><button class='btn ghost' data-act='del'>Delete note</button><button class='btn' data-act='save'>Save note</button></div>";
+  document.body.appendChild(noteBox); const ta = noteBox.querySelector("textarea"); ta.value = m.dataset.note || ""; placeAt(noteBox, m.getBoundingClientRect()); ta.focus();
+  noteBox.querySelector("[data-act=save]").onclick = () => { const v = ta.value.trim(); if (v) { m.dataset.note = v; m.classList.add("note"); m.title = v; } else { m.classList.remove("note"); delete m.dataset.note; m.removeAttribute("title"); } closePops(); };
+  noteBox.querySelector("[data-act=del]").onclick = () => { unwrap(m); closePops(); };
+}
+function onSelect(e) {
+  if (e.target.closest("select,input,textarea,button,.pop,.notebox")) return;
+  const s = getSelection(); if (!s || s.isCollapsed || !s.toString().trim()) return;
+  const rect = s.getRangeAt(0).getBoundingClientRect();
+  closePops(); pop = document.createElement("div"); pop.className = "pop";
+  pop.innerHTML = "<button data-act='hl'>Highlight</button><button data-act='note'>Note</button>"; document.body.appendChild(pop); placeAt(pop, rect);
+  pop.querySelector("[data-act=hl]").onmousedown = ev => { ev.preventDefault(); wrapSelection(); closePops(); };
+  pop.querySelector("[data-act=note]").onmousedown = ev => { ev.preventDefault(); const m = wrapSelection(); closePops(); if (m) openNote(m); };
+}
+["passagePane", "questionPane"].forEach(id => {
+  $(id).addEventListener("mouseup", e => setTimeout(() => onSelect(e), 0));
+  $(id).addEventListener("touchend", e => setTimeout(() => onSelect(e), 250));
+  $(id).addEventListener("click", e => {
+    const m = e.target.closest("mark.hl"); if (!m || !getSelection().isCollapsed) return;
+    closePops(); pop = document.createElement("div"); pop.className = "pop";
+    pop.innerHTML = (m.dataset.note ? "<span style='padding:6px 10px;max-width:240px'>" + esc(m.dataset.note) + "</span>" : "") + "<button data-act='note'>" + (m.dataset.note ? "Edit note" : "Add note") + "</button><button data-act='clear'>Clear</button>";
+    document.body.appendChild(pop); placeAt(pop, m.getBoundingClientRect());
+    pop.querySelector("[data-act=clear]").onclick = () => { unwrap(m); closePops(); };
+    pop.querySelector("[data-act=note]").onclick = () => openNote(m);
+  });
+});
+document.addEventListener("mousedown", e => { if ((pop && !pop.contains(e.target)) && !(noteBox && noteBox.contains(e.target))) { pop.remove(); pop = null; } });
+document.addEventListener("keydown", e => { if (e.key === "Escape") closePops(); });
+
+/* ----- timer ----- */
+function fmt(s) { const m = Math.floor(s / 60), r = s % 60; return String(m).padStart(2, "0") + ":" + String(r).padStart(2, "0"); }
+function drawTimer() { $("timer").textContent = state.finished ? "Finished" : fmt(state.left) + (state.left <= 600 ? " left" : ""); $("timer").classList.toggle("warn", !state.finished && state.left <= 600); $("timeText").textContent = state.finished ? "Results ready · you can review your answers" : Math.ceil(state.left / 60) + " minutes remaining"; }
+function startTimer() { clearInterval(tick); tick = setInterval(() => { if (state.finished) return clearInterval(tick); state.left = Math.max(0, state.left - 1); if (state.left % 5 === 0) save(); drawTimer(); if (state.left === 0) { clearInterval(tick); finish(true); } }, 1000); }
+
+/* ----- modals ----- */
+function modal(html) { const o = document.createElement("div"); o.className = "overlay"; o.innerHTML = "<div class='modal' role='dialog' aria-modal='true'>" + html + "</div>"; document.body.appendChild(o); const f = o.querySelector("button"); if (f) f.focus(); return o; }
+function intro() {
+  const t2 = window.TEST_DATA, t2ready = t2 && !unfilled(JSON.stringify(t2.parts.map(p => [p.passage, p.passageTitle])));
+  const pick = "<p style='margin-bottom:6px'><b>Choose a test</b></p><div class='row' style='margin-top:0'>" +
+    "<a class='btn" + (TEST === BUILTIN ? "" : " ghost") + "' href='#test1' data-pick style='text-decoration:none'>Test 1: AUM original</a>" +
+    (HAS2 ? "<a class='btn" + (TEST === BUILTIN ? " ghost" : "") + "' href='#test2' data-pick style='text-decoration:none'>Test 2" + (t2ready ? "" : " (not added yet)") + "</a>" : "") + "</div>";
+  const o = modal("<h2>Reading practice test</h2>" + pick + "<p>This works like the computer-delivered IELTS Reading test: 3 parts, 40 questions, 60 minutes.</p><ul><li>The passage is on the left and the questions are on the right. Drag the ↔ button to resize them.</li><li>Select any words, then choose <b>Highlight</b> or <b>Note</b>.</li><li>Use the numbers at the bottom, or the arrows, to move between questions. A line under a number means it is answered.</li><li><b>&#9873; Review</b> marks a question to come back to.</li><li>Use the menu (☰) to change the text size or colours.</li><li>Press <b>&#10003;</b> when you have finished.</li></ul>" + (TEST === BUILTIN ? "<p style='font-size:.9em;color:var(--muted)'>Test 1 is an AUM original practice test. Its passages, people and studies are invented for teaching.</p>" : "") + "<div class='row'><button class='btn' id='go'>Start the test</button></div>");
+  o.querySelectorAll("[data-pick]").forEach(a => a.onclick = e => { e.preventDefault(); location.hash = a.getAttribute("href"); location.reload(); });
+  if (state.started) o.querySelector("#go").textContent = state.finished ? "Back to my results" : "Continue this test";
+  o.querySelector("#go").onclick = () => { o.remove(); if (state.finished) return; if (!state.started) { state.started = true; save(); startTimer(); } };
+}
+$("finishBtn").onclick = () => {
+  if (state.finished) return showResults();
+  const un = ALL.filter(q => !answered(q.n)).map(q => q.n), fl = state.flags.filter(n => true);
+  const o = modal("<h2>Finish the test?</h2>" + (un.length ? "<p>You have <b>" + un.length + "</b> unanswered question" + (un.length > 1 ? "s" : "") + ": " + un.join(", ") + ".</p>" : "<p>You have answered all 40 questions.</p>") + (fl.length ? "<p>Marked for review: " + fl.sort((a, b) => a - b).join(", ") + ".</p>" : "") + "<p>After you submit, you cannot change your answers.</p><div class='row'><button class='btn ghost' id='back'>Go back to the test</button><button class='btn' id='sub'>Submit answers</button></div>");
+  o.querySelector("#back").onclick = () => o.remove();
+  o.querySelector("#sub").onclick = () => { o.remove(); finish(false); };
+};
+const BAND = [[39, 9], [37, 8.5], [35, 8], [33, 7.5], [30, 7], [27, 6.5], [23, 6], [19, 5.5], [15, 5], [13, 4.5], [10, 4], [8, 3.5], [6, 3], [4, 2.5], [0, 0]];
+function finish(timeUp) { state.finished = true; save(); clearInterval(tick); drawTimer(); renderQuestions(); renderNav(); showResults(timeUp); }
+function showResults(timeUp) {
+  const graded = ALL.filter(hasKey), right = graded.filter(q => isRight(q, state.answers[q.n])).length;
+  const full = graded.length === ALL.length; const band = full ? (BAND.find(([m]) => right >= m) || [0, 0])[1] : null;
+  const rows = ALL.map(q => { const v = String(state.answers[q.n] || "").split("||").join(" / "); if (!hasKey(q)) return "<tr><td>" + q.n + "</td><td>" + (v.trim() ? esc(v) : "–") + "</td><td colspan='2' style='color:var(--muted)'>No answer key yet</td></tr>"; const ok = isRight(q, state.answers[q.n]); return "<tr><td>" + q.n + "</td><td class='" + (ok ? "ok" : "bad") + "'>" + (v.trim() ? esc(v) : "–") + (ok ? " ✓" : " ✗") + "</td><td>" + esc(keyText(q)) + "</td><td>" + esc(q.why || "") + "</td></tr>"; }).join("");
+  const o = modal((timeUp ? "<p><b>Time is up.</b> Your answers have been submitted.</p>" : "") + "<div class='results'><h2>Your result</h2><div class='score'>" + right + " / " + graded.length + "</div>" + (full ? "<p>Estimated Academic Reading band: <b>" + (band ? band.toFixed(1) : "below 2.5") + "</b>. This is a practice estimate, not an official score.</p>" : "<p>" + (ALL.length - graded.length) + " questions have no answer key yet, so no band is estimated. Add the answers in <code>test-data.js</code>.</p>") +
+    TEST.parts.map((p, pi) => { const qs = ALL.filter(q => q.part === pi && hasKey(q)); return p.title + ": " + qs.filter(q => isRight(q, state.answers[q.n])).length + " / " + qs.length; }).join(" &nbsp;·&nbsp; ") +
+    "<div class='row'><button class='btn' id='rev'>Review my answers</button><button class='btn ghost' id='again'>Try the test again</button></div><table><tr><th>Q</th><th>Your answer</th><th>Correct</th><th>Why</th></tr>" + rows + "</table></div>");
+  o.querySelector("#rev").onclick = () => { o.remove(); go(ALL[0].n); };
+  o.querySelector("#again").onclick = () => { localStorage.removeItem(KEY); location.reload(); };
+}
+function showMarks() {
+  $("questionPane").querySelectorAll("select,input").forEach(el => el.disabled = true);
+  $("questionPane").querySelectorAll(".q").forEach(el => {
+    const q = BYN[el.dataset.n]; if (!hasKey(q)) return; const ok = isRight(q, state.answers[q.n]); el.classList.add(ok ? "mark-ok" : "mark-bad");
+    if (!ok) { const s = document.createElement("span"); s.className = "fix"; s.innerHTML = "Answer: <span class='c'>" + esc(keyText(q)) + "</span>" + (q.why ? " — " + esc(q.why) : ""); (el.querySelector(".body") || el).appendChild(s); }
+  });
+}
+
+/* ----- start ----- */
+$("testName").textContent = "Session 6 · " + (TEST === BUILTIN ? "Test 1" : "Test 2");
+renderPartbar(); renderPassage(); renderQuestions(); highlightCurrent(); renderNav(); drawTimer();
+if (state.finished) { /* review mode */ } else if (state.started) startTimer(); else intro();
+</script>
+</body>
+</html>
