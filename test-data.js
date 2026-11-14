@@ -37,7 +37,7 @@ window.TEST_DATA = {
     passage: `
 Alan Macfarlane, professor of anthropological science at King’s College, Cambridge has, like other historians, spent decades wrestling with the enigma of the Industrial Revolution. Why did this particular Big Bang – the world-changing birth of industry – happen in Britain? And why did it strike at the end of the 18th century?
 
-Macfarlane compares the puzzle to a combination lock. ‘There are about 20 different factors and all of them need to be present before the revolution can happen,’ he says. For industry to take off, there needs to be the technology and power to drive factories, large urban populations to provide cheap labour, easy transport to move goods around, an affluent middle-class willing to buy mass-produced objects, a market-driven economy and a political system that allows this to happen. While this was the case for England, other nations, such as Japan, the Netherlands and France also met some of these criteria but were not industrialising. All these factors must have been necessary. But not sufficient to cause the revolution, says Macfarlane. ‘After all, Holland had everything except coal while China also had many of these factors. Most historians are convinced there are one or two missing factors that you need to open the lock.’
+Macfarlane compares the puzzle to a combination lock. ‘There are about 20 different factors and all of them need to be present before the revolution can happen,’ he says. For industry to take off, there needs to be the technology and power to drive factories, large urban populations to provide cheap labour, easy transport to move goods around, an affluent middle-class willing to buy mass-produced objects, a market-driven economy and a political system that allows this to happen. While this was the case for England, other nations, such as Japan, the Netherlands and France also met some of these criteria but were not industrialising. All these factors must have been necessary but not sufficient to cause the revolution, says Macfarlane. ‘After all, Holland had everything except coal while China also had many of these factors. Most historians are convinced there are one or two missing factors that you need to open the lock.’
 
 The missing factors, he proposes, are to be found in almost every kitchen cupboard. Tea and beer, two of the nation’s favourite drinks, fuelled the revolution. The antiseptic properties of tannin, the active ingredient in tea, and of hops in beer – plus the fact that both are made with boiled water – allowed urban communities to flourish at close quarters without succumbing to water-borne diseases such as dysentery. The theory sounds eccentric but once he starts to explain the detective work that went into his deduction, the scepticism gives way to wary admiration. Macfarlane’s case has been strengthened by support from notable quarters – Roy Porter, the distinguished medical historian, recently wrote a favourable appraisal of his research.
 
@@ -74,12 +74,12 @@ But, if tea is a factor in the combination lock, why didn’t Japan forge ahead 
       { type: "tfng", title: "Questions 8–13",
         ins: "Do the following statements agree with the information given in Reading Passage 1? Choose TRUE if the statement agrees with the information, FALSE if the statement contradicts the information, or NOT GIVEN if there is no information on this.",
         items: [
-          { n: 8,  text: "Tea and beer both helped to prevent dysentery in Britain.",  a: "NOT GIVEN" },
-          { n: 9,  text: "Roy Porter disagrees with Professor Macfarlane’s findings.",  a: "TRUE" },
-          { n: 10, text: "After 1740，there was a reduction in population in Britain.", a: "FALSE" },
-          { n: 11, text: "People in Britain used to make beer at home.", a: "FALSE" },
-          { n: 12, text: "The tax on malt indirectly caused a rise in the death rate.", a: "NOT GIVEN" },
-          { n: 13, text: "READING PASSAGE 2", a: "TRUE" }]}
+          { n: 8,  text: "China’s transport wasn’t good enough for industry.",  a: "NOT GIVEN" },
+          { n: 9,  text: "Tea and beer both helped to prevent dysentery in Britain.",  a: "TRUE" },
+          { n: 10, text: "Roy Porter disagrees with Professor Macfarlane’s findings.", a: "FALSE" },
+          { n: 11, text: "After 1740, there was a reduction in population in Britain.", a: "FALSE" },
+          { n: 12, text: "People in Britain used to make beer at home.", a: "NOT GIVEN" },
+          { n: 13, text: "The tax on malt indirectly caused a rise in the death rate.", a: "TRUE" }]}
     ]
   },
 
