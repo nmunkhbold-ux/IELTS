@@ -666,8 +666,8 @@ cards("fiveW", [["Who?", "", "I went with my cousins."], ["What?", "", "It was N
   ["I started with a clear first sentence.", "I covered every bullet point.", "I explained why, with a feeling or a short story.", "I kept talking until the two minutes were up.", "I used some precise adjectives instead of “good” and “nice”.", "I corrected a mistake quickly instead of stopping."].forEach(x => { const li = document.createElement("li"); li.textContent = x; li.tabIndex = 0; li.style.cursor = "pointer"; li.onclick = () => li.classList.toggle("pass"); li.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); li.classList.toggle("pass"); } }; $("selfCheck").appendChild(li); });
 })();
 (function () {
-  const D = [["A person you know", "A place you’ve visited", "An object you own", "An experience you had", "A hobby or activity", "A special event"], ["that was exciting", "that is important to you", "that changed the way you think", "that you shared with someone", "that was challenging", "that you’ll never forget"], ["last year", "in your hometown", "during a holiday", "with your family", "at school or work", "in another country"]];
-  const CAT = ["Topic", "Detail", "Time or place"];
+  const D = [["a person", "a place", "an object", "an experience", "a hobby or activity", "a special event"], ["that made you happy", "that is important to you", "that changed the way you think", "that surprised you", "that taught you something", "that you will never forget"], ["from your childhood", "from the past year", "from your hometown", "from a holiday", "from school or work", "from another country"]];
+  const CAT = ["Topic", "Detail", "When or where"];
   const PIPS = { 1: [5], 2: [1, 9], 3: [1, 5, 9], 4: [1, 3, 7, 9], 5: [1, 3, 5, 7, 9], 6: [1, 3, 4, 6, 7, 9] };
   const SHOW = { 1: [0, 0], 2: [90, 0], 3: [0, -90], 4: [0, 90], 5: [-90, 0], 6: [0, 180] };
   const face = n => "<div class='face f" + n + "'>" + [1, 2, 3, 4, 5, 6, 7, 8, 9].map(c => PIPS[n].includes(c) ? "<i style='grid-area:" + Math.ceil(c / 3) + "/" + ((c - 1) % 3 + 1) + "'></i>" : "").join("") + "</div>";
@@ -689,8 +689,9 @@ cards("fiveW", [["Who?", "", "I went with my cousins."], ["What?", "", "It was N
       sc.classList.remove("jump"); void sc.offsetWidth; sc.style.animationDelay = (i * 0.15) + "s"; sc.classList.add("jump");
     });
     setTimeout(() => {
-      D.forEach((d, i) => { if (i === 2 && !use3) return; $("res" + i).textContent = d[r[i] - 1]; });
-      $("diceTopic").textContent = "Talk about " + D[0][r[0] - 1].toLowerCase() + " " + D[1][r[1] - 1] + (use3 ? ", " + D[2][r[2] - 1] : "") + ".";
+      const t = D[0][r[0] - 1], det = (t === "a person" ? D[1][r[1] - 1].replace(/^that /, "who ") : D[1][r[1] - 1]);
+      D.forEach((d, i) => { if (i === 2 && !use3) return; $("res" + i).textContent = i === 1 ? det : d[r[i] - 1]; });
+      $("diceTopic").innerHTML = "<span style='display:block;border:2px solid currentColor;border-radius:10px;padding:12px 16px;max-width:520px'><strong>Describe " + t + " " + det + ".</strong>" + (use3 ? " Choose one " + D[2][r[2] - 1] + "." : "") + "<span style='display:block;font-size:16px;margin-top:6px'>You should say:<br>• " + (t === "a person" ? "who this person is" : "what it is") + "<br>• " + ({ "a person": "how you know them", "a place": "where it is and when you went there", "an object": "where you got it and how long you have had it", "an experience": "when and where it happened", "a hobby or activity": "when you started and how often you do it", "a special event": "when and where it took place" })[t] + "<br>• " + ({ "a person": "what you do together", "a place": "what you did there", "an object": "what you use it for", "an experience": "what happened", "a hobby or activity": "what you enjoy about it", "a special event": "what happened" })[t] + "<br>and explain why you chose to talk about it.</span></span>";
       $("diceTopic").classList.add("show"); rolling = false; $("roll").disabled = false; $("diceTalk").disabled = false;
     }, reduce ? 50 : 1700);
   };
