@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Session 1: Mock Test | AUM IELTS</title>
+<title>Session 1: Mock Test | IELTS Studio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
@@ -236,11 +236,63 @@ a.scard:hover{border-color:var(--navy);box-shadow:inset 0 0 0 1px var(--navy)}
 .part{margin:48px 0 0;padding:14px 18px;background:var(--navy);color:var(--paper);border-radius:12px;font-size:22px;scroll-margin-top:70px}
 h2[id],section[id]{scroll-margin-top:70px}
 </style>
+<style id="st-theme">
+:root,:root[data-theme],:root:not([data-theme="light"]){
+  --navy:#d38bff; --ink:#e8ebf4; --muted:#9aa3b8; --paper:#0b0d14; --wash:#141826; --line:#262c3d;
+  --mark:rgba(255,196,92,.22); --mark-ink:#ffd58a; --red:#ff7b8c; --red-wash:rgba(255,123,140,.12); --green:#46e0a6; --green-wash:rgba(70,224,166,.12);
+  --btn:#d38bff; --btn-ink:#0b0d14; --bar1:#d38bff; --bar2:#e8bfff; --bar3:#3b4360; --accent2:#e8bfff; color-scheme:dark;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--navy:#d38bff;--paper:#0b0d14;--wash:#141826;--line:#262c3d;--ink:#e8ebf4;--btn:#d38bff;--btn-ink:#0b0d14}}
+html{background:#0b0d14}
+body{background:radial-gradient(1100px 520px at 50% -180px, color-mix(in srgb, #d38bff 26%, transparent), transparent 70%), radial-gradient(700px 400px at 100% 0, rgba(211,139,255,.10), transparent 70%), #0b0d14 !important; background-attachment:fixed !important; color:var(--ink)}
+.topbar{display:none !important}
+.st-top{position:sticky;top:0;z-index:40;backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);background:rgba(11,13,20,.72);border-bottom:1px solid rgba(255,255,255,.06);padding-top:env(safe-area-inset-top,0px)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:41;background:rgba(11,13,20,.92)}
+.st-top-in{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:18px;padding:12px 20px}
+.st-brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;font-weight:600;letter-spacing:-.01em;font-size:17px;white-space:nowrap}
+.st-brand b{font-weight:700;background:linear-gradient(90deg,#8f9bff,#d38bff,#ffb35c);-webkit-background-clip:text;background-clip:text;color:transparent}
+.st-mark{width:30px;height:30px;flex:none}
+.st-nav{display:flex;gap:4px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+.st-nav a{color:#aeb5c8;text-decoration:none;font-size:15px;padding:7px 12px;border-radius:999px;white-space:nowrap;transition:background .2s,color .2s}
+.st-nav a:hover{color:#fff;background:rgba(255,255,255,.06)}
+.st-nav a[aria-current="page"]{color:#0b0d14;background:#e8ebf4}
+@media (max-width:640px){.st-brand span{display:none}.st-nav a{padding:7px 10px;font-size:14px}}
+main{position:relative}
+h1{color:#fff !important;letter-spacing:-.025em}
+h1 + .lead, .lead{color:#aab2c6}
+h2{color:#fff}
+section{border-top-color:rgba(255,255,255,.07) !important}
+.part{background:linear-gradient(120deg, color-mix(in srgb, #d38bff 30%, #141826), #141826) !important;color:#fff !important;border:1px solid color-mix(in srgb, #d38bff 45%, transparent);box-shadow:0 10px 30px -18px #d38bff}
+.step b{background:#d38bff !important;color:#0b0d14 !important;box-shadow:0 0 0 4px color-mix(in srgb, #d38bff 22%, transparent)}
+.btn{border-radius:999px !important;box-shadow:0 8px 24px -12px #d38bff;transition:transform .15s, box-shadow .2s}
+.btn:hover{transform:translateY(-1px)}
+.btn.ghost{box-shadow:none}
+.card,.example,.prompt,.panel,.machine,.box,.cue,.die,.wr > div,.structure .p,.panel-link,details{border-radius:14px !important}
+.card,.panel-link,.example,.cue{background:var(--wash) !important;border-color:var(--line) !important}
+.chips a{background:rgba(255,255,255,.03)}
+.chips a:hover{background:color-mix(in srgb, #d38bff 15%, transparent)}
+.tab[aria-selected="true"]{background:#d38bff !important;color:#0b0d14 !important;border-color:#d38bff !important}
+input,select,textarea{background:#0f1320 !important;color:var(--ink) !important;border-color:var(--line) !important}
+table th{color:#fff}
+a{color:#e8bfff}
+.st-crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 14px;font-size:14px;color:#9aa3b8}
+.st-crumb a{color:#9aa3b8;text-decoration:none}.st-crumb a:hover{color:#fff}
+.st-pill{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:999px;font-size:13px;font-weight:600;color:#d38bff;background:color-mix(in srgb, #d38bff 14%, transparent);border:1px solid color-mix(in srgb, #d38bff 35%, transparent)}
+.st-pill::before{content:"";width:7px;height:7px;border-radius:50%;background:#d38bff}
+.st-progress{position:fixed;left:0;top:0;height:3px;width:0;z-index:60;background:linear-gradient(90deg,#d38bff,#e8bfff);box-shadow:0 0 12px #d38bff}
+.st-done{margin:36px 0 0;padding:20px 22px;border-radius:18px;background:linear-gradient(120deg, color-mix(in srgb, #d38bff 18%, #141826), #141826);border:1px solid color-mix(in srgb, #d38bff 35%, transparent);display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.st-done p{margin:0;flex:1;min-width:200px;color:#d6dbe8}
+.st-done button{border:0;border-radius:999px;padding:11px 18px;font-weight:700;cursor:pointer;background:#d38bff;color:#0b0d14}
+.st-done button[aria-pressed="true"]{background:#46e0a6}
+.pager a{color:#e8bfff}
+::selection{background:color-mix(in srgb, #d38bff 40%, transparent)}
+@media (prefers-reduced-motion:reduce){*{transition:none !important;animation:none !important}}
+</style>
 </head>
 <body>
-<header class="topbar"><nav><a class="brand" href="index.html">AUM IELTS</a><a href="index.html">Sessions</a><a href="notes.html">Writing notes</a><a href="reading-notes.html">Reading notes</a></nav></header>
+<header class="st-top"><div class="st-top-in"><a class="st-brand" href="index.html"><svg class="st-mark" viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="stg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8f9bff"/><stop offset=".55" stop-color="#d38bff"/><stop offset="1" stop-color="#ffb35c"/></linearGradient></defs><rect x="2" y="2" width="28" height="28" rx="9" fill="url(#stg)"/><path d="M11 21.5c1.4 1.2 3 1.7 4.9 1.7 3 0 5-1.5 5-3.8 0-5-9.4-2.9-9.4-7.7 0-1.9 1.8-3.3 4.6-3.3 1.6 0 3 .4 4.2 1.3" fill="none" stroke="#0b0d14" stroke-width="2.4" stroke-linecap="round"/></svg><span>IELTS <b>Studio</b></span></a><nav class="st-nav" aria-label="Main"><a href="index.html">Home</a><a href="index.html#lessons" aria-current="page">Lessons</a><a href="tests.html">Practice tests</a><a href="resources.html">Resources</a></nav></div></header>
 <main>
-  <p class="hint">Session 1</p>
+  <div class="st-crumb"><a href="index.html#lessons">Lessons</a><span aria-hidden="true">/</span><span>Session 1</span><span class="st-pill">Mixed</span></div>
   <h1>Mock test: where are you now?</h1>
   <p class="lead">This first session shows your starting level. Do one reading passage and one Writing Task 1 report under exam conditions, then check your answers and learn the method for the hardest reading question type: True, False or Not Given.</p>
   <ul class="chips"><li><a href="#part-r">Reading test</a></li><li><a href="#part-m">How to answer T/F/NG</a></li><li><a href="#part-w">Writing test</a></li><li><a href="#part-h">Homework</a></li></ul>
@@ -258,7 +310,7 @@ h2[id],section[id]{scroll-margin-top:70px}
       <div class="para"><b>E</b><span>A popular belief is that the pyramids were built by slaves. Excavations near Giza, however, have uncovered the villages where the builders lived and the cemeteries where they were buried close to the pyramids, with bread and beer for the afterlife. Such honours would hardly have been given to slaves, and most experts now believe the builders were organised teams of respected workers.</span></div>
       <div class="para"><b>F</b><span>Nor were the pyramids perfected at the first attempt. The earliest, the Step Pyramid at Saqqara, designed by the architect Imhotep, consists of six stone platforms placed one on top of another. Under King Sneferu, builders tried to create smooth sides: one pyramid had to change its angle halfway up, giving it a bent shape, before the Red Pyramid finally succeeded. Many people still imagine that the pyramids were built with the help of mysterious forces. The real explanation is less magical but more impressive: skill, planning and generations of trial and error.</span></div>
     </div></div>
-    <p class="hint">Original AUM practice passage.</p>
+    <p class="hint">Original IELTS Studio practice passage.</p>
     <div class="prompt"><small>Questions 1–8</small>Do the following statements agree with the information in the passage? Choose <strong>TRUE</strong>, <strong>FALSE</strong> or <strong>NOT GIVEN</strong>.</div>
     <div id="tf"></div>
     <p class="feedback" id="tfFb"></p>
@@ -354,7 +406,7 @@ h2[id],section[id]{scroll-margin-top:70px}
       <div class="para"><b>F</b><span>Palladio’s influence spread mainly through a book. In 1570 he published “The Four Books of Architecture”, which explained his ideas with clear illustrations. Decades after Palladio’s death in 1580, the English architect Inigo Jones travelled to Italy, studied his buildings and drawings, and brought the style to England. In the eighteenth century, Thomas Jefferson, who later became president of the United States, used Palladian ideas when he designed his own house, Monticello.</span></div>
       <div class="para"><b>G</b><span>Some critics point out that Palladio worked mostly for the rich and powerful. That may be true, but it hardly reduces his achievement. Five centuries later, the calm balance and clear proportions of his buildings still give visitors a feeling of peace, and in my view no architect has been more widely imitated.</span></div>
     </div></div>
-    <p class="hint">Original AUM practice passage.</p>
+    <p class="hint">Original IELTS Studio practice passage.</p>
 
     <div class="prompt"><small>Questions 1–7</small>Do the following statements agree with the information in the passage? Choose <strong>TRUE</strong>, <strong>FALSE</strong> or <strong>NOT GIVEN</strong>.</div>
     <div id="hwtf"></div>
@@ -382,17 +434,11 @@ h2[id],section[id]{scroll-margin-top:70px}
   </section>
   <section aria-labelledby="st11">
     <div class="step"><b>11</b><h2 id="st11">Useful websites for extra practice</h2></div>
-    <p>Free practice tests and lessons. Use them after you finish this session’s homework.</p>
-    <div class="split">
-      <a class="panel-link" href="https://ieltsliz.com/" target="_blank" rel="noopener"><strong>IELTS Liz</strong>Lessons and tips for every part of the test.</a>
-      <a class="panel-link" href="https://ielts-up.com/reading/ielts-reading-practice.html" target="_blank" rel="noopener"><strong>IELTS-up</strong>Reading practice passages.</a>
-      <a class="panel-link" href="https://engnovate.com/ielts-reading-tests/" target="_blank" rel="noopener"><strong>Engnovate</strong>Full reading tests with answers.</a>
-      <a class="panel-link" href="https://www.ieltsbuddy.com/paragraph-headings.html" target="_blank" rel="noopener"><strong>IELTS Buddy</strong>Matching headings practice.</a>
-      <a class="panel-link" href="https://ieltstrainingonline.com/" target="_blank" rel="noopener"><strong>IELTS Training Online</strong>Practice tests for all skills.</a>
-      <a class="panel-link" href="https://www.ielts-writing.info/EXAM/" target="_blank" rel="noopener"><strong>IELTS Writing Info</strong>Writing tasks with sample answers.</a>
-    </div>
+    <p>The recommended practice websites now live on the Resources page, grouped by skill.</p>
+    <a class="btn" href="resources.html#websites" style="display:inline-block;text-decoration:none">Open Resources</a>
   </section>
-  <nav class="pager"><a href="index.html">All sessions</a><a href="session-02.html">Next: Session 2, Writing Task 1</a></nav>
+  <div class="st-done"><p><strong>Finished this lesson?</strong> Mark it as done to track your progress on the home page.</p><button id="st-done-btn" type="button" aria-pressed="false">Mark this lesson as done</button></div>
+  <nav class="pager"><a href="index.html#lessons">All lessons</a><a href="session-02.html">Next: Session 2, Writing Task 1</a></nav>
 </main>
 <script>
 const $ = id => document.getElementById(id);
@@ -652,5 +698,13 @@ gaps("hwsa", "hwsaBtn", "hwsaFb", 3, [
 
 
 </script>
+<script id="st-script">(function(){
+  var bar=document.createElement('div');bar.className='st-progress';document.body.appendChild(bar);
+  function upd(){var h=document.documentElement;var m=h.scrollHeight-h.clientHeight;bar.style.width=(m>0?Math.min(100,h.scrollTop/m*100):0)+'%';}
+  addEventListener('scroll',upd,{passive:true});upd();
+  var b=document.getElementById('st-done-btn');if(!b)return;var done={};try{done=JSON.parse(localStorage.getItem('aum-done')||'{}')}catch(e){}
+  function draw(){var on=!!done[1];b.setAttribute('aria-pressed',on);b.textContent=on?'✓ Lesson done':'Mark this lesson as done';}
+  b.onclick=function(){done[1]=!done[1];try{localStorage.setItem('aum-done',JSON.stringify(done))}catch(e){}draw();};draw();
+})();</script>
 </body>
 </html>

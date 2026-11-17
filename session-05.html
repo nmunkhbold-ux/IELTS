@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Session 5: Writing Task 2 | AUM IELTS</title>
+<title>Session 5: Writing Task 2 | IELTS Studio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
@@ -236,11 +236,63 @@ a.scard:hover{border-color:var(--navy);box-shadow:inset 0 0 0 1px var(--navy)}
 .part{margin:48px 0 0;padding:14px 18px;background:var(--navy);color:var(--paper);border-radius:12px;font-size:22px;scroll-margin-top:70px}
 h2[id],section[id]{scroll-margin-top:70px}
 </style>
+<style id="st-theme">
+:root,:root[data-theme],:root:not([data-theme="light"]){
+  --navy:#8f9bff; --ink:#e8ebf4; --muted:#9aa3b8; --paper:#0b0d14; --wash:#141826; --line:#262c3d;
+  --mark:rgba(255,196,92,.22); --mark-ink:#ffd58a; --red:#ff7b8c; --red-wash:rgba(255,123,140,.12); --green:#46e0a6; --green-wash:rgba(70,224,166,.12);
+  --btn:#8f9bff; --btn-ink:#0b0d14; --bar1:#8f9bff; --bar2:#b9c1ff; --bar3:#3b4360; --accent2:#b9c1ff; color-scheme:dark;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--navy:#8f9bff;--paper:#0b0d14;--wash:#141826;--line:#262c3d;--ink:#e8ebf4;--btn:#8f9bff;--btn-ink:#0b0d14}}
+html{background:#0b0d14}
+body{background:radial-gradient(1100px 520px at 50% -180px, color-mix(in srgb, #8f9bff 26%, transparent), transparent 70%), radial-gradient(700px 400px at 100% 0, rgba(211,139,255,.10), transparent 70%), #0b0d14 !important; background-attachment:fixed !important; color:var(--ink)}
+.topbar{display:none !important}
+.st-top{position:sticky;top:0;z-index:40;backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);background:rgba(11,13,20,.72);border-bottom:1px solid rgba(255,255,255,.06);padding-top:env(safe-area-inset-top,0px)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:41;background:rgba(11,13,20,.92)}
+.st-top-in{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:18px;padding:12px 20px}
+.st-brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;font-weight:600;letter-spacing:-.01em;font-size:17px;white-space:nowrap}
+.st-brand b{font-weight:700;background:linear-gradient(90deg,#8f9bff,#d38bff,#ffb35c);-webkit-background-clip:text;background-clip:text;color:transparent}
+.st-mark{width:30px;height:30px;flex:none}
+.st-nav{display:flex;gap:4px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+.st-nav a{color:#aeb5c8;text-decoration:none;font-size:15px;padding:7px 12px;border-radius:999px;white-space:nowrap;transition:background .2s,color .2s}
+.st-nav a:hover{color:#fff;background:rgba(255,255,255,.06)}
+.st-nav a[aria-current="page"]{color:#0b0d14;background:#e8ebf4}
+@media (max-width:640px){.st-brand span{display:none}.st-nav a{padding:7px 10px;font-size:14px}}
+main{position:relative}
+h1{color:#fff !important;letter-spacing:-.025em}
+h1 + .lead, .lead{color:#aab2c6}
+h2{color:#fff}
+section{border-top-color:rgba(255,255,255,.07) !important}
+.part{background:linear-gradient(120deg, color-mix(in srgb, #8f9bff 30%, #141826), #141826) !important;color:#fff !important;border:1px solid color-mix(in srgb, #8f9bff 45%, transparent);box-shadow:0 10px 30px -18px #8f9bff}
+.step b{background:#8f9bff !important;color:#0b0d14 !important;box-shadow:0 0 0 4px color-mix(in srgb, #8f9bff 22%, transparent)}
+.btn{border-radius:999px !important;box-shadow:0 8px 24px -12px #8f9bff;transition:transform .15s, box-shadow .2s}
+.btn:hover{transform:translateY(-1px)}
+.btn.ghost{box-shadow:none}
+.card,.example,.prompt,.panel,.machine,.box,.cue,.die,.wr > div,.structure .p,.panel-link,details{border-radius:14px !important}
+.card,.panel-link,.example,.cue{background:var(--wash) !important;border-color:var(--line) !important}
+.chips a{background:rgba(255,255,255,.03)}
+.chips a:hover{background:color-mix(in srgb, #8f9bff 15%, transparent)}
+.tab[aria-selected="true"]{background:#8f9bff !important;color:#0b0d14 !important;border-color:#8f9bff !important}
+input,select,textarea{background:#0f1320 !important;color:var(--ink) !important;border-color:var(--line) !important}
+table th{color:#fff}
+a{color:#b9c1ff}
+.st-crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 14px;font-size:14px;color:#9aa3b8}
+.st-crumb a{color:#9aa3b8;text-decoration:none}.st-crumb a:hover{color:#fff}
+.st-pill{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:999px;font-size:13px;font-weight:600;color:#8f9bff;background:color-mix(in srgb, #8f9bff 14%, transparent);border:1px solid color-mix(in srgb, #8f9bff 35%, transparent)}
+.st-pill::before{content:"";width:7px;height:7px;border-radius:50%;background:#8f9bff}
+.st-progress{position:fixed;left:0;top:0;height:3px;width:0;z-index:60;background:linear-gradient(90deg,#8f9bff,#b9c1ff);box-shadow:0 0 12px #8f9bff}
+.st-done{margin:36px 0 0;padding:20px 22px;border-radius:18px;background:linear-gradient(120deg, color-mix(in srgb, #8f9bff 18%, #141826), #141826);border:1px solid color-mix(in srgb, #8f9bff 35%, transparent);display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.st-done p{margin:0;flex:1;min-width:200px;color:#d6dbe8}
+.st-done button{border:0;border-radius:999px;padding:11px 18px;font-weight:700;cursor:pointer;background:#8f9bff;color:#0b0d14}
+.st-done button[aria-pressed="true"]{background:#46e0a6}
+.pager a{color:#b9c1ff}
+::selection{background:color-mix(in srgb, #8f9bff 40%, transparent)}
+@media (prefers-reduced-motion:reduce){*{transition:none !important;animation:none !important}}
+</style>
 </head>
 <body>
-<header class="topbar"><nav><a class="brand" href="index.html">AUM IELTS</a><a href="index.html">Sessions</a><a href="notes.html">Writing notes</a><a href="reading-notes.html">Reading notes</a></nav></header>
+<header class="st-top"><div class="st-top-in"><a class="st-brand" href="index.html"><svg class="st-mark" viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="stg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8f9bff"/><stop offset=".55" stop-color="#d38bff"/><stop offset="1" stop-color="#ffb35c"/></linearGradient></defs><rect x="2" y="2" width="28" height="28" rx="9" fill="url(#stg)"/><path d="M11 21.5c1.4 1.2 3 1.7 4.9 1.7 3 0 5-1.5 5-3.8 0-5-9.4-2.9-9.4-7.7 0-1.9 1.8-3.3 4.6-3.3 1.6 0 3 .4 4.2 1.3" fill="none" stroke="#0b0d14" stroke-width="2.4" stroke-linecap="round"/></svg><span>IELTS <b>Studio</b></span></a><nav class="st-nav" aria-label="Main"><a href="index.html">Home</a><a href="index.html#lessons" aria-current="page">Lessons</a><a href="tests.html">Practice tests</a><a href="resources.html">Resources</a></nav></div></header>
 <main>
-  <p class="hint">Session 5</p>
+  <div class="st-crumb"><a href="index.html#lessons">Lessons</a><span aria-hidden="true">/</span><span>Session 5</span><span class="st-pill">Writing</span></div>
   <h1>Writing Task 2: the essay, step by step</h1>
   <p class="lead">Task 2 is worth twice as much as Task 1. A Band 7 essay is not about difficult words: it answers the exact question, has a clear plan, and develops two strong ideas with explanations and examples. Today you will practise each step, then write a full essay.</p>
   <ul class="chips">
@@ -427,6 +479,7 @@ h2[id],section[id]{scroll-margin-top:70px}
     </ul>
   </section>
 
+  <div class="st-done"><p><strong>Finished this lesson?</strong> Mark it as done to track your progress on the home page.</p><button id="st-done-btn" type="button" aria-pressed="false">Mark this lesson as done</button></div>
   <nav class="pager"><a href="session-04.html">Previous: Session 4</a><a href="session-06.html">Next: Session 6, Reading test</a></nav>
 </main>
 <script>
@@ -707,5 +760,13 @@ mcq("newIdea", [["Which sentence should NOT be in the conclusion of an essay arg
   ["I answered every part of the question.", "My opinion is clear and the same from beginning to end.", "Each body paragraph has one main idea with an explanation and an example.", "My ideas are in a logical order, with linking words used correctly.", "I avoided repeating the same words.", "I checked subject–verb agreement, tenses, articles, spelling and punctuation.", "My conclusion restates my position and adds no new ideas."].forEach(t => { const li = document.createElement("li"); li.textContent = t; li.tabIndex = 0; li.style.cursor = "pointer"; li.onclick = () => li.classList.toggle("pass"); li.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); li.classList.toggle("pass"); } }; $("finalChecks").appendChild(li); });
 })();
 </script>
+<script id="st-script">(function(){
+  var bar=document.createElement('div');bar.className='st-progress';document.body.appendChild(bar);
+  function upd(){var h=document.documentElement;var m=h.scrollHeight-h.clientHeight;bar.style.width=(m>0?Math.min(100,h.scrollTop/m*100):0)+'%';}
+  addEventListener('scroll',upd,{passive:true});upd();
+  var b=document.getElementById('st-done-btn');if(!b)return;var done={};try{done=JSON.parse(localStorage.getItem('aum-done')||'{}')}catch(e){}
+  function draw(){var on=!!done[5];b.setAttribute('aria-pressed',on);b.textContent=on?'✓ Lesson done':'Mark this lesson as done';}
+  b.onclick=function(){done[5]=!done[5];try{localStorage.setItem('aum-done',JSON.stringify(done))}catch(e){}draw();};draw();
+})();</script>
 </body>
 </html>

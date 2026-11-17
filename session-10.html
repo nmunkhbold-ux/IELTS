@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Session 10: Reading practice tests | AUM IELTS</title>
+<title>Session 10: Reading practice tests | IELTS Studio</title>
 <style>
 :root{
   --bg:#ffffff; --text:#1a1a1a; --muted:#5b5b5b; --line:#d4d4d4; --bar:#f2f2ef; --bar-line:#dadad5;
@@ -131,7 +131,7 @@ input.ans{padding:3px 8px;border:1px solid var(--muted);border-radius:3px;backgr
 </head>
 <body>
 <header class="top">
-  <a class="brand" href="index.html" title="Back to all sessions">AUM</a>
+  <a class="brand" href="index.html" title="Back to IELTS Studio">IELTS Studio</a>
   <div class="who"><b id="testName">Session 10 · Reading practice test</b><span id="timeText">60 minutes · 3 parts · 40 questions</span></div>
   <div class="grow"></div>
   <span class="timer" id="timer" aria-live="off">60:00</span>
@@ -175,13 +175,13 @@ input.ans{padding:3px 8px;border:1px solid var(--muted);border-radius:3px;backgr
 <script src="test-data-5.js"></script>
 <script>
 /* ===================== TEST CONTENT =====================
-   AUM original practice test. All passages, people and studies are invented for teaching.
+   IELTS Studio original practice test. All passages, people and studies are invented for teaching.
    To make another test, copy this file and change only the TEST object.
    Question types: headings, tfng, ynng, match, complete, summary, mcq.
 */
 const BUILTIN = {
   id: "aum-reading-1",
-  name: "AUM original practice test",
+  name: "IELTS Studio original practice test",
   minutes: 60,
   parts: [
   {
@@ -535,7 +535,7 @@ function intro() {
   const ready = t => t && !unfilled(JSON.stringify(t.parts.map(p => [p.passage, p.passageTitle])));
   const pick = "<p style='margin-bottom:6px'><b>Choose a test</b></p><div class='row' style='margin-top:0;flex-wrap:wrap'>" +
     Object.entries(EXTRA).map(([k, t]) => "<a class='btn" + (TEST === t ? "" : " ghost") + "' href='#" + k + "' data-pick style='text-decoration:none'>Test " + k.slice(4) + (t.name && !unfilled(t.name) && !/^Reading practice test$/.test(t.name) ? ": " + esc(t.name) : "") + (ready(t) ? "" : " (not added yet)") + "</a>").join("") + "</div>";
-  const o = modal("<h2>Reading practice test</h2>" + pick + "<p>This works like the computer-delivered IELTS Reading test: 3 parts, 40 questions, 60 minutes.</p><ul><li>The passage is on the left and the questions are on the right. Drag the ↔ button to resize them.</li><li>Select any words, then choose <b>Highlight</b> or <b>Note</b>.</li><li>Use the numbers at the bottom, or the arrows, to move between questions. A line under a number means it is answered.</li><li><b>&#9873; Review</b> marks a question to come back to.</li><li>Use the menu (☰) to change the text size or colours.</li><li>Press <b>&#10003;</b> when you have finished.</li></ul>" + (TEST === BUILTIN ? "<p style='font-size:.9em;color:var(--muted)'>Test 1 is an AUM original practice test. Its passages, people and studies are invented for teaching.</p>" : "") + "<div class='row'><button class='btn' id='go'>Start the test</button></div>");
+  const o = modal("<h2>Reading practice test</h2>" + pick + "<p>This works like the computer-delivered IELTS Reading test: 3 parts, 40 questions, 60 minutes.</p><ul><li>The passage is on the left and the questions are on the right. Drag the ↔ button to resize them.</li><li>Select any words, then choose <b>Highlight</b> or <b>Note</b>.</li><li>Use the numbers at the bottom, or the arrows, to move between questions. A line under a number means it is answered.</li><li><b>&#9873; Review</b> marks a question to come back to.</li><li>Use the menu (☰) to change the text size or colours.</li><li>Press <b>&#10003;</b> when you have finished.</li></ul>" + (TEST === BUILTIN ? "<p style='font-size:.9em;color:var(--muted)'>Test 1 is an IELTS Studio original practice test. Its passages, people and studies are invented for teaching.</p>" : "") + "<div class='row'><button class='btn' id='go'>Start the test</button></div>");
   o.querySelectorAll("[data-pick]").forEach(a => a.onclick = e => { e.preventDefault(); location.hash = a.getAttribute("href"); location.reload(); });
   if (state.started) o.querySelector("#go").textContent = state.finished ? "Back to my results" : "Continue this test";
   o.querySelector("#go").onclick = () => { o.remove(); if (state.finished) return; if (!state.started) { state.started = true; save(); startTimer(); } };
