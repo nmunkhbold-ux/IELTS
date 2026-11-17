@@ -318,13 +318,16 @@ TEST.parts.forEach(p => {
   let ps = t.split(/\n\s*\n/);
   if (ps.length === 1) ps = t.split(/\n/);
   ps = ps.map(x => x.trim()).filter(Boolean);
-  const out = [];
+  const out = [], labels = []; let sawLetter = false;
   for (let i = 0; i < ps.length; i++) {
     const solo = ps[i].replace(/\*/g, "").trim();
-    if (/^[A-Z]$/.test(solo) && i + 1 < ps.length) { out.push(ps[i + 1].replace(/^\*\*|\*\*$/g, "")); i++; continue; }
-    out.push(ps[i].replace(/^\**[A-Z]\**\s*\n/, ""));
+    if (/^[A-Z]$/.test(solo) && i + 1 < ps.length) { sawLetter = true; labels.push(solo); out.push(ps[i + 1].replace(/^\*\*|\*\*$/g, "")); i++; continue; }
+    const m = ps[i].match(/^\**([A-Z])\**\s*\n/);
+    if (m) { sawLetter = true; labels.push(m[1]); out.push(ps[i].replace(/^\**[A-Z]\**\s*\n/, "")); continue; }
+    labels.push(""); out.push(ps[i]);
   }
   p.paragraphs = out;
+  if (sawLetter) p.labels = labels;
 });
 const $ = id => document.getElementById(id);
 const KEY = "aum-cdreading-" + TEST.id;
@@ -375,7 +378,7 @@ function renderPassage() {
   const p = TEST.parts[part];
   if (unfilled(p.passage) || unfilled(p.passageTitle)) { $("passagePane").innerHTML = "<div class='box'><b>This passage has not been added yet.</b>Open <code>" + (TKEY && TKEY !== "test2" ? "test-data-" + TKEY.slice(4) + ".js" : "test-data.js") + "</code> on GitHub and paste the passage where it says PASTE PASSAGE " + (part + 1) + " HERE.</div>"; return; }
   $("passagePane").innerHTML = "<h2>" + esc(p.passageTitle) + "</h2>" + (p.sub && !unfilled(p.sub) ? "<p class='sub'>" + esc(p.sub) + "</p>" : "") +
-    p.paragraphs.map((t, i) => "<p>" + (p.lettered ? "<span class='pl'>" + String.fromCharCode(65 + i) + "</span>" : "") + esc(t) + "</p>").join("");
+    p.paragraphs.map((t, i) => "<p>" + (p.labels ? (p.labels[i] ? "<span class='pl'>" + p.labels[i] + "</span>" : "") : p.lettered ? "<span class='pl'>" + String.fromCharCode(65 + i) + "</span>" : "") + esc(t) + "</p>").join("");
   $("passagePane").scrollTop = 0;
 }
 function sel(q, opts, cls) { return "<select class='ans " + (cls || "") + "' data-n='" + q.n + "' aria-label='Question " + q.n + "'><option value=''></option>" + opts.map(([v, l]) => "<option value='" + esc(v) + "'>" + esc(l) + "</option>").join("") + "</select>"; }
