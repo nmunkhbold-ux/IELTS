@@ -141,7 +141,8 @@ const L = [
   { n: 7, skill: "Mixed", title: "Paraphrasing: same meaning, new words", about: "Ten techniques, safe and risky synonyms, and a 40-sentence workshop with instant feedback.", time: "90 min" },
   { n: 8, skill: "Speaking", title: "Speaking Part 2: the two-minute talk", about: "Plan in one minute, start strongly, keep talking, and practise with 22 cards and 3D dice.", time: "90 min" },
   { n: 9, skill: "Speaking", title: "Speaking Part 3: the discussion", about: "Six question types, a four-step answer formula, model answers and timed practice.", time: "90 min" },
-  { n: 10, skill: "Reading", title: "Reading practice tests", about: "Three more full Reading tests in the computer format, marked instantly.", time: "60 min tests" }];
+  { n: 10, skill: "Reading", title: "Reading practice tests", about: "Three more full Reading tests in the computer format, marked instantly.", time: "60 min tests" },
+  { n: 11, skill: "Reading", title: "Guessing meaning from context", about: "Five kinds of clue, fourteen practice sentences and a passage to read without a dictionary.", time: "90 min" }];
 const COL = { Writing: "var(--w)", Reading: "var(--r)", Speaking: "var(--sp)", Mixed: "var(--m)" };
 const file = n => "session-" + String(n).padStart(2, "0") + ".html";
 let done = {}; try { done = JSON.parse(localStorage.getItem("aum-done") || "{}"); } catch (e) {}
