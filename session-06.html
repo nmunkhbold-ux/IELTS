@@ -171,6 +171,9 @@ input.ans{padding:3px 8px;border:1px solid var(--muted);border-radius:3px;backgr
 </footer>
 
 <script src="test-data.js"></script>
+<script src="test-data-3.js"></script>
+<script src="test-data-4.js"></script>
+<script src="test-data-5.js"></script>
 <script>
 /* ===================== TEST CONTENT =====================
    AUM original practice test. All passages, people and studies are invented for teaching.
@@ -306,8 +309,11 @@ const BUILTIN = {
 };
 
 /* ===================== ENGINE ===================== */
-const HAS2 = !!window.TEST_DATA;
-const TEST = (location.hash === "#test2" && HAS2) ? window.TEST_DATA : BUILTIN;
+const EXTRA = { test2: window.TEST_DATA, test3: window.TEST_DATA_3, test4: window.TEST_DATA_4, test5: window.TEST_DATA_5 };
+Object.keys(EXTRA).forEach(k => { if (!EXTRA[k]) delete EXTRA[k]; });
+const HAS2 = Object.keys(EXTRA).length > 0;
+const TKEY = location.hash.slice(1);
+const TEST = EXTRA[TKEY] || BUILTIN;
 const unfilled = s => /PASTE /.test(String(s || ""));
 TEST.parts.forEach(p => {
   if (p.paragraphs) return;
@@ -336,8 +342,9 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;",
 const norm = s => String(s || "").toLowerCase().replace(/[“”"’'.,;:!?]/g, "").replace(/\s+/g, " ").trim();
 const alts = a => String(a || "").split("/").map(norm).filter(Boolean);
 const gaps = q => (String(q.text || "").match(/___/g) || []).length;
-const hasKey = q => Array.isArray(q.a) ? q.a.some(x => alts(x).length) : alts(q.a).length > 0;
+const hasKey = q => q.group && q.group.type === "multi" ? (q.group.answers || []).some(x => String(x).trim()) : Array.isArray(q.a) ? q.a.some(x => alts(x).length) : alts(q.a).length > 0;
 function isRight(q, v) {
+  if (q.group && q.group.type === "multi") return !!v && (q.group.answers || []).map(norm).includes(norm(v));
   if (!v || !hasKey(q)) return false;
   if (Array.isArray(q.a) && gaps(q) > 1) {
     const given = String(v).split("||").map(norm); const left = q.a.map(alts);
@@ -346,7 +353,7 @@ function isRight(q, v) {
   const list = Array.isArray(q.a) ? q.a.flatMap(alts) : alts(q.a);
   return list.includes(norm(v));
 }
-const keyText = q => Array.isArray(q.a) && gaps(q) > 1 ? q.a.map(x => String(x).split("/")[0].trim()).join(" / ") : String(Array.isArray(q.a) ? q.a[0] : q.a).split("/")[0].trim();
+const keyText = q => q.group && q.group.type === "multi" ? (q.group.answers || []).join(" and ") : Array.isArray(q.a) && gaps(q) > 1 ? q.a.map(x => String(x).split("/")[0].trim()).join(" / ") : String(Array.isArray(q.a) ? q.a[0] : q.a).split("/")[0].trim();
 const answered = n => { const v = state.answers[n]; if (!v) return false; return String(v).split("||").every(x => x.trim()); };
 
 /* ----- settings ----- */
@@ -369,7 +376,7 @@ const answered = n => { const v = state.answers[n]; if (!v) return false; return
 /* ----- rendering ----- */
 function renderPassage() {
   const p = TEST.parts[part];
-  if (unfilled(p.passage) || unfilled(p.passageTitle)) { $("passagePane").innerHTML = "<div class='box'><b>This passage has not been added yet.</b>Open <code>test-data.js</code> on GitHub and paste the passage where it says PASTE PASSAGE " + (part + 1) + " HERE.</div>"; return; }
+  if (unfilled(p.passage) || unfilled(p.passageTitle)) { $("passagePane").innerHTML = "<div class='box'><b>This passage has not been added yet.</b>Open <code>" + (TKEY && TKEY !== "test2" ? "test-data-" + TKEY.slice(4) + ".js" : "test-data.js") + "</code> on GitHub and paste the passage where it says PASTE PASSAGE " + (part + 1) + " HERE.</div>"; return; }
   $("passagePane").innerHTML = "<h2>" + esc(p.passageTitle) + "</h2>" + (p.sub && !unfilled(p.sub) ? "<p class='sub'>" + esc(p.sub) + "</p>" : "") +
     p.paragraphs.map((t, i) => "<p>" + (p.lettered ? "<span class='pl'>" + String.fromCharCode(65 + i) + "</span>" : "") + esc(t) + "</p>").join("");
   $("passagePane").scrollTop = 0;
@@ -382,7 +389,12 @@ function renderQuestions() {
     h += "<div class='group'><h3>" + esc(g.title) + "</h3><p class='ins'>" + esc(g.ins) + "</p>";
     if (g.type === "headings") h += "<div class='box'><b>List of headings</b><ol>" + g.list.map(([v, l]) => "<li><b style='display:inline'>" + v + "</b>&nbsp; " + esc(l) + "</li>").join("") + "</ol></div>";
     if ((g.type === "match" || g.type === "summary") && g.box) h += "<div class='box'><b>" + esc(g.box) + "</b><ol>" + g.options.map(([v, l]) => "<li><b style='display:inline'>" + v + "</b>&nbsp; " + esc(l) + "</li>").join("") + "</ol></div>";
-    if (g.type === "summary") {
+    if (g.type === "notes") {
+      h += "<div class='box summary' style='line-height:2'><b>" + esc(g.heading || "") + "</b>" + esc(g.text || "").replace(/\n/g, "<br>").replace(/\[(\d+)\]/g, (m, n) => "<span class='q inl' id='q" + n + "' data-n='" + n + "'><span class='num'>" + n + "</span><input class='ans' type='text' autocomplete='off' spellcheck='false' data-n='" + n + "' aria-label='Answer " + n + "'></span>") + "</div>";
+    } else if (g.type === "multi") {
+      const ns = g.items.map(q => q.n);
+      h += "<div class='q' id='q" + ns[0] + "' data-n='" + ns[0] + "'><span class='num'>" + ns.join("–") + "</span><div class='body'>" + esc(g.text || "") + ns.slice(1).map(n => "<span id='q" + n + "' data-n='" + n + "'></span>").join("") + "<div class='opts'>" + (g.opts || []).map((o, i) => { const L = String.fromCharCode(65 + i); return "<label><input type='checkbox' class='multi' data-ns='" + ns.join(",") + "' value='" + L + "'> <span>" + L + "  " + esc(o) + "</span></label>"; }).join("") + "</div></div></div>";
+    } else if (g.type === "summary") {
       h += "<div class='box summary'><b>" + esc(g.heading || "") + "</b>" + esc(g.text).replace(/\[(\d+)\]/g, (m, n) => { const q = BYN[n]; return "<span class='q inl' id='q" + n + "' data-n='" + n + "'><span class='num'>" + n + "</span>" + sel(q, g.options.map(([v]) => [v, v])) + "</span>"; }) + "</div>";
     } else g.items.forEach(q => {
       h += "<div class='q' id='q" + q.n + "' data-n='" + q.n + "'><span class='num'>" + q.n + "</span><div class='body'>";
@@ -407,6 +419,15 @@ function renderQuestions() {
   $("questionPane").querySelectorAll("select.ans").forEach(el => el.addEventListener("change", () => setAns(el.dataset.n, el.value)));
   $("questionPane").querySelectorAll("input.ans").forEach(el => el.addEventListener("input", () => { const all = [...$("questionPane").querySelectorAll("input.ans[data-n='" + el.dataset.n + "']")]; setAns(el.dataset.n, all.length > 1 ? all.map(i => i.value.trim()).join("||") : el.value); }));
   $("questionPane").querySelectorAll("input[type=radio]").forEach(el => el.addEventListener("change", () => setAns(el.dataset.n, el.value)));
+  $("questionPane").querySelectorAll("input.multi").forEach(el => {
+    const ns = el.dataset.ns.split(","); el.checked = ns.some(n => state.answers[n] === el.value);
+    el.addEventListener("change", () => {
+      const boxes = [...$("questionPane").querySelectorAll("input.multi[data-ns='" + el.dataset.ns + "']")];
+      let on = boxes.filter(b => b.checked).map(b => b.value);
+      if (on.length > ns.length) { el.checked = false; on = on.filter(v => v !== el.value); }
+      ns.forEach((n, i) => setAns(n, on[i] || ""));
+    });
+  });
   $("questionPane").querySelectorAll(".q").forEach(el => el.addEventListener("focusin", () => setCurrent(+el.dataset.n, false)));
   $("questionPane").querySelectorAll(".q").forEach(el => el.addEventListener("click", () => setCurrent(+el.dataset.n, false)));
   if (state.finished) showMarks();
@@ -507,10 +528,10 @@ function startTimer() { clearInterval(tick); tick = setInterval(() => { if (stat
 /* ----- modals ----- */
 function modal(html) { const o = document.createElement("div"); o.className = "overlay"; o.innerHTML = "<div class='modal' role='dialog' aria-modal='true'>" + html + "</div>"; document.body.appendChild(o); const f = o.querySelector("button"); if (f) f.focus(); return o; }
 function intro() {
-  const t2 = window.TEST_DATA, t2ready = t2 && !unfilled(JSON.stringify(t2.parts.map(p => [p.passage, p.passageTitle])));
-  const pick = "<p style='margin-bottom:6px'><b>Choose a test</b></p><div class='row' style='margin-top:0'>" +
+  const ready = t => t && !unfilled(JSON.stringify(t.parts.map(p => [p.passage, p.passageTitle])));
+  const pick = "<p style='margin-bottom:6px'><b>Choose a test</b></p><div class='row' style='margin-top:0;flex-wrap:wrap'>" +
     "<a class='btn" + (TEST === BUILTIN ? "" : " ghost") + "' href='#test1' data-pick style='text-decoration:none'>Test 1: AUM original</a>" +
-    (HAS2 ? "<a class='btn" + (TEST === BUILTIN ? " ghost" : "") + "' href='#test2' data-pick style='text-decoration:none'>Test 2" + (t2ready ? "" : " (not added yet)") + "</a>" : "") + "</div>";
+    Object.entries(EXTRA).map(([k, t]) => "<a class='btn" + (TEST === t ? "" : " ghost") + "' href='#" + k + "' data-pick style='text-decoration:none'>Test " + k.slice(4) + (t.name && !unfilled(t.name) && !/^Reading practice test$/.test(t.name) ? ": " + esc(t.name) : "") + (ready(t) ? "" : " (not added yet)") + "</a>").join("") + "</div>";
   const o = modal("<h2>Reading practice test</h2>" + pick + "<p>This works like the computer-delivered IELTS Reading test: 3 parts, 40 questions, 60 minutes.</p><ul><li>The passage is on the left and the questions are on the right. Drag the ↔ button to resize them.</li><li>Select any words, then choose <b>Highlight</b> or <b>Note</b>.</li><li>Use the numbers at the bottom, or the arrows, to move between questions. A line under a number means it is answered.</li><li><b>&#9873; Review</b> marks a question to come back to.</li><li>Use the menu (☰) to change the text size or colours.</li><li>Press <b>&#10003;</b> when you have finished.</li></ul>" + (TEST === BUILTIN ? "<p style='font-size:.9em;color:var(--muted)'>Test 1 is an AUM original practice test. Its passages, people and studies are invented for teaching.</p>" : "") + "<div class='row'><button class='btn' id='go'>Start the test</button></div>");
   o.querySelectorAll("[data-pick]").forEach(a => a.onclick = e => { e.preventDefault(); location.hash = a.getAttribute("href"); location.reload(); });
   if (state.started) o.querySelector("#go").textContent = state.finished ? "Back to my results" : "Continue this test";
@@ -544,7 +565,7 @@ function showMarks() {
 }
 
 /* ----- start ----- */
-$("testName").textContent = "Session 6 · " + (TEST === BUILTIN ? "Test 1" : "Test 2");
+$("testName").textContent = "Session 6 · " + (TEST === BUILTIN ? "Test 1" : "Test " + TKEY.slice(4) + (TEST.name && !unfilled(TEST.name) && !/^Reading practice test$/.test(TEST.name) ? ": " + TEST.name : ""));
 renderPartbar(); renderPassage(); renderQuestions(); highlightCurrent(); renderNav(); drawTimer();
 if (state.finished) { /* review mode */ } else if (state.started) startTimer(); else intro();
 </script>
