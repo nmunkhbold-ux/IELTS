@@ -238,19 +238,19 @@ h2[id],section[id]{scroll-margin-top:70px}
 </style>
 <style id="st-theme">
 :root,:root[data-theme],:root:not([data-theme="light"]){
-  --navy:#d38bff; --ink:#e8ebf4; --muted:#9aa3b8; --paper:#0b0d14; --wash:#141826; --line:#262c3d;
+  --navy:#4fd1e8; --ink:#e8ebf4; --muted:#9aa3b8; --paper:#0b0d14; --wash:#141826; --line:#262c3d;
   --mark:rgba(255,196,92,.22); --mark-ink:#ffd58a; --red:#ff7b8c; --red-wash:rgba(255,123,140,.12); --green:#46e0a6; --green-wash:rgba(70,224,166,.12);
-  --btn:#d38bff; --btn-ink:#0b0d14; --bar1:#d38bff; --bar2:#e8bfff; --bar3:#3b4360; --accent2:#e8bfff; color-scheme:dark;
+  --btn:#4fd1e8; --btn-ink:#0b0d14; --bar1:#4fd1e8; --bar2:#a6ecf6; --bar3:#3b4360; --accent2:#a6ecf6; color-scheme:dark;
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--navy:#d38bff;--paper:#0b0d14;--wash:#141826;--line:#262c3d;--ink:#e8ebf4;--btn:#d38bff;--btn-ink:#0b0d14}}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--navy:#4fd1e8;--paper:#0b0d14;--wash:#141826;--line:#262c3d;--ink:#e8ebf4;--btn:#4fd1e8;--btn-ink:#0b0d14}}
 html{background:#0b0d14}
-body{background:radial-gradient(1100px 520px at 50% -180px, color-mix(in srgb, #d38bff 26%, transparent), transparent 70%), radial-gradient(700px 400px at 100% 0, rgba(211,139,255,.10), transparent 70%), #0b0d14 !important; background-attachment:fixed !important; color:var(--ink)}
+body{background:radial-gradient(1100px 520px at 50% -180px, color-mix(in srgb, #4fd1e8 26%, transparent), transparent 70%), radial-gradient(700px 400px at 100% 0, rgba(79,209,232,.10), transparent 70%), #0b0d14 !important; background-attachment:fixed !important; color:var(--ink)}
 .topbar{display:none !important}
 .st-top{position:sticky;top:0;z-index:40;backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);background:rgba(11,13,20,.72);border-bottom:1px solid rgba(255,255,255,.06);padding-top:env(safe-area-inset-top,0px)}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:41;background:rgba(11,13,20,.92)}
 .st-top-in{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:18px;padding:12px 20px}
 .st-brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;font-weight:600;letter-spacing:-.01em;font-size:17px;white-space:nowrap}
-.st-brand b{font-weight:700;background:linear-gradient(90deg,#8f9bff,#d38bff,#ffb35c);-webkit-background-clip:text;background-clip:text;color:transparent}
+.st-brand b{font-weight:700;background:linear-gradient(90deg,#8f9bff,#4fd1e8,#ffb35c);-webkit-background-clip:text;background-clip:text;color:transparent}
 .st-mark{width:30px;height:30px;flex:none}
 .st-nav{display:flex;gap:4px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
 .st-nav a{color:#aeb5c8;text-decoration:none;font-size:15px;padding:7px 12px;border-radius:999px;white-space:nowrap;transition:background .2s,color .2s}
@@ -262,35 +262,35 @@ h1{color:#fff !important;letter-spacing:-.025em}
 h1 + .lead, .lead{color:#aab2c6}
 h2{color:#fff}
 section{border-top-color:rgba(255,255,255,.07) !important}
-.part{background:linear-gradient(120deg, color-mix(in srgb, #d38bff 30%, #141826), #141826) !important;color:#fff !important;border:1px solid color-mix(in srgb, #d38bff 45%, transparent);box-shadow:0 10px 30px -18px #d38bff}
-.step b{background:#d38bff !important;color:#0b0d14 !important;box-shadow:0 0 0 4px color-mix(in srgb, #d38bff 22%, transparent)}
-.btn{border-radius:999px !important;box-shadow:0 8px 24px -12px #d38bff;transition:transform .15s, box-shadow .2s}
+.part{background:linear-gradient(120deg, color-mix(in srgb, #4fd1e8 30%, #141826), #141826) !important;color:#fff !important;border:1px solid color-mix(in srgb, #4fd1e8 45%, transparent);box-shadow:0 10px 30px -18px #4fd1e8}
+.step b{background:#4fd1e8 !important;color:#0b0d14 !important;box-shadow:0 0 0 4px color-mix(in srgb, #4fd1e8 22%, transparent)}
+.btn{border-radius:999px !important;box-shadow:0 8px 24px -12px #4fd1e8;transition:transform .15s, box-shadow .2s}
 .btn:hover{transform:translateY(-1px)}
 .btn.ghost{box-shadow:none}
 .card,.example,.prompt,.panel,.machine,.box,.cue,.die,.wr > div,.structure .p,.panel-link,details{border-radius:14px !important}
 .card,.panel-link,.example,.cue{background:var(--wash) !important;border-color:var(--line) !important}
 .chips a{background:rgba(255,255,255,.03)}
-.chips a:hover{background:color-mix(in srgb, #d38bff 15%, transparent)}
-.tab[aria-selected="true"]{background:#d38bff !important;color:#0b0d14 !important;border-color:#d38bff !important}
+.chips a:hover{background:color-mix(in srgb, #4fd1e8 15%, transparent)}
+.tab[aria-selected="true"]{background:#4fd1e8 !important;color:#0b0d14 !important;border-color:#4fd1e8 !important}
 input,select,textarea{background:#0f1320 !important;color:var(--ink) !important;border-color:var(--line) !important}
 table th{color:#fff}
-a{color:#e8bfff}
+a{color:#a6ecf6}
 .st-crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 14px;font-size:14px;color:#9aa3b8}
 .st-crumb a{color:#9aa3b8;text-decoration:none}.st-crumb a:hover{color:#fff}
-.st-pill{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:999px;font-size:13px;font-weight:600;color:#d38bff;background:color-mix(in srgb, #d38bff 14%, transparent);border:1px solid color-mix(in srgb, #d38bff 35%, transparent)}
-.st-pill::before{content:"";width:7px;height:7px;border-radius:50%;background:#d38bff}
-.st-progress{position:fixed;left:0;top:0;height:3px;width:0;z-index:60;background:linear-gradient(90deg,#d38bff,#e8bfff);box-shadow:0 0 12px #d38bff}
-.st-done{margin:36px 0 0;padding:20px 22px;border-radius:18px;background:linear-gradient(120deg, color-mix(in srgb, #d38bff 18%, #141826), #141826);border:1px solid color-mix(in srgb, #d38bff 35%, transparent);display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.st-pill{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:999px;font-size:13px;font-weight:600;color:#4fd1e8;background:color-mix(in srgb, #4fd1e8 14%, transparent);border:1px solid color-mix(in srgb, #4fd1e8 35%, transparent)}
+.st-pill::before{content:"";width:7px;height:7px;border-radius:50%;background:#4fd1e8}
+.st-progress{position:fixed;left:0;top:0;height:3px;width:0;z-index:60;background:linear-gradient(90deg,#4fd1e8,#a6ecf6);box-shadow:0 0 12px #4fd1e8}
+.st-done{margin:36px 0 0;padding:20px 22px;border-radius:18px;background:linear-gradient(120deg, color-mix(in srgb, #4fd1e8 18%, #141826), #141826);border:1px solid color-mix(in srgb, #4fd1e8 35%, transparent);display:flex;align-items:center;gap:16px;flex-wrap:wrap}
 .st-done p{margin:0;flex:1;min-width:200px;color:#d6dbe8}
-.st-done button{border:0;border-radius:999px;padding:11px 18px;font-weight:700;cursor:pointer;background:#d38bff;color:#0b0d14}
+.st-done button{border:0;border-radius:999px;padding:11px 18px;font-weight:700;cursor:pointer;background:#4fd1e8;color:#0b0d14}
 .st-done button[aria-pressed="true"]{background:#46e0a6}
-.pager a{color:#e8bfff}
-::selection{background:color-mix(in srgb, #d38bff 40%, transparent)}
+.pager a{color:#a6ecf6}
+::selection{background:color-mix(in srgb, #4fd1e8 40%, transparent)}
 @media (prefers-reduced-motion:reduce){*{transition:none !important;animation:none !important}}
 </style>
 </head>
 <body>
-<header class="st-top"><div class="st-top-in"><a class="st-brand" href="index.html"><svg class="st-mark" viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="stg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8f9bff"/><stop offset=".55" stop-color="#d38bff"/><stop offset="1" stop-color="#ffb35c"/></linearGradient></defs><rect x="2" y="2" width="28" height="28" rx="9" fill="url(#stg)"/><path d="M11 21.5c1.4 1.2 3 1.7 4.9 1.7 3 0 5-1.5 5-3.8 0-5-9.4-2.9-9.4-7.7 0-1.9 1.8-3.3 4.6-3.3 1.6 0 3 .4 4.2 1.3" fill="none" stroke="#0b0d14" stroke-width="2.4" stroke-linecap="round"/></svg><span>IELTS <b>Studio</b></span></a><nav class="st-nav" aria-label="Main"><a href="index.html">Home</a><a href="index.html#lessons" aria-current="page">Lessons</a><a href="tests.html">Practice tests</a><a href="resources.html">Resources</a></nav></div></header>
+<header class="st-top"><div class="st-top-in"><a class="st-brand" href="index.html"><svg class="st-mark" viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="stg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8f9bff"/><stop offset=".55" stop-color="#4fd1e8"/><stop offset="1" stop-color="#ffb35c"/></linearGradient></defs><rect x="2" y="2" width="28" height="28" rx="9" fill="url(#stg)"/><path d="M11 21.5c1.4 1.2 3 1.7 4.9 1.7 3 0 5-1.5 5-3.8 0-5-9.4-2.9-9.4-7.7 0-1.9 1.8-3.3 4.6-3.3 1.6 0 3 .4 4.2 1.3" fill="none" stroke="#0b0d14" stroke-width="2.4" stroke-linecap="round"/></svg><span>IELTS <b>Studio</b></span></a><nav class="st-nav" aria-label="Main"><a href="index.html">Home</a><a href="index.html#lessons" aria-current="page">Lessons</a><a href="tests.html">Practice tests</a><a href="resources.html">Resources</a></nav></div></header>
 <main>
   <div class="st-crumb"><a href="index.html#lessons">Lessons</a><span aria-hidden="true">/</span><span>Session 1</span><span class="st-pill">Mixed</span></div>
   <h1>Mock test: where are you now?</h1>
