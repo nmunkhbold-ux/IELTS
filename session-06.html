@@ -171,9 +171,6 @@ input.ans{padding:3px 8px;border:1px solid var(--muted);border-radius:3px;backgr
 </footer>
 
 <script src="test-data.js"></script>
-<script src="test-data-3.js"></script>
-<script src="test-data-4.js"></script>
-<script src="test-data-5.js"></script>
 <script>
 /* ===================== TEST CONTENT =====================
    AUM original practice test. All passages, people and studies are invented for teaching.
@@ -309,7 +306,7 @@ const BUILTIN = {
 };
 
 /* ===================== ENGINE ===================== */
-const EXTRA = { test2: window.TEST_DATA, test3: window.TEST_DATA_3, test4: window.TEST_DATA_4, test5: window.TEST_DATA_5 };
+const EXTRA = { test2: window.TEST_DATA };
 Object.keys(EXTRA).forEach(k => { if (!EXTRA[k]) delete EXTRA[k]; });
 const HAS2 = Object.keys(EXTRA).length > 0;
 const TKEY = location.hash.slice(1);
