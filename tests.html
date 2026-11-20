@@ -94,6 +94,12 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:#fff}
     <div class="panel"><i>⚑</i><b>Review</b><span>Flag questions to come back to, and see unanswered ones before you submit.</span></div>
     <div class="panel"><i>✓</i><b>Instant marking</b><span>Your score, an estimated band and every answer explained.</span></div>
   </div>
+  <section class="top" style="margin-top:46px">
+    <span class="eyebrow">Writing practice</span>
+    <h1>Writing tests, <span class="grad">real exam screen</span>.</h1>
+    <p>Each test has Task 1 (a chart, process or map) and Task 2 (an essay) in one 60-minute session, with a live word count. Your writing is saved as you type. When you finish, you send it to your teacher by email.</p>
+  </section>
+  <div class="grid" id="wgrid"></div>
 </main>
 <footer><div class="wrap"><span>IELTS Studio · Practice tests</span><span><a href="index.html#lessons">Lessons</a> · <a href="resources.html">Resources</a></span></div></footer>
 <script>
@@ -132,6 +138,19 @@ document.getElementById("grid").innerHTML = T.map(t => {
   } else if (st && st.started) { status = "prog"; const n = Object.values(st.answers || {}).filter(x => String(x).trim()).length; text = "In progress · " + n + " of 40 answered · " + Math.ceil((st.left || 0) / 60) + " min left"; }
   const btn = status === "fin" ? "Review results" : status === "prog" ? "Continue test" : status === "empty" ? "Open" : "Start test";
   return `<div class="panel t" style="--c:${t.c}"><span class="n">${t.label}</span><h2>${name.replace(/[<>&]/g, "")}</h2>${t.src ? `<p class="src">${t.src}</p>` : ""}<div class="stats"><span class="stat">3 passages</span><span class="stat">40 questions</span><span class="stat">60 min</span></div>${score}<span class="status ${status}">${text}</span><a class="btn${status === "fin" ? " ghost" : ""}" href="${t.page}">${btn} →</a></div>`;
+}).join("");
+
+const WT = [
+  { id: "w1", kind: "Line graph", c: "var(--m)" }, { id: "w2", kind: "Bar chart", c: "var(--w)" },
+  { id: "w3", kind: "Process", c: "var(--r)" }, { id: "w4", kind: "Maps", c: "var(--sp)" }];
+document.getElementById("wgrid").innerHTML = WT.map((w, i) => {
+  let st = null; try { st = JSON.parse(localStorage.getItem("ielts-writing-" + w.id) || "null"); } catch (e) {}
+  let status = "new", text = "Not started", btn = "Start test";
+  if (st && st.started) {
+    if (st.submitted) { status = "fin"; text = "Submitted"; btn = "View"; }
+    else { status = "prog"; const left = Math.max(0, Math.ceil((st.endAt - Date.now()) / 60000)); text = left > 0 ? "In progress · " + left + " min left" : "Time is up"; btn = "Continue test"; }
+  }
+  return `<div class="panel t" style="--c:${w.c}"><span class="n">Writing ${i + 1}</span><h2>Task 1: ${w.kind}</h2><p class="src">Task 2: essay</p><div class="stats"><span class="stat">2 tasks</span><span class="stat">60 min</span><span class="stat">150 + 250 words</span></div><span class="status ${status}">${text}</span><a class="btn${status === "fin" ? " ghost" : ""}" href="writing-test.html#${w.id}">${btn} →</a></div>`;
 }).join("");
 </script>
 </body>

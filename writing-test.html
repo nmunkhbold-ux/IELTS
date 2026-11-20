@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Writing practice tests | IELTS Studio</title>
+<style>
+:root{
+  --bg:#ffffff; --text:#1a1a1a; --muted:#5b5b5b; --line:#d4d4d4; --bar:#f2f2ef; --bar-line:#dadad5;
+  --accent:#0a3d91; --focus:#1f6fd1; --ok:#1e7a3c; --bad:#b3261e; --flag:#c25e00;
+  --btn:#000; --btn-text:#fff; --btn-off:#e3e3e3; --fs:16px; color-scheme: light;
+}
+:root[data-contrast="wob"]{ --bg:#000; --text:#fff; --muted:#cfcfcf; --line:#555; --bar:#111; --bar-line:#444; --accent:#9cc4ff; --focus:#9cc4ff; --ok:#7bd88f; --bad:#ff8a80; --flag:#ffb74d; --btn:#fff; --btn-text:#000; --btn-off:#333; color-scheme: dark; }
+:root[data-contrast="yob"]{ --bg:#000; --text:#ffe600; --muted:#e6cf00; --line:#665c00; --bar:#111; --bar-line:#555; --accent:#ffe600; --focus:#fff; --ok:#b8f5a0; --bad:#ffab91; --flag:#ffcc80; --btn:#ffe600; --btn-text:#000; --btn-off:#333; color-scheme: dark; }
+:root[data-size="l"]{ --fs:19px; } :root[data-size="xl"]{ --fs:22px; }
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{background:var(--bg);color:var(--text);font:var(--fs)/1.6 Arial,"Helvetica Neue",Helvetica,sans-serif;display:flex;flex-direction:column;overflow:hidden}
+button,select,input,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+a{color:var(--accent)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.top{display:flex;align-items:center;gap:20px;padding:10px 20px;border-bottom:1px solid var(--line);flex:none}
+.brand{font-weight:700;font-size:26px;letter-spacing:-.5px;color:var(--accent);text-decoration:none}
+.who{line-height:1.3}.who b{display:block;font-size:15px}.who span{font-size:14px;color:var(--muted)}
+.grow{flex:1}
+.timer{font-variant-numeric:tabular-nums;font-weight:700;font-size:15px;padding:4px 10px;border-radius:4px}
+.timer.warn{background:#fdecc8;color:#7a4a00}.timer.hide{visibility:hidden}
+.iconbtn{background:none;border:0;padding:6px 8px;cursor:pointer;border-radius:4px;line-height:1}
+.iconbtn:hover{background:var(--bar)}
+.menu{position:absolute;right:16px;top:58px;background:var(--bg);border:1px solid var(--line);border-radius:6px;box-shadow:0 6px 24px rgba(0,0,0,.18);padding:14px 16px;z-index:50;width:280px;font-size:15px}
+.menu[hidden]{display:none}
+.menu h4{margin:10px 0 6px;font-size:15px}.menu h4:first-child{margin-top:0}
+.menu label{display:flex;gap:8px;align-items:center;padding:3px 0;cursor:pointer}
+.menu hr{border:0;border-top:1px solid var(--line);margin:12px 0}
+.menu .linkbtn{background:none;border:0;padding:4px 0;color:var(--accent);cursor:pointer;text-decoration:underline}
+.partbar{margin:14px 20px 0;background:var(--bar);border:1px solid var(--bar-line);border-radius:4px;padding:10px 16px;flex:none;line-height:1.4}
+.partbar b{display:block}
+.split{flex:1;display:flex;min-height:0;margin:10px 0 0;position:relative}
+.pane{overflow-y:auto;padding:16px 20px 40px;min-width:0}
+#taskPane{flex:0 0 50%}#writePane{flex:1;display:flex;flex-direction:column}
+.divider{flex:none;width:14px;position:relative;cursor:col-resize;background:linear-gradient(var(--line),var(--line)) center/2px 100% no-repeat}
+.divider button{position:absolute;top:45%;left:50%;transform:translate(-50%,-50%);width:34px;height:34px;border:1px solid var(--text);background:var(--bg);border-radius:3px;cursor:col-resize;font-size:16px;line-height:1;padding:0}
+.task{margin:0 0 .9em;max-width:70ch}
+.figure{margin:18px 0 0;max-width:720px}
+.figure svg{width:100%;height:auto;display:block;color:var(--text)}
+.figure svg text{fill:currentColor}
+textarea.ans{flex:1;min-height:240px;width:100%;resize:none;padding:12px 14px;border:1px solid var(--muted);border-radius:4px;background:var(--bg);color:var(--text);line-height:1.6}
+textarea.ans[hidden]{display:none}
+textarea.ans:read-only{background:var(--bar)}
+.wc{margin:6px 2px 0;text-align:right;font-size:.95em;color:var(--text)}
+.wc small{color:var(--muted)}
+.wc.low b{color:var(--flag)}
+.fnav{flex:none;display:flex;align-items:center;gap:6px;padding:0 12px}
+.fnav button{width:56px;height:42px;border:0;border-radius:3px;cursor:pointer;font-size:24px;background:var(--btn);color:var(--btn-text)}
+.fnav button:disabled{background:var(--btn-off);color:var(--muted);cursor:default}
+.foot{flex:none;border-top:1px solid var(--line);display:flex;align-items:stretch;min-height:58px}
+.parts{flex:1;display:flex;align-items:center;gap:6px 26px;padding:8px 16px;overflow-x:auto}
+.pbtn{background:none;border:0;border-bottom:3px solid transparent;font-weight:700;cursor:pointer;padding:6px 4px;white-space:nowrap}
+.pbtn[aria-pressed="true"]{border-bottom-color:var(--text)}
+.pbtn .count{font-weight:400;color:var(--muted);margin-left:8px;font-size:.92em}
+.footbtn{flex:none;width:86px;border:0;border-left:1px solid var(--line);background:var(--bar);cursor:pointer;font-size:22px}
+.btn{border:1px solid var(--text);background:var(--btn);color:var(--btn-text);border-radius:4px;padding:9px 18px;cursor:pointer;text-decoration:none;display:inline-block}
+.btn.ghost{background:none;color:var(--text)}
+.btn:disabled{opacity:.5;cursor:default}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:80;display:flex;align-items:center;justify-content:center;padding:20px}
+.overlay.solid{background:var(--bg)}
+.modal{background:var(--bg);color:var(--text);border-radius:8px;max-width:680px;width:100%;max-height:92vh;overflow:auto;padding:24px 26px;border:1px solid var(--line)}
+.modal h2{margin:0 0 8px;font-size:1.3em}
+.modal p{margin:0 0 10px}.modal ul{padding-left:20px;margin:6px 0 12px}
+.modal .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.modal input[type=text]{width:100%;padding:9px 10px;border:1px solid var(--muted);border-radius:4px;background:var(--bg);margin:4px 0 14px}
+.sets{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:14px}
+.setcard{border:1px solid var(--line);border-radius:8px;padding:14px;display:flex;flex-direction:column;gap:6px}
+.setcard b{font-size:1.05em}.setcard span{color:var(--muted);font-size:.9em}
+.warn-note{color:var(--bad);font-weight:700}
+.ok-note{color:var(--ok);font-weight:700}
+.toast{position:fixed;left:50%;bottom:78px;transform:translateX(-50%);background:var(--btn);color:var(--btn-text);padding:10px 16px;border-radius:6px;z-index:90;font-size:15px}
+.bar2{display:flex;align-items:center;gap:12px;padding:8px 20px;background:#e6f4ea;border-bottom:1px solid var(--line);font-size:15px;flex:none}
+:root[data-contrast="wob"] .bar2,:root[data-contrast="yob"] .bar2{background:#0e2a15}
+.bar2[hidden]{display:none}
+.mobiletabs{display:none}
+@media (max-width:760px){
+  .who span{display:none}.brand{font-size:22px}
+  .split{flex-direction:column}.divider{display:none}
+  #taskPane{flex:0 0 42%}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="tests.html" title="Back to Practice tests">IELTS Studio</a>
+  <div class="who"><b id="testName">Writing practice test</b><span id="whoName">60 minutes · 2 tasks</span></div>
+  <div class="grow"></div>
+  <span class="timer" id="timer">60:00</span>
+  <button class="iconbtn" id="menuBtn" aria-label="Settings" aria-expanded="false"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button>
+</header>
+<div class="menu" id="menu" hidden>
+  <h4>Text size</h4>
+  <label><input type="radio" name="size" value="m" checked> Standard</label>
+  <label><input type="radio" name="size" value="l"> Large</label>
+  <label><input type="radio" name="size" value="xl"> Extra large</label>
+  <h4>Colours</h4>
+  <label><input type="radio" name="contrast" value="bow" checked> Black on white</label>
+  <label><input type="radio" name="contrast" value="wob"> White on black</label>
+  <label><input type="radio" name="contrast" value="yob"> Yellow on black</label>
+  <hr>
+  <label><input type="checkbox" id="hideTimer"> Hide the timer</label>
+  <hr>
+  <button class="linkbtn" id="restart">Restart this test</button><br>
+  <a href="writing-test.html" id="otherSet">Choose a different test</a><br>
+  <a href="tests.html">Back to Practice tests</a>
+</div>
+<div id="sentbar" class="bar2" hidden><span>✓ Submitted. Your essay is ready to send.</span><button class="btn" id="sendAgain">Send it →</button></div>
+<div class="partbar" id="partbar"></div>
+<main class="split" id="split">
+  <section class="pane" id="taskPane" aria-label="Task"></section>
+  <div class="divider" id="divider"><button aria-label="Drag to resize the panels" title="Drag to resize">&#8596;</button></div>
+  <section class="pane" id="writePane" aria-label="Your answer">
+    <label class="sr" for="ta1">Your answer for Part 1</label>
+    <textarea class="ans" id="ta1" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Type your answer here"></textarea>
+    <label class="sr" for="ta2">Your answer for Part 2</label>
+    <textarea class="ans" id="ta2" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Type your answer here" hidden></textarea>
+    <div class="wc" id="wc">Words: <b>0</b></div>
+  </section>
+</main>
+<footer class="foot">
+  <nav class="parts" id="parts" aria-label="Parts"></nav>
+  <div class="fnav"><button id="prevP" aria-label="Previous part">&#8592;</button><button id="nextP" aria-label="Next part">&#8594;</button></div>
+  <button class="footbtn" id="finishBtn" aria-label="Finish and submit">&#10003;</button>
+</footer>
+<div id="overlay"></div>
+<script>
+const SETS = [{"id": "w1", "title": "Writing test 1", "kind": "Line graph", "t1": {"text": "The graph below shows the percentage of people who read the news online every day in three countries between 2008 and 2024.", "ask": "Summarise the information by selecting and reporting the main features, and make comparisons where relevant.", "svg": "<svg class='chart' viewBox='0 0 640 400' role='img' aria-label='Line graph: percentage of people who read the news online every day in three countries, 2008 to 2024'><text x='320.0' y='26' text-anchor='middle' font-size='15' font-weight='700'>Percentage of people who read the news online every day<\/text><line x1='64' x2='616' y1='304.0' y2='304.0' stroke='currentColor' stroke-opacity='0.9' stroke-dasharray=''/><text x='56' y='308.0' text-anchor='end' font-size='12'>0<\/text><line x1='64' x2='616' y1='242.0' y2='242.0' stroke='currentColor' stroke-opacity='0.25' stroke-dasharray='4 4'/><text x='56' y='246.0' text-anchor='end' font-size='12'>20<\/text><line x1='64' x2='616' y1='180.0' y2='180.0' stroke='currentColor' stroke-opacity='0.25' stroke-dasharray='4 4'/><text x='56' y='184.0' text-anchor='end' font-size='12'>40<\/text><line x1='64' x2='616' y1='118.0' y2='118.0' stroke='currentColor' stroke-opacity='0.25' stroke-dasharray='4 4'/><text x='56' y='122.0' text-anchor='end' font-size='12'>60<\/text><line x1='64' x2='616' y1='56.0' y2='56.0' stroke='currentColor' stroke-opacity='0.25' stroke-dasharray='4 4'/><text x='56' y='60.0' text-anchor='end' font-size='12'>80<\/text><text x='16' y='180.0' text-anchor='middle' font-size='12' transform='rotate(-90 16 180.0)'>Percentage (%)<\/text><text x='64.0' y='324' text-anchor='middle' font-size='12'>2008<\/text><text x='202.0' y='324' text-anchor='middle' font-size='12'>2012<\/text><text x='340.0' y='324' text-anchor='middle' font-size='12'>2016<\/text><text x='478.0' y='324' text-anchor='middle' font-size='12'>2020<\/text><text x='616.0' y='324' text-anchor='middle' font-size='12'>2024<\/text><text x='340.0' y='346' text-anchor='middle' font-size='12'>Year<\/text><polyline points='64.0,235.79999999999998 202.0,186.20000000000002 340.0,142.8 478.0,105.6 616.0,87.0' fill='none' stroke='currentColor' stroke-width='2' stroke-dasharray=''/><circle cx='64.0' cy='235.79999999999998' r='4.5' fill='currentColor'/><circle cx='202.0' cy='186.20000000000002' r='4.5' fill='currentColor'/><circle cx='340.0' cy='142.8' r='4.5' fill='currentColor'/><circle cx='478.0' cy='105.6' r='4.5' fill='currentColor'/><circle cx='616.0' cy='87.0' r='4.5' fill='currentColor'/><polyline points='64.0,164.5 202.0,133.5 340.0,118.0 478.0,111.8 616.0,114.9' fill='none' stroke='currentColor' stroke-width='2' stroke-dasharray='7 4'/><rect x='59.5' y='160.0' width='9' height='9' fill='currentColor'/><rect x='197.5' y='129.0' width='9' height='9' fill='currentColor'/><rect x='335.5' y='113.5' width='9' height='9' fill='currentColor'/><rect x='473.5' y='107.3' width='9' height='9' fill='currentColor'/><rect x='611.5' y='110.4' width='9' height='9' fill='currentColor'/><polyline points='64.0,273.0 202.0,248.20000000000002 340.0,195.5 478.0,133.5 616.0,62.2' fill='none' stroke='currentColor' stroke-width='2' stroke-dasharray='2 4'/><path d='M64.0 267.5 L69.5 277.5 L58.5 277.5 Z' fill='currentColor'/><path d='M202.0 242.70000000000002 L207.5 252.70000000000002 L196.5 252.70000000000002 Z' fill='currentColor'/><path d='M340.0 190.0 L345.5 200.0 L334.5 200.0 Z' fill='currentColor'/><path d='M478.0 128.0 L483.5 138.0 L472.5 138.0 Z' fill='currentColor'/><path d='M616.0 56.7 L621.5 66.7 L610.5 66.7 Z' fill='currentColor'/><line x1='74' x2='108' y1='382' y2='382' stroke='currentColor' stroke-width='2' stroke-dasharray=''/><circle cx='91' cy='382' r='4.5' fill='currentColor'/><text x='116' y='386' font-size='13'>Country A<\/text><line x1='264' x2='298' y1='382' y2='382' stroke='currentColor' stroke-width='2' stroke-dasharray='7 4'/><rect x='276.5' y='377.5' width='9' height='9' fill='currentColor'/><text x='306' y='386' font-size='13'>Country B<\/text><line x1='454' x2='488' y1='382' y2='382' stroke='currentColor' stroke-width='2' stroke-dasharray='2 4'/><path d='M471 376.5 L476.5 386.5 L465.5 386.5 Z' fill='currentColor'/><text x='496' y='386' font-size='13'>Country C<\/text><\/svg>"}, "t2": "Some people think that children should start learning a foreign language at primary school, while others believe it is better to wait until secondary school.\n\nDiscuss both views and give your own opinion."}, {"id": "w2", "title": "Writing test 2", "kind": "Bar chart", "t1": {"text": "The chart below shows the average number of hours per week that men and women spent on unpaid household work in four countries in 2022.", "ask": "Summarise the information by selecting and reporting the main features, and make comparisons where relevant.", "svg": "<svg class='chart' viewBox='0 0 640 400' role='img' aria-label='Bar chart: hours per week spent on unpaid household work by men and women in four countries in 2022'><defs><pattern id='hatch' width='6' height='6' patternUnits='userSpaceOnUse' patternTransform='rotate(45)'><rect width='6' height='6' fill='none'/><line x1='0' y1='0' x2='0' y2='6' stroke='currentColor' stroke-width='2'/><\/pattern><\/defs><text x='320.0' y='26' text-anchor='middle' font-size='15' font-weight='700'>Unpaid household work, hours per week, 2022<\/text><line x1='64' x2='616' y1='304.0' y2='304.0' stroke='currentColor' stroke-opacity='0.9' stroke-dasharray=''/><text x='56' y='308.0' text-anchor='end' font-size='12'>0<\/text><line x1='64' x2='616' y1='262.6666666666667' y2='262.6666666666667' stroke='currentColor' stroke-opacity='0.25' stroke-dasharray='4 4'/><text x='56' y='266.6666666666667' text-anchor='end' font-size='12'>5<\/text><line x1='64' x2='616' y1='221.33333333333334' y2='221.33333333333334' stroke='currentColor' stroke-opacity='0.25' stroke-dasharray='4 4'/><text x='56' y='225.33333333333334' text-anchor='end' font-size='12'>10<\/text><line x1='64' x2='616' y1='180.0' y2='180.0' stroke='currentColor' stroke-opacity='0.25' stroke-dasharray='4 4'/><text x='56' y='184.0' text-anchor='end' font-size='12'>15<\/text><line x1='64' x2='616' y1='138.66666666666669' y2='138.66666666666669' stroke='currentColor' stroke-opacity='0.25' stroke-dasharray='4 4'/><text x='56' y='142.66666666666669' text-anchor='end' font-size='12'>20<\/text><line x1='64' x2='616' y1='97.33333333333331' y2='97.33333333333331' stroke='currentColor' stroke-opacity='0.25' stroke-dasharray='4 4'/><text x='56' y='101.33333333333331' text-anchor='end' font-size='12'>25<\/text><line x1='64' x2='616' y1='56.0' y2='56.0' stroke='currentColor' stroke-opacity='0.25' stroke-dasharray='4 4'/><text x='56' y='60.0' text-anchor='end' font-size='12'>30<\/text><text x='16' y='180.0' text-anchor='middle' font-size='12' transform='rotate(-90 16 180.0)'>Hours per week<\/text><rect x='95.0' y='229.6' width='36' height='74.4' fill='currentColor' stroke='currentColor' stroke-width='1.5'/><rect x='135.0' y='138.66666666666669' width='36' height='165.33333333333331' fill='url(#hatch)' stroke='currentColor' stroke-width='1.5'/><text x='133.0' y='324' text-anchor='middle' font-size='13'>Country P<\/text><rect x='233.0' y='204.79999999999998' width='36' height='99.20000000000002' fill='currentColor' stroke='currentColor' stroke-width='1.5'/><rect x='273.0' y='155.2' width='36' height='148.8' fill='url(#hatch)' stroke='currentColor' stroke-width='1.5'/><text x='271.0' y='324' text-anchor='middle' font-size='13'>Country Q<\/text><rect x='371.0' y='246.13333333333333' width='36' height='57.866666666666674' fill='currentColor' stroke='currentColor' stroke-width='1.5'/><rect x='411.0' y='105.6' width='36' height='198.4' fill='url(#hatch)' stroke='currentColor' stroke-width='1.5'/><text x='409.0' y='324' text-anchor='middle' font-size='13'>Country R<\/text><rect x='509.0' y='188.26666666666665' width='36' height='115.73333333333335' fill='currentColor' stroke='currentColor' stroke-width='1.5'/><rect x='549.0' y='171.73333333333335' width='36' height='132.26666666666665' fill='url(#hatch)' stroke='currentColor' stroke-width='1.5'/><text x='547.0' y='324' text-anchor='middle' font-size='13'>Country S<\/text><rect x='250.0' y='367' width='16' height='16' fill='currentColor' stroke='currentColor' stroke-width='1.5'/><text x='274.0' y='380' font-size='13'>Men<\/text><rect x='350.0' y='367' width='16' height='16' fill='url(#hatch)' stroke='currentColor' stroke-width='1.5'/><text x='374.0' y='380' font-size='13'>Women<\/text><\/svg>"}, "t2": "In many countries, more and more people are choosing to live alone.\n\nWhat are the reasons for this? Is it a positive or a negative development?"}, {"id": "w3", "title": "Writing test 3", "kind": "Process", "t1": {"text": "The diagram below shows how coffee is produced.", "ask": "Summarise the information by selecting and reporting the main features.", "svg": "<svg class='chart' viewBox='0 0 640 340' role='img' aria-label='Diagram: how coffee is produced, in six stages'><defs><marker id='ar' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='6' markerHeight='6' orient='auto'><path d='M0 0L10 5L0 10z' fill='currentColor'/><\/marker><\/defs><text x='320.0' y='24' text-anchor='middle' font-size='15' font-weight='700'>How coffee is produced<\/text><line x1='210' y1='107' x2='223' y2='107' stroke='currentColor' stroke-width='1.5' marker-end='url(#ar)'/><line x1='415' y1='107' x2='428' y2='107' stroke='currentColor' stroke-width='1.5' marker-end='url(#ar)'/><line x1='525.0' y1='150' x2='525.0' y2='194' stroke='currentColor' stroke-width='1.5' marker-end='url(#ar)'/><line x1='430' y1='239' x2='417' y2='239' stroke='currentColor' stroke-width='1.5' marker-end='url(#ar)'/><line x1='225' y1='239' x2='212' y2='239' stroke='currentColor' stroke-width='1.5' marker-end='url(#ar)'/><rect x='20' y='64' width='190' height='86' rx='6' fill='none' stroke='currentColor' stroke-width='1.5'/><circle cx='34' cy='60' r='11' fill='none' stroke='currentColor' stroke-width='1.5'/><text x='34' y='64' text-anchor='middle' font-size='12' font-weight='700'>1<\/text><text x='34' y='102' font-size='13'>Coffee cherries are picked<\/text><text x='34' y='120' font-size='13'>by hand or by machine<\/text><rect x='225' y='64' width='190' height='86' rx='6' fill='none' stroke='currentColor' stroke-width='1.5'/><circle cx='239' cy='60' r='11' fill='none' stroke='currentColor' stroke-width='1.5'/><text x='239' y='64' text-anchor='middle' font-size='12' font-weight='700'>2<\/text><text x='239' y='102' font-size='13'>The cherries are sorted<\/text><text x='239' y='120' font-size='13'>and washed<\/text><rect x='430' y='64' width='190' height='86' rx='6' fill='none' stroke='currentColor' stroke-width='1.5'/><circle cx='444' cy='60' r='11' fill='none' stroke='currentColor' stroke-width='1.5'/><text x='444' y='64' text-anchor='middle' font-size='12' font-weight='700'>3<\/text><text x='444' y='102' font-size='13'>The beans are removed<\/text><text x='444' y='120' font-size='13'>from the cherries<\/text><rect x='430' y='196' width='190' height='86' rx='6' fill='none' stroke='currentColor' stroke-width='1.5'/><circle cx='444' cy='192' r='11' fill='none' stroke='currentColor' stroke-width='1.5'/><text x='444' y='196' text-anchor='middle' font-size='12' font-weight='700'>4<\/text><text x='444' y='234' font-size='13'>The beans are dried<\/text><text x='444' y='252' font-size='13'>in the sun<\/text><rect x='225' y='196' width='190' height='86' rx='6' fill='none' stroke='currentColor' stroke-width='1.5'/><circle cx='239' cy='192' r='11' fill='none' stroke='currentColor' stroke-width='1.5'/><text x='239' y='196' text-anchor='middle' font-size='12' font-weight='700'>5<\/text><text x='239' y='234' font-size='13'>The dried beans are<\/text><text x='239' y='252' font-size='13'>roasted in a machine<\/text><rect x='20' y='196' width='190' height='86' rx='6' fill='none' stroke='currentColor' stroke-width='1.5'/><circle cx='34' cy='192' r='11' fill='none' stroke='currentColor' stroke-width='1.5'/><text x='34' y='196' text-anchor='middle' font-size='12' font-weight='700'>6<\/text><text x='34' y='234' font-size='13'>The roasted beans are<\/text><text x='34' y='252' font-size='13'>ground and packed<\/text><text x='20' y='332' font-size='12' fill-opacity='.8'>The numbers show the order of the stages.<\/text><\/svg>"}, "t2": "Some people believe that governments should spend more money on public transport than on building new roads.\n\nTo what extent do you agree or disagree?"}, {"id": "w4", "title": "Writing test 4", "kind": "Maps", "t1": {"text": "The maps below show a town centre in 1995 and 2025.", "ask": "Summarise the information by selecting and reporting the main features, and make comparisons where relevant.", "svg": "<svg class='chart' viewBox='0 0 700 372' role='img' aria-label='Maps of a town centre in 1995 and 2025'><text x='350.0' y='22' text-anchor='middle' font-size='15' font-weight='700'>A town centre, 1995 and 2025<\/text><text x='20' y='52' font-size='14' font-weight='700'>1995<\/text><text x='365' y='52' font-size='14' font-weight='700'>2025<\/text><rect x='20' y='64' width='310' height='290' fill='none' stroke='currentColor' stroke-opacity='.4'/><rect x='106' y='64' width='14' height='290' fill='currentColor' fill-opacity='.12'/><text x='113' y='348' text-anchor='middle' font-size='10.5'>Main Street<\/text><rect x='28' y='94' width='70' height='220' fill='#c25e00' fill-opacity='.14' stroke='currentColor' stroke-width='1.2'/><text x='63' y='86' text-anchor='middle' font-size='11.5'>Houses<\/text><rect x='36' y='106' width='22' height='16' rx='2' fill='none' stroke='currentColor' stroke-width='1'/><rect x='66' y='106' width='22' height='16' rx='2' fill='none' stroke='currentColor' stroke-width='1'/><rect x='36' y='140' width='22' height='16' rx='2' fill='none' stroke='currentColor' stroke-width='1'/><rect x='66' y='140' width='22' height='16' rx='2' fill='none' stroke='currentColor' stroke-width='1'/><rect x='36' y='174' width='22' height='16' rx='2' fill='none' stroke='currentColor' stroke-width='1'/><rect x='66' y='174' width='22' height='16' rx='2' fill='none' stroke='currentColor' stroke-width='1'/><rect x='36' y='208' width='22' height='16' rx='2' fill='none' stroke='currentColor' stroke-width='1'/><rect x='66' y='208' width='22' height='16' rx='2' fill='none' stroke='currentColor' stroke-width='1'/><rect x='36' y='242' width='22' height='16' rx='2' fill='none' stroke='currentColor' stroke-width='1'/><rect x='66' y='242' width='22' height='16' rx='2' fill='none' stroke='currentColor' stroke-width='1'/><rect x='36' y='276' width='22' height='16' rx='2' fill='none' stroke='currentColor' stroke-width='1'/><rect x='66' y='276' width='22' height='16' rx='2' fill='none' stroke='currentColor' stroke-width='1'/><rect x='132' y='174' width='100' height='76' rx='3' fill='none' fill-opacity='1' stroke='currentColor' stroke-width='1.4' stroke-dasharray=''/><text x='182.0' y='216.0' text-anchor='middle' font-size='11.5'>Market square<\/text><rect x='248' y='94' width='78' height='60' rx='3' fill='none' fill-opacity='1' stroke='currentColor' stroke-width='1.4' stroke-dasharray=''/><text x='287.0' y='128.0' text-anchor='middle' font-size='11.5'>Cinema<\/text><rect x='132' y='270' width='100' height='56' rx='3' fill='none' fill-opacity='1' stroke='currentColor' stroke-width='1.4' stroke-dasharray=''/><text x='182.0' y='302.0' text-anchor='middle' font-size='11.5'>Bus station<\/text><rect x='248' y='184' width='78' height='80' rx='3' fill='none' fill-opacity='1' stroke='currentColor' stroke-width='1.4' stroke-dasharray=''/><text x='287.0' y='228.0' text-anchor='middle' font-size='11.5'>Factory<\/text><rect x='365' y='64' width='310' height='290' fill='none' stroke='currentColor' stroke-opacity='.4'/><rect x='451' y='64' width='14' height='290' fill='currentColor' fill-opacity='.12'/><text x='458' y='348' text-anchor='middle' font-size='10.5'>Main Street<\/text><rect x='373' y='94' width='70' height='220' fill='#c25e00' fill-opacity='.14' stroke='currentColor' stroke-width='1.2'/><text x='408' y='86' text-anchor='middle' font-size='11.5'>Houses<\/text><rect x='381' y='106' width='22' height='16' rx='2' fill='none' stroke='currentColor' stroke-width='1'/><rect x='411' y='106' width='22' height='16' rx='2' fill='none' stroke='currentColor' stroke-width='1'/><rect x='381' y='140' width='22' height='16' rx='2' fill='none' stroke='currentColor' stroke-width='1'/><rect x='411' y='140' width='22' height='16' rx='2' fill='none' stroke='currentColor' stroke-width='1'/><rect x='381' y='174' width='22' height='16' rx='2' fill='none' stroke='currentColor' stroke-width='1'/><rect x='411' y='174' width='22' height='16' rx='2' fill='none' stroke='currentColor' stroke-width='1'/><rect x='381' y='208' width='22' height='16' rx='2' fill='none' stroke='currentColor' stroke-width='1'/><rect x='411' y='208' width='22' height='16' rx='2' fill='none' stroke='currentColor' stroke-width='1'/><rect x='381' y='242' width='22' height='16' rx='2' fill='none' stroke='currentColor' stroke-width='1'/><rect x='411' y='242' width='22' height='16' rx='2' fill='none' stroke='currentColor' stroke-width='1'/><rect x='381' y='276' width='22' height='16' rx='2' fill='none' stroke='currentColor' stroke-width='1'/><rect x='411' y='276' width='22' height='16' rx='2' fill='none' stroke='currentColor' stroke-width='1'/><rect x='477' y='174' width='100' height='76' rx='3' fill='none' fill-opacity='1' stroke='currentColor' stroke-width='1.4' stroke-dasharray=''/><text x='527.0' y='216.0' text-anchor='middle' font-size='11.5'>Market square<\/text><rect x='587' y='94' width='84' height='60' rx='3' fill='none' fill-opacity='1' stroke='currentColor' stroke-width='1.4' stroke-dasharray=''/><text x='629.0' y='121.0' text-anchor='middle' font-size='11.5'>Shopping<\/text><text x='629.0' y='135.0' text-anchor='middle' font-size='11.5'>centre<\/text><rect x='477' y='270' width='100' height='56' rx='3' fill='#2e7d32' fill-opacity='0.18' stroke='currentColor' stroke-width='1.4' stroke-dasharray='4 3'/><text x='527.0' y='302.0' text-anchor='middle' font-size='11.5'>Park<\/text><rect x='593' y='184' width='78' height='80' rx='3' fill='#c25e00' fill-opacity='0.14' stroke='currentColor' stroke-width='1.4' stroke-dasharray=''/><text x='632.0' y='228.0' text-anchor='middle' font-size='11.5'>Flats<\/text><rect x='477' y='92' width='100' height='60' rx='3' fill='currentColor' fill-opacity='0.12' stroke='currentColor' stroke-width='1.4' stroke-dasharray=''/><text x='527.0' y='126.0' text-anchor='middle' font-size='11.5'>Car park<\/text><g transform='translate(350.0,330)'><path d='M0 -22 L-6 -4 L0 -8 L6 -4 Z' fill='currentColor'/><text x='0' y='14' text-anchor='middle' font-size='12' font-weight='700'>N<\/text><\/g><\/svg>"}, "t2": "In many cities, traffic congestion is becoming worse.\n\nWhat problems does it cause, and what can be done to reduce it?"}];
+const TEACHER = "n.munkhbold@aum.edu.mn";
+const MIN = {1:150, 2:250};
+const $ = id => document.getElementById(id);
+const KEY = id => "ielts-writing-" + id;
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const words = t => { t = String(t || "").trim(); return t ? t.split(/\s+/).length : 0; };
+const load = id => { try { return JSON.parse(localStorage.getItem(KEY(id)) || "null"); } catch (e) { return null; } };
+let set = null, st = null, part = 1, tick = null, saveTimer = null;
+function save() { if (!set || !st) return; try { localStorage.setItem(KEY(set.id), JSON.stringify(st)); } catch (e) {} }
+function queueSave() { clearTimeout(saveTimer); saveTimer = setTimeout(save, 350); }
+function toast(msg) { const t = document.createElement("div"); t.className = "toast"; t.textContent = msg; document.body.appendChild(t); setTimeout(() => t.remove(), 4500); }
+const fmt = s => String(Math.floor(s / 60)).padStart(2, "0") + ":" + String(s % 60).padStart(2, "0");
+/* ---------- preferences ---------- */
+const PREF = "ielts-writing-prefs";
+function applyPrefs(p) { document.documentElement.dataset.size = p.size || "m"; document.documentElement.dataset.contrast = p.contrast || "bow"; $("timer").classList.toggle("hide", !!p.hideTimer);
+  document.querySelectorAll('input[name=size]').forEach(r => r.checked = r.value === (p.size || "m")); document.querySelectorAll('input[name=contrast]').forEach(r => r.checked = r.value === (p.contrast || "bow")); $("hideTimer").checked = !!p.hideTimer; }
+function prefs() { try { return JSON.parse(localStorage.getItem(PREF) || "{}"); } catch (e) { return {}; } }
+function setPref(k, v) { const p = prefs(); p[k] = v; try { localStorage.setItem(PREF, JSON.stringify(p)); } catch (e) {} applyPrefs(p); }
+applyPrefs(prefs());
+document.querySelectorAll('input[name=size]').forEach(r => r.onchange = () => setPref("size", r.value));
+document.querySelectorAll('input[name=contrast]').forEach(r => r.onchange = () => setPref("contrast", r.value));
+$("hideTimer").onchange = e => setPref("hideTimer", e.target.checked);
+$("menuBtn").onclick = () => { const m = $("menu"); m.hidden = !m.hidden; $("menuBtn").setAttribute("aria-expanded", String(!m.hidden)); };
+document.addEventListener("click", e => { if (!$("menu").hidden && !e.target.closest("#menu") && !e.target.closest("#menuBtn")) { $("menu").hidden = true; $("menuBtn").setAttribute("aria-expanded", "false"); } });
+/* ---------- overlays ---------- */
+function overlay(html, solid) { const o = $("overlay"); o.innerHTML = `<div class="overlay${solid ? " solid" : ""}"><div class="modal" role="dialog" aria-modal="true">${html}</div></div>`; return o; }
+function closeOverlay() { $("overlay").innerHTML = ""; }
+function status(id) { const s = load(id); if (!s || !s.started) return ["Not started", "Start"]; if (s.submitted) return ["Submitted", "View"]; const left = Math.max(0, Math.ceil((s.endAt - Date.now()) / 60000)); return [left > 0 ? "In progress · " + left + " min left" : "Time is up", "Continue"]; }
+function chooser() {
+  $("testName").textContent = "Writing practice tests";
+  overlay(`<h2>Writing practice tests</h2><p>Each test has two tasks and 60 minutes, in the same layout as the computer-delivered IELTS. Your writing is saved as you type, and you send it to your teacher by email when you finish.</p><div class="sets">${SETS.map(s => { const [t, b] = status(s.id); return `<div class="setcard"><b>${esc(s.title)}</b><span>Task 1: ${esc(s.kind)}</span><span>${t}</span><a class="btn" href="#${s.id}">${b} →</a></div>`; }).join("")}</div><div class="row"><a class="btn ghost" href="tests.html">Back to Practice tests</a></div>`, true);
+}
+function startScreen() {
+  overlay(`<h2>${esc(set.title)}</h2><p>Task 1: ${esc(set.kind)} · Task 2: essay</p><ul><li><b>60 minutes</b> in total: about 20 minutes for Part 1 (at least 150 words) and 40 minutes for Part 2 (at least 250 words).</li><li>The timer starts when you press <b>Start</b>. It keeps running if you close the page.</li><li>Your writing is saved on this computer as you type.</li><li>When you finish, you send your answers to your teacher by email.</li></ul><label for="nm"><b>Your full name</b></label><input type="text" id="nm" autocomplete="name" placeholder="For example: Bat-Erdene Dorj"><div class="row"><button class="btn" id="go">Start the test</button><a class="btn ghost" href="writing-test.html">Choose a different test</a></div>`);
+  const nm = $("nm"); nm.focus();
+  $("go").onclick = () => { const v = nm.value.trim(); if (!v) { nm.focus(); nm.style.borderColor = "var(--bad)"; return; }
+    st = { name: v, started: true, startedAt: Date.now(), endAt: Date.now() + 60 * 60000, t1: "", t2: "", part: 1, submitted: false }; save(); closeOverlay(); init(); };
+  nm.onkeydown = e => { if (e.key === "Enter") $("go").click(); };
+}
+/* ---------- test ---------- */
+function showPart(p) {
+  part = p; st.part = p;
+  $("partbar").innerHTML = p === 1 ? "<b>Part 1</b>You should spend about 20 minutes on this task. Write at least 150 words." : "<b>Part 2</b>You should spend about 40 minutes on this task. Write at least 250 words.";
+  $("taskPane").innerHTML = p === 1
+    ? `<p class="task"><b>${esc(set.t1.text)}</b></p><p class="task"><b>${esc(set.t1.ask)}</b></p><div class="figure">${set.t1.svg}</div>`
+    : `<p class="task"><b>Write about the following topic:</b></p>${set.t2.split("\n\n").map(x => `<p class="task"><b>${esc(x)}</b></p>`).join("")}<p class="task"><b>Give reasons for your answer and include any relevant examples from your own knowledge or experience.</b></p><p class="task">Write at least 250 words.</p>`;
+  $("ta1").hidden = p !== 1; $("ta2").hidden = p !== 2;
+  $("prevP").disabled = p === 1; $("nextP").disabled = p === 2;
+  updateCounts(); queueSave();
+  (p === 1 ? $("ta1") : $("ta2")).focus({ preventScroll: true });
+}
+function updateCounts() {
+  const n1 = words(st.t1), n2 = words(st.t2), n = part === 1 ? n1 : n2, min = MIN[part];
+  $("wc").innerHTML = `Words: <b>${n}</b>` + (n < min ? ` <small>(minimum ${min})</small>` : ""); $("wc").classList.toggle("low", n > 0 && n < min);
+  $("parts").innerHTML = [1, 2].map(p => `<button class="pbtn" data-p="${p}" aria-pressed="${part === p}">Part ${p}<span class="count">${p === 1 ? n1 : n2} words</span></button>`).join("");
+  $("parts").querySelectorAll(".pbtn").forEach(b => b.onclick = () => showPart(+b.dataset.p));
+}
+function onInput() { st.t1 = $("ta1").value; st.t2 = $("ta2").value; updateCounts(); queueSave(); }
+function startTimer() {
+  clearInterval(tick);
+  const f = () => {
+    if (st.submitted) { $("timer").textContent = "Submitted"; $("timer").classList.remove("warn"); clearInterval(tick); return; }
+    const left = Math.max(0, Math.round((st.endAt - Date.now()) / 1000));
+    $("timer").textContent = fmt(left); $("timer").classList.toggle("warn", left <= 600 && left > 0);
+    if (left === 600 && !st.warned) { st.warned = true; save(); toast("10 minutes left"); }
+    if (left <= 0) { clearInterval(tick); timeUp(); }
+  };
+  f(); if (!st.submitted) tick = setInterval(f, 1000);
+}
+function init() {
+  $("testName").textContent = set.title + " · " + set.kind; $("whoName").textContent = st.name;
+  $("ta1").value = st.t1 || ""; $("ta2").value = st.t2 || "";
+  $("ta1").oninput = onInput; $("ta2").oninput = onInput;
+  $("prevP").onclick = () => showPart(1); $("nextP").onclick = () => showPart(2);
+  $("finishBtn").onclick = review;
+  $("sendAgain").onclick = sentModal;
+  showPart(st.part || 1);
+  lockIfSubmitted(); startTimer();
+  if (!st.submitted && st.endAt <= Date.now()) timeUp();
+}
+function lockIfSubmitted() { const s = !!st.submitted; $("ta1").readOnly = s; $("ta2").readOnly = s; $("sentbar").hidden = !s; }
+function review(timeIsUp) {
+  const n1 = words(st.t1), n2 = words(st.t2); const w = [];
+  if (n1 < MIN[1]) w.push(`Part 1 has ${n1} words. The minimum is ${MIN[1]}.`);
+  if (n2 < MIN[2]) w.push(`Part 2 has ${n2} words. The minimum is ${MIN[2]}.`);
+  const left = Math.max(0, Math.round((st.endAt - Date.now()) / 60000));
+  overlay(`<h2>${timeIsUp === true ? "Time is up" : "Finish and submit?"}</h2><p>Part 1: <b>${n1}</b> words · Part 2: <b>${n2}</b> words${timeIsUp === true ? "" : " · " + left + " minutes left"}</p>${w.length ? `<p class="warn-note">${w.join("<br>")}</p><p>Answers that are too short lose marks in the real test.</p>` : `<p class="ok-note">Both parts reach the minimum length.</p>`}<p>After you submit, you cannot change your writing. You will be able to send it to your teacher by email.</p><div class="row"><button class="btn" id="sub">Submit my writing</button>${timeIsUp === true ? "" : `<button class="btn ghost" id="back">Go back</button>`}</div>`);
+  $("sub").onclick = submit; if ($("back")) $("back").onclick = closeOverlay;
+}
+function timeUp() { if (st.submitted) return; $("timer").textContent = "00:00"; review(true); }
+function submit() { st.submitted = true; st.submittedAt = Date.now(); save(); lockIfSubmitted(); startTimer(); sentModal(); }
+/* ---------- sending ---------- */
+function composeText() {
+  const end = st.submittedAt || Date.now(); const used = Math.min(60, Math.max(1, Math.round((end - st.startedAt) / 60000)));
+  return ["IELTS WRITING PRACTICE", "Student: " + st.name, "Test: " + set.title + " (Task 1: " + set.kind + ")", "Date: " + new Date(end).toLocaleString(), "Time used: " + used + " minutes of 60", "Words: Part 1 = " + words(st.t1) + ", Part 2 = " + words(st.t2), "", "=== PART 1 ===", set.t1.text, "", (st.t1 || "").trim() || "(no answer)", "", "=== PART 2 ===", set.t2.replace(/\n\n/g, " "), "", (st.t2 || "").trim() || "(no answer)"].join("\n");
+}
+function mailInfo() {
+  const full = composeText(), subject = "IELTS Writing - " + st.name + " - " + set.title;
+  let body = full, inline = true;
+  if (encodeURIComponent(full).length > 1800) { inline = false; body = full.split("=== PART 1 ===")[0] + "(Your writing has been copied to your clipboard. Paste it here with Ctrl+V, or Cmd+V on a Mac.)"; }
+  return { full, inline, subject, href: "mailto:" + TEACHER + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body) };
+}
+async function copyText(t) { try { await navigator.clipboard.writeText(t); return true; } catch (e) { const a = document.createElement("textarea"); a.value = t; a.style.cssText = "position:fixed;opacity:0"; document.body.appendChild(a); a.select(); let ok = false; try { ok = document.execCommand("copy"); } catch (_) {} a.remove(); return ok; } }
+function download() { const m = mailInfo(); const b = new Blob([m.full], { type: "text/plain;charset=utf-8" }); const a = document.createElement("a"); a.href = URL.createObjectURL(b); a.download = "ielts-writing-" + st.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") + "-" + set.id + ".txt"; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500); }
+function sentModal() {
+  const notSet = /HERE/.test(TEACHER);
+  overlay(`<h2>✓ Your writing is submitted</h2><p>Now send it to your teacher. Choose one way:</p><p><b>1. Email (best).</b> Your email app opens with your name and details. Your writing is copied automatically: if it does not appear in the email, paste it with <b>Ctrl+V</b> (<b>Cmd+V</b> on a Mac). Then press <b>Send</b>.</p><div class="row" style="margin-top:0"><button class="btn" id="mail"${notSet ? " disabled" : ""}>Open email →</button></div>${notSet ? `<p class="warn-note">The teacher's email address has not been set yet. Use option 2 or 3.</p>` : `<p style="margin-top:8px"><small>To: ${esc(TEACHER)}</small></p>`}<p id="mailnote" aria-live="polite"></p><p><b>2. Copy.</b> Copy your writing and paste it into any email, message or document.</p><div class="row" style="margin-top:0"><button class="btn ghost" id="copy">Copy my writing</button></div><p style="margin-top:12px"><b>3. Download.</b> Save a text file and attach it to an email.</p><div class="row" style="margin-top:0"><button class="btn ghost" id="dl">Download as a file</button></div><p style="margin-top:14px"><small>Your email app must be set up on this computer. If nothing opens, use option 2 or 3. On a shared computer, use your own email to send the file.</small></p><div class="row"><button class="btn ghost" id="close">Close</button><a class="btn ghost" href="tests.html">Back to Practice tests</a></div>`);
+  $("close").onclick = closeOverlay;
+  $("copy").onclick = async () => { const ok = await copyText(mailInfo().full); toast(ok ? "Copied. Now paste it into your email." : "Could not copy. Use Download instead."); };
+  $("dl").onclick = download;
+  if ($("mail")) $("mail").onclick = async () => { const m = mailInfo(); const ok = await copyText(m.full); window.__lastMail = m.href; $("mailnote").innerHTML = m.inline ? (ok ? "Your email app should open with your writing inside. A copy is also on your clipboard." : "Your email app should open with your writing inside.") : (ok ? "Your email app should open. <b>Paste your writing into the email with Ctrl+V (Cmd+V on a Mac)</b>: it is on your clipboard." : "Your email app should open, but your writing did not copy. Use Download, then attach the file."); window.location.href = m.href; };
+}
+/* ---------- divider ---------- */
+(function () { const d = $("divider"), tp = $("taskPane"), sp = $("split"); let drag = false;
+  const move = e => { if (!drag) return; const r = sp.getBoundingClientRect(); const x = (e.touches ? e.touches[0].clientX : e.clientX) - r.left; const pct = Math.min(75, Math.max(25, x / r.width * 100)); tp.style.flex = "0 0 " + pct + "%"; };
+  d.addEventListener("mousedown", () => { drag = true; document.body.style.userSelect = "none"; });
+  document.addEventListener("mousemove", move); document.addEventListener("mouseup", () => { drag = false; document.body.style.userSelect = ""; });
+  d.addEventListener("touchstart", () => { drag = true; }, { passive: true }); document.addEventListener("touchmove", move, { passive: true }); document.addEventListener("touchend", () => { drag = false; });
+  d.onkeydown = e => { if (e.key === "ArrowLeft" || e.key === "ArrowRight") { const cur = parseFloat(tp.style.flexBasis) || 50; const n = Math.min(75, Math.max(25, cur + (e.key === "ArrowRight" ? 5 : -5))); tp.style.flex = "0 0 " + n + "%"; } };
+})();
+/* ---------- route ---------- */
+$("restart").onclick = () => { if (!set) return; if (confirm("Delete your writing and start this test again?")) { localStorage.removeItem(KEY(set.id)); location.reload(); } };
+window.addEventListener("hashchange", () => location.reload());
+window.addEventListener("pagehide", save); document.addEventListener("visibilitychange", () => { if (document.hidden) save(); });
+setInterval(() => { if (st && !st.submitted) save(); }, 10000);
+(function () { const id = location.hash.replace("#", ""); set = SETS.find(s => s.id === id) || null;
+  if (!set) { $("timer").textContent = "60:00"; chooser(); return; }
+  st = load(set.id);
+  if (st && st.started) init(); else { $("testName").textContent = set.title; startScreen(); }
+})();
+</script>
+</body>
+</html>
