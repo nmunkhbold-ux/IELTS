@@ -105,12 +105,17 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:#fff}
 .mini b{display:grid;place-items:center;width:28px;height:28px;border-radius:9px;background:color-mix(in srgb, var(--c) 18%, transparent);color:var(--c);font-size:13px;flex:none}
 .mini span{font-size:14.5px;color:#e8ebf4;line-height:1.3}
 .mini.done span::after{content:"  ✓";color:#46e0a6}
+
+.tbsub{color:var(--muted);margin:6px 0 0;max-width:62ch}
+.tbparts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:start}
+@media (max-width:1000px){.tbparts{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:600px){.tbparts{grid-template-columns:1fr}}
 .view[hidden]{display:none}
 .fade{animation:fade .4s ease both}@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 </style>
 </head>
 <body>
-<header class="st-top"><div class="st-top-in"><a class="st-brand" href="index.html"><svg class="st-mark" viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="stg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8f9bff"/><stop offset=".55" stop-color="#4fd1e8"/><stop offset="1" stop-color="#ffb35c"/></linearGradient></defs><rect x="2" y="2" width="28" height="28" rx="9" fill="url(#stg)"/><path d="M16.00 7.60 L18.29 13.44 L24.56 13.82 L19.71 17.81 L21.29 23.88 L16.00 20.50 L10.71 23.88 L12.29 17.81 L7.44 13.82 L13.71 13.44 Z" fill="#0b0d14" stroke="#0b0d14" stroke-width="1.2" stroke-linejoin="round"/></svg><span>IELTS <b>Studio</b></span></a><nav class="st-nav" aria-label="Main"><a href="index.html" aria-current="page">Home</a><a href="index.html#lessons">Lessons</a><a href="tests.html">Practice tests</a><a href="resources.html">Resources</a></nav></div></header>
+<header class="st-top"><div class="st-top-in"><a class="st-brand" href="index.html"><svg class="st-mark" viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="stg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8f9bff"/><stop offset=".55" stop-color="#4fd1e8"/><stop offset="1" stop-color="#ffb35c"/></linearGradient></defs><rect x="2" y="2" width="28" height="28" rx="9" fill="url(#stg)"/><path d="M16.00 7.60 L18.29 13.44 L24.56 13.82 L19.71 17.81 L21.29 23.88 L16.00 20.50 L10.71 23.88 L12.29 17.81 L7.44 13.82 L13.71 13.44 Z" fill="#0b0d14" stroke="#0b0d14" stroke-width="1.2" stroke-linejoin="round"/></svg><span>IELTS <b>Studio</b></span></a><nav class="st-nav" aria-label="Main"><a href="index.html" aria-current="page">Home</a><a href="index.html#lessons">Lessons</a><a href="tests.html">Practice tests</a><a href="textbook.html">Writing textbook</a><a href="resources.html">Resources</a></nav></div></header>
 <main class="wrap">
 
   <nav class="quick" aria-label="Quick links">
@@ -119,6 +124,14 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:#fff}
     <a class="panel q" href="notes.html"><span class="ico" style="background:rgba(143,155,255,.14);color:var(--w)">✎</span><b>Writing notes</b><span>Task 1 language and structure</span></a>
     <a class="panel q" href="reading-notes.html"><span class="ico" style="background:rgba(124,196,255,.14);color:var(--n)">❑</span><b>Reading notes</b><span>Question types and strategies</span></a>
   </nav>
+
+  <section id="textbook" style="margin-bottom:56px">
+    <div class="head">
+      <div><span class="eyebrow">Textbook</span><h2>Writing Task 1 textbook</h2><p class="tbsub">17 modules: every chart type, the language you need, exercises with answer keys and a mock test.</p></div>
+      <a class="btn" href="textbook.html">Open the textbook →</a>
+    </div>
+    <div class="tbparts"><div class="panel col" style="--c:var(--w)"><h3><i></i>Foundations</h3><a class="mini" data-tb="1" href="textbook-01.html"><b>1</b><span>Foundations of Task 1</span></a></div><div class="panel col" style="--c:var(--m)"><h3><i></i>Chart types</h3><a class="mini" data-tb="2" href="textbook-02.html"><b>2</b><span>Line graphs</span></a><a class="mini" data-tb="3" href="textbook-03.html"><b>3</b><span>Bar charts</span></a><a class="mini" data-tb="4" href="textbook-04.html"><b>4</b><span>Pie charts and tables</span></a><a class="mini" data-tb="5" href="textbook-05.html"><b>5</b><span>Static and dynamic charts, comparisons and rankings, diagrams with numbers</span></a><a class="mini" data-tb="6" href="textbook-06.html"><b>6</b><span>Mixed and multiple charts</span></a></div><div class="panel col" style="--c:var(--sp)"><h3><i></i>Diagrams, maps and plans</h3><a class="mini" data-tb="7" href="textbook-07.html"><b>7</b><span>Process diagrams, life cycles and flow charts</span></a><a class="mini" data-tb="8" href="textbook-08.html"><b>8</b><span>Maps, floor plans and building layouts</span></a><a class="mini" data-tb="9" href="textbook-09.html"><b>9</b><span>Unusual and less common tasks</span></a></div><div class="panel col" style="--c:var(--r)"><h3><i></i>Language</h3><a class="mini" data-tb="10" href="textbook-10.html"><b>10</b><span>Vocabulary and expressions</span></a><a class="mini" data-tb="11" href="textbook-11.html"><b>11</b><span>Grammar for Band 7+</span></a><a class="mini" data-tb="12" href="textbook-12.html"><b>12</b><span>Paraphrasing the question</span></a><a class="mini" data-tb="13" href="textbook-13.html"><b>13</b><span>The overview paragraph</span></a></div><div class="panel col" style="--c:var(--n)"><h3><i></i>Practice and review</h3><a class="mini" data-tb="14" href="textbook-14.html"><b>14</b><span>Common mistakes and how to avoid them</span></a><a class="mini" data-tb="15" href="textbook-15.html"><b>15</b><span>Practice exercises</span></a><a class="mini" data-tb="16" href="textbook-16.html"><b>16</b><span>From Band 5.5 or 6 to Band 7+</span></a><a class="mini" data-tb="17" href="textbook-17.html"><b>17</b><span>Final resources and mock test</span></a></div></div>
+  </section>
 
   <section id="lessons">
     <div class="head">
@@ -129,7 +142,7 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:#fff}
     <div class="view fade" id="skillView" hidden><div class="skills" id="skills"></div></div>
   </section>
 </main>
-<footer><div class="wrap"><span>IELTS Studio · Academic preparation</span><span><a href="index.html#lessons">Lessons</a> · <a href="tests.html">Practice tests</a> · <a href="resources.html">Resources</a></span></div></footer>
+<footer><div class="wrap"><span>IELTS Studio · Academic preparation</span><span><a href="index.html#lessons">Lessons</a> · <a href="tests.html">Practice tests</a> · <a href="textbook.html">Writing textbook</a> · <a href="resources.html">Resources</a></span></div></footer>
 <script>
 const L = [
   { n: 1, skill: "Mixed", title: "Mock test: where are you now?", about: "A timed Reading passage and a Writing Task 1 report, with answers and the True/False/Not Given method.", time: "90 min" },
@@ -174,5 +187,6 @@ document.getElementById("vSkill").onclick = () => view("skill");
 let v0 = "path"; try { v0 = localStorage.getItem("studio-view") || "path"; } catch (e) {}
 render(); view(v0);
 </script>
+<script>(function(){var d={};try{d=JSON.parse(localStorage.getItem('ielts-tb-done')||'{}')}catch(e){}document.querySelectorAll('.mini[data-tb]').forEach(function(a){if(d[a.dataset.tb])a.classList.add('done')})})();</script>
 </body>
 </html>
